@@ -217,16 +217,16 @@ window.WFPhoto = (function () {
   function okLicense(l) {
     l = (l || '').trim().toLowerCase();
     if (!l) return false;
-    if (/^(public domain|pd[ -]|cc0|cc zero|no restrictions)/.test(l)) return true;
+    if (/^(public domain|pd[ -]|cc0|cc zero|no restrictions|attribution$)/.test(l)) return true;
     return /^cc[ -]by([ -]sa)?[ -][0-9.]+(\s(us|au|nz|ca|uk|in|ie|de|nl|fr|es|it|igo))?$/.test(l);
   }
   function save() { try { localStorage.setItem('wf-photos-v3', JSON.stringify(cache)); } catch (e) {} }
   function strip(h) { var d = document.createElement('div'); d.innerHTML = h || ''; return (d.textContent || '').replace(/\s+/g, ' ').trim(); }
-  function getJSON(url) { return fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }); }
+  function getJSON(url, n) { n = n == null ? 2 : n; return fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).catch(function (e) { if (n <= 0) throw e; return new Promise(function (ok) { setTimeout(ok, 700 * (3 - n)); }).then(function () { return getJSON(url, n - 1); }); }); }
   function flush() {
     timer = null;
     var titles = queue.splice(0, 50); if (!titles.length) return;
-    getJSON(API + '&redirects=1&prop=pageimages&piprop=thumbnail|name&pithumbsize=1280&pilicense=free&titles=' + encodeURIComponent(titles.join('|'))).then(function (j) {
+    getJSON(API + '&redirects=1&prop=pageimages&piprop=thumbnail|name&pithumbsize=1000&pilicense=free&titles=' + encodeURIComponent(titles.join('|'))).then(function (j) {
       var q = j.query || {}, map = {};
       (q.normalized || []).forEach(function (n) { map[n.to] = n.from; });
       (q.redirects || []).forEach(function (n) { map[n.to] = map[n.from] || n.from; });
@@ -236,7 +236,7 @@ window.WFPhoto = (function () {
         if (pg.thumbnail && pg.pageimage) { found[orig] = { src: pg.thumbnail.source, file: pg.pageimage }; files.push('File:' + pg.pageimage); }
       });
       var done = function () {
-        titles.forEach(function (t) { var key = t.replace(/ /g, '_'); cache[key] = found[t] || found[t.replace(/_/g, ' ')] || { none: true }; deliver(key); });
+        titles.forEach(function (t) { var key = t.replace(/ /g, '_'); cache[key] = found[t] || found[t.replace(/_/g, ' ')] || { none: true, ts: Date.now() }; deliver(key); });
         save();
       };
       if (!files.length) return done();
@@ -246,12 +246,13 @@ window.WFPhoto = (function () {
         Object.keys(found).forEach(function (t) { var f = found[t], m = meta[f.file.replace(/ /g, '_')] || {}; f.credit = m.credit || ''; f.license = m.license || ''; if (!okLicense(f.license)) { delete found[t]; } });
         done();
       }, done);
-    }).catch(function () { failed = true; titles.forEach(function (t) { deliver(t.replace(/ /g, '_')); }); });
+    }).catch(function () { titles.forEach(function (t) { deliver(t.replace(/ /g, '_')); }); });
     if (queue.length) timer = setTimeout(flush, 10);
   }
   function want(title, cb) {
     var key = title.replace(/ /g, '_');
-    if (cache[key]) return cb(cache[key]);
+    var c0 = cache[key]; if (c0 && c0.none && c0.ts && Date.now() - c0.ts > 6 * 3600 * 1000) { delete cache[key]; c0 = null; }
+    if (c0) return cb(c0.none || !c0.src ? null : c0);
     if (failed) return cb(null);
     (waiting[key] = waiting[key] || []).push(cb);
     if (waiting[key].length === 1) { queue.push(key); if (!timer) timer = setTimeout(flush, 30); }
@@ -274,7 +275,7 @@ window.WFPhoto = (function () {
     var im = story && story.image;
     if (im && im.wiki && window.fetch) {
       want(im.wiki, function (p) {
-        if (!p) return;
+        if (!p || !p.src) return;
         var img = new Image();
         img.alt = im.caption || story.headline || ''; img.decoding = 'async'; img.width = w; img.height = h;
         img.style.opacity = '0'; img.style.transition = 'opacity .4s';
@@ -283,6 +284,7 @@ window.WFPhoto = (function () {
           if (!opts.noCredit) { var cr = document.createElement('span'); cr.className = 'credit'; cr.textContent = 'Photo: ' + (p.credit || 'Wikimedia Commons') + (p.license ? ' · ' + p.license : ''); box.appendChild(cr); }
           box.dispatchEvent(new CustomEvent('wf-photo', { detail: { credit: p.credit, license: p.license, page: filePage(p.file) } }));
         };
+        var tries = 0; img.onerror = function(){ if (tries++ < 2) { setTimeout(function(){ img.src = p.src + (p.src.indexOf('?') < 0 ? '?' : '&') + 'r=' + tries; }, 800 * tries); } else if (img.parentNode) img.parentNode.removeChild(img); };
         img.src = p.src; box.appendChild(img);
       });
     }
