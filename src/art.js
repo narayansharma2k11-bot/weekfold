@@ -217,7 +217,7 @@ window.WFPhoto = (function () {
   function okLicense(l) {
     l = (l || '').trim().toLowerCase();
     if (!l) return false;
-    if (/^(public domain|pd[ -]|cc0|cc zero|no restrictions|attribution$)/.test(l)) return true;
+    if (/^(public domain|pd[ -]|cc0|cc zero|no restrictions)/.test(l)) return true;
     return /^cc[ -]by([ -]sa)?[ -][0-9.]+(\s(us|au|nz|ca|uk|in|ie|de|nl|fr|es|it|igo))?$/.test(l);
   }
   function save() { try { localStorage.setItem('wf-photos-v3', JSON.stringify(cache)); } catch (e) {} }
@@ -251,7 +251,7 @@ window.WFPhoto = (function () {
   }
   function want(title, cb) {
     var key = title.replace(/ /g, '_');
-    if (cache[key]) return cb(cache[key].none || !cache[key].src ? null : cache[key]);
+    if (cache[key]) return cb(cache[key]);
     if (failed) return cb(null);
     (waiting[key] = waiting[key] || []).push(cb);
     if (waiting[key].length === 1) { queue.push(key); if (!timer) timer = setTimeout(flush, 30); }
@@ -274,7 +274,7 @@ window.WFPhoto = (function () {
     var im = story && story.image;
     if (im && im.wiki && window.fetch) {
       want(im.wiki, function (p) {
-        if (!p || !p.src) return;
+        if (!p) return;
         var img = new Image();
         img.alt = im.caption || story.headline || ''; img.decoding = 'async'; img.width = w; img.height = h;
         img.style.opacity = '0'; img.style.transition = 'opacity .4s';
@@ -283,7 +283,6 @@ window.WFPhoto = (function () {
           if (!opts.noCredit) { var cr = document.createElement('span'); cr.className = 'credit'; cr.textContent = 'Photo: ' + (p.credit || 'Wikimedia Commons') + (p.license ? ' · ' + p.license : ''); box.appendChild(cr); }
           box.dispatchEvent(new CustomEvent('wf-photo', { detail: { credit: p.credit, license: p.license, page: filePage(p.file) } }));
         };
-        img.onerror = function(){ if (img.parentNode) img.parentNode.removeChild(img); };
         img.src = p.src; box.appendChild(img);
       });
     }
