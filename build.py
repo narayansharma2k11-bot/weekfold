@@ -180,6 +180,8 @@ def main():
     priv = priv.replace('/*TODAY*/', datetime.date.today().strftime('%-d %B %Y')).replace('/*PROVIDER*/', provider).replace('/*CONTACT*/', CFG.get('contact_email', ''))
     (OUT / 'privacy.html').write_text(priv, encoding='utf-8')
     shutil.copy(SRC / 'favicon.svg', OUT / 'favicon.svg')
+    for gf in SRC.glob('google*.html'):  # Search Console verification file(s) must survive every rebuild
+        shutil.copy(gf, OUT / gf.name)
     (OUT / '.nojekyll').write_text('')
     if CFG.get('custom_domain'):
         (OUT / 'CNAME').write_text(CFG['custom_domain'].strip() + '\n')
