@@ -1,0 +1,684 @@
+{
+ "number": "41",
+ "range": "5 – 11 Oct 2026",
+ "rangeLong": "5 – 11 October 2026",
+ "next": "Sunday 18 October",
+ "featured": 4,
+ "days": [
+  {
+   "date": "2026-10-05",
+   "lead": {
+    "category": "Science",
+    "headline": "Optogenetics pioneers win Nobel medicine prize for light-controlled neurons",
+    "dek": "Karl Deisseroth, Peter Hegemann and Georg Nagel share the 2026 Nobel Prize in Physiology or Medicine for discovering a light-activated molecular switch that lets scientists turn individual nerve cells on and off.",
+    "body": [
+     "The Nobel Assembly at Sweden's Karolinska Institute on Monday gave the 2026 Prize in Physiology or Medicine to three scientists whose work made it possible to control brain cells with light. The winners are Karl Deisseroth, 54, of Stanford University in the United States, Peter Hegemann, 71, of Humboldt University of Berlin, and Georg Nagel, 73, of the University of Würzburg. The assembly cited them for discovering a molecular switch for nerve cells. They share 12 million Swedish crowns, about $1.2 million.",
+     "The discovery began with pond algae. In the early 1990s, at a Max Planck Institute, Hegemann studied how the single-celled green alga Chlamydomonas swims towards light. Working with Nagel, he identified channelrhodopsin, a light-sensitive protein channel that opens almost instantly when light hits it and keeps working when placed in other cells. Deisseroth then put the gene for the protein into rat nerve cells, so that flashes of blue light could fire signals inside a living brain.",
+     "The technique, called optogenetics, lets researchers work out which types of cell drive behaviours such as learning, fear, addiction and movement, and how those cells connect. Committee chair Per Svenningsson said it allows the brain to be mapped in ways scientists could once only dream of. Thomas Perlmann, the assembly's secretary-general, said laboratories around the world now use it. Researchers are also exploring medical uses, including cochlear implants that could stimulate the hearing nerve more precisely than today's electrical devices.",
+     "The choice was not free of debate. STAT reported that many commentators on social media said Ed Boyden, first author of Deisseroth's landmark 2005 paper, should also have been recognised. Perlmann said the three laureates are close friends and were honoured to win together.",
+     "The medicine prize opened this year's Nobel week. Physics, chemistry, literature and peace follow, and all laureates will receive their awards on 10 December, the anniversary of Alfred Nobel's death."
+    ],
+    "why": "Optogenetics is now a standard tool in neuroscience labs around the world and underpins research into brain disorders, addiction and possible new treatments.",
+    "sources": [
+     {
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/10/5/nobel-medicine-prize-honours-us-and-german-scientists-for-optogenetics-work"
+     },
+     {
+      "name": "STAT",
+      "url": "https://statnews.com/2026/10/05/nobel-prize-medicine-2026-winner-deisseroth-hegemann-nagel"
+     }
+    ],
+    "image": {
+     "wiki": "Karl_Deisseroth"
+    }
+   },
+   "more": [
+    {
+     "category": "Politics",
+     "headline": "Flávio Bolsonaro edges Lula as Brazil heads to 25 October runoff",
+     "dek": "Senator Flávio Bolsonaro finished narrowly ahead of President Lula in the first round, upsetting polls and setting up a runoff.",
+     "body": [
+      "Brazil's presidential race goes to a second round on 25 October after neither leading candidate won a majority on 4 October. Flávio Bolsonaro, a 45-year-old senator, son of former president Jair Bolsonaro and an ally of Donald Trump, took about 47% of valid votes, or just over 56 million. President Luiz Inácio Lula da Silva, 80, who is seeking a fourth term, took about 45%, or 53.7 million. Pre-election polls had put Lula in front.",
+      "Lula's approval has fallen amid an affordability crisis and a corruption scandal. Bolsonaro is campaigning on the cost of living, a crackdown on crime and closer trade ties with Washington. Several eliminated candidates, including Augusto Cury, have declined to endorse either man. The winner takes office on 5 January."
+     ],
+     "why": "The runoff will decide whether Latin America's largest economy moves closer to the US or keeps its distance and deepens ties with China.",
+     "sources": [
+      {
+       "name": "WLRN / AP",
+       "url": "https://www.wlrn.org/americas/2026-10-04/brazil-heads-to-a-runoff-election-after-bolsonaro-and-lula-fail-to-garner-a-majority-of-votes"
+      },
+      {
+       "name": "MercoPress",
+       "url": "https://en.mercopress.com/2026/10/05/flavio-bolsonaro-edges-lula-in-the-first-round-both-head-to-an-october-25-runoff"
+      }
+     ],
+     "image": {
+      "wiki": "Flávio_Bolsonaro"
+     }
+    },
+    {
+     "category": "Politics",
+     "headline": "Spain's Sánchez calls snap election for 29 November over housing",
+     "dek": "After parliament blocked his housing decrees, Prime Minister Pedro Sánchez brought the general election forward to 29 November.",
+     "body": [
+      "Spanish Prime Minister Pedro Sánchez announced on 5 October that Spain will vote on 29 November, about a year early. The previous week, right-wing opposition parties had combined to defeat two emergency decrees aimed at cutting evictions and property speculation. Housing has become a national flashpoint. The government said more than 70,000 people marched in Madrid, and anger grew after the televised eviction of an 87-year-old woman.",
+      "Sánchez has led a minority coalition with Sumar since 2023 and depends on smaller parties to pass laws. He is also under pressure from legal cases involving his party, his wife and his brother, all of whom deny wrongdoing. Polls point to a People's Party government backed by the far-right Vox. PP leader Alberto Núñez Feijóo framed the vote as a chance to remove Sánchez."
+     ],
+     "why": "A PP–Vox win would bring a far-right party into Spain's national government for the first time since Franco.",
+     "sources": [
+      {
+       "name": "WUNC / AP",
+       "url": "https://www.wunc.org/2026-10-05/spains-prime-minister-calls-early-elections-as-pressure-mounts-over-housing-crisis"
+      },
+      {
+       "name": "Al Jazeera",
+       "url": "https://aljazeera.com/news/2026/10/5/spanish-prime-minister-pedro-sanchez-announces-snap-election"
+      }
+     ],
+     "image": {
+      "wiki": "Pedro_Sánchez"
+     }
+    },
+    {
+     "category": "Politics",
+     "headline": "Separatist Parti Québécois wins Quebec election, falls short of majority",
+     "dek": "Paul St-Pierre Plamondon will become Quebec's premier at the head of a minority government and has promised an independence referendum later in his term.",
+     "body": [
+      "The pro-independence Parti Québécois won the most seats in Quebec's 5 October election, four years after winning just three. The Canadian Press projected a minority government, meaning the PQ fell short of the 64 seats needed in the 127-seat National Assembly. The Coalition Avenir Québec lost power after eight years. Its leader, Premier Christine Fréchette, lost her own seat, and several senior ministers were also defeated.",
+      "PQ leader Paul St-Pierre Plamondon has pledged a third referendum on leaving Canada during his first term, but not while Donald Trump is US president, so no earlier than 2029. Surveys suggest about 30% of Quebecers back independence. Prime Minister Mark Carney congratulated him and said a stronger Quebec is central to a stronger Canada."
+     ],
+     "why": "The result puts Quebec independence back on the agenda while Canada is trying to present a united front against US trade pressure.",
+     "sources": [
+      {
+       "name": "Al Jazeera",
+       "url": "https://www.aljazeera.com/news/2026/10/6/secessionist-parti-quebecois-wins-quebec-election-in-canada"
+      },
+      {
+       "name": "Kuwait Times / AFP",
+       "url": "https://kuwaittimes.com/article/51050/world/separatists-win-quebec-election-but-fall-short-of-majority/"
+      },
+      {
+       "name": "Castanet / Canadian Press",
+       "url": "https://www.castanetkamloops.net/news/Canada/633410/Here-is-the-latest-news-from-the-Quebec-election"
+      }
+     ],
+     "image": {
+      "wiki": "Paul_St-Pierre_Plamondon"
+     }
+    }
+   ]
+  },
+  {
+   "date": "2026-10-06",
+   "lead": {
+    "category": "Science",
+    "headline": "IceCube founder Francis Halzen wins Nobel Prize in Physics",
+    "dek": "The Belgian-born physicist is honoured for leading the IceCube Neutrino Observatory at the South Pole and for detecting high-energy neutrinos from deep space.",
+    "body": [
+     "The Royal Swedish Academy of Sciences on Tuesday awarded the 2026 Nobel Prize in Physics to Francis Halzen, 82, for decisive contributions to the IceCube Neutrino Observatory and for the discovery of high-energy neutrinos from astrophysical sources. Halzen was born in Belgium and has been on the physics faculty of the University of Wisconsin–Madison since 1972. Wisconsin–Madison is IceCube's lead institution. He receives the full prize of 12 million Swedish kronor, about $1.2 million.",
+     "Neutrinos are nearly massless particles that pour out of stars, including the Sun, and trillions pass through every person each second. They almost never interact with matter, so they cannot be seen directly. Scientists instead look for the faint flashes of light produced on the rare occasions they collide with atoms. In 1988 Halzen proposed using the clear, deep ice at the South Pole as a giant detector. IceCube, completed in 2011, watches about one cubic kilometre of ice with thousands of sensors buried nearly a mile down.",
+     "The observatory has produced a run of firsts. In 2013 it detected high-energy neutrinos from beyond the solar system. In 2017 it traced one to a distant galaxy powered by a supermassive black hole, helping to identify a source of cosmic rays. In 2023 it produced the first image of the Milky Way made with neutrinos instead of light.",
+     "Mark Pearce, chair of the Nobel Committee for Physics, said Halzen had led an international team that gave science a fantastic instrument. Speaking by phone from Italy, Halzen called the news a great surprise. He said that even though people had predicted he would win, the moment still felt strange.",
+     "IceCube was expanded early this year with several hundred new sensors. Researchers hope the extra sensitivity will help them work out where the universe's most energetic particles come from."
+    ],
+    "why": "Neutrino astronomy offers a new way to study black holes and the most violent events in the universe, which light-based telescopes cannot see.",
+    "sources": [
+     {
+      "name": "WUNC / AP",
+      "url": "https://www.wunc.org/2026-10-06/francis-halzen-wins-nobel-prize-in-physics-for-work-on-high-energy-neutrinos-from-space"
+     },
+     {
+      "name": "Khaleej Times / AFP",
+      "url": "https://www.khaleejtimes.com/world/belgium-francis-halzen-wins-nobel-prize-in-physics-2026"
+     },
+     {
+      "name": "Interesting Engineering",
+      "url": "https://interestingengineering.com/science/francis-halzen-nobel-prize-icecube"
+     }
+    ],
+    "image": {
+     "wiki": "IceCube_Neutrino_Observatory"
+    }
+   },
+   "more": [
+    {
+     "category": "Politics",
+     "headline": "AfD lawmaker elected Saxony-Anhalt speaker, a first since 1945",
+     "dek": "Tobias Rausch has become the first far-right president of a German state parliament since the Nazi era.",
+     "body": [
+      "On 6 October, Saxony-Anhalt's state parliament in Magdeburg elected Tobias Rausch, 35, of the Alternative for Germany (AfD), as its president on the first ballot. He received 48 votes, while 29 lawmakers voted against him and five abstained. His total included the five members of the Sahra Wagenknecht Alliance and several other lawmakers from outside the AfD. The CDU leadership had recommended abstaining, and the SPD, Greens and Left opposed him.",
+      "The AfD won 39 of 83 seats in last month's state election, three short of a majority. Mainstream parties still refuse to govern with it. The AfD's Ulrich Siegmund plans to run for minister-president in December, but he may not have the votes. Rausch has previously been at the centre of a nepotism controversy over staff hiring."
+     ],
+     "why": "The vote shows the far right gaining institutional power in Germany despite the long-standing cordon around the AfD.",
+     "sources": [
+      {
+       "name": "Boston Globe / New York Times",
+       "url": "https://www.bostonglobe.com/2026/10/06/world/germanys-far-right-claims-its-first-statehouse-speaker-since-1945/"
+      },
+      {
+       "name": "Stuttgarter Zeitung",
+       "url": "https://www.stuttgarter-zeitung.de/politik/sachsen-anhalt-erster-landtagspraesident-der-afd-gewaehlt-79538379.html"
+      }
+     ],
+     "image": {
+      "wiki": "Landtag_of_Saxony-Anhalt"
+     }
+    },
+    {
+     "category": "World",
+     "headline": "Trump approves firing-squad execution for Fort Hood gunman Nidal Hasan",
+     "dek": "The former Army psychiatrist who killed 13 people in 2009 could become the first US service member executed since 1961.",
+     "body": [
+      "President Donald Trump has approved the execution of former Army Major Nidal Hasan by firing squad, Pentagon spokesman Sean Parnell announced, following a recommendation from Defense Secretary Pete Hegseth. The Army secretary will set the time and place. In 2009, Hasan opened fire in a medical building at Fort Hood, Texas, killing 13 people and wounding more than 30. He was sentenced to death in 2013.",
+      "Military executions need presidential approval and are very rare. The last was the 1961 hanging of Private John Bennett. In April, the administration added firing squad to its approved execution methods. Hasan is one of four men on military death row at Fort Leavenworth, and a federal habeas appeal could delay the execution for years."
+     ],
+     "why": "The decision reopens military capital punishment after six decades and reflects the administration's wider expansion of execution methods.",
+     "sources": [
+      {
+       "name": "Al Jazeera",
+       "url": "https://www.aljazeera.com/news/2026/10/6/trump-approves-firing-squad-execution-for-fort-hood-attacker-nidal-hasan"
+      },
+      {
+       "name": "WOWT / AP",
+       "url": "https://www.wowt.com/2026/10/06/trump-approves-firing-squad-execution-fort-hood-shooter-nidal-hasan/"
+      }
+     ],
+     "image": {
+      "wiki": "Nidal_Hasan"
+     }
+    },
+    {
+     "category": "Sport",
+     "headline": "Djokovic wins seventh China Open as injured de Minaur retires",
+     "dek": "Novak Djokovic took his 102nd career title and stayed unbeaten in Beijing at 34–0.",
+     "body": [
+      "Novak Djokovic won the China Open final after Alex de Minaur retired with a groin injury. The 39-year-old Serbian won a first-set tiebreak 7-6 (3), and the Australian pulled out after winning the opening game of the second set. It was Djokovic's seventh Beijing title, his first there since 2015, and kept his perfect record at the event at 34 wins from 34 matches.",
+      "The win took Djokovic to 102 ATP titles, one behind Roger Federer. Jimmy Connors holds the Open-era record of 109. Djokovic called 2026 a challenging season marked by physical and health problems. De Minaur apologised to the crowd for not being able to continue."
+     ],
+     "why": "At 39, Djokovic is still winning titles and moving closer to the all-time records of men's tennis.",
+     "sources": [
+      {
+       "name": "Khaleej Times",
+       "url": "https://www.khaleejtimes.com/sports/tennis/destined-djokovic-wins-china-open-extending-unbeaten-record-2"
+      },
+      {
+       "name": "ABC News / AP",
+       "url": "https://abcnews.com/Sports/wireStory/djokovic-seals-7th-china-open-title-after-de-137032689"
+      }
+     ],
+     "image": {
+      "wiki": "Novak_Djokovic"
+     }
+    }
+   ]
+  },
+  {
+   "date": "2026-10-07",
+   "lead": {
+    "category": "Conflict",
+    "headline": "Russian missile barrage kills dozens in Ukraine, flattening Pryluky apartments",
+    "dek": "Seventy missiles and dozens of drones hit Ukraine overnight, and a strike on a five-storey building in Pryluky killed 22 people, five of them children.",
+    "body": [
+     "Russia launched one of its heaviest attacks of the war overnight into 7 October. President Volodymyr Zelenskiy said Russia fired 70 missiles, many of them fast ballistic weapons, along with dozens of Shahed drones. The strikes hit energy and industrial sites as well as homes. Zelenskiy put the national death toll at no fewer than 25, with about 100 wounded. Interior Minister Ivan Vyhivskyi gave a figure of 28.",
+     "The worst damage was in Pryluky, a town in the northern Chernihiv region. A cruise missile, identified by Meduza as a Kh-101, tore through a five-storey apartment block early in the morning while many residents were asleep. Rescuers used an excavator and shovels to search the rubble and brought 15 people down from the upper floors. By 8 October the town's death toll had reached 22, including five children, with 54 injured. Whole families were among the dead. Pryluky declared three days of mourning.",
+     "Deaths were also reported in Kyiv, Kremenchuk and Oleksandriia. The barrage came on Vladimir Putin's birthday. In his nightly address, Zelenskiy said Putin had given himself a birthday present by killing children, and that Russia wanted to strike painfully and demonstratively.",
+     "Chernihiv's regional governor, Viacheslav Chaus, said Putin belonged in The Hague or in hell. Turkish President Recep Tayyip Erdoğan called Putin after the attack and offered to help arrange direct Russia–Ukraine talks. No Russian response was reported in the coverage reviewed.",
+     "With winter approaching, the damage to energy infrastructure adds to fears of a new campaign against Ukraine's power grid, as in previous years of the war."
+    ],
+    "why": "The scale of the barrage and the civilian toll undercut talk of peace efforts and increase pressure on Ukraine's allies to supply more air defence before winter.",
+    "sources": [
+     {
+      "name": "Express Tribune / Reuters",
+      "url": "https://tribune.com.pk/story/2633615/russias-vile-strikes-kill-25-in-ukraine-zelenskiy"
+     },
+     {
+      "name": "Meduza",
+      "url": "https://meduza.io/en/feature/2026/10/08/russian-missile-strike-on-apartment-building-in-pryluky-northern-ukraine-kills-22-people-including-five-children"
+     },
+     {
+      "name": "Kyiv Independent",
+      "url": "https://kyivindependent.com/ukraine-war-latest-russian-attack-on-pryluky-kills-at-least-20-including-5-children/"
+     }
+    ],
+    "image": {
+     "wiki": "Pryluky"
+    }
+   },
+   "more": [
+    {
+     "category": "Science",
+     "headline": "Kagan and Soai share chemistry Nobel for mirror-image molecule breakthrough",
+     "dek": "The French and Japanese chemists showed how reactions can be pushed to produce only one 'handed' form of a molecule.",
+     "body": [
+      "Henri Kagan, 95, of France, and Kenso Soai, 76, of the Tokyo University of Science, won the 2026 Nobel Prize in Chemistry for discovering nonlinear effects and autocatalysis in asymmetric organic synthesis. Many molecules come in two mirror-image forms, like left and right hands, yet living things use almost only one. In the 1980s, Kagan's work suggested reactions could be designed to favour one form. Soai later created the first reaction that efficiently makes only one mirror image, now known as the Soai reaction.",
+      "The work matters for drug manufacturing because the two forms of a medicine can act very differently in the body. Committee member Peter Somfai called it probably the coolest experiment in organic chemistry. Soai, who heard the news while shopping, called it one of the most exciting days of his life."
+     ],
+     "why": "Making a single mirror-image form of a molecule is essential to producing safe, effective medicines, and the work also sheds light on how life's chemistry began.",
+     "sources": [
+      {
+       "name": "Al Jazeera",
+       "url": "https://www.aljazeera.com/news/2026/10/7/henri-kagan-kenso-soai-win-chemistry-nobel-for-mirror-image-breakthrough"
+      },
+      {
+       "name": "WGCU / AP",
+       "url": "https://www.wgcu.org/2026-10-07/henri-b-kagan-and-kenso-soai-win-nobel-prize-in-chemistry"
+      }
+     ],
+     "image": {
+      "wiki": "Chirality_(chemistry)"
+     }
+    },
+    {
+     "category": "Business",
+     "headline": "RBI raises repo rate to 5.50% in first hike since 2023",
+     "dek": "India's central bank lifted rates by 25 basis points and moved to a 'calibrated tightening' stance as inflation risks build.",
+     "body": [
+      "On 7 October, the Reserve Bank of India's six-member Monetary Policy Committee voted unanimously to raise the repo rate by 25 basis points to 5.50%. It was the first increase since February 2023. Governor Sanjay Malhotra announced a shift in stance from neutral to calibrated tightening, which means no near-term rate cuts. Consumer inflation has risen for ten straight months to 4.8% in August, above the RBI's 4% target.",
+      "The bank raised its inflation forecast for the 2026–27 financial year to 5.2% and cut its growth forecast to 7.1%. A weak monsoon, crude oil near $100 a barrel, high US bond yields and a rupee at about 96 to the dollar all added to the pressure."
+     ],
+     "why": "The hike marks a turn in policy for one of the world's fastest-growing major economies and shows how oil prices and global interest rates are squeezing emerging markets.",
+     "sources": [
+      {
+       "name": "ShareSansar",
+       "url": "https://www.sharesansar.com/newsdetail/rbi-raises-repo-rate-to-550-as-inflation-risks-mount-2026-10-07"
+      },
+      {
+       "name": "Swarajya",
+       "url": "https://swarajyamag.com/economy/rbi-raises-repo-rate-to-55-per-cent-projects-fy27-growth-at-71-per-cent-and-inflation-at-52-per-cent"
+      }
+     ],
+     "image": {
+      "wiki": "Reserve_Bank_of_India"
+     }
+    },
+    {
+     "category": "Conflict",
+     "headline": "Houthi strikes on Riyadh and Abha airports kill three",
+     "dek": "Attacks on two Saudi airports killed three foreign residents and injured more than 30, deepening the Saudi–Houthi conflict.",
+     "body": [
+      "Saudi authorities said attacks on 6 and 7 October on King Khalid International Airport in Riyadh and Abha International Airport killed three people and injured more than 30. Two women from Morocco and Algeria died in Abha, and a Sudanese man died in Riyadh. The injured included people from Saudi Arabia, Bangladesh, the Philippines, Egypt and Pakistan. The Houthis said they targeted the Riyadh airport. The same day, the group also fired missiles and drones at Aden's airport in Yemen.",
+      "The Saudi-led coalition said the attacks would not go unpunished and reported strikes on more than 80 Houthi sites. Saudi Arabia re-entered the Yemen war last month after Houthi advances along the Red Sea coast, a conflict tied to the wider US–Iran war."
+     ],
+     "why": "Strikes on major Gulf airports threaten civil aviation in the region and show the Yemen war spreading further into Saudi territory.",
+     "sources": [
+      {
+       "name": "Khaleej Times / Reuters",
+       "url": "https://www.khaleejtimes.com/world/gulf/saudi-arabia-airports-attacks-killed-injured-oct-6-7"
+      },
+      {
+       "name": "News On AIR",
+       "url": "https://newsonair.gov.in/three-killed-36-injured-in-houthi-attacks-on-saudi-airports/"
+      }
+     ],
+     "image": {
+      "wiki": "King_Khalid_International_Airport"
+     }
+    }
+   ]
+  },
+  {
+   "date": "2026-10-08",
+   "lead": {
+    "category": "Business",
+    "headline": "US freezes green-card sponsorship for eight tech and IT giants",
+    "dek": "The Labor Department has stopped accepting or processing permanent labour certifications from Microsoft, Adobe and six major IT outsourcing firms, citing alleged abuse of immigration rules.",
+    "body": [
+     "The Trump administration on Thursday suspended eight large employers from the PERM programme, the labour-certification step that sits at the start of most employer-sponsored US green card cases. The companies named are Tata Consultancy Services, Infosys, Wipro, HCL, Cognizant, Capgemini, Microsoft and Adobe. Labor Secretary Keith Sonderling said his department would neither accept new applications from them nor process ones already pending.",
+     "Officials gave different reasons for different firms. Sonderling said Microsoft and Adobe face several active federal investigations, while the six IT services companies were singled out largely for volume: together the eight have obtained more than 100,000 permanent labour certifications since 2009, he said. Vice President JD Vance accused Microsoft of cutting about 6,000 American jobs last year while securing roughly 6,300 H-1B visas and nearly 3,000 green cards. These are allegations, not established findings.",
+     "The move does not cancel H-1B visas or green cards already granted, and other employers are unaffected. But it could stall permanent residency for thousands of foreign tech workers, many of them Indian nationals on H-1B visas. No end date or path to reinstatement has been announced, and it is unclear how cases at later stages will be treated. India's foreign ministry has raised concerns about the effect on talent mobility.",
+     "The suspension is part of a broader immigration crackdown. Vance also said nine universities, including Harvard, Yale and Stanford, are under investigation by the Labor Department's inspector general over alleged misuse of student and exchange-visitor programmes, with subpoenas issued. A day earlier the administration proposed a $70,000 fee on universities that recommend foreign students for OPT work permits, adding to a $100,000 H-1B fee now being challenged in court.",
+     "Immigration lawyers expect tougher scrutiny of PERM filings across the board. The named companies had not publicly responded in the reports reviewed, and the length of the freeze remains the key unknown."
+    ],
+    "why": "The freeze hits the main pipeline that moves skilled foreign workers, especially from India, into permanent US residency, and signals rising US pressure on global tech and outsourcing firms.",
+    "sources": [
+     {
+      "name": "Gulf News",
+      "url": "https://gulfnews.com/world/americas/us-suspends-tata-infosys-wipro-from-green-card-scheme-1.500703651"
+     },
+     {
+      "name": "Boundless",
+      "url": "https://www.boundless.com/blog/dol-suspends-employers-perm-labor-certification"
+     }
+    ],
+    "image": {
+     "wiki": "Frances_Perkins_Building"
+    }
+   },
+   "more": [
+    {
+     "category": "Culture",
+     "headline": "Canadian poet Anne Carson wins the Nobel Prize in Literature",
+     "dek": "The Swedish Academy honoured the 76-year-old classicist and poet for work that reinvents ancient texts in new literary forms.",
+     "body": [
+      "Anne Carson, the Toronto-born poet, essayist and translator of ancient Greek, has won the 2026 Nobel Prize in Literature. The Swedish Academy praised her \"bold and inventive oeuvre\" and said her writing builds new forms by playing with the classical tradition. The award is worth 12 million Swedish crowns, about $1.2 million.",
+      "Carson, 76, who has also held Icelandic citizenship since 2022, is best known for the verse novel Autobiography of Red, the narrative poem The Beauty of the Husband and the essay Eros the Bittersweet. The Academy's permanent secretary, Ingrid Carlberg, said Carson was caught by surprise and was in Iceland when reached. She follows Hungary's László Krasznahorkai, last year's laureate."
+     ],
+     "why": "The prize brings global attention to genre-blending poetry and classical translation, and is a rare literature Nobel for a Canadian writer.",
+     "sources": [
+      {
+       "name": "NPR via WUNC",
+       "url": "https://www.wunc.org/2026-10-08/poet-and-essayist-anne-carson-wins-2026-nobel-prize-in-literature"
+      },
+      {
+       "name": "Khaleej Times",
+       "url": "https://www.khaleejtimes.com/world/anne-carson-canadian-poet-writer-2026-nobel-prize-literature"
+      }
+     ],
+     "image": {
+      "wiki": "Anne_Carson"
+     }
+    },
+    {
+     "category": "Business",
+     "headline": "Oil jumps toward $106 as Hormuz tanker attacks hit record",
+     "dek": "Brent crude climbed nearly 5% to around $105 a barrel as Iranian attacks on shipping in the Strait of Hormuz intensified.",
+     "body": [
+      "Oil prices surged on Thursday, with Brent rising almost 5% to about $105 a barrel and US crude gaining a similar margin to roughly $92.50. Traders reacted to a record run of tanker attacks in the Strait of Hormuz: Kpler counted ten tankers struck between 28 September and 4 October, well above the previous weekly high of six. On Tuesday only seven tankers crossed the strait, the fewest since late July.",
+      "An approaching hurricane in the US Gulf of Mexico added to supply worries as producers began shutting in output. The International Energy Agency said about 325 million barrels of emergency stocks had already been released, with around 100 million more to come. US diesel averaged $6.28 a gallon, according to AAA."
+     ],
+     "why": "Hormuz carries a large share of the world's seaborne oil, so attacks there feed straight into global fuel prices and inflation.",
+     "sources": [
+      {
+       "name": "OilPrice.com",
+       "url": "https://oilprice.com/Latest-Energy-News/World-News/Oil-Jumps-2-as-Iran-Steps-Up-Attacks-on-Hormuz-Tankers.html"
+      },
+      {
+       "name": "CNN via KRDO",
+       "url": "https://krdo.com/news/2026/10/08/oil-prices-jump-amid-record-tanker-attacks-in-hormuz/"
+      }
+     ],
+     "image": {
+      "wiki": "Strait_of_Hormuz"
+     }
+    },
+    {
+     "category": "Tech",
+     "headline": "Samsung forecasts record 107 trillion won quarterly profit on AI chips",
+     "dek": "Samsung Electronics expects third-quarter operating profit of about 107.4 trillion won, roughly nine times last year's level, driven by memory chips for AI.",
+     "body": [
+      "Samsung Electronics guided on Thursday for third-quarter operating profit of about 107.4 trillion won (around $80 billion) on sales of roughly 195 trillion won. That compares with 12.17 trillion won in profit a year earlier and makes Samsung the first Korean company to top 100 trillion won in a single quarter. The profit figure slightly beat analysts' consensus, while sales came in below forecasts.",
+      "Analysts credit memory chips, with high-bandwidth memory for Nvidia's AI platforms and double-digit DRAM price rises doing the heavy lifting. The smartphone and devices division is expected to post a loss as handset demand weakens. Final results are due on 29 October."
+     ],
+     "why": "The result shows how the AI boom is concentrating huge profits in memory-chip makers and squeezing makers of consumer devices.",
+     "sources": [
+      {
+       "name": "Samsung Newsroom",
+       "url": "https://news.samsung.com/global/samsung-electronics-announces-earnings-guidance-for-third-quarter-2026"
+      },
+      {
+       "name": "The Korea Times",
+       "url": "https://www.koreatimes.co.kr/business/companies/20261008/samsung-electronics-estimates-803-bil-in-q3-operating-profit"
+      }
+     ],
+     "image": {
+      "wiki": "Samsung_Electronics"
+     }
+    }
+   ]
+  },
+  {
+   "date": "2026-10-09",
+   "lead": {
+    "category": "World",
+    "headline": "Navi Pillay, champion of international justice, wins Nobel Peace Prize",
+    "dek": "The 85-year-old South African jurist was honoured for decades of work making sure war crimes and genocide are prosecuted.",
+    "body": [
+     "The Norwegian Nobel Committee on Friday awarded the 2026 Nobel Peace Prize to Navanethem \"Navi\" Pillay, a South African judge of Indian Tamil descent, for her work promoting peace and international law. Committee chair Jørgen Watne Frydnes said she had been instrumental in bringing war crimes, crimes against humanity and genocide to court. The committee said international law has become an absolute necessity at a time when its institutions are under attack.",
+     "Pillay, 85, opened Natal's first law practice run by a woman in 1967 and defended Nelson Mandela and other anti-apartheid activists. She became the first woman of colour on South Africa's High Court, then served on the Rwanda genocide tribunal, where judges established that rape could be an act of genocide. She later sat at the International Criminal Court, served as UN High Commissioner for Human Rights, and now sits on the International Court of Justice in the Rohingya genocide case against Myanmar.",
+     "More recently she chaired the UN commission of inquiry on the occupied Palestinian territory, which concluded in 2025 that Israel was committing genocide in Gaza. Israel's foreign ministry condemned the award as legitimising anti-Israel prejudice. UN Secretary-General António Guterres and South African President Cyril Ramaphosa welcomed it.",
+     "The choice is widely seen as a rebuke to Washington, which has sanctioned ICC officials and, hours after the announcement, sanctioned the court itself. President Donald Trump, who openly wanted the prize, said the committee had demeaned it. Speaking in Nuremberg, Pillay dedicated the award to survivors of international crimes and joked that she might share it with Trump.",
+     "The prize, worth 12 million Swedish crowns (about $1.2 million), will be presented in Oslo on 10 December. The committee received 287 nominations this year."
+    ],
+    "why": "The award puts the Nobel's weight behind war-crimes courts at a moment when major powers are openly attacking them.",
+    "sources": [
+     {
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/10/9/2026-nobel-peace-prize-awarded-to-navi-pillay"
+     },
+     {
+      "name": "EWN",
+      "url": "https://www.ewn.co.za/2026/10/09/south-africas-navi-pillay-wins-nobel-peace-prize"
+     }
+    ],
+    "image": {
+     "wiki": "Navi_Pillay"
+    }
+   },
+   "more": [
+    {
+     "category": "Politics",
+     "headline": "Trump strikes deal with Putin to import Russian diesel",
+     "dek": "The US president says Russia will ship nearly 5 million tonnes of diesel to US and world markets, easing pressure on Moscow ahead of the midterms.",
+     "body": [
+      "President Donald Trump said on Friday that after a call with Vladimir Putin, Russia would supply more than 300,000 tonnes of diesel immediately, 500,000 tonnes in November and then a further 4 million tonnes in stages. He said the aim was to bring down fuel costs for farmers and truckers; US diesel averaged $6.23 a gallon, close to September's record. The Treasury issued an unusually long general licence that keeps sanctions off such diesel cargoes until April 2027.",
+      "The US has not imported Russian oil or gas since 2022, and the deal makes it less likely that new tariffs on buyers of Russian energy will be enforced soon. Ukrainian President Volodymyr Zelenskyy called it a weak decision by strong partners. Russia, which had banned diesel exports since July after Ukrainian strikes on its refineries, said it would lift those curbs early."
+     ],
+     "why": "The deal loosens Western economic pressure on Russia over the Ukraine war in exchange for relief on global fuel prices.",
+     "sources": [
+      {
+       "name": "NPR via HPPR",
+       "url": "https://www.hppr.org/npr-news/2026-10-09/trump-says-u-s-to-get-diesel-from-russia-relaxing-pressure-on-moscow-to-ease-prices-before-midterms"
+      },
+      {
+       "name": "LIGA.net",
+       "url": "https://news.liga.net/en/politics/news/trump-says-he-has-reached-an-agreement-with-putin-to-supply-nearly-5-million-metric-tons-of-diesel-from-russia-to-the-global-market"
+      }
+     ],
+     "image": {
+      "wiki": "Vladimir_Putin"
+     }
+    },
+    {
+     "category": "World",
+     "headline": "US sanctions the International Criminal Court as an institution",
+     "dek": "Washington blocked the court's US assets and barred anyone from providing it funds, goods or services, sharply escalating its campaign against the tribunal.",
+     "body": [
+      "Secretary of State Marco Rubio announced on Friday that the US was sanctioning the International Criminal Court itself, going beyond earlier measures against individual judges and prosecutors. The order freezes any court property in the US and bars contributions, goods or services to the court, which exposes companies that work with it to penalties. Temporary exemptions cover maintenance, technology and pension services. Rubio cited the court's Afghanistan investigation and its arrest warrants for Israel's Benjamin Netanyahu and Yoav Gallant.",
+      "ICC Deputy Prosecutor Nazhat Shameem Khan said the sanctions should be condemned and the court's work would go on, and the court urged member states to step up support. Netanyahu welcomed the move. The court has reportedly prepared to replace some US-made software with European alternatives. The announcement came hours after former ICC judge Navi Pillay won the Nobel Peace Prize."
+     ],
+     "why": "Sanctioning the court as a whole could disrupt its daily operations and weaken the main global body for prosecuting war crimes.",
+     "sources": [
+      {
+       "name": "Al Jazeera",
+       "url": "https://www.aljazeera.com/news/2026/10/9/us-sanctions-international-criminal-court-itself-in-latest-escalation"
+      },
+      {
+       "name": "ITV News",
+       "url": "https://www.itv.com/news/2026-10-09/us-hits-international-criminal-court-with-sweeping-new-sanctions"
+      }
+     ],
+     "image": {
+      "wiki": "International_Criminal_Court"
+     }
+    },
+    {
+     "category": "World",
+     "headline": "Magnitude 7.7 earthquake shakes Panama, damaging homes and a church",
+     "dek": "A shallow quake struck central-southern Panama on Friday, sending thousands into the streets but causing no reported deaths in early accounts.",
+     "body": [
+      "A magnitude 7.7 earthquake hit Panama on Friday, according to the US Geological Survey, which first put it at 8.0 and then revised it. The shallow quake, about 12.6 km deep, struck near Pitaloza Arriba in Herrera province, about 200 km from Panama City. Buildings were damaged and some collapsed in Penonomé, where a church was also hit, and hundreds of people evacuated buildings in the capital. A tsunami alert was issued for the eastern Pacific.",
+      "No deaths or injuries were reported in early accounts, although the USGS warned casualties were possible. More than 40 aftershocks followed, including one of about magnitude 6. The Panama Canal and the Cobre Panamá copper mine reported normal operations, and Tocumen airport lifted a brief flight suspension."
+     ],
+     "why": "Panama hosts one of the world's most important shipping routes, so a major quake there is closely watched by global trade.",
+     "sources": [
+      {
+       "name": "AAP via Illawarra Mercury",
+       "url": "https://www.illawarramercury.com.au/story/9365947/powerful-quake-hits-panama-damaging-homes/"
+      },
+      {
+       "name": "AFP via Paris Match",
+       "url": "https://www.parismatch.be/actualites/monde/2026/10/09/alerte-au-tsunami-un-seisme-de-magnitude-77-secoue-le-panama-OABIZCSE25G2DEHUUODXKY2BOQ/"
+      }
+     ],
+     "image": {
+      "wiki": "Penonomé"
+     }
+    }
+   ]
+  },
+  {
+   "date": "2026-10-10",
+   "lead": {
+    "category": "Conflict",
+    "headline": "Missile strike on Riyadh airport kills 12 and wounds over 300",
+    "dek": "A projectile hit a passenger terminal at King Khalid International Airport, the deadliest attack on Saudi soil in more than a decade, as Yemen's war spreads.",
+    "body": [
+     "A projectile struck Terminal 4 at Riyadh's King Khalid International Airport on Saturday, starting a fire and killing at least 12 people, Saudi Arabia's civil aviation authority said. It said 309 people were wounded, some critically. The dead included four Saudis, two Bangladeshis and one person each from the US, Jordan, Palestine, Syria, Sudan and Egypt. India's embassy later said an injured Indian national had also died.",
+     "It was the third attack on the airport in a week. Strikes on Thursday killed three Saudis, including a Saudia pilot, and hit a parked airliner. Saudi officials described Saturday's blast as the deadliest attack on the kingdom in more than ten years. Flights were suspended, several airlines halted Riyadh services, and schools in the capital moved online for a week. The Houthi media office said the group had shut down the airport, and a separate attack was reported at King Fahd International Airport in Dammam.",
+     "The violence follows the collapse of the truce in Yemen. On 4 October Saudi-backed government forces launched an offensive to retake Houthi-held areas, backed by Saudi air strikes on Sanaa. The Houthis responded by declaring Saudi airspace a military zone and naming the kingdom's airports as targets.",
+     "The Saudi-led coalition called the strike a full-fledged war crime and promised a decisive response. The UN, the EU, Qatar, India, Pakistan and others condemned it. President Donald Trump said what happened was unacceptable and that the US was weighing whether to join strikes on the Houthis. The US, UK, Canada and others told citizens to avoid the airport.",
+     "Analysts expect strong Saudi retaliation, though Riyadh may still look for a way to de-escalate. The Houthis claimed another attack on the airport on Sunday, and there is no timeline for full reopening."
+    ],
+    "why": "Attacks on a Gulf capital's main airport widen Yemen's war, threaten regional aviation and could draw the US deeper into the conflict linked to Iran.",
+    "sources": [
+     {
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/10/10/attack-on-airport-in-saudi-capital-riyadh-leaves-several-injured"
+     },
+     {
+      "name": "Gulf News",
+      "url": "https://gulfnews.com/world/mena/12-dead-over-300-hurt-in-riyadh-airport-attack-as-trump-weighs-us-action-against-houthis-1.500706148"
+     },
+     {
+      "name": "Al Jazeera explainer",
+      "url": "https://www.aljazeera.com/news/2026/10/11/yemen-fighting-expands-as-houthis-attack-saudi-airport-what-to-know"
+     }
+    ],
+    "image": {
+     "wiki": "King_Khalid_International_Airport"
+    }
+   },
+   "more": [
+    {
+     "category": "Climate",
+     "headline": "Hurricane Isaias slams Florida Panhandle, leaving four dead",
+     "dek": "The storm made landfall near Destin as a Category 2 hurricane, cutting power to more than 835,000 customers across the US Southeast.",
+     "body": [
+      "Hurricane Isaias came ashore near Destin, Florida, on Friday evening local time as a Category 2 storm, after peaking at Category 3 over the Gulf of Mexico. Gusts of more than 110 mph were recorded in the western Panhandle, and storm surge flooded streets in Destin and Fort Walton Beach.",
+      "At least four people died. In Escambia County, Florida, a woman was killed when a tree fell on her home and a man died of carbon monoxide poisoning from a generator. In Alabama, one person died when a tree fell on a house in Birmingham and another in a crash with a downed tree in Barbour County.",
+      "More than 835,000 homes and businesses in Florida, Alabama and Georgia were without power on Saturday morning. By Saturday evening that had fallen to about 556,000, most of them in Florida. Isaias weakened quickly as it moved inland."
+     ],
+     "why": "Late-season Gulf hurricanes can still be deadly, and the Panhandle's clean-up will take weeks for the communities hit hardest.",
+     "sources": [
+      {
+       "name": "AccuWeather",
+       "url": "https://accuweather.com/en/hurricane/live-news/live-at-least-4-dead-as-isaias-leaves-widespread-damage-tornado-and-flood-threats-continue/1943589"
+      },
+      {
+       "name": "CBS News",
+       "url": "https://www.cbsnews.com/live-updates/isaias-southeastern-u-s-gulf-coast/"
+      },
+      {
+       "name": "Moody's RMS",
+       "url": "https://www.moodys.com/web/en/us/insights/insurance/hurricane-Isaias-live-blog.html"
+      }
+     ],
+     "image": {
+      "wiki": "Hurricane_Isaias_(2026)"
+     }
+    },
+    {
+     "category": "Sport",
+     "headline": "Vinícius sent off for hair pull as Real Madrid edge Villarreal",
+     "dek": "Real Madrid won 1-0 at the Bernabéu, but their Brazilian forward's red card could rule him out of the next Clásico.",
+     "body": [
+      "Real Madrid beat Villarreal 1-0 in La Liga on Saturday, but Vinícius Júnior was sent off about 20 minutes after coming on as a substitute. He thought he had made it 2-0, but a VAR review ruled out the goal and found he had pulled Villarreal's Nathan Saliba's hair in the build-up. The referee also reported that he protested aggressively.",
+      "Vinícius apologised on social media to the team and fans. Spanish rules treat hair-pulling as violent conduct, which carries a one-to-three-match ban. Real's next three league games are against Sevilla, Barcelona and Racing Santander, so he could miss El Clásico."
+     ],
+     "why": "Losing one of football's biggest stars for El Clásico would affect one of the most-watched club fixtures in the world.",
+     "sources": [
+      {
+       "name": "Al Jazeera",
+       "url": "https://www.aljazeera.com/sports/2026/10/11/vinicius-apologises-for-hair-pull-red-card-but-could-miss-el-clasico"
+      },
+      {
+       "name": "theScore",
+       "url": "https://www.thescore.com/liga/news/3620278/real-madrid-edge-villarreal-vinicius-sent-off-for-hair-pull"
+      }
+     ],
+     "image": {
+      "wiki": "Vinícius_Júnior"
+     }
+    }
+   ]
+  },
+  {
+   "date": "2026-10-11",
+   "lead": {
+    "category": "Politics",
+    "headline": "Pakistan imposes emergency rule on Imran Khan's last stronghold",
+    "dek": "Islamabad suspended the PTI-run government of Khyber Pakhtunkhwa and put the province under its governor, citing failures against militancy.",
+    "body": [
+     "Pakistan declared a state of emergency and governor's rule in Khyber Pakhtunkhwa on Sunday, sidelining the provincial government run by jailed former prime minister Imran Khan's party, Pakistan Tehreek-e-Insaf (PTI). President Asif Ali Zardari approved recommendations from Prime Minister Shehbaz Sharif's cabinet, invoking Article 232 of the constitution on emergencies and Article 234 on the breakdown of constitutional machinery in a province.",
+     "The federal government said the provincial administration had deliberately disengaged from the fight against terrorism, and it has also criticised the province's stance on talks with the Afghan Taliban. Governor Faisal Karim Kundi now runs the province with an 11-member advisory council of technocrats, a new chief secretary has been appointed, and army troops have been deployed to support civilian authorities. Internet disruptions were reported in parts of Peshawar.",
+     "PTI says Chief Minister Sohail Afridi and other party figures were arrested. Police have not confirmed this, and a federal minister said only that some people had been detained. PTI spokesperson Zulfikar Bukhari called the move a coup disguised as an emergency, and party chairman Gohar Ali Khan said it would be challenged in the courts and in parliament.",
+     "Tensions had been building for weeks. PTI had planned a march on Islamabad to demand Khan's release, which was postponed twice, and the government had vowed to stop it from entering the capital. Khan has been in prison for more than three years but remains widely popular.",
+     "Under the constitution, governor's rule lapses after two months unless parliament approves it in a joint sitting, and it can last no more than six months in total. Legal challenges and street protests are expected."
+    ],
+    "why": "Suspending an elected opposition government in a volatile border province deepens Pakistan's political crisis and could complicate its fight against militancy near Afghanistan.",
+    "sources": [
+     {
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/10/11/pakistan-imposes-emergency-rule-in-khyber-pakhtunkhwa"
+     },
+     {
+      "name": "Dawn",
+      "url": "https://www.dawn.com/news/2036352"
+     }
+    ],
+    "image": {
+     "wiki": "Peshawar"
+    }
+   },
+   "more": [
+    {
+     "category": "Sport",
+     "headline": "Amos Kipruto storms to Chicago Marathon win in 2:01:09",
+     "dek": "The Kenyan won by nearly two minutes in a personal best, while Ethiopia's Hawi Feysa defended her women's title.",
+     "body": [
+      "Kenya's Amos Kipruto won the 48th Chicago Marathon on Sunday in 2:01:09, a personal best that makes him joint-fifth-fastest marathoner in history. He pulled away from defending champion Jacob Kiplimo around mile 21 and finished nearly two minutes ahead of Ethiopia's Tadese Takele Bikila, with Milkesa Mengesha third and Kiplimo fourth.",
+      "Ethiopia's Hawi Feysa retained the women's title in a personal best of 2:13:33, 34 seconds ahead of Boston champion Sharon Lokedi, with Brigid Kosgei third. Switzerland's Catherine Debrunner broke her own women's wheelchair world record in 1:33:16. More than 55,000 runners took part in cool, sunny conditions."
+     ],
+     "why": "Chicago is one of athletics' biggest stages, and Kipruto's time puts him among the fastest marathoners ever.",
+     "sources": [
+      {
+       "name": "Dawn",
+       "url": "https://www.dawn.com/news/2036534/kipruto-claims-chicago-marathon-as-feysa-defends-womens-title"
+      },
+      {
+       "name": "World Athletics",
+       "url": "https://worldathletics.org/competitions/world-athletics-label-road-races/news/feysa-kipruto-2026-chicago-marathon"
+      }
+     ],
+     "image": {
+      "wiki": "Amos_Kipruto"
+     }
+    },
+    {
+     "category": "World",
+     "headline": "At least 139 migrants die as boat capsizes off Djibouti",
+     "dek": "An overcrowded boat carrying 305 people, mostly Ethiopians, sank soon after leaving for Yemen, the UN migration agency said.",
+     "body": [
+      "At least 139 migrants, including 15 children, died after an overcrowded boat capsized north of Obock, Djibouti, the International Organization for Migration said on Sunday. The vessel was carrying 305 people bound for Yemen and sank on the night of 8 to 9 October, soon after setting out. About 80 people survived, all Ethiopian, and 84 remain missing. IOM's Djibouti chief, Alexandre Coissac, called it a devastating loss of life.",
+      "The death toll counts only bodies buried by Djiboutian authorities and may rise. More than 900 people died or went missing on this Eastern Route from the Horn of Africa to the Arabian Peninsula in 2025. Migrants cite drought, conflict and forced recruitment, while renewed fighting in Ethiopia's Tigray and in Yemen is pushing more people onto the sea."
+     ],
+     "why": "It is one of the deadliest disasters on a little-noticed migration route made more dangerous by wars in Ethiopia and Yemen.",
+     "sources": [
+      {
+       "name": "ABC News (Australia)",
+       "url": "https://www.abc.net.au/news/2026-10-12/migrant-boat-from-djibouti-to-yemen-capsizes/107254724"
+      },
+      {
+       "name": "South China Morning Post (AFP)",
+       "url": "https://www.scmp.com/news/world/middle-east/article/3370522/least-139-migrants-dead-dozens-missing-after-boat-capsizes-djibouti"
+      }
+     ],
+     "image": {
+      "wiki": "Obock"
+     }
+    }
+   ]
+  }
+ ]
+}

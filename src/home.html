@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Weekfold — This week's news</title>
+<meta name="description" content="This week's world news from Weekfold, plus every previous edition by month or date. Free, sourced and updated every Sunday.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20rx%3D%229%22%20fill%3D%22%23fff%22/%3E%3Cg%20fill%3D%22none%22%20stroke-width%3D%225.5%22%20transform%3D%22translate%280%206%29%22%3E%3Cpath%20d%3D%22M3%204%20L11%2024%22%20stroke%3D%22%2315192B%22/%3E%3Cpath%20d%3D%22M11%2024%20L20%206%22%20stroke%3D%22%238B93A7%22/%3E%3Cpath%20d%3D%22M20%206%20L29%2024%22%20stroke%3D%22%2315192B%22/%3E%3Cpath%20d%3D%22M29%2024%20L37%204%22%20stroke%3D%22%23D92D20%22/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Weekfold">
+<meta property="og:title" content="Weekfold — This week's news">
+<meta property="og:description" content="This week's world news from Weekfold, plus every previous edition by month or date. Free, sourced and updated every Sunday.">
+<meta name="twitter:card" content="summary">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: clean white news front with a Current / Previous switch. Current = this week's edition; Previous = archive by month or date, each week laid out day by day. */
+:root{
+  --bg:#FFFFFF; --soft:#F5F6F8; --ink:#15192B; --ink-2:#5A6072; --ink-3:#8A90A0; --rule:#E7E9EE;
+  --red:#D92D20; --red-ink:#B42318; --navy:#1A2747;
+  --display:'Newsreader','Iowan Old Style',Georgia,serif;
+  --ui:'Instrument Sans','Segoe UI',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:15px;line-height:1.5;padding-inline:20px}
+img{max-width:100%}
+[hidden]{display:none!important}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;text-wrap:balance;letter-spacing:-0.01em}
+p{margin:0}
+button,select,input{font:inherit;color:inherit}
+.wrap{max-width:1180px;margin-inline:auto}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 16px;border-radius:999px;font-weight:600;font-size:14.5px;border:1.5px solid var(--ink);background:transparent;cursor:pointer}
+.btn-red{background:var(--red);border-color:var(--red);color:#fff}
+.btn-ink{background:var(--ink);color:#fff}
+
+/* photos */
+.ph{position:relative;width:100%;max-width:100%;overflow:hidden;background:#ECEEF2;display:block;border-radius:8px}
+.ph img,.ph canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ph .credit{position:absolute;right:6px;bottom:6px;max-width:calc(100% - 12px);background:rgba(21,25,43,.62);color:#fff;font-size:10px;line-height:1.3;padding:2px 6px;border-radius:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px;border-bottom:1px solid var(--rule)}
+.brand{display:flex;align-items:center;gap:22px;min-width:0}
+.logo{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-weight:700;font-size:25px;letter-spacing:-0.02em;color:var(--ink)}
+.logo svg{width:34px;height:24px;flex:none}
+.brand .bar{width:1px;height:22px;background:var(--rule)}
+.top nav{display:flex;gap:22px}
+.top nav a{font-weight:500;color:var(--ink-2);font-size:14.5px;white-space:nowrap}
+.top nav a:hover{color:var(--ink)}
+.acts{display:flex;gap:8px;flex:none}
+@media (max-width:980px){.top nav,.brand .bar{display:none}}
+@media (max-width:420px){.acts .btn{padding:0 12px;font-size:13.5px}.logo{font-size:22px}}
+
+/* mode switch */
+.modebar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);margin-inline:-20px;padding:12px 20px;border-bottom:1px solid var(--rule)}
+.modebar .in{max-width:1180px;margin-inline:auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 20px}
+.seg{display:inline-flex;background:var(--soft);border-radius:999px;padding:4px;gap:4px}
+.seg a{min-height:38px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;font-weight:600;font-size:14.5px;color:var(--ink-2)}
+.seg a[aria-current="page"]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(21,25,43,.15)}
+.seg a[aria-current="page"] i{background:var(--red)}
+.seg i{width:7px;height:7px;border-radius:50%;background:var(--ink-3);margin-right:8px;display:inline-block}
+.modebar .lab{font-size:13.5px;color:var(--ink-2)}
+.modebar .lab b{font-family:var(--mono);font-weight:500;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+
+/* shared card bits */
+.meta{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-3);min-width:0}
+.meta .dot{width:18px;height:18px;border-radius:50%;flex:none;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:700}
+.meta>*{white-space:nowrap}
+.meta .src{color:var(--ink-2);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tagline{display:flex;gap:7px;font-size:12.5px;color:var(--ink-3);align-items:center}
+.tagline .cat{color:var(--red);font-weight:600}
+.card{display:flex;flex-direction:column;gap:9px;text-align:left;background:none;border:0;padding:0;cursor:pointer;min-width:0}
+.card h3{font-size:19px;line-height:1.24}
+.card .ex{color:var(--ink-2);font-size:13.5px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card:hover h3{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.sechead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:20px}
+.sechead h2{font-family:var(--ui);font-weight:600;font-size:26px;letter-spacing:-0.02em}
+.sechead a,.sechead span{color:var(--red);font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px}
+section.s{padding-block:40px}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 20px}
+@media (max-width:980px){.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:500px){.grid4{grid-template-columns:minmax(0,1fr)}}
+/* phones: list-style cards (text left, square thumbnail right) so the page stays short */
+@media (max-width:560px){
+  .grid4{gap:0}.stack{gap:0}
+  .grid4 .card,.stack .card{display:grid;grid-template-columns:minmax(0,1fr) 104px;column-gap:14px;row-gap:5px;align-content:start;padding-block:16px;border-bottom:1px solid var(--rule)}
+  .grid4 .card:last-child,.stack .card:last-child{border-bottom:0}
+  .grid4 .card>.ph,.stack .card>.ph{grid-column:2;grid-row:1/span 4;aspect-ratio:1/1!important;height:auto!important;border-radius:8px;align-self:start}
+  .grid4 .card>.ph .credit,.stack .card>.ph .credit{display:none}
+  .grid4 .card>:not(.ph),.stack .card>:not(.ph){grid-column:1}
+  .grid4 .card h3,.stack .card h3{font-size:17px}
+  .grid4 .card .ex,.stack .card .ex{-webkit-line-clamp:2;font-size:13px}
+}
+
+/* featured */
+.feat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center;padding-block:28px 36px;text-align:left;background:none;border:0;cursor:pointer;width:100%}
+@media (max-width:820px){.feat{grid-template-columns:minmax(0,1fr);gap:20px}}
+.feat .ph{border-radius:12px}
+.feat h1{font-size:clamp(32px,4vw,48px);line-height:1.08;margin-top:10px}
+.feat .ex{font-size:16.5px;color:var(--ink-2);margin-top:14px;line-height:1.6}
+.feat .tagline{margin-top:16px;font-size:14px}
+.feat .meta{font-size:14px}
+.feat:hover h1{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+
+/* browse by day */
+.circles{display:flex;gap:18px;overflow-x:auto;padding-bottom:6px}
+.circ{display:flex;flex-direction:column;align-items:center;gap:8px;flex:none;width:84px}
+.circ .ring{width:76px;height:76px;border-radius:50%;padding:3px;border:2.5px solid var(--red);display:block}
+.circ .ph{border-radius:50%;width:100%;height:100%}
+.circ .ph .credit{display:none}
+.circ b{font-size:13px;font-weight:600}
+.circ span{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:-6px}
+
+/* must read + pick */
+.must{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr) minmax(0,1fr);gap:20px}
+@media (max-width:980px){.must{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.must .big{grid-column:1/-1;order:-1}}
+@media (max-width:560px){.must{grid-template-columns:minmax(0,1fr)}}
+.big{position:relative;border-radius:12px;overflow:hidden;min-height:380px;background:var(--navy);text-align:left;border:0;padding:0;cursor:pointer;display:block;width:100%}
+.big .ph{position:absolute;inset:0;height:100%;aspect-ratio:auto!important;border-radius:0}
+.big .ph .credit{top:8px;bottom:auto}
+.big .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,25,43,0) 25%,rgba(21,25,43,.94) 100%)}
+.big .txt{position:absolute;left:0;right:0;bottom:0;padding:22px;color:#fff;display:flex;flex-direction:column;gap:8px}
+.big .meta,.big .meta .src,.big .tagline{color:#D9DCE5}
+.big .tagline .cat{color:#FFB4AC}
+.big h3{font-size:26px;line-height:1.18}
+.big .ex{color:#D9DCE5;font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.stack{display:flex;flex-direction:column;gap:20px}
+.stack .card h3{font-size:17px}
+.pick{min-height:400px}
+.pick h3{font-size:clamp(26px,3.2vw,38px)}
+
+/* day by day (used by current and previous weeks) */
+.daynav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.daynav a{min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid var(--rule);display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:14px}
+.daynav a span{font-family:var(--mono);font-weight:500;font-size:12px;color:var(--ink-3)}
+.daynav a:hover{border-color:var(--ink)}
+.dayrow{display:grid;grid-template-columns:170px minmax(0,1fr);gap:28px;padding-block:30px;border-top:1px solid var(--rule);scroll-margin-top:80px;transition:background .6s}
+.dayrow.flash{background:#FFF4F2}
+@media (max-width:760px){.dayrow{grid-template-columns:minmax(0,1fr);gap:14px}}
+.dl b{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);font-weight:500}
+.dl span{display:block;font-family:var(--display);font-size:34px;font-weight:600;line-height:1.05;margin-top:4px}
+.dl small{display:block;color:var(--ink-3);font-size:13px;margin-top:4px}
+.dc{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:26px}
+@media (max-width:900px){.dc{grid-template-columns:minmax(0,1fr)}}
+.lead h3{font-size:25px}
+.lead .ex{-webkit-line-clamp:4;font-size:15px}
+.readmore{color:var(--red-ink);font-weight:600;font-size:14px}
+.mini{display:flex;flex-direction:column}
+.mini .card{display:grid;grid-template-columns:104px minmax(0,1fr);gap:12px;padding-block:11px;border-bottom:1px solid var(--rule)}
+.mini .card:last-child{border-bottom:0}
+.mini .card h3{font-size:16.5px}
+.mini .card .ex{-webkit-line-clamp:2;font-size:13px;margin-top:3px}
+.mini .ph{border-radius:6px}
+.mini .ph .credit{display:none}
+
+/* previous */
+.prevhead{padding-block:32px 8px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px}
+.prevhead h1{font-size:clamp(32px,4vw,46px);line-height:1.08}
+.prevhead p{color:var(--ink-2);margin-top:6px;max-width:52ch}
+.filters{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:flex-end}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:12.5px;font-weight:600;color:var(--ink-2)}
+.field select,.field input{min-height:44px;border:1.5px solid var(--rule);border-radius:10px;padding:0 12px;background:#fff;min-width:180px}
+.field select:hover,.field input:hover{border-color:var(--ink)}
+.fmsg{font-size:13.5px;color:var(--red-ink);min-height:1.4em;margin-top:8px}
+.weeks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;padding-block:20px 40px}
+@media (max-width:820px){.weeks{grid-template-columns:minmax(0,1fr)}}
+.wk{display:grid;grid-template-columns:170px minmax(0,1fr);gap:18px;border:1px solid var(--rule);border-radius:14px;padding:16px;transition:border-color .2s,box-shadow .2s}
+.wk:hover{border-color:var(--ink);box-shadow:0 14px 30px -20px rgba(21,25,43,.35)}
+@media (max-width:440px){.wk{grid-template-columns:minmax(0,1fr)}.wk .ph{aspect-ratio:16/7!important;height:auto!important}}
+.wk .ph .credit{display:none}
+.wk .n{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.wk h3{font-size:23px;margin-top:4px}
+.wk ul{margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.wk li{font-size:14px;color:var(--ink-2);line-height:1.35;padding-left:12px;position:relative}
+.wk li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--red)}
+.wk .go{margin-top:10px;font-weight:600;font-size:14px;color:var(--red-ink)}
+.weekhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 24px;padding-block:30px 18px}
+.weekhead .n{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+.weekhead h2{font-size:clamp(30px,3.8vw,42px);margin-top:4px}
+.weekhead .acts2{display:flex;gap:8px;flex-wrap:wrap}
+.empty{padding:40px 0;color:var(--ink-2)}
+
+/* article */
+.article{position:fixed;inset:0;z-index:60;background:#fff;overflow-y:auto;animation:fade .25s ease}
+@keyframes fade{from{opacity:0}}
+.article .bar{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);padding:10px 20px;z-index:2}
+.article .bar .in{max-width:1180px;margin-inline:auto;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.article .bar .bc{font-size:13.5px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.art{max-width:740px;margin-inline:auto;padding:36px 20px 64px}
+.art .kick{display:flex;flex-wrap:wrap;gap:6px 12px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.art .kick .c{color:var(--red)}
+.art .kick .d{color:var(--ink-3)}
+.art h1{font-size:clamp(34px,5vw,52px);line-height:1.06;margin-top:12px}
+.art .dek{font-family:var(--display);font-size:22px;line-height:1.45;color:var(--ink-2);margin-top:14px}
+.art figure{margin:28px 0 0}
+.art figure .ph{border-radius:10px}
+.art figcaption{font-size:13px;color:var(--ink-3);margin-top:8px;line-height:1.45}
+.art figcaption a{text-decoration:underline;text-underline-offset:2px}
+.art .body{margin-top:24px}
+.art .body p{font-family:var(--display);font-size:19.5px;line-height:1.68;margin-top:18px}
+.art .body p:first-child::first-letter{font-size:3.2em;float:left;line-height:.85;padding:6px 8px 0 0;font-weight:700;color:var(--red)}
+.why{margin-top:30px;border-left:4px solid var(--red);background:#FFF6F5;padding:16px 20px;border-radius:0 10px 10px 0}
+.why b{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--red-ink);font-weight:500}
+.why p{font-family:var(--display);font-size:18px;line-height:1.55;margin-top:6px}
+.srcs{margin-top:28px;padding-top:18px;border-top:1px solid var(--rule)}
+.srcs b{font-size:13px;color:var(--ink-2)}
+.srcs ul{margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.srcs a{color:var(--ink);text-decoration:underline;text-underline-offset:2px;font-size:15px}
+.nextup{margin-top:36px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:560px){.nextup{grid-template-columns:minmax(0,1fr)}}
+.nextup button{border:1px solid var(--rule);border-radius:12px;background:#fff;padding:14px 16px;text-align:left;cursor:pointer}
+.nextup button:hover{border-color:var(--ink)}
+.nextup span{display:block;font-size:12px;color:var(--ink-3);font-weight:600}
+.nextup b{display:block;font-family:var(--display);font-size:17px;line-height:1.3;margin-top:4px}
+
+/* catch up + footer */
+.catch{background:var(--soft);border-radius:16px;padding:clamp(26px,5vw,52px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:center;margin-block:32px 8px}
+@media (max-width:820px){.catch{grid-template-columns:minmax(0,1fr)}}
+.catch h2{font-size:clamp(32px,4.4vw,54px);line-height:1.05}
+.catch h2 em{color:var(--red);font-style:italic}
+.catch p.sub{color:var(--ink-2);margin-top:10px;font-size:16px}
+form.sub-form{display:flex;flex-direction:column;gap:8px}
+form.sub-form label{font-weight:600;font-size:14px}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.row input{flex:1 1 220px;min-width:0;min-height:46px;border:1.5px solid var(--ink);border-radius:999px;background:#fff;color:var(--ink);padding:0 18px}
+.msg{font-size:14px;font-weight:600;min-height:1.5em;color:#18794E}
+.msg.err{color:var(--red-ink)}
+footer{border-top:1px solid var(--rule);padding-block:30px 44px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px 28px;align-items:center;font-size:14px;color:var(--ink-2);margin-top:28px}
+@media (max-width:820px){footer{grid-template-columns:minmax(0,1fr)}}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 20px}
+footer nav a:hover{color:var(--ink);text-decoration:underline}
+footer .made{color:var(--ink);font-weight:600;text-align:right}
+@media (max-width:820px){footer .made{text-align:left}}
+
+/* dialogs */
+dialog{border:0;border-radius:16px;padding:0;max-width:420px;width:calc(100% - 32px);box-shadow:0 40px 80px -30px rgba(0,0,0,.45);color:var(--ink);background:#fff}
+dialog::backdrop{background:rgba(21,25,43,.45);backdrop-filter:blur(3px)}
+.dlg{padding:30px 28px 26px;display:flex;flex-direction:column;gap:14px;position:relative}
+.dlg h2{font-size:30px;line-height:1.1;padding-right:44px}
+.dlg .lede{color:var(--ink-2);font-size:15px}
+.gbtn{display:flex;align-items:center;justify-content:center;gap:12px;min-height:50px;border:1.5px solid #DADCE0;border-radius:999px;background:#fff;font-weight:600;font-size:15.5px;cursor:pointer;width:100%}
+.gbtn:hover{background:#F8F9FA}
+.dlg input{width:100%;min-height:48px;border:1.5px solid var(--ink);border-radius:12px;padding:0 14px}
+.dlg .fine{font-size:13px;color:var(--ink-2)}
+.closex{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;border:1px solid var(--rule);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.note{background:var(--soft);border-radius:10px;padding:12px 14px;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <a class="logo" href="index.html" aria-label="Weekfold, back to the book">
+        <svg viewBox="0 0 40 28" aria-hidden="true"><path d="M3 4 L11 24" stroke="#15192B" stroke-width="5.5"/><path d="M11 24 L20 6" stroke="#8B93A7" stroke-width="5.5"/><path d="M20 6 L29 24" stroke="#15192B" stroke-width="5.5"/><path d="M29 24 L37 4" stroke="#D92D20" stroke-width="5.5"/></svg>
+        Weekfold
+      </a>
+      <span class="bar" aria-hidden="true"></span>
+      <nav aria-label="Main">
+        <a href="index.html">The book</a><a href="#current">This week</a><a href="#previous">Previous news</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="acts">
+      <button class="btn" type="button" data-open="signin">Sign in</button>
+      <button class="btn btn-red" type="button" data-open="subscribe">Subscribe</button>
+    </div>
+  </header>
+</div>
+
+<div class="modebar">
+  <div class="in">
+    <nav class="seg" aria-label="Choose news">
+      <a href="#current" id="tab-current"><i></i>Current news</a>
+      <a href="#previous" id="tab-previous"><i></i>Previous news</a>
+    </nav>
+    <p class="lab" id="modelab"></p>
+  </div>
+</div>
+
+<div class="wrap">
+  <main>
+    <!-- CURRENT -->
+    <div id="view-current">
+      <div id="featured"></div>
+      <section class="s" id="latest" aria-labelledby="latest-h">
+        <div class="sechead"><h2 id="latest-h">Latest News</h2><a href="#days">See every day <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a></div>
+        <div class="grid4" id="latest-grid"></div>
+      </section>
+      <section class="s" aria-labelledby="bday-h" style="padding-top:8px">
+        <div class="sechead"><h2 id="bday-h">Browse by day</h2></div>
+        <div class="circles" id="circles"></div>
+      </section>
+      <section class="s" id="must" aria-labelledby="must-h">
+        <div class="sechead"><h2 id="must-h">Must Read</h2></div>
+        <div class="must" id="must-grid"></div>
+      </section>
+      <section class="s" aria-labelledby="pick-h">
+        <div class="sechead"><h2 id="pick-h">Editor's Pick</h2></div>
+        <div id="pick"></div>
+      </section>
+      <section class="s" id="days" aria-labelledby="days-h">
+        <div class="sechead"><h2 id="days-h">The week, day by day</h2><span id="days-range"></span></div>
+        <div id="dayrows"></div>
+      </section>
+      <div id="sections"></div>
+    </div>
+
+    <!-- PREVIOUS -->
+    <div id="view-previous" hidden>
+      <div class="prevhead">
+        <div>
+          <h1>Previous news</h1>
+          <p>Every past edition, one week at a time. Choose a month, or pick any date to jump straight to that day.</p>
+        </div>
+        <div>
+          <div class="filters">
+            <div class="field"><label for="f-month">Month</label><select id="f-month"></select></div>
+            <div class="field"><label for="f-date">Pick a date</label><input type="date" id="f-date"></div>
+          </div>
+          <p class="fmsg" id="fmsg" role="status"></p>
+        </div>
+      </div>
+      <div id="week-list"></div>
+      <div id="week-view" hidden></div>
+    </div>
+
+    <section class="catch" aria-labelledby="catch-h">
+      <div>
+        <h2 id="catch-h">Make Sunday the day you <em>catch up.</em></h2>
+        <p class="sub">Get the new edition in your inbox every Sunday. Free.</p>
+      </div>
+      <form class="sub-form" id="inline-sub" novalidate>
+        <label for="inline-email">Your email</label>
+        <div class="row"><input id="inline-email" type="email" autocomplete="email" placeholder="you@example.com" required><button class="btn btn-red" type="submit">Subscribe free</button></div>
+        <p class="msg" id="inline-msg" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="index.html" style="font-size:22px">Weekfold</a>
+    <nav aria-label="Footer"><a href="index.html#book">This week's book</a><a href="#previous">Previous news</a><a href="index.html#standards">Editorial standards</a><a href="index.html#about">About us</a><a href="index.html#contact">Contact</a><a href="privacy.html">Privacy</a></nav>
+    <span class="made">Made by Narayan Sharma</span>
+    <p style="flex-basis:100%;margin:10px 0 0;font-size:12px;color:#777;line-height:1.5">Photo credits: Weekfold shows only public-domain, CC0 or CC BY images from Wikimedia Commons, with the photographer and licence beneath each picture. Weekfold does not use photos from news agencies or other news outlets. Where no suitable free photo exists, an illustration is shown instead.</p>
+  </footer>
+</div>
+
+<div class="article" id="article" hidden role="dialog" aria-modal="true" aria-labelledby="art-h"></div>
+
+<dialog id="dlg-signin" aria-labelledby="si-h">
+  <div class="dlg">
+    <button class="closex" type="button" data-close aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="2"/></svg></button>
+    <h2 id="si-h">Sign in to Weekfold</h2>
+    <p class="lede">Sign in with Google and get the Sunday edition in your inbox with one tap.</p>
+    <button class="gbtn" type="button" id="google-btn">
+      <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>
+      Continue with Google
+    </button>
+    <p class="note" id="google-note" hidden>Google sign-in switches on when Weekfold launches. You can subscribe by email today.</p>
+    <p class="fine">We only use your name and email address. We never post anything for you.</p>
+  </div>
+</dialog>
+<dialog id="dlg-subscribe" aria-labelledby="sb-h">
+  <form class="dlg" id="dlg-sub-form" novalidate>
+    <button class="closex" type="button" data-close aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="2"/></svg></button>
+    <h2 id="sb-h">Get Weekfold every Sunday</h2>
+    <p class="lede">One email a week with the new edition. Free, and you can unsubscribe in one click.</p>
+    <label for="dlg-email" style="font-weight:600;font-size:14.5px">Email address</label>
+    <input id="dlg-email" type="email" autocomplete="email" placeholder="you@example.com" required>
+    <button class="btn btn-red" type="submit" style="min-height:50px">Subscribe</button>
+    <p class="msg" id="dlg-msg" role="status"></p>
+  </form>
+</dialog>
+
+<!-- EDITIONS DATA (newest first). The Sunday update adds a new edition to the front of this list. -->
+<script type="application/json" id="editions">/*EDITIONS*/</script>
+<script>var WF_CONFIG = /*CONFIG*/;</script>
+<script>/*ART*/</script>
+<script>/*SITE*/</script>
+<script>
+(function(){
+  var EDS;
+  try { EDS = JSON.parse(document.getElementById('editions').textContent); } catch (e) { return; }
+  if (!EDS.length) return;
+  var CUR = EDS[0], PREV = EDS.slice(1);
+  var DOTS = ['#D92D20', '#1A2747', '#1F8A5B', '#6A45DB', '#0D8A93', '#E5700A'];
+
+  /* ---------- helpers ---------- */
+  function fmt(iso, o){ return new Date(iso + 'T12:00:00Z').toLocaleDateString('en-GB', Object.assign({ timeZone:'UTC' }, o)); }
+  function el(tag, attrs, kids){ var n = document.createElement(tag); if (attrs) for (var k in attrs){ if (k === 'text') n.textContent = attrs[k]; else if (k === 'cls') n.className = attrs[k]; else n.setAttribute(k, attrs[k]); } (kids || []).forEach(function(c){ if (c) n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); }); return n; }
+  function dek(s){ return s.dek || s.summary || ''; }
+  function srcs(s){ return s.sources && s.sources.length ? s.sources : (s.source ? [{ name: s.source, url: s.url }] : []); }
+  function mins(s){ var w = (dek(s) + ' ' + (s.body || []).join(' ')).split(/\s+/).length; return Math.max(1, Math.round(w / 200)) + ' min read'; }
+  function photo(s, w, h, seed, o){ return WFPhoto.make(s, w, h, seed || s.id, o); }
+  function meta(s){ var src = (srcs(s)[0] || {}).name || 'Weekfold'; var c = 0; for (var i = 0; i < src.length; i++) c += src.charCodeAt(i); return el('div', { cls:'meta' }, [ el('span', { cls:'dot', style:'background:' + DOTS[c % DOTS.length], text: src.charAt(0).toUpperCase() }), el('span', { cls:'src', text: src }), el('span', { text: '·' }), el('span', { text: fmt(s.date, { weekday:'short', day:'numeric', month:'short' }) }) ]); }
+  function tag(s){ return el('div', { cls:'tagline' }, [ el('span', { cls:'cat', text: s.category }), el('span', { text: '·' }), el('span', { text: mins(s) }) ]); }
+  function openBtn(node, s){ node.addEventListener('click', function(){ openArticle(s.id, true); }); return node; }
+  function card(s, w, h){ return openBtn(el('button', { cls:'card', type:'button' }, [ photo(s, w || 640, h || 400), meta(s), el('h3', { text: s.headline }), dek(s) ? el('p', { cls:'ex', text: dek(s) }) : null, tag(s) ]), s); }
+  function bigCard(s, cls){ return openBtn(el('button', { cls:'big ' + (cls || ''), type:'button' }, [ photo(s, 1000, 640), el('span', { cls:'ov' }), el('span', { cls:'txt' }, [ meta(s), el('h3', { text: s.headline }), dek(s) ? el('p', { cls:'ex', text: dek(s) }) : null, tag(s) ]) ]), s); }
+
+  /* index every story: id = date-k (k = 0 for the day's lead) */
+  var BYID = {}, ORDER = [];
+  function index(){
+    BYID = {}; ORDER = [];
+    EDS.forEach(function(ed){ ed.days.forEach(function(d, di){
+      [d.lead].concat(d.more || []).forEach(function(s, k){ s.id = d.date + '-' + k; s.date = d.date; s.ed = ed; s.dayIndex = di; BYID[s.id] = s; ORDER.push(s.id); });
+    }); });
+  }
+  index();
+  /* Older editions are embedded as short summaries (partial:true); the full week is fetched from editions/<number>.json when someone opens it. */
+  var loading = {};
+  function ensureFull(ed, done){
+    if (!ed.partial) return done(true);
+    if (loading[ed.number]) return;
+    loading[ed.number] = true;
+    fetch('editions/' + ed.number + '.json').then(function(r){ if (!r.ok) throw 0; return r.json(); }).then(function(full){
+      ['range', 'rangeLong', 'next', 'featured', 'days'].forEach(function(k){ if (full[k] != null) ed[k] = full[k]; });
+      delete ed.partial; loading[ed.number] = false; index(); done(true);
+    }).catch(function(){ loading[ed.number] = false; done(false); });
+  }
+  function stories(ed){ var a = []; ed.days.forEach(function(d){ a.push(d.lead); (d.more || []).forEach(function(m){ a.push(m); }); }); return a; }
+
+  /* ---------- day-by-day block (used for current and previous weeks) ---------- */
+  function dayBlock(ed, idPrefix){
+    var box = el('div');
+    var nav = el('nav', { cls:'daynav', 'aria-label':'Days in this week' });
+    ed.days.forEach(function(d, i){ nav.appendChild(el('a', { href: '#' + idPrefix + i }, [ fmt(d.date, { weekday:'short' }), el('span', { text: fmt(d.date, { day:'numeric', month:'short' }) }) ])); });
+    box.appendChild(nav);
+    ed.days.forEach(function(d, i){
+      var r = el('article', { cls:'dayrow', id: idPrefix + i, 'aria-labelledby': idPrefix + 'h' + i });
+      r.appendChild(el('div', { cls:'dl' }, [ el('b', { text: fmt(d.date, { day:'numeric', month:'long', year:'numeric' }) }), el('span', { id: idPrefix + 'h' + i, text: fmt(d.date, { weekday:'long' }) }), el('small', { text: 'Day ' + (i + 1) + ' of ' + ed.days.length }) ]));
+      var dc = el('div', { cls:'dc' });
+      var lc = card(d.lead, 900, 520); lc.classList.add('lead'); lc.appendChild(el('span', { cls:'readmore', text: 'Read the full story →' })); dc.appendChild(lc);
+      var mini = el('div', { cls:'mini' }); (d.more || []).forEach(function(m){ mini.appendChild(card(m, 240, 170)); });
+      dc.appendChild(mini); r.appendChild(dc); box.appendChild(r);
+    });
+    return box;
+  }
+
+  /* ---------- CURRENT ---------- */
+  var leads = CUR.days.map(function(d){ return d.lead; });
+  var mores = []; CUR.days.forEach(function(d){ (d.more || []).forEach(function(m){ mores.push(m); }); });
+  var featIdx = typeof CUR.featured === 'number' ? CUR.featured : leads.length - 1, F = leads[featIdx];
+  document.getElementById('featured').appendChild(openBtn(el('button', { cls:'feat', type:'button' }, [ photo(F, 1000, 640, null, { eager: true }), el('div', null, [ meta(F), el('h1', { text: F.headline }), el('p', { cls:'ex', text: dek(F) }), tag(F) ]) ]), F));
+  var lg = document.getElementById('latest-grid'); leads.filter(function(s, i){ return i !== featIdx; }).slice(-4).reverse().forEach(function(s){ lg.appendChild(card(s)); });
+  var circ = document.getElementById('circles');
+  CUR.days.forEach(function(d, i){ circ.appendChild(el('a', { cls:'circ', href:'#day-' + i }, [ el('span', { cls:'ring' }, [ photo(d.lead, 160, 160) ]), el('b', { text: fmt(d.date, { weekday:'long' }) }), el('span', { text: fmt(d.date, { day:'numeric', month:'short' }) }) ])); });
+  var pool = mores.slice().sort(function(a, b){ return (b.body || []).join('').length - (a.body || []).join('').length; });
+  var mg = document.getElementById('must-grid');
+  if (pool.length >= 4){ mg.appendChild(el('div', { cls:'stack' }, [ card(pool[1], 640, 380) ])); mg.appendChild(bigCard(pool[0])); mg.appendChild(el('div', { cls:'stack' }, [ card(pool[2], 640, 330), card(pool[3], 640, 330) ])); }
+  else document.getElementById('must').hidden = true;
+  if (pool.length >= 5) document.getElementById('pick').appendChild(bigCard(pool[4], 'pick')); else document.getElementById('pick').parentNode.hidden = true;
+  document.getElementById('days-range').textContent = CUR.rangeLong || CUR.range;
+  document.getElementById('dayrows').appendChild(dayBlock(CUR, 'day-'));
+  var groups = {}; stories(CUR).forEach(function(s){ (groups[s.category] = groups[s.category] || []).push(s); });
+  var secBox = document.getElementById('sections');
+  Object.keys(groups).sort(function(a, b){ return groups[b].length - groups[a].length; }).forEach(function(c){
+    if (groups[c].length < 2) return;
+    var g = el('div', { cls:'grid4' }); groups[c].slice(0, 4).forEach(function(s){ g.appendChild(card(s)); });
+    secBox.appendChild(el('section', { cls:'s', 'aria-label': c + ' news' }, [ el('div', { cls:'sechead' }, [ el('h2', { text: c + ' News' }), el('span', { text: groups[c].length + ' stories this week' }) ]), g ]));
+  });
+
+  /* ---------- PREVIOUS ---------- */
+  var monthSel = document.getElementById('f-month'), dateIn = document.getElementById('f-date'), fmsg = document.getElementById('fmsg');
+  var months = [];
+  PREV.forEach(function(ed){ ed.days.forEach(function(d){ var m = d.date.slice(0, 7); if (months.indexOf(m) < 0) months.push(m); }); });
+  months.sort().reverse();
+  monthSel.appendChild(el('option', { value: 'all', text: 'All months' }));
+  months.forEach(function(m){ monthSel.appendChild(el('option', { value: m, text: fmt(m + '-15', { month:'long', year:'numeric' }) })); });
+  if (PREV.length){
+    var allDates = []; PREV.forEach(function(ed){ ed.days.forEach(function(d){ allDates.push(d.date); }); }); allDates.sort();
+    dateIn.min = allDates[0]; dateIn.max = allDates[allDates.length - 1];
+  }
+  function weekCard(ed){
+    var top = ed.days.slice().sort(function(a, b){ return (b.lead.body || []).join('').length - (a.lead.body || []).join('').length; })[0];
+    var ul = el('ul'); ed.days.slice(0, 3).forEach(function(d){ ul.appendChild(el('li', { text: d.lead.headline })); });
+    return el('a', { cls:'wk', href:'#week-' + ed.number }, [ photo(top.lead, 340, 340), el('div', null, [ el('p', { cls:'n', text: 'Edition ' + ed.number + ' · ' + ed.days.length + ' days' }), el('h3', { text: ed.rangeLong || ed.range }), ul, el('p', { cls:'go', text: 'Read this week →' }) ]) ]);
+  }
+  function renderMonth(m){
+    var list = document.getElementById('week-list'); list.innerHTML = '';
+    if (m === 'all'){
+      list.appendChild(el('div', { cls:'sechead', style:'margin-top:20px' }, [ el('h2', { text: 'All previous weeks' }), el('span', { text: PREV.length + (PREV.length === 1 ? ' week' : ' weeks') }) ]));
+      if (!PREV.length){ list.appendChild(el('p', { cls:'empty', text: 'Past editions will appear here after the next Sunday update.' })); return; }
+      var ga = el('div', { cls:'weeks' }); PREV.forEach(function(ed){ ga.appendChild(weekCard(ed)); }); list.appendChild(ga); return;
+    }
+    var eds = PREV.filter(function(ed){ return ed.days.some(function(d){ return d.date.slice(0, 7) === m; }); });
+    var head = el('div', { cls:'sechead', style:'margin-top:20px' }, [ el('h2', { text: fmt(m + '-15', { month:'long', year:'numeric' }) }), el('span', { text: eds.length + (eds.length === 1 ? ' week' : ' weeks') }) ]);
+    list.appendChild(head);
+    if (!eds.length){ list.appendChild(el('p', { cls:'empty', text: 'No editions in this month yet.' })); return; }
+    var g = el('div', { cls:'weeks' }); eds.forEach(function(ed){ g.appendChild(weekCard(ed)); }); list.appendChild(g);
+  }
+  function renderWeek(ed){
+    var wv = document.getElementById('week-view'); wv.innerHTML = '';
+    var i = PREV.indexOf(ed), newer = PREV[i - 1], older = PREV[i + 1];
+    var acts = el('div', { cls:'acts2' }, [ el('a', { cls:'btn', href:'#previous', text:'← All weeks' }) ]);
+    if (older) acts.appendChild(el('a', { cls:'btn', href:'#week-' + older.number, text:'Older week' }));
+    acts.appendChild(el('a', { cls:'btn btn-ink', href: newer ? '#week-' + newer.number : '#current', text: newer ? 'Newer week' : 'Current news' }));
+    wv.appendChild(el('div', { cls:'weekhead' }, [ el('div', null, [ el('p', { cls:'n', text: 'Edition ' + ed.number }), el('h2', { text: ed.rangeLong || ed.range }) ]), acts ]));
+    wv.appendChild(dayBlock(ed, 'w' + ed.number + '-d'));
+    WFArt.paintAll(wv);
+  }
+  monthSel.addEventListener('change', function(){ location.hash = 'previous-' + monthSel.value; });
+  dateIn.addEventListener('change', function(){
+    var v = dateIn.value; if (!v) return;
+    var ed = null, di = -1;
+    PREV.forEach(function(e){ e.days.forEach(function(d, i){ if (d.date === v){ ed = e; di = i; } }); });
+    if (!ed){ CUR.days.forEach(function(d, i){ if (d.date === v){ ed = CUR; di = i; } }); }
+    if (!ed){ fmsg.textContent = 'We have no edition for ' + fmt(v, { day:'numeric', month:'long', year:'numeric' }) + '. Try a date between ' + fmt(dateIn.min, { day:'numeric', month:'short' }) + ' and ' + fmt(dateIn.max, { day:'numeric', month:'short' }) + '.'; return; }
+    fmsg.textContent = '';
+    location.hash = ed === CUR ? 'day-' + di : 'w' + ed.number + '-d' + di;
+  });
+
+  /* ---------- ARTICLE ---------- */
+  var artBox = document.getElementById('article'), lastFocus = null, openedByClick = false, behind = '#current', hadView = false;
+  function openArticle(id, byClick){ openedByClick = !!byClick; location.hash = 'a-' + id; }
+  function renderArticle(s){
+    lastFocus = lastFocus || document.activeElement; artBox.innerHTML = '';
+    var closeB = el('button', { cls:'btn', type:'button', text:'Close' }); closeB.addEventListener('click', closeArticle);
+    artBox.appendChild(el('div', { cls:'bar' }, [ el('div', { cls:'in' }, [ el('span', { cls:'bc', text: 'Edition ' + s.ed.number + ' · ' + fmt(s.date, { weekday:'long', day:'numeric', month:'long' }) }), closeB ]) ]));
+    var a = el('article', { cls:'art' });
+    a.appendChild(el('div', { cls:'kick' }, [ el('span', { cls:'c', text: s.category }), el('span', { cls:'d', text: fmt(s.date, { weekday:'long', day:'numeric', month:'long', year:'numeric' }) }), el('span', { cls:'d', text: mins(s) }) ]));
+    a.appendChild(el('h1', { id:'art-h', text: s.headline }));
+    if (dek(s)) a.appendChild(el('p', { cls:'dek', text: dek(s) }));
+    var fig = el('figure'), pbox = photo(s, 1200, 675, null, { noCredit: true }); fig.appendChild(pbox);
+    var cap = el('figcaption', { text: 'Illustration: Weekfold.' }); fig.appendChild(cap);
+    pbox.addEventListener('wf-photo', function(e){
+      var d = e.detail; cap.textContent = 'Photo: ' + (d.credit || 'Wikimedia Commons') + (d.license ? ', ' + d.license : '') + ', via ';
+      cap.appendChild(el('a', { href: d.page, target:'_blank', rel:'noopener', text:'Wikimedia Commons' })); cap.appendChild(document.createTextNode('.'));
+    });
+    a.appendChild(fig);
+    var body = el('div', { cls:'body' }); (s.body && s.body.length ? s.body : [dek(s)]).forEach(function(p){ body.appendChild(el('p', { text: p })); }); a.appendChild(body);
+    if (s.why) a.appendChild(el('div', { cls:'why' }, [ el('b', { text:'Why it matters' }), el('p', { text: s.why }) ]));
+    var sl = srcs(s);
+    if (sl.length){ var ul = el('ul'); sl.forEach(function(x){ ul.appendChild(el('li', null, [ x.url ? el('a', { href: x.url, target:'_blank', rel:'noopener', text: x.name + ' ↗' }) : x.name ])); }); a.appendChild(el('div', { cls:'srcs' }, [ el('b', { text:'Sources' }), ul ])); }
+    var pos = ORDER.indexOf(s.id), nx = el('div', { cls:'nextup' });
+    var prevS = BYID[ORDER[pos - 1]], nextS = BYID[ORDER[pos + 1]];
+    if (prevS){ var pb = el('button', { type:'button' }, [ el('span', { text:'← Previous story' }), el('b', { text: prevS.headline }) ]); pb.addEventListener('click', function(){ openArticle(prevS.id, false); }); nx.appendChild(pb); }
+    if (nextS){ var nb = el('button', { type:'button' }, [ el('span', { text:'Next story →' }), el('b', { text: nextS.headline }) ]); nb.addEventListener('click', function(){ openArticle(nextS.id, false); }); nx.appendChild(nb); }
+    a.appendChild(nx);
+    artBox.appendChild(a);
+    artBox.hidden = false; artBox.scrollTop = 0; document.body.style.overflow = 'hidden';
+    WFArt.paintAll(artBox); closeB.focus();
+  }
+  function closeArticle(){ location.hash = behind.slice(1) || 'current'; }
+  function hideArticle(){ if (artBox.hidden) return; artBox.hidden = true; artBox.innerHTML = ''; document.body.style.overflow = ''; if (lastFocus && lastFocus.focus && document.contains(lastFocus)) lastFocus.focus(); lastFocus = null; }
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !artBox.hidden) closeArticle(); });
+
+  /* ---------- ROUTER ---------- */
+  function setMode(mode){
+    document.getElementById('view-current').hidden = mode !== 'current';
+    document.getElementById('view-previous').hidden = mode !== 'previous';
+    document.getElementById('tab-current').setAttribute('aria-current', mode === 'current' ? 'page' : 'false');
+    document.getElementById('tab-previous').setAttribute('aria-current', mode === 'previous' ? 'page' : 'false');
+    document.getElementById('modelab').innerHTML = '';
+    var lab = document.getElementById('modelab');
+    if (mode === 'current'){ lab.appendChild(el('b', { text: 'Edition ' + CUR.number })); lab.appendChild(document.createTextNode(' · ' + (CUR.rangeLong || CUR.range) + ' · Next edition ' + CUR.next)); }
+    else { lab.appendChild(el('b', { text: PREV.length + ' past ' + (PREV.length === 1 ? 'edition' : 'editions') })); }
+  }
+  function flash(t){ if (!t) return; t.scrollIntoView({ block:'start' }); if (t.classList.contains('dayrow')){ t.classList.add('flash'); setTimeout(function(){ t.classList.remove('flash'); }, 1600); } }
+  function route(){
+    var h = (location.hash || '').replace(/^#/, ''), m;
+    if ((m = /^a-(\d{4}-\d{2}-\d{2})-(\d+)$/.exec(h))){
+      var pe = EDS.filter(function(e){ return e.partial && e.days.some(function(d){ return d.date === m[1]; }); })[0];
+      if (pe){ ensureFull(pe, function(ok){ if (ok) route(); else location.hash = 'week-' + pe.number; }); return; }
+      m = [h, m[1] + '-' + m[2]];
+    }
+    if (m && BYID[m[1]]){
+      var s = BYID[m[1]];
+      if (artBox.hidden && !hadView){ behind = s.ed === CUR ? '#current' : '#week-' + s.ed.number; showBehind(behind, true); hadView = true; }
+      renderArticle(s); return;
+    }
+    hideArticle(); behind = '#' + (h || 'current'); hadView = true;
+    showBehind('#' + h, false);
+  }
+  function showBehind(hash, quiet){
+    var h = hash.replace(/^#/, ''), m;
+    if (h === 'previous' || /^previous-(\d{4}-\d{2}|all)$/.test(h)){
+      setMode('previous'); document.getElementById('week-view').hidden = true; document.getElementById('week-list').hidden = false;
+      var mm = h.slice(9) || 'all'; if (mm){ monthSel.value = mm; renderMonth(mm); WFArt.paintAll(document.getElementById('week-list')); }
+      if (!quiet) window.scrollTo(0, 0); return;
+    }
+    if ((m = /^week-(\w+)$/.exec(h)) || (m = /^w(\w+)-d(\d+)$/.exec(h))){
+      var ed = PREV.filter(function(e){ return e.number === m[1]; })[0];
+      if (ed && ed.partial){
+        setMode('previous'); document.getElementById('week-list').hidden = true; var wv0 = document.getElementById('week-view'); wv0.hidden = false; wv0.removeAttribute('data-ed');
+        wv0.innerHTML = ''; wv0.appendChild(el('p', { cls:'empty', text: 'Loading this week…' }));
+        ensureFull(ed, function(ok){ if (ok) showBehind(hash, quiet); else { wv0.innerHTML = ''; wv0.appendChild(el('p', { cls:'empty', text: 'This week could not be loaded. Check your connection and try again.' })); } });
+        return;
+      }
+      if (ed){
+        setMode('previous'); document.getElementById('week-list').hidden = true; var wv = document.getElementById('week-view'); wv.hidden = false;
+        if (wv.getAttribute('data-ed') !== ed.number){ renderWeek(ed); wv.setAttribute('data-ed', ed.number); }
+        var mo = ed.days[0].date.slice(0, 7); if (months.indexOf(mo) >= 0) monthSel.value = mo;
+        if (!quiet){ if (m[2] != null) flash(document.getElementById('w' + ed.number + '-d' + m[2])); else window.scrollTo(0, 0); }
+        return;
+      }
+      if (m[1] === CUR.number){ setMode('current'); if (!quiet) window.scrollTo(0, 0); return; }
+    }
+    setMode('current');
+    if (!quiet){ if (/^day-\d+$/.test(h)) flash(document.getElementById(h)); else if (h === 'current' || !h) window.scrollTo(0, 0); else { var t = document.getElementById(h); if (t) t.scrollIntoView({ block:'start' }); } }
+  }
+  window.addEventListener('hashchange', route);
+  route();
+  WFArt.paintAll(document);
+
+  /* ---------- dialogs + subscribe ---------- */
+  WFSite.init({ next: CUR.next });
+})();
+</script>
+</body>
+</html>
