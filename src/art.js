@@ -212,7 +212,7 @@ window.WFArt = (function () {
 window.WFPhoto = (function () {
   var API = 'https://en.wikipedia.org/w/api.php?format=json&formatversion=2&origin=*&action=query';
   var cache = {}, waiting = {}, queue = [], timer = null, failed = false;
-  try { cache = JSON.parse(localStorage.getItem('wf-photos-v3') || '{}') || {}; } catch (e) { cache = {}; }
+  try { cache = JSON.parse(localStorage.getItem('wf-photos-v4') || '{}') || {}; } catch (e) { cache = {}; }
   /* Public-domain, CC0, CC BY and CC BY-SA files are shown, always credited with author and licence. Non-commercial, no-derivatives and unlabelled files are never used. */
   function okLicense(l) {
     l = (l || '').trim().toLowerCase();
@@ -220,7 +220,7 @@ window.WFPhoto = (function () {
     if (/^(public domain|pd[ -]|cc0|cc zero|no restrictions|attribution$)/.test(l)) return true;
     return /^cc[ -]by([ -]sa)?[ -][0-9.]+(\s(us|au|nz|ca|uk|in|ie|de|nl|fr|es|it|igo))?$/.test(l);
   }
-  function save() { try { localStorage.setItem('wf-photos-v3', JSON.stringify(cache)); } catch (e) {} }
+  function save() { try { localStorage.setItem('wf-photos-v4', JSON.stringify(cache)); } catch (e) {} }
   function strip(h) { var d = document.createElement('div'); d.innerHTML = h || ''; return (d.textContent || '').replace(/\s+/g, ' ').trim(); }
   function getJSON(url, n) { n = n == null ? 2 : n; return fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).catch(function (e) { if (n <= 0) throw e; return new Promise(function (ok) { setTimeout(ok, 700 * (3 - n)); }).then(function () { return getJSON(url, n - 1); }); }); }
   function flush() {
@@ -251,7 +251,7 @@ window.WFPhoto = (function () {
   }
   function want(title, cb) {
     var key = title.replace(/ /g, '_');
-    var c0 = cache[key]; if (c0 && c0.none && c0.ts && Date.now() - c0.ts > 6 * 3600 * 1000) { delete cache[key]; c0 = null; }
+    var c0 = cache[key]; if (c0 && c0.none && (!c0.ts || Date.now() - c0.ts > 6 * 3600 * 1000)) { delete cache[key]; c0 = null; }
     if (c0) return cb(c0.none || !c0.src ? null : c0);
     if (failed) return cb(null);
     (waiting[key] = waiting[key] || []).push(cb);
