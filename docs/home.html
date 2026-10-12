@@ -146,12 +146,15 @@ section.s{padding-block:40px}
 .daynav a{min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid var(--rule);display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:14px}
 .daynav a span{font-family:var(--mono);font-weight:500;font-size:12px;color:var(--ink-3)}
 .daynav a:hover{border-color:var(--ink)}
-.dayrow{display:grid;grid-template-columns:170px minmax(0,1fr);gap:28px;padding-block:30px;border-top:1px solid var(--rule);scroll-margin-top:80px;transition:background .6s}
+.dayrow{display:block;padding:22px;margin-bottom:24px;border:1px solid var(--rule);border-radius:16px;scroll-margin-top:80px;transition:background .6s}
 .dayrow.flash{background:#FFF4F2}
-@media (max-width:760px){.dayrow{grid-template-columns:minmax(0,1fr);gap:14px}}
+@media (max-width:760px){.dayrow{padding:14px}}
 .dl b{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);font-weight:500}
 .dl span{display:block;font-family:var(--display);font-size:34px;font-weight:600;line-height:1.05;margin-top:4px}
 .dl small{display:block;color:var(--ink-3);font-size:13px;margin-top:4px}
+.dl{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
+.dl span{margin-top:0}.dl small{margin:0 0 0 auto}
+.dayrow .dl b{order:2}
 .dc{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:26px}
 @media (max-width:900px){.dc{grid-template-columns:minmax(0,1fr)}}
 .lead h3{font-size:25px}
@@ -164,6 +167,13 @@ section.s{padding-block:40px}
 .mini .card .ex{-webkit-line-clamp:2;font-size:13px;margin-top:3px}
 .mini .ph{border-radius:6px}
 .mini .ph .credit{display:none}
+.dc{align-items:start}
+.mini .card .ph{grid-row:1/5;align-self:start}
+.mini .card>*:not(.ph){grid-column:2}
+.lastwk{margin-top:22px;padding-top:16px;border-top:1px dashed var(--rule)}
+.lastwk>h3{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);font-weight:500;margin:0 0 6px}
+.mini.lw{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+@media (max-width:900px){.mini.lw{grid-template-columns:minmax(0,1fr)}}
 
 /* previous */
 .prevhead{padding-block:32px 8px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px}
@@ -283,6 +293,7 @@ dialog::backdrop{background:rgba(21,25,43,.45);backdrop-filter:blur(3px)}
   <div class="in">
     <nav class="seg" aria-label="Choose news">
       <a href="#current" id="tab-current"><i></i>Current news</a>
+      <a href="#days" id="tab-days"><i></i>Day by day</a>
       <a href="#previous" id="tab-previous"><i></i>Previous news</a>
     </nav>
     <p class="lab" id="modelab"></p>
@@ -310,11 +321,15 @@ dialog::backdrop{background:rgba(21,25,43,.45);backdrop-filter:blur(3px)}
         <div class="sechead"><h2 id="pick-h">Editor's Pick</h2></div>
         <div id="pick"></div>
       </section>
+      <div id="sections"></div>
+    </div>
+
+    <!-- DAY BY DAY -->
+    <div id="view-days" hidden>
       <section class="s" id="days" aria-labelledby="days-h">
         <div class="sechead"><h2 id="days-h">The week, day by day</h2><span id="days-range"></span></div>
         <div id="dayrows"></div>
       </section>
-      <div id="sections"></div>
     </div>
 
     <!-- PREVIOUS -->
@@ -877,7 +892,11 @@ var WFSite = (function () {
   Object.keys(groups).sort(function(a, b){ return groups[b].length - groups[a].length; }).forEach(function(c){
     if (groups[c].length < 2) return;
     var g = el('div', { cls:'grid4' }); groups[c].slice(0, 4).forEach(function(s){ g.appendChild(card(s)); });
-    secBox.appendChild(el('section', { cls:'s', 'aria-label': c + ' news' }, [ el('div', { cls:'sechead' }, [ el('h2', { text: c + ' News' }), el('span', { text: groups[c].length + ' stories this week' }) ]), g ]));
+    var kids = [ el('div', { cls:'sechead' }, [ el('h2', { text: c + ' News' }), el('span', { text: groups[c].length + ' stories this week' }) ]), g ];
+    var P0 = PREV[0] && !PREV[0].partial ? PREV[0] : null;
+    var lw = P0 ? stories(P0).filter(function(s){ return s.category === c; }).slice(0, 4) : [];
+    if (lw.length){ var lm = el('div', { cls:'mini lw' }); lw.forEach(function(s){ lm.appendChild(card(s, 240, 170)); }); kids.push(el('div', { cls:'lastwk' }, [ el('h3', { text: 'Last week in ' + c + ' · ' + (P0.rangeLong || P0.range) }), lm ])); }
+    secBox.appendChild(el('section', { cls:'s', 'aria-label': c + ' news' }, kids));
   });
 
   /* ---------- PREVIOUS ---------- */
@@ -968,12 +987,14 @@ var WFSite = (function () {
   /* ---------- ROUTER ---------- */
   function setMode(mode){
     document.getElementById('view-current').hidden = mode !== 'current';
+    document.getElementById('view-days').hidden = mode !== 'days';
     document.getElementById('view-previous').hidden = mode !== 'previous';
+    document.getElementById('tab-days').setAttribute('aria-current', mode === 'days' ? 'page' : 'false');
     document.getElementById('tab-current').setAttribute('aria-current', mode === 'current' ? 'page' : 'false');
     document.getElementById('tab-previous').setAttribute('aria-current', mode === 'previous' ? 'page' : 'false');
     document.getElementById('modelab').innerHTML = '';
     var lab = document.getElementById('modelab');
-    if (mode === 'current'){ lab.appendChild(el('b', { text: 'Edition ' + CUR.number })); lab.appendChild(document.createTextNode(' · ' + (CUR.rangeLong || CUR.range) + ' · Next edition ' + CUR.next)); }
+    if (mode === 'current' || mode === 'days'){ lab.appendChild(el('b', { text: 'Edition ' + CUR.number })); lab.appendChild(document.createTextNode(' · ' + (CUR.rangeLong || CUR.range) + ' · Next edition ' + CUR.next)); }
     else { lab.appendChild(el('b', { text: PREV.length + ' past ' + (PREV.length === 1 ? 'edition' : 'editions') })); }
   }
   function flash(t){ if (!t) return; t.scrollIntoView({ block:'start' }); if (t.classList.contains('dayrow')){ t.classList.add('flash'); setTimeout(function(){ t.classList.remove('flash'); }, 1600); } }
@@ -1016,8 +1037,13 @@ var WFSite = (function () {
       }
       if (m[1] === CUR.number){ setMode('current'); if (!quiet) window.scrollTo(0, 0); return; }
     }
+    if (h === 'days' || /^day-\d+$/.test(h)){
+      setMode('days');
+      if (!quiet){ if (h === 'days') window.scrollTo(0, 0); else flash(document.getElementById(h)); }
+      return;
+    }
     setMode('current');
-    if (!quiet){ if (/^day-\d+$/.test(h)) flash(document.getElementById(h)); else if (h === 'current' || !h) window.scrollTo(0, 0); else { var t = document.getElementById(h); if (t) t.scrollIntoView({ block:'start' }); } }
+    if (!quiet){ if (h === 'current' || !h) window.scrollTo(0, 0); else { var t = document.getElementById(h); if (t) t.scrollIntoView({ block:'start' }); } }
   }
   window.addEventListener('hashchange', route);
   route();
