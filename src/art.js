@@ -175,7 +175,7 @@ window.WFArt = (function () {
     var data = o.getImageData(0, 0, W, H).data;
     function tone(x, y) { x = Math.max(0, Math.min(W - 1, x | 0)); y = Math.max(0, Math.min(H - 1, y | 0)); var i = (y * W + x) * 4; return 1 - (data[i] * 0.3 + data[i + 1] * 0.59 + data[i + 2] * 0.11) / 255; }
     ctx.fillStyle = pal[0]; ctx.fillRect(0, 0, W, H);
-    var cell = Math.max(5, W / 80);
+    var cell = Math.max(3, W / 100); /* improved halftone resolution: smaller cells (was W/80) for better quality at all sizes */
     /* accent layer: 45° screen, slightly mis-registered like a riso print */
     ctx.globalCompositeOperation = 'multiply'; ctx.fillStyle = pal[2];
     var dx = W * 0.018, dy = H * 0.012, c2 = cell * 1.25;
@@ -213,12 +213,12 @@ window.WFPhoto = (function () {
   var API = 'https://en.wikipedia.org/w/api.php?format=json&formatversion=2&origin=*&action=query';
   var cache = {}, waiting = {}, queue = [], timer = null, failed = false;
   try { cache = JSON.parse(localStorage.getItem('wf-photos-v2') || '{}') || {}; } catch (e) { cache = {}; }
-  /* Only public-domain, CC0 and plain CC BY (attribution) files are shown; anything share-alike, non-commercial, no-derivatives or unlabelled falls back to an illustration. */
+  /* Public-domain, CC0, CC BY and CC BY-SA files are shown, always credited with author and licence. Non-commercial, no-derivatives and unlabelled files are never used. */
   function okLicense(l) {
     l = (l || '').trim().toLowerCase();
     if (!l) return false;
     if (/^(public domain|pd[ -]|cc0|cc zero|no restrictions)/.test(l)) return true;
-    return /^cc[ -]by[ -][0-9.]+(\s(us|au|nz|ca|uk|in|ie|de|nl|fr|es|it))?$/.test(l);
+    return /^cc[ -]by([ -]sa)?[ -][0-9.]+(\s(us|au|nz|ca|uk|in|ie|de|nl|fr|es|it|igo))?$/.test(l);
   }
   function save() { try { localStorage.setItem('wf-photos-v2', JSON.stringify(cache)); } catch (e) {} }
   function strip(h) { var d = document.createElement('div'); d.innerHTML = h || ''; return (d.textContent || '').replace(/\s+/g, ' ').trim(); }

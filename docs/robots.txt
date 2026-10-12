@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://narayansharma2k11-bot.github.io/weekfold/sitemap.xml

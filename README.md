@@ -61,4 +61,4 @@ Buy the domain (for example from Cloudflare, Namecheap or Porkbun). Put it in `c
 ---
 
 ## Photos and copyright
-News agencies and newspapers (Reuters, AP, AFP, BBC, Al Jazeera and others) don't allow free reuse of their photos, so Weekfold never uses them. Each story names a Wikipedia article. The page shows that article's lead photo **only if it is public domain, CC0 or CC BY**, and credits the photographer and licence under the picture. Otherwise it shows a generated illustration. Spot-check a few photos after launch. This is not legal advice.
+News agencies and newspapers (Reuters, AP, AFP, BBC, Al Jazeera and others) don't allow free reuse of their photos, so Weekfold never uses them. Each story names a Wikipedia article. The page shows that article's lead photo **if it is public domain, CC0, CC BY or CC BY-SA**, and credits the photographer and licence under the picture. Only if no free photo exists does it fall back to a generated illustration. Spot-check a few photos after launch. This is not legal advice.

@@ -52,7 +52,7 @@ Optional: `"corrections": ["What was corrected and when."]` on a story.
 ## Photos (copyright)
 - Do **not** use photos from news outlets or agencies. They are not free to reuse.
 - `image.wiki` names an English Wikipedia article about the main person, place or institution. Open `https://en.wikipedia.org/wiki/<Title>` to make sure it exists.
-- The site loads that article's lead image and shows it only if it is **public domain, CC0 or CC BY**, with the photographer and licence credited under the picture. Otherwise it shows an illustration.
+- The site loads that article's lead image and shows it if it is **public domain, CC0, CC BY or CC BY-SA**, with the photographer and licence credited under the picture. Never use NC/ND files. Choose Wikipedia articles whose lead photo exists (check the article page shows a photo, ideally a real photograph of the person, place or event, not a logo or map); an illustration is only a last resort. Aim for zero illustrations.
 
 ## Before you push
 - `python3 build.py` finishes with no errors.
