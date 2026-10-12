@@ -217,7 +217,7 @@ window.WFPhoto = (function () {
   function okLicense(l) {
     l = (l || '').trim().toLowerCase();
     if (!l) return false;
-    if (/^(public domain|pd[ -]|cc0|cc zero|no restrictions)/.test(l)) return true;
+    if (/^(public domain|pd[ -]|cc0|cc zero|no restrictions|attribution$)/.test(l)) return true;
     return /^cc[ -]by([ -]sa)?[ -][0-9.]+(\s(us|au|nz|ca|uk|in|ie|de|nl|fr|es|it|igo))?$/.test(l);
   }
   function save() { try { localStorage.setItem('wf-photos-v3', JSON.stringify(cache)); } catch (e) {} }
