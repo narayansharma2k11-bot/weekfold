@@ -601,7 +601,7 @@ window.WFArt = (function () {
 window.WFPhoto = (function () {
   var API = 'https://en.wikipedia.org/w/api.php?format=json&formatversion=2&origin=*&action=query';
   var cache = {}, waiting = {}, queue = [], timer = null, failed = false;
-  try { cache = JSON.parse(localStorage.getItem('wf-photos-v2') || '{}') || {}; } catch (e) { cache = {}; }
+  try { cache = JSON.parse(localStorage.getItem('wf-photos-v3') || '{}') || {}; } catch (e) { cache = {}; }
   /* Public-domain, CC0, CC BY and CC BY-SA files are shown, always credited with author and licence. Non-commercial, no-derivatives and unlabelled files are never used. */
   function okLicense(l) {
     l = (l || '').trim().toLowerCase();
@@ -609,7 +609,7 @@ window.WFPhoto = (function () {
     if (/^(public domain|pd[ -]|cc0|cc zero|no restrictions)/.test(l)) return true;
     return /^cc[ -]by([ -]sa)?[ -][0-9.]+(\s(us|au|nz|ca|uk|in|ie|de|nl|fr|es|it|igo))?$/.test(l);
   }
-  function save() { try { localStorage.setItem('wf-photos-v2', JSON.stringify(cache)); } catch (e) {} }
+  function save() { try { localStorage.setItem('wf-photos-v3', JSON.stringify(cache)); } catch (e) {} }
   function strip(h) { var d = document.createElement('div'); d.innerHTML = h || ''; return (d.textContent || '').replace(/\s+/g, ' ').trim(); }
   function getJSON(url) { return fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }); }
   function flush() {
