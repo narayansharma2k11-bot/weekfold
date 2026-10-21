@@ -127,4 +127,4 @@ form.sub-form label{font-weight:500;font-size:16px}
 .fb span{font:700 clamp(12px,1.8vw,22px)/1.1 var(--display);color:#fff;text-transform:uppercase;letter-spacing:.08em}
 
 @media (max-width:520px){.count{gap:6px}.count .u{min-width:0;flex:1 1 0;padding:6px 2px 4px}.count .sep{font-size:26px}.count .u b{font-size:30px}.btn-lg{padding:0 22px;font-size:19px}}
-.big .fb span{display:none}
+.mini .fb span{display:none}

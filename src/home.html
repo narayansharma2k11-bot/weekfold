@@ -211,6 +211,29 @@ section.s{padding-block:clamp(44px,6vw,80px)}
 #rank-list .rank .c,#rank-list .rank .m{color:var(--ink-3)}
 #rank-list .rank .t{font:700 17px/1.3 var(--display)}
 
+/* sections tab */
+.sxchips{display:flex;flex-wrap:wrap;gap:8px;margin:-6px 0 34px;padding-bottom:18px;border-bottom:3px solid #000}
+.sxchips a{display:inline-flex;align-items:baseline;gap:8px;padding:8px 14px;border:2px solid #000;text-decoration:none;font-weight:500;font-size:15px;background:#fff;box-shadow:3px 3px 0 #000}
+.sxchips a span{font-size:13px;color:var(--ink-3);font-weight:400}
+.sxchips a[aria-current="page"]{background:var(--navy);color:#fff}
+.sxchips a[aria-current="page"] span{color:#c9d3ee}
+.sxrow{padding-bottom:34px;margin-bottom:30px;border-bottom:1px solid #000}
+.sxrow:last-child{border-bottom:0}
+#view-sections .card .ph{border:0;box-shadow:none;aspect-ratio:3/2}
+#view-sections .card .meta .dot{display:none}
+#view-sections .grid4 .card{border:0;box-shadow:none;padding:0;background:none}
+#view-sections .grid4 .card:hover{transform:none}
+#view-sections .grid4 .card>:not(.ph){margin-inline:0}
+.sxlead{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);margin-bottom:30px;align-items:start}
+@media (max-width:860px){.sxlead{grid-template-columns:minmax(0,1fr)}}
+.sxlead>.card h3{font-size:clamp(26px,3vw,36px)}
+.sxlead>.card .ex{-webkit-line-clamp:4;font-size:17px}
+.sxlead .mini .card{grid-template-columns:120px minmax(0,1fr)}
+.sxwk{margin-top:30px}
+.sxwk>h3{font:700 13px var(--ui);letter-spacing:.14em;text-transform:uppercase;border-top:3px solid #000;padding-top:9px;margin-bottom:6px;display:flex;justify-content:space-between}
+.sxwk>h3 a{font-weight:400;letter-spacing:0;text-transform:none;color:var(--blue);text-decoration:none}
+.sxwk .mini.lw{margin-top:6px}
+
 /* day by day: numbered timeline */
 .daynav{display:flex;gap:8px 18px;flex-wrap:wrap;margin-bottom:46px}
 .daynav a{display:inline-flex;align-items:baseline;gap:7px;text-decoration:none;border-bottom:1px dotted #000;font-size:17px;font-weight:400}
@@ -323,8 +346,8 @@ section.s{padding-block:clamp(44px,6vw,80px)}
     <nav class="nav" aria-label="Main">
       <a href="#current"><svg aria-hidden="true"><use href="#i-doc"/></svg>This week</a>
       <a href="#days"><svg aria-hidden="true"><use href="#i-list"/></svg>Day by day</a>
+      <a href="#sections"><svg aria-hidden="true"><use href="#i-star"/></svg>Sections</a>
       <a href="#previous"><svg aria-hidden="true"><use href="#i-book"/></svg>Previous news</a>
-      <a href="index.html#sections"><svg aria-hidden="true"><use href="#i-star"/></svg>Sections</a>
       <a href="index.html#faq"><svg aria-hidden="true"><use href="#i-help"/></svg>FAQ</a>
       <a href="index.html#about"><svg aria-hidden="true"><use href="#i-down"/></svg>About</a>
     </nav>
@@ -337,6 +360,7 @@ section.s{padding-block:clamp(44px,6vw,80px)}
     <nav class="seg" aria-label="Choose news">
       <a href="#current" id="tab-current"><i></i>Current news</a>
       <a href="#days" id="tab-days"><i></i>Day by day</a>
+      <a href="#sections" id="tab-sections"><i></i>Sections</a>
       <a href="#previous" id="tab-previous"><i></i>Previous news</a>
     </nav>
     <p class="lab" id="modelab"></p>
@@ -363,7 +387,7 @@ section.s{padding-block:clamp(44px,6vw,80px)}
         <div class="grid4" id="latest-grid"></div>
       </section>
 
-      <div class="secgrid" id="sections"></div>
+      <div class="secgrid" id="cat-sections"></div>
 
       <section class="blk" id="pick-box" aria-labelledby="pick-h"><h2 class="rule" id="pick-h"><span>Editor's pick</span><em>the one to read if you read one</em></h2><div id="pick"></div></section>
       <span id="must"></span><div id="must-band" hidden></div><div id="must-grid" hidden></div>
@@ -373,6 +397,15 @@ section.s{padding-block:clamp(44px,6vw,80px)}
         <div id="rank-list" role="list"></div>
       </section>
     </div>
+  </div>
+
+  <!-- SECTIONS -->
+  <div id="view-sections" hidden>
+    <section class="wrap s" aria-labelledby="sx-h" style="padding-top:clamp(30px,4vw,50px)">
+      <div class="sechead"><h2 id="sx-h">Sections</h2><span id="sx-sub"></span></div>
+      <nav class="sxchips" id="sx-chips" aria-label="Choose a section"></nav>
+      <div id="sx-body"></div>
+    </section>
   </div>
 
   <!-- DAY BY DAY -->
@@ -428,13 +461,13 @@ section.s{padding-block:clamp(44px,6vw,80px)}
         <a class="logo" href="index.html" style="font-size:24px">Weekfold</a>
         <p>The world's week, folded into one free Sunday edition.</p>
       </div>
-      <div><h4>Read</h4><ul><li><a href="#current">Current news</a></li><li><a href="#days">Day by day</a></li><li><a href="#previous">Previous news</a></li></ul></div>
+      <div><h4>Read</h4><ul><li><a href="#current">Current news</a></li><li><a href="#days">Day by day</a></li><li><a href="#sections">Sections</a></li><li><a href="#previous">Previous news</a></li></ul></div>
       <div><h4>Weekfold</h4><ul><li><a href="index.html#about">About us</a></li><li><a href="index.html#faq">Editorial standards &amp; FAQ</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
       <div><h4>Account</h4><ul><li><button type="button" data-open="signin" class="linkbtn">Sign in</button></li><li><button type="button" data-open="subscribe" class="linkbtn">Subscribe</button></li><li><a href="privacy.html">Privacy</a></li></ul></div>
     </div>
     <div class="legal">
-      <span>© 2026 Weekfold · New edition every Sunday</span>
-      <span class="made">Made by Narayan Sharma · Highschool student at Oberoi JVLR</span>
+      <span>© 2026 Weekfold · New edition every Sunday · <a href="mailto:weekfoldsupport@gmail.com">weekfoldsupport@gmail.com</a></span>
+      <span class="made">Made by Narayan Sharma</span>
       <p class="credits">Photo credits: Weekfold shows only public-domain or Creative Commons (CC0, CC BY, CC BY-SA) images from Wikimedia Commons, saved on Weekfold and credited to the photographer beneath each picture. Weekfold does not use photos from news agencies or other news outlets. Where no suitable free photo exists, an illustration is shown instead.</p>
     </div>
   </div>
@@ -593,7 +626,7 @@ section.s{padding-block:clamp(44px,6vw,80px)}
   var all = stories(CUR), total = {}, groups = {};
   all.forEach(function(s){ total[s.category] = (total[s.category] || 0) + 1; });
   unused().forEach(function(s){ (groups[s.category] = groups[s.category] || []).push(s); });
-  var secBox = document.getElementById('sections'), P0 = PREV[0] && !PREV[0].partial ? PREV[0] : null;
+  var secBox = document.getElementById('cat-sections'), P0 = PREV[0] && !PREV[0].partial ? PREV[0] : null;
   Object.keys(groups).sort(function(a, b){ return groups[b].length - groups[a].length; }).forEach(function(c){
     if (groups[c].length < 2) return;
     var g = groups[c].sort(byLen).slice(0, 4); g.forEach(function(s){ used[s.id] = 1; });
@@ -611,6 +644,42 @@ section.s{padding-block:clamp(44px,6vw,80px)}
     document.getElementById('rank-p').textContent = left.length + (left.length === 1 ? ' more story' : ' more stories') + ' from this week';
     left.forEach(function(s, i){ rl.appendChild(openBtn(el('button', { cls:'rank', type:'button', role:'listitem' }, [ el('span', { cls:'n', text: String(i + 1) }), el('span', { cls:'t' }, [ el('span', { cls:'c', text: s.category + ' · ' + fmt(s.date, { weekday:'short' }) }), s.headline ]), el('span', { cls:'m', text: mins(s).replace(' read', '') }) ]), s)); });
   } else document.getElementById('top-stories').hidden = true;
+
+  /* ---------- SECTIONS: every category, across all full editions ---------- */
+  var FULL = function(){ return EDS.filter(function(e){ return !e.partial; }); };
+  function catStories(c){ var a = []; FULL().forEach(function(ed){ stories(ed).forEach(function(s){ if (s.category === c) a.push(s); }); }); return a; }
+  function allCats(){ var n = {}; FULL().forEach(function(ed){ stories(ed).forEach(function(s){ n[s.category] = (n[s.category] || 0) + 1; }); }); return n; }
+  function renderSections(cat){
+    var counts = allCats(), cats = Object.keys(counts).sort(function(a, b){ return counts[b] - counts[a]; });
+    var chips = document.getElementById('sx-chips'), body = document.getElementById('sx-body'); chips.innerHTML = ''; body.innerHTML = '';
+    chips.appendChild(el('a', { href:'#sections', 'aria-current': cat ? 'false' : 'page' }, [ 'All sections' ]));
+    cats.forEach(function(c){ chips.appendChild(el('a', { href:'#section-' + encodeURIComponent(c), 'aria-current': c === cat ? 'page' : 'false' }, [ c, el('span', { text: String(counts[c]) }) ])); });
+    var weeks = FULL().length;
+    document.getElementById('sx-h').textContent = cat || 'Sections';
+    document.getElementById('sx-sub').textContent = cat ? counts[cat] + ' stories in the last ' + weeks + ' weeks' : cats.length + ' sections · last ' + weeks + ' weeks';
+    if (!cat){
+      cats.forEach(function(c){
+        var list = catStories(c).slice(0, 4);
+        var g = el('div', { cls:'grid4' }); list.forEach(function(s){ g.appendChild(card(s, 520, 340)); });
+        body.appendChild(el('section', { cls:'sxrow', 'aria-label': c }, [ el('div', { cls:'sechead', style:'margin-bottom:18px' }, [ el('h2', { style:'font-size:clamp(26px,3vw,36px)', text: c }), el('a', { href:'#section-' + encodeURIComponent(c), text: 'All ' + counts[c] + ' ' + c + ' stories →' }) ]), g ]));
+      });
+      return;
+    }
+    if (!counts[cat]){ body.appendChild(el('p', { cls:'empty', text:'No stories in this section yet.' })); return; }
+    FULL().forEach(function(ed, wi){
+      var list = stories(ed).filter(function(s){ return s.category === cat; }).sort(function(a, b){ return blen(b) - blen(a); });
+      if (!list.length) return;
+      var title = (ed === CUR ? 'This week · ' : 'Edition ' + ed.number + ' · ') + (ed.rangeLong || ed.range);
+      var wrap = el('div', { cls:'sxwk' }, [ el('h3', null, [ el('span', { text: title }), el('a', { href: ed === CUR ? '#current' : '#week-' + ed.number, text: 'Whole week →' }) ]) ]);
+      if (wi === 0){
+        var top = card(list[0], 900, 560); var mini = el('div', { cls:'mini' }); list.slice(1).forEach(function(s){ mini.appendChild(card(s, 240, 170)); });
+        wrap.appendChild(el('div', { cls:'sxlead' }, [ top, mini ]));
+      } else {
+        var lm = el('div', { cls:'mini lw' }); list.forEach(function(s){ lm.appendChild(card(s, 240, 170)); }); wrap.appendChild(lm);
+      }
+      body.appendChild(wrap);
+    });
+  }
 
   /* ---------- PREVIOUS ---------- */
   var monthSel = document.getElementById('f-month'), dateIn = document.getElementById('f-date'), fmsg = document.getElementById('fmsg');
@@ -702,12 +771,15 @@ section.s{padding-block:clamp(44px,6vw,80px)}
     document.getElementById('view-current').hidden = mode !== 'current';
     document.getElementById('view-days').hidden = mode !== 'days';
     document.getElementById('view-previous').hidden = mode !== 'previous';
+    document.getElementById('view-sections').hidden = mode !== 'sections';
+    document.getElementById('tab-sections').setAttribute('aria-current', mode === 'sections' ? 'page' : 'false');
     document.getElementById('tab-days').setAttribute('aria-current', mode === 'days' ? 'page' : 'false');
     document.getElementById('tab-current').setAttribute('aria-current', mode === 'current' ? 'page' : 'false');
     document.getElementById('tab-previous').setAttribute('aria-current', mode === 'previous' ? 'page' : 'false');
     document.getElementById('modelab').innerHTML = '';
     var lab = document.getElementById('modelab');
     if (mode === 'current' || mode === 'days'){ lab.appendChild(el('b', { text: 'Edition ' + CUR.number })); lab.appendChild(document.createTextNode(' · ' + (CUR.rangeLong || CUR.range) + ' · Next edition ' + CUR.next)); }
+    else if (mode === 'sections'){ lab.appendChild(el('b', { text: 'Every section' })); lab.appendChild(document.createTextNode(' · this week and the ' + Math.max(0, FULL().length - 1) + ' weeks before')); }
     else { lab.appendChild(el('b', { text: PREV.length + ' past ' + (PREV.length === 1 ? 'edition' : 'editions') })); }
   }
   function flash(t){ if (!t) return; t.scrollIntoView({ block:'start' }); if (t.classList.contains('dayrow')){ t.classList.add('flash'); setTimeout(function(){ t.classList.remove('flash'); }, 1600); } }
@@ -749,6 +821,13 @@ section.s{padding-block:clamp(44px,6vw,80px)}
         return;
       }
       if (m[1] === CUR.number){ setMode('current'); if (!quiet) window.scrollTo(0, 0); return; }
+    }
+    if (h === 'sections' || /^section-/.test(h)){
+      var c = h === 'sections' ? '' : decodeURIComponent(h.slice(8));
+      setMode('sections'); var sb = document.getElementById('sx-body');
+      if (sb.getAttribute('data-c') !== c){ renderSections(c); sb.setAttribute('data-c', c); WFArt.paintAll(sb); }
+      if (!quiet) window.scrollTo(0, 0);
+      return;
     }
     if (h === 'days' || /^day-\d+$/.test(h)){
       setMode('days');

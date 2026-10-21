@@ -181,9 +181,10 @@ def main():
     art = (SRC / 'art.js').read_text(encoding='utf-8')
     site_js = (SRC / 'site.js').read_text(encoding='utf-8')
     canon = {'index.html': SITE + '/', 'home.html': SITE + '/home.html'}
+    world = (SRC / 'worldmap.txt').read_text(encoding='utf-8').strip() if (SRC / 'worldmap.txt').exists() else ''
     for name, target in (('landing.html', 'index.html'), ('home.html', 'home.html')):
         t = (SRC / name).read_text(encoding='utf-8')
-        t = t.replace('/*THEME*/', theme).replace('/*PHOTOS*/', photos_blob).replace('/*EDITIONS*/', blob).replace('/*CONFIG*/', cfg_blob).replace('/*ART*/', art).replace('/*SITE*/', site_js)
+        t = t.replace('/*THEME*/', theme).replace('/*PHOTOS*/', photos_blob).replace('/*EDITIONS*/', blob).replace('/*CONFIG*/', cfg_blob).replace('/*ART*/', art).replace('/*SITE*/', site_js).replace('/*WORLD*/', world)
         og_image = (f'<meta property="og:image" content="{SITE}/img/{top_photo["file"]}">\n<meta name="twitter:image" content="{SITE}/img/{top_photo["file"]}">\n') if (SITE and top_photo) else ''
         if SITE:
             t = t.replace('<meta property="og:type"', f'<link rel="canonical" href="{canon[target]}">\n<meta property="og:url" content="{canon[target]}">\n{og_image}<link rel="alternate" type="application/rss+xml" title="Weekfold" href="{SITE}/feed.xml">\n<meta property="og:type"', 1)
