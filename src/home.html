@@ -125,6 +125,92 @@ section.s{padding-block:clamp(44px,6vw,80px)}
 .mini.lw{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px}
 @media (max-width:900px){.mini.lw{grid-template-columns:minmax(0,1fr)}}
 
+
+/* ---------- newspaper front page ---------- */
+.datebar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 20px;padding:12px 0;font-size:14px;color:var(--ink-2);border-bottom:1px solid #000}
+.datebar b{color:#000;font-weight:700}
+.ticker{display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:3px solid #000;min-width:0}
+.ticker>b{background:var(--red);color:#fff;padding:4px 11px;font:700 12px var(--ui);letter-spacing:.12em;text-transform:uppercase;flex:none}
+#ticker{display:flex;gap:30px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;min-width:0}
+#ticker::-webkit-scrollbar{display:none}
+#ticker button{background:none;border:0;padding:0;cursor:pointer;font-size:15px;font-weight:400;color:#000}
+#ticker button:hover{text-decoration:underline}
+#ticker button+button::before{content:"•";color:var(--red);margin-right:30px}
+.rule{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-top:3px solid #000;padding-top:8px;margin:0 0 18px;font:700 13px var(--ui);letter-spacing:.14em;text-transform:uppercase}
+.rule em{font:400 13px var(--ui);letter-spacing:0;text-transform:none;color:var(--ink-3);font-style:normal;text-align:right}
+.blk{padding-block:34px 6px}
+.front{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr) minmax(0,.85fr);padding-block:26px 30px}
+.front>*{padding-inline:24px;border-left:1px solid #000;min-width:0}
+.front>:first-child{padding-left:0;border-left:0}
+.front>:last-child{padding-right:0}
+@media (max-width:1040px){.front{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}.f-side{grid-column:1/-1;border-left:0;padding:26px 0 0;border-top:1px solid #000;margin-top:26px}.f-side ol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 34px}}
+@media (max-width:720px){.front{grid-template-columns:minmax(0,1fr)}.front>*{padding-inline:0;border-left:0}.f-mid{border-top:1px solid #000;margin-top:24px;padding-top:24px!important}.f-side ol{grid-template-columns:minmax(0,1fr)}}
+.f-lead .ph{border:0;box-shadow:none;aspect-ratio:16/10}
+.f-lead .kick{margin-top:16px;font:700 13px var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
+.f-lead h1{font-size:clamp(30px,3.7vw,52px);line-height:1.08;margin-top:8px;cursor:pointer}
+.f-lead h1:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+.f-lead .ex{font-size:19px;color:var(--ink-2);margin-top:12px;line-height:1.55}
+.f-lead .byline{font-size:13px;color:var(--ink-3);margin-top:12px;font-weight:400}
+.f-lead .btn{margin-top:18px;min-height:42px;font-size:16px}
+.f-mid .card{padding-bottom:18px;margin-bottom:18px;border-bottom:1px dotted #000}
+.f-mid .card:last-child{border-bottom:0;margin-bottom:0}
+.f-mid .card h3{font-size:21px}
+.f-mid .card .ex{display:none}
+.f-side ol{list-style:none;margin:0;padding:0}
+.f-side li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:8px;padding:12px 0;border-bottom:1px dotted #000;align-items:start}
+.f-side li:last-child{border-bottom:0}
+.f-side li>b{font:700 28px/1 var(--display);color:var(--red)}
+.f-side button{background:none;border:0;padding:0;text-align:left;cursor:pointer;display:block}
+.f-side button span{display:block;font:700 11.5px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px}
+.f-side button strong{font:700 17px/1.25 var(--display)}
+.f-side button:hover strong{text-decoration:underline}
+.dayrail{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding:14px 0;border-top:1px solid #000;border-bottom:1px solid #000}
+.dayrail>b{font:700 13px var(--ui);letter-spacing:.14em;text-transform:uppercase}
+.dayrail #circles{display:flex;flex-wrap:wrap;gap:8px;padding:0;justify-content:flex-start}
+.dayrail .circ{flex-direction:row;align-items:baseline;gap:8px;min-width:0;padding:7px 14px;box-shadow:none;border-width:1px;border-radius:999px}
+.dayrail .circ:hover{background:#000;color:#fff;transform:none;box-shadow:none}
+.dayrail .circ:hover span.d{color:#ddd}
+.dayrail .circ b{font:700 15px var(--ui)}
+.dayrail .circ span.d{font-size:13px}
+/* flat newspaper cards */
+#view-current .card{gap:8px}
+#view-current .card .ph{border:0;box-shadow:none}
+#view-current .card .meta .dot{display:none}
+#view-current .grid4{gap:30px 26px}
+#view-current .grid4 .card{border:0;box-shadow:none;padding:0;background:none;transition:none}
+#view-current .grid4 .card:hover{transform:none;box-shadow:none}
+#view-current .grid4 .card>:not(.ph){margin-inline:0}
+#view-current .grid4 .card>.ph{border:0;aspect-ratio:3/2}
+.grid4 .card h3{font-size:19px}
+.secgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 56px;padding-top:20px}
+@media (max-width:900px){.secgrid{grid-template-columns:minmax(0,1fr)}}
+.sec{min-width:0;padding-top:14px}
+.sec .lead h3{font-size:27px;line-height:1.14}
+.sec .lead .ex{-webkit-line-clamp:3}
+.sec .lead .ph{aspect-ratio:16/9}
+.sec .mini{margin-top:16px;border-top:1px solid #000}
+.sec .mini .card{grid-template-columns:104px minmax(0,1fr)}
+.sec .mini .card .ex{display:none}
+.sec .lw{margin-top:14px;font-size:14px;color:var(--ink-2)}
+.sec .lw b{font:700 11.5px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:5px}
+.sec .lw button{display:block;background:none;border:0;padding:3px 0;text-align:left;cursor:pointer;color:var(--blue);font-size:14.5px;text-decoration:underline;text-decoration-color:#bbb}
+.pickrow{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);background:var(--navy);color:#fff;box-shadow:9px 9px 0 #000;border:2px solid #000}
+@media (max-width:820px){.pickrow{grid-template-columns:minmax(0,1fr)}}
+.pickrow .ph{border:0;box-shadow:none;height:100%;min-height:300px}
+.pickrow .tx{padding:clamp(22px,3vw,40px);display:flex;flex-direction:column;gap:12px;justify-content:center}
+.pickrow .cat{font:700 12px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:#e4d68a}
+.pickrow h3{color:#fff;font-size:clamp(26px,3vw,38px)}
+.pickrow p{color:#dfe5f5;font-size:17px}
+.pickrow .btn{align-self:flex-start;margin-top:6px}
+#rank-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 56px}
+@media (max-width:820px){#rank-list{grid-template-columns:minmax(0,1fr)}}
+#rank-list .rank{background:none;color:#000;box-shadow:none;margin:0;padding:13px 0;border-bottom:1px dotted #000;grid-template-columns:38px minmax(0,1fr) auto}
+#rank-list .rank:hover{background:none;transform:none}
+#rank-list .rank:hover .t{text-decoration:underline}
+#rank-list .rank .n{font-weight:700;color:var(--red);font-size:26px}
+#rank-list .rank .c,#rank-list .rank .m{color:var(--ink-3)}
+#rank-list .rank .t{font:700 17px/1.3 var(--display)}
+
 /* day by day: numbered timeline */
 .daynav{display:flex;gap:8px 18px;flex-wrap:wrap;margin-bottom:46px}
 .daynav a{display:inline-flex;align-items:baseline;gap:7px;text-decoration:none;border-bottom:1px dotted #000;font-size:17px;font-weight:400}
@@ -260,36 +346,32 @@ section.s{padding-block:clamp(44px,6vw,80px)}
 <main>
   <!-- CURRENT -->
   <div id="view-current">
-    <section class="wrap hero" id="featured" aria-label="Featured story"></section>
+    <div class="wrap">
+      <div class="datebar"><b id="db-date"></b><span id="db-ed"></span><span>Free · Sourced · Updated every Sunday</span></div>
+      <div class="ticker"><b>This week</b><div id="ticker"></div></div>
 
-    <section class="wrap s" id="latest" aria-labelledby="latest-h" style="padding-top:20px">
-      <div class="center-head"><h2 id="latest-h">Latest News</h2><p>The newest stories from this week's edition.</p></div>
-      <div class="grid4" id="latest-grid"></div>
-    </section>
+      <section class="front" id="featured" aria-label="Top stories">
+        <article class="f-lead" id="f-lead"></article>
+        <div class="f-mid" id="f-mid"></div>
+        <aside class="f-side" aria-label="In brief"><h2 class="rule"><span>In brief</span><em>6 more</em></h2><ol id="f-brief"></ol></aside>
+      </section>
 
-    <section class="wrap s" aria-labelledby="bday-h" style="padding-top:10px">
-      <div class="center-head"><h2 id="bday-h">Browse by day</h2><p>One page for every day of the week. Pick a day to read it.</p></div>
-      <div class="circles" id="circles"></div>
-    </section>
+      <nav class="dayrail" aria-label="Browse by day"><b>Browse by day</b><div id="circles"></div></nav>
 
-    <div class="band band-gold" id="must-band">
-      <div class="wrap">
-        <div class="sechead" id="must"><h2>Must Read</h2></div>
-        <div class="must" id="must-grid"></div>
-        <div id="pick-box">
-          <div class="sechead"><h2>Editor's Pick</h2></div>
-          <div id="pick"></div>
-        </div>
-      </div>
-    </div>
+      <section class="blk" id="latest" aria-labelledby="latest-h">
+        <h2 class="rule" id="latest-h"><span>Latest news</span><em>newest first</em></h2>
+        <div class="grid4" id="latest-grid"></div>
+      </section>
 
-    <div class="wrap" id="sections"></div>
+      <div class="secgrid" id="sections"></div>
 
-    <div class="band band-navy flip" id="top-stories">
-      <div class="wrap toplist">
-        <div id="rank-list" role="list" aria-label="More stories from the week"></div>
-        <div class="toptext"><h2 id="rank-h">More from the week</h2><p id="rank-p">Everything else that made the week.</p></div>
-      </div>
+      <section class="blk" id="pick-box" aria-labelledby="pick-h"><h2 class="rule" id="pick-h"><span>Editor's pick</span><em>the one to read if you read one</em></h2><div id="pick"></div></section>
+      <span id="must"></span><div id="must-band" hidden></div><div id="must-grid" hidden></div>
+
+      <section class="blk" id="top-stories" aria-labelledby="rank-h">
+        <h2 class="rule" id="rank-h"><span>More from the week</span><em id="rank-p"></em></h2>
+        <div id="rank-list" role="list"></div>
+      </section>
     </div>
   </div>
 
@@ -454,52 +536,79 @@ section.s{padding-block:clamp(44px,6vw,80px)}
     return box;
   }
 
-  /* ---------- CURRENT ---------- */
+  /* ---------- CURRENT: a newspaper front page. Every story appears once; each block takes only stories nothing above used. ---------- */
   var leads = CUR.days.map(function(d){ return d.lead; });
-  var mores = []; CUR.days.forEach(function(d){ (d.more || []).forEach(function(m){ mores.push(m); }); });
   var featIdx = typeof CUR.featured === 'number' ? CUR.featured : leads.length - 1, F = leads[featIdx];
-  function jump(h, t){ return el('a', { href: h }, [ t, ico('i-ext') ]); }
-  var fText = el('div', { cls:'hero-txt' }, [
-    el('p', { cls:'kick', text: 'Edition ' + CUR.number + ' · ' + F.category + ' · ' + mins(F) }),
-    el('h1', { text: F.headline }),
-    el('hr', { cls:'dots' }),
-    el('p', { cls:'ex', text: dek(F) }),
-    el('div', { cls:'linkrow' }, [ jump('#latest', 'Latest news'), jump('#days', 'Day by day'), jump('#must', 'Must read'), jump('#sections', 'Sections'), jump('#previous', 'Previous weeks') ]),
-    openBtn(el('button', { cls:'btn btn-red btn-lg', type:'button' }, [ ico('i-doc'), 'Read the story' ]), F)
-  ]);
-  var fPhoto = openBtn(el('button', { cls:'hero-photo', type:'button', 'aria-label':'Read: ' + F.headline }, [ photo(F, 1000, 720, null, { eager: true }) ]), F);
-  document.getElementById('featured').appendChild(el('div', { cls:'hero-grid' }, [ fText, fPhoto ]));
-  /* every story is shown once on this page: each block below takes only stories that nothing above has used */
   var used = {}; used[F.id] = 1;
-  var lg = document.getElementById('latest-grid');
-  leads.filter(function(s, i){ return i !== featIdx; }).slice(-4).reverse().forEach(function(s){ used[s.id] = 1; lg.appendChild(card(s)); });
+  function unused(){ return stories(CUR).filter(function(s){ return !used[s.id]; }); }
+  function take(list, n){ var out = list.slice(0, n); out.forEach(function(s){ used[s.id] = 1; }); return out; }
+  function byLen(a, b){ return blen(b) - blen(a); }
+  function byNew(a, b){ return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; }
+  function source(s){ return (srcs(s)[0] || {}).name || 'Weekfold'; }
+  function open(node, s){ return openBtn(node, s); }
+
+  document.getElementById('db-date').textContent = fmt(CUR.days[CUR.days.length - 1].date, { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  document.getElementById('db-ed').textContent = 'Edition ' + CUR.number + ' · ' + (CUR.rangeLong || CUR.range);
+
+  /* lead story */
+  var lead = document.getElementById('f-lead');
+  lead.appendChild(openBtn(el('button', { cls:'hero-photo', type:'button', 'aria-label':'Read: ' + F.headline }, [ photo(F, 1100, 690, null, { eager:true }) ]), F));
+  lead.appendChild(el('p', { cls:'kick', text: F.category + ' · ' + mins(F) }));
+  lead.appendChild(openBtn(el('h1', { text: F.headline, tabindex:'0', role:'link' }), F));
+  lead.appendChild(el('p', { cls:'ex', text: dek(F) }));
+  lead.appendChild(el('p', { cls:'byline', text: source(F) + ' · ' + fmt(F.date, { weekday:'long', day:'numeric', month:'long' }) }));
+  lead.appendChild(openBtn(el('button', { cls:'btn btn-red', type:'button' }, [ 'Read the story' ]), F));
+
+  /* three more top stories (the strongest day leads), then a numbered "in brief" list */
+  var mid = document.getElementById('f-mid');
+  take(leads.filter(function(s){ return !used[s.id]; }).sort(byLen), 2).forEach(function(s){ mid.appendChild(card(s, 520, 320)); });
+  var brief = document.getElementById('f-brief');
+  take(unused().sort(byLen).slice(0, 6).sort(byNew), 6).forEach(function(s, i){
+    brief.appendChild(el('li', null, [ el('b', { text: String(i + 1) }), openBtn(el('button', { type:'button' }, [ el('span', { text: s.category + ' · ' + fmt(s.date, { weekday:'short' }) }), el('strong', { text: s.headline }) ]), s) ]));
+  });
+
+  /* ticker: this week's headlines in date order */
+  var tk = document.getElementById('ticker');
+  leads.slice().reverse().forEach(function(s){ tk.appendChild(openBtn(el('button', { type:'button', text: s.headline }), s)); });
+
+  /* browse by day */
   var circ = document.getElementById('circles');
-  CUR.days.forEach(function(d, i){ circ.appendChild(el('a', { cls:'circ', href:'#day-' + i }, [ el('b', { text: fmt(d.date, { weekday:'long' }) }), el('span', { cls:'d', text: fmt(d.date, { day:'numeric', month:'short' }) + ' · ' + (1 + (d.more || []).length) + ' stories' }) ])); });
-  function unused(){ return stories(CUR).filter(function(s){ return !used[s.id]; }).sort(function(a, b){ return blen(b) - blen(a); }); }
-  var pool = unused();
-  var mg = document.getElementById('must-grid');
-  if (pool.length >= 4){ pool.slice(0, 5).forEach(function(s){ used[s.id] = 1; }); mg.appendChild(bigCard(pool[0])); mg.appendChild(el('div', { cls:'stack' }, [ card(pool[1], 300, 300), card(pool[2], 300, 300), card(pool[3], 300, 300) ])); }
-  else document.getElementById('must-band').hidden = true;
-  if (pool.length >= 5) document.getElementById('pick').appendChild(bigCard(pool[4], 'pick')); else document.getElementById('pick-box').hidden = true;
+  CUR.days.forEach(function(d, i){ circ.appendChild(el('a', { cls:'circ', href:'#day-' + i }, [ el('b', { text: fmt(d.date, { weekday:'short' }) }), el('span', { cls:'d', text: fmt(d.date, { day:'numeric', month:'short' }) + ' · ' + (1 + (d.more || []).length) }) ])); });
+
+  /* latest: the newest day leads not already shown */
+  var lg = document.getElementById('latest-grid');
+  take(leads.filter(function(s){ return !used[s.id]; }).sort(byNew), 4).forEach(function(s){ lg.appendChild(card(s, 520, 340)); });
+  if (!lg.children.length) document.getElementById('latest').hidden = true;
+
   document.getElementById('days-range').textContent = CUR.rangeLong || CUR.range;
   document.getElementById('dayrows').appendChild(dayBlock(CUR, 'day-'));
+
+  /* editor's pick: the longest unused story */
+  var pk = take(unused().sort(byLen), 1)[0];
+  if (pk){
+    document.getElementById('pick').appendChild(el('div', { cls:'pickrow' }, [ openBtn(el('button', { type:'button', style:'padding:0;border:0;background:none;cursor:pointer;display:block;min-width:0', 'aria-label':'Read: ' + pk.headline }, [ photo(pk, 1000, 700) ]), pk), el('div', { cls:'tx' }, [ el('span', { cls:'cat', text: pk.category + ' · ' + mins(pk) }), el('h3', { text: pk.headline }), el('p', { text: dek(pk) }), openBtn(el('button', { cls:'btn', type:'button', text:'Read the story' }), pk) ]) ]));
+  } else document.getElementById('pick-box').hidden = true;
+
+  /* category sections: a lead plus short items; two sections side by side */
   var all = stories(CUR), total = {}, groups = {};
   all.forEach(function(s){ total[s.category] = (total[s.category] || 0) + 1; });
   unused().forEach(function(s){ (groups[s.category] = groups[s.category] || []).push(s); });
-  var secBox = document.getElementById('sections');
+  var secBox = document.getElementById('sections'), P0 = PREV[0] && !PREV[0].partial ? PREV[0] : null;
   Object.keys(groups).sort(function(a, b){ return groups[b].length - groups[a].length; }).forEach(function(c){
     if (groups[c].length < 2) return;
-    var g = el('div', { cls:'grid4' }); groups[c].slice(0, 4).forEach(function(s){ used[s.id] = 1; g.appendChild(card(s)); });
-    var kids = [ el('div', { cls:'center-head' }, [ el('h2', { text: c + ' News' }), el('p', { text: total[c] + ' ' + (total[c] === 1 ? 'story' : 'stories') + ' in ' + c + ' this week' }) ]), g ];
-    var P0 = PREV[0] && !PREV[0].partial ? PREV[0] : null;
-    var lw = P0 ? stories(P0).filter(function(s){ return s.category === c; }).slice(0, 4) : [];
-    if (lw.length){ var lm = el('div', { cls:'mini lw' }); lw.forEach(function(s){ lm.appendChild(card(s, 240, 170)); }); kids.push(el('div', { cls:'lastwk' }, [ el('h3', { text: 'Last week in ' + c + ' · ' + (P0.rangeLong || P0.range) }), lm ])); }
-    secBox.appendChild(el('section', { cls:'catsec', 'aria-label': c + ' news' }, kids));
+    var g = groups[c].sort(byLen).slice(0, 4); g.forEach(function(s){ used[s.id] = 1; });
+    var lc = card(g[0], 760, 430); lc.classList.add('lead');
+    var mini = el('div', { cls:'mini' }); g.slice(1).forEach(function(s){ mini.appendChild(card(s, 240, 170)); });
+    var kids = [ el('h2', { cls:'rule' }, [ el('span', { text: c }), el('em', { text: total[c] + ' ' + (total[c] === 1 ? 'story' : 'stories') + ' this week' }) ]), lc, mini ];
+    var lw = P0 ? stories(P0).filter(function(s){ return s.category === c; }).slice(0, 3) : [];
+    if (lw.length){ var lwb = el('div', { cls:'lw' }, [ el('b', { text:'Last week in ' + c }) ]); lw.forEach(function(s){ lwb.appendChild(openBtn(el('button', { type:'button', text: s.headline }), s)); }); kids.push(lwb); }
+    secBox.appendChild(el('section', { cls:'sec', 'aria-label': c + ' news' }, kids));
   });
-  var rl = document.getElementById('rank-list');
-  var left = unused().slice(0, 7);
-  if (left.length >= 1){
-    document.getElementById('rank-p').textContent = (left.length === 1 ? 'One more story' : left.length + ' more stories') + ' from this week that did not fit in the sections above. Pick one to read it in full.';
+
+  /* whatever is left */
+  var rl = document.getElementById('rank-list'), left = unused().sort(byNew);
+  if (left.length){
+    document.getElementById('rank-p').textContent = left.length + (left.length === 1 ? ' more story' : ' more stories') + ' from this week';
     left.forEach(function(s, i){ rl.appendChild(openBtn(el('button', { cls:'rank', type:'button', role:'listitem' }, [ el('span', { cls:'n', text: String(i + 1) }), el('span', { cls:'t' }, [ el('span', { cls:'c', text: s.category + ' · ' + fmt(s.date, { weekday:'short' }) }), s.headline ]), el('span', { cls:'m', text: mins(s).replace(' read', '') }) ]), s)); });
   } else document.getElementById('top-stories').hidden = true;
 
