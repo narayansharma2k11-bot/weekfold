@@ -165,19 +165,33 @@ def main():
     public_cfg = {'newsletter': CFG.get('newsletter') or {}, 'google_client_id': CFG.get('google_client_id') or '',
                   'contact_email': CFG.get('contact_email') or ''}
     cfg_blob = json.dumps(public_cfg, ensure_ascii=False).replace('</', '<\\/')
+    # Story photos: scripts/fetch_photos.py (run by GitHub) saves them in data/photos/; the site serves its own copies from docs/img/.
+    pdir = ROOT / 'data' / 'photos'
+    man = json.loads((pdir / 'manifest.json').read_text(encoding='utf-8')) if (pdir / 'manifest.json').exists() else {}
+    man = {t: m for t, m in man.items() if (pdir / m['file']).exists()}
+    if man:
+        (OUT / 'img').mkdir()
+        for m in man.values():
+            shutil.copy(pdir / m['file'], OUT / 'img' / m['file'])
+    photos_blob = json.dumps({t: {'src': 'img/' + m['file'], 'credit': m.get('credit', ''), 'license': m.get('license', ''), 'page': m.get('page', '')} for t, m in man.items()},
+                             ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    theme = (SRC / 'theme.css').read_text(encoding='utf-8')
+    top = eds[0]['days'][eds[0].get('featured', 0)]['lead']
+    top_photo = man.get(((top.get('image') or {}).get('wiki') or '').replace(' ', '_'))
     art = (SRC / 'art.js').read_text(encoding='utf-8')
     site_js = (SRC / 'site.js').read_text(encoding='utf-8')
     canon = {'index.html': SITE + '/', 'home.html': SITE + '/home.html'}
     for name, target in (('landing.html', 'index.html'), ('home.html', 'home.html')):
         t = (SRC / name).read_text(encoding='utf-8')
-        t = t.replace('/*EDITIONS*/', blob).replace('/*CONFIG*/', cfg_blob).replace('/*ART*/', art).replace('/*SITE*/', site_js)
+        t = t.replace('/*THEME*/', theme).replace('/*PHOTOS*/', photos_blob).replace('/*EDITIONS*/', blob).replace('/*CONFIG*/', cfg_blob).replace('/*ART*/', art).replace('/*SITE*/', site_js)
+        og_image = (f'<meta property="og:image" content="{SITE}/img/{top_photo["file"]}">\n<meta name="twitter:image" content="{SITE}/img/{top_photo["file"]}">\n') if (SITE and top_photo) else ''
         if SITE:
-            t = t.replace('<meta property="og:type"', f'<link rel="canonical" href="{canon[target]}">\n<meta property="og:url" content="{canon[target]}">\n<link rel="alternate" type="application/rss+xml" title="Weekfold" href="{SITE}/feed.xml">\n<meta property="og:type"', 1)
+            t = t.replace('<meta property="og:type"', f'<link rel="canonical" href="{canon[target]}">\n<meta property="og:url" content="{canon[target]}">\n{og_image}<link rel="alternate" type="application/rss+xml" title="Weekfold" href="{SITE}/feed.xml">\n<meta property="og:type"', 1)
         (OUT / target).write_text(t, encoding='utf-8')
 
     provider = PROVIDERS.get((CFG.get('newsletter') or {}).get('provider'), 'our email provider')
     priv = (SRC / 'privacy.html').read_text(encoding='utf-8')
-    priv = priv.replace('/*TODAY*/', datetime.date.today().strftime('%-d %B %Y')).replace('/*PROVIDER*/', provider).replace('/*CONTACT*/', CFG.get('contact_email', ''))
+    priv = priv.replace('/*THEME*/', theme).replace('/*TODAY*/', datetime.date.today().strftime('%-d %B %Y')).replace('/*PROVIDER*/', provider).replace('/*CONTACT*/', CFG.get('contact_email', ''))
     (OUT / 'privacy.html').write_text(priv, encoding='utf-8')
     shutil.copy(SRC / 'favicon.svg', OUT / 'favicon.svg')
     for gf in SRC.glob('google*.html'):  # Search Console verification file(s) must survive every rebuild
@@ -204,6 +218,7 @@ def main():
         (OUT / 'robots.txt').write_text('User-agent: *\nAllow: /\n')
         print('Note: config.json has no site_url yet, so feed.xml and sitemap.xml were skipped and email links are relative.')
 
+    print(f'Photos: {len(man)} local copies served from docs/img/')
     for name in ('index.html', 'home.html'):
         print(f'{name}: {(OUT / name).stat().st_size // 1024} KB')
     for e in eds:

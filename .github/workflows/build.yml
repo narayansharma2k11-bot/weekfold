@@ -1,0 +1,42 @@
+name: Build Weekfold
+
+# Runs whenever the edition data or the site code changes (the Sunday update only has to add data/editions/<n>.json).
+# It downloads each story's free-licensed photo, rebuilds docs/, and commits the result. GitHub Pages then publishes docs/.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/editions/**'
+      - 'src/**'
+      - 'config.json'
+      - 'build.py'
+      - 'scripts/fetch_photos.py'
+      - '.github/workflows/build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-weekfold
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pillow
+      - name: Download story photos
+        run: python scripts/fetch_photos.py
+      - name: Build the site
+        run: python build.py
+      - name: Save photos and the built site
+        run: |
+          git config user.name "weekfold-bot"
+          git config user.email "weekfold-bot@users.noreply.github.com"
+          git add -A data/photos docs
+          if git diff --cached --quiet; then echo "Nothing changed."; else git commit -m "Build site and photos [skip ci]" && git pull --rebase origin main && git push; fi

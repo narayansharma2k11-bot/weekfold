@@ -4,415 +4,314 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Weekfold is a free weekly world news edition: the stories that mattered, one page for every day, sourced and published every Sunday.">
-<meta name="theme-color" content="#FFFFFF">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20rx%3D%229%22%20fill%3D%22%23fff%22/%3E%3Cg%20fill%3D%22none%22%20stroke-width%3D%225.5%22%20transform%3D%22translate%280%206%29%22%3E%3Cpath%20d%3D%22M3%204%20L11%2024%22%20stroke%3D%22%2315192B%22/%3E%3Cpath%20d%3D%22M11%2024%20L20%206%22%20stroke%3D%22%238B93A7%22/%3E%3Cpath%20d%3D%22M20%206%20L29%2024%22%20stroke%3D%22%2315192B%22/%3E%3Cpath%20d%3D%22M29%2024%20L37%204%22%20stroke%3D%22%23D92D20%22/%3E%3C/g%3E%3C/svg%3E">
+<meta name="theme-color" content="#F7F7F7">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Weekfold">
 <meta property="og:title" content="Weekfold — The world's week, folded into one free edition">
 <meta property="og:description" content="Weekfold is a free weekly world news edition: the stories that mattered, one page for every day, sourced and published every Sunday.">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <title>Weekfold — The world's week, folded into one free edition</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Roboto:wght@300;400;500;700&display=swap">
 <style>
-[hidden]{display:none!important}
-/* Layout: white page, centred 3D book as the hero; everything below is a quiet single column with generous whitespace. */
-:root{
-  --bg:#FFFFFF; --soft:#F5F6F8; --ink:#15192B; --ink-2:#5A6072; --rule:#E4E6EB;
-  --red:#D92D20; --red-ink:#B42318; --navy:#1A2747; --paper:#FFFDF8; --paper-edge:#EDE7DA;
-  --display:'Newsreader','Iowan Old Style',Georgia,serif;
-  --ui:'Instrument Sans','Segoe UI',system-ui,sans-serif;
-  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
-  --pw:360px; --ph:500px;
-  color-scheme:light;
-}
-*{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.55;padding-inline:20px}
-a{color:inherit}
-h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;text-wrap:balance;letter-spacing:-0.01em}
-p{margin:0}
-.wrap{max-width:1180px;margin-inline:auto}
-.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--red-ink)}
-button{font:inherit;color:inherit}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;font-weight:600;font-size:15px;border:1.5px solid var(--ink);background:transparent;text-decoration:none;cursor:pointer;transition:background .15s,transform .15s}
-.btn:hover{transform:translateY(-1px)}
-.btn-red{background:var(--red);border-color:var(--red);color:#fff}
-.btn-red:hover{background:var(--red-ink)}
-.btn-ink{background:var(--ink);color:#fff}
-a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--red);outline-offset:3px}
-@media (prefers-reduced-motion: reduce){*,*::before,*::after{transition-duration:.01ms!important;animation:none!important}}
-
-/* header */
-.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:20px}
-.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:700;font-size:28px;letter-spacing:-0.02em;color:var(--ink)}
-.logo svg{width:38px;height:27px;flex:none}
-.top nav{display:flex;align-items:center;gap:22px}
-.top nav a.plain{text-decoration:none;font-weight:500;color:var(--ink-2);font-size:15px}
-.top nav a.plain:hover{color:var(--ink)}
-.acts{display:flex;gap:10px}
-.btn{white-space:nowrap}
-@media (max-width:900px){.top nav{display:none}}
-@media (max-width:440px){.acts .btn{padding:0 14px;font-size:14px}.logo{font-size:24px}}
+/*THEME*/
+/* ---------- landing page ---------- */
+section.s{padding-block:clamp(50px,7vw,96px)}
 
 /* hero */
-.hero{text-align:center;padding-block:28px 8px;display:flex;flex-direction:column;align-items:center;gap:14px}
-.hero h1{font-size:clamp(38px,5.6vw,68px);line-height:1.04;max-width:16ch}
-.hero h1 em{color:var(--red);font-style:italic}
-.hero .lede{color:var(--ink-2);font-size:18px;max-width:52ch}
-.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;font-size:14px;font-weight:600;color:var(--ink-2)}
-.trust span{display:inline-flex;align-items:center;gap:6px}
-.trust svg{color:var(--red)}
+.hero{padding-block:clamp(44px,7vw,96px) clamp(40px,6vw,80px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:center}
+@media (max-width:900px){.hero-grid{grid-template-columns:minmax(0,1fr)}}
+.hero .kick{font:700 clamp(20px,2.4vw,30px)/1.25 var(--display)}
+.hero h1{font-weight:400;font-size:clamp(40px,6.2vw,88px);line-height:1.1;margin-top:10px}
+.hero .lede{font-size:clamp(17px,1.6vw,20px);color:var(--ink-2);max-width:48ch}
+.hero .linkrow{margin-top:16px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:20px;margin-top:34px}
+.herocard{display:block;text-decoration:none;color:inherit;background:#fff;border:3px solid #000;box-shadow:12px 12px 0 #000;transition:transform .12s,box-shadow .12s}
+.herocard:hover{transform:translate(-3px,-3px);box-shadow:15px 15px 0 #000}
+.herocard .ph{border:0;border-bottom:3px solid #000;box-shadow:none}
+.herocard .cap{padding:16px 20px 20px}
+.herocard .cap b{display:block;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+.herocard .cap h2{font-size:clamp(22px,2.2vw,28px);line-height:1.2;margin-top:6px}
 
-/* stage */
-.stage-wrap{position:relative;padding-block:12px 8px;z-index:0}
-.stage{position:relative;overflow-x:clip;height:calc(var(--ph) * var(--s,1) + 140px);display:flex;justify-content:center;align-items:center;perspective:2400px;z-index:0}
-.scaler{transform:scale(var(--s,1));transform-origin:50% 50%;transform-style:preserve-3d;pointer-events:none}
-.scaler .book{pointer-events:auto}
-.scaler .shadow{pointer-events:none}
-.book{position:relative;width:calc(var(--pw)*2);height:var(--ph);transform-style:preserve-3d;
-  transform:translateX(calc(var(--pw) * -0.5)) rotateX(54deg) rotateZ(-22deg) translateZ(30px);
-  transition:transform 1.1s cubic-bezier(.2,.75,.25,1)}
-.book.open{transform:translateX(0) rotateX(0deg) rotateZ(0deg) translateZ(0)}
-.book:not(.open){animation:bob 5s ease-in-out infinite}
-@keyframes bob{50%{transform:translateX(calc(var(--pw) * -0.5)) rotateX(54deg) rotateZ(-22deg) translateZ(46px)}}
-.shadow{position:absolute;left:50%;top:50%;width:calc(var(--pw)*1.1);height:calc(var(--ph)*0.7);transform:translate(-40%,-30%) rotateX(70deg);background:radial-gradient(closest-side,rgba(21,25,43,.28),transparent);filter:blur(10px);transition:opacity .8s;pointer-events:none}
-.book.open ~ .shadow{opacity:0}
-/* page block thickness (seen while closed) */
-.thick{position:absolute;left:var(--pw);top:0;width:var(--pw);height:var(--ph);background:var(--paper-edge);border-radius:2px 8px 8px 2px;
-  background-image:repeating-linear-gradient(90deg,transparent 0 2px,rgba(0,0,0,.04) 2px 3px)}
-.leaf{position:absolute;left:var(--pw);top:0;width:var(--pw);height:var(--ph);transform-origin:0 50%;transform-style:preserve-3d;transition:transform .95s cubic-bezier(.45,.05,.3,1)}
-.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;background:var(--paper);border:1px solid var(--paper-edge)}
-.face.front{border-radius:2px 8px 8px 2px;box-shadow:inset 18px 0 22px -18px rgba(0,0,0,.28)}
-.face.back{transform:rotateY(180deg);border-radius:8px 2px 2px 8px;box-shadow:inset -18px 0 22px -18px rgba(0,0,0,.28)}
-.base-right{position:absolute;left:var(--pw);top:0;width:var(--pw);height:var(--ph);background:var(--paper);border:1px solid var(--paper-edge);border-radius:2px 8px 8px 2px;box-shadow:0 30px 60px -30px rgba(21,25,43,.4)}
-.base-left{position:absolute;left:0;top:0;width:var(--pw);height:var(--ph);background:var(--paper);border-radius:8px 2px 2px 8px;box-shadow:0 30px 60px -30px rgba(21,25,43,.4);opacity:0;transition:opacity .4s}
-.book.open .base-left{opacity:1}
+/* navy band: this week */
+.glance{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,70px);align-items:center}
+@media (max-width:960px){.glance{grid-template-columns:minmax(0,1fr)}}
+.glance h2{font-size:clamp(38px,5.4vw,72px);font-weight:700}
+.glance p{font-size:clamp(17px,1.7vw,21px);margin-top:20px;color:#e3e9f8}
+.glance .btn{margin-top:30px}
+.count{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:34px}
+.count .lbl{flex-basis:100%;background:var(--maroon);border-left:14px solid #8c1d18;box-shadow:5px 5px 0 #000;padding:16px 20px;text-align:center;font-size:clamp(17px,1.8vw,22px);font-weight:400;color:#fff}
+.count .u{background:#fff;color:#000;border:2px solid #000;box-shadow:5px 5px 0 #000;min-width:74px;padding:6px 8px 4px;text-align:center}
+.count .u b{display:block;font:400 clamp(34px,4.4vw,60px)/1.1 var(--ui)}
+.count .u small{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:500}
+.count .sep{font-size:40px;font-weight:300;color:#fff}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+.stat{background:#fff;color:#000;border:2px solid #000;box-shadow:8px 8px 0 #000;padding:clamp(20px,3vw,34px);text-align:center}
+.stat b{display:block;font:700 clamp(46px,6vw,84px)/1 var(--display);color:var(--blue)}
+.stat span{display:block;margin-top:8px;font-size:16px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
 
-/* cover */
-.cover{background:var(--navy);color:#fff;border:0;display:flex;flex-direction:column;padding:30px 28px;cursor:pointer}
-.cover::before{content:"";position:absolute;left:0;top:0;bottom:0;width:14px;background:var(--red)}
-.cover .clogo{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;font-size:44px;letter-spacing:-0.025em;margin-top:4px}
-.cover .clogo svg{width:56px;height:40px}
-.cover .ced{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#B8C0D6;margin-top:10px}
-.cover .cdate{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
-.cover .cdate b{font-family:var(--display);font-size:30px;font-weight:600;line-height:1.05}
-.cover .chip{background:var(--red);color:#fff;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;padding:6px 10px;border-radius:999px;white-space:nowrap}
-.tap-hint{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);display:flex;align-items:center;gap:8px;transition:opacity .4s}
-.tap-hint i{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.6s infinite}
-@keyframes pulse{50%{transform:scale(1.8);opacity:.3}}
-.stage.is-open .tap-hint{opacity:0}
+/* seven days timeline */
+.tl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(24px,4vw,70px);align-items:start}
+@media (max-width:960px){.tl{grid-template-columns:minmax(0,1fr)}.tl .fig{display:none}}
+.tl .fig{position:sticky;top:30px}
+.tl .fig svg{width:100%;height:auto;display:block}
+.tl h2{font-size:clamp(38px,5.4vw,72px)}
+.tl .intro{font-size:19px;color:var(--ink-2);margin:12px 0 38px}
+.step{position:relative;padding-left:clamp(70px,8vw,96px);padding-bottom:46px}
+.step::before{content:"";position:absolute;left:calc(clamp(52px,6vw,76px)/2 - 1px);top:clamp(56px,6.4vw,82px);bottom:6px;border-left:2px dashed #000}
+.step:last-child{padding-bottom:0}.step:last-child::before{display:none}
+.step .num{position:absolute;left:0;top:0;width:clamp(52px,6vw,76px);height:clamp(52px,6vw,76px);border:3px solid #000;border-radius:50%;display:grid;place-items:center;font:700 clamp(24px,3vw,34px) var(--display);background:#fff}
+.step h3{font-size:clamp(28px,3.4vw,42px);min-height:clamp(52px,6vw,76px);display:flex;align-items:center;font-weight:600}
+.step .card7{background:var(--blue);color:#fff;box-shadow:9px 9px 0 #000;padding:clamp(20px,2.6vw,32px);margin-top:12px}
+.step .card7 .c{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#cfdaf5}
+.step .card7 h4{font-size:clamp(20px,2vw,25px);line-height:1.25;color:#fff;margin-top:6px}
+.step .card7 p{margin-top:10px;font-size:17px;color:#e3e9f8}
+.step .card7 .acts{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px}
+.step .card7 .btn{min-height:44px;font-size:16px;padding:0 20px;background:linear-gradient(90deg,#4a6fae,#2a4f8f);color:#fff;border-color:#9fb6e0;box-shadow:4px 4px 0 #000}
 
-/* pages */
-.pg{display:flex;flex-direction:column;padding:22px 24px 18px;cursor:pointer;text-align:left}
-.pg .date{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--red);padding-bottom:8px;gap:8px}
-.pg .date b{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
-.pg .date span{font-family:var(--mono);font-size:11px;color:var(--ink-2)}
-.ph{position:relative;width:100%;max-width:100%;overflow:hidden;background:#ECEEF2;display:block}
-.ph img,.ph canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.ph .credit{position:absolute;right:6px;bottom:6px;max-width:calc(100% - 12px);background:rgba(21,25,43,.62);color:#fff;font-family:var(--ui);font-size:10px;line-height:1.3;padding:2px 6px;border-radius:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pg .ph{margin-top:14px;border-radius:3px;flex:none}
-.cover .ph{margin-top:22px;border-radius:2px}
-.pg .cat{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--red-ink);margin-top:14px}
-.pg h3{font-size:25px;line-height:1.12;margin-top:4px}
-.pg p.sum{font-family:var(--display);font-size:15px;line-height:1.45;color:var(--ink-2);margin-top:8px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
-.pg .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11px;color:var(--ink-2);padding-top:10px}
-.pg .foot .read{color:var(--red-ink)}
-.pg h4{font-family:var(--display);font-size:24px;font-weight:600;margin:14px 0 4px}
-.more{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
-.more li{display:grid;grid-template-columns:86px minmax(0,1fr);gap:12px;padding:11px 0;border-bottom:1px solid var(--rule);align-items:start}
-.more li:last-child{border-bottom:0}
-.more .ph{margin:0;width:86px;border-radius:3px}
-.more .ph .credit{display:none}
-.more .c{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--red-ink)}
-.more .h{font-family:var(--display);font-weight:600;font-size:16px;line-height:1.22;margin-top:2px}
-.contents .row{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;padding:9px 0;border-bottom:1px dashed var(--paper-edge);text-align:left;background:none;border-left:0;border-right:0;border-top:0;cursor:pointer;width:100%}
-.contents .row:hover .h{color:var(--red-ink)}
-.contents .d{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--red);padding-top:3px}
-.contents .h{font-family:var(--display);font-size:16px;font-weight:600;line-height:1.25}
-.endpage{justify-content:center;align-items:flex-start;gap:14px;padding:34px 30px;cursor:default}
-.endpage h3{font-size:34px;line-height:1.08}
-.endpage p{color:var(--ink-2);font-family:var(--display);font-size:16px}
-.turn{position:absolute;bottom:0;width:58px;height:58px;border:0;background:none;cursor:pointer;z-index:2}
-.turn.next{right:0;background:linear-gradient(135deg,transparent 50%,var(--paper-edge) 50%,#fff 75%);border-bottom-right-radius:8px}
-.turn.prev{left:0;background:linear-gradient(225deg,transparent 50%,var(--paper-edge) 50%,#fff 75%);border-bottom-left-radius:8px}
-.turn:hover{filter:brightness(.95)}
+/* gold band: sections */
+.gold2{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,80px);align-items:start}
+@media (max-width:960px){.gold2{grid-template-columns:minmax(0,1fr)}}
+.gold2 h2{font-size:clamp(40px,5.6vw,76px);font-weight:700}
+.gold2 .sub{font:700 clamp(24px,3vw,38px)/1.2 var(--display);margin-top:16px;color:#fff}
+.gold2 p.t{font-size:clamp(17px,1.6vw,20px);margin-top:30px;color:#fbf8e6;max-width:50ch}
+.gold2 .btn{margin-top:30px}
+.seclist{display:flex;flex-direction:column;gap:20px}
+.seccard{background:var(--gold-d);border:0;box-shadow:7px 7px 0 #000;padding:18px 22px;color:#fff}
+.seccard h3{font-size:21px;display:flex;align-items:center;gap:10px;color:#fff;font-weight:600}
+.seccard h3 svg{width:20px;height:20px;flex:none}
+.seccard p{margin-top:6px;font-size:16px;color:#f3efd6}
 
-/* controls */
-.controls{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:4px;opacity:.35;pointer-events:none;transition:opacity .4s}
-.stage-wrap.is-open .controls{opacity:1;pointer-events:auto}
-.days{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
-.days button{min-height:44px;min-width:58px;padding:4px 10px;border-radius:12px;border:1.5px solid var(--rule);background:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1}
-.days button b{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--ink-2)}
-.days button span{font-family:var(--display);font-size:20px;font-weight:600}
-.days button[aria-pressed="true"]{border-color:var(--red);background:var(--red);color:#fff}
-.days button[aria-pressed="true"] b{color:#FDE3E1}
-.nav-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center}
-.iconbtn{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--ink);background:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
-.iconbtn:disabled{opacity:.3;cursor:default}
-.nav-row .status{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);min-width:150px;text-align:center}
+/* previous editions */
+.journey{display:flex;flex-wrap:wrap;justify-content:center;gap:34px}
+.journey .jcard{flex:0 1 calc((100% - 68px)/3);min-width:260px}
+@media (max-width:540px){.journey .jcard{flex-basis:100%}}
+.jcard{background:#fff;border:2px solid #000;box-shadow:8px 8px 0 #000;padding:26px 22px 22px;text-align:center;text-decoration:none;color:#000;display:flex;flex-direction:column;gap:10px;transition:transform .12s,box-shadow .12s}
+.jcard:hover{transform:translate(-2px,-2px);box-shadow:10px 10px 0 #000}
+.jcard .n{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--red)}
+.jcard h3{font-size:24px;font-weight:600}
+.jcard p{font-size:15.5px;color:var(--ink-2);line-height:1.45}
+.jcard .go{margin-top:auto;padding-top:8px;color:var(--blue);font-family:var(--display);font-size:18px;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.jcard .go svg{width:16px;height:16px}
+.centerbtn{text-align:center;margin-top:46px}
 
-/* reader */
-.reader{position:fixed;inset:0;z-index:50;background:rgba(21,25,43,.45);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
-.rcard{position:relative;background:var(--paper);max-width:760px;width:100%;border-radius:10px;box-shadow:0 40px 80px -30px rgba(0,0,0,.5);padding:30px clamp(20px,4vw,44px) 26px;cursor:pointer;animation:rise .45s cubic-bezier(.2,.8,.2,1);max-height:calc(100vh - 40px);overflow-y:auto}
-@keyframes rise{from{transform:translateY(24px) scale(.96);opacity:0}}
-.rcard .date{display:flex;justify-content:space-between;gap:12px;border-bottom:2px solid var(--red);padding-bottom:10px;margin-right:44px}
-.rcard .date b{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
-.rcard .date span{font-family:var(--mono);font-size:12px;color:var(--ink-2)}
-.rcard .ph{margin-top:18px;border-radius:6px}
-.rcard .dek{font-family:var(--display);font-size:20px;line-height:1.45;margin-top:10px;color:var(--ink-2)}
-.rcard .body p{font-family:var(--display);font-size:18px;line-height:1.6;margin-top:12px}
-.rcard .cat{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--red-ink);margin-top:18px}
-.rcard h2{font-size:clamp(28px,4vw,40px);line-height:1.08;margin-top:6px}
-.rcard .sum{font-family:var(--display);font-size:19px;line-height:1.55;margin-top:12px}
-.rcard .src{font-size:13.5px;color:var(--ink-2);margin-top:10px}
-.rcard .src a{color:var(--ink-2);text-underline-offset:2px}
-.rcard h3.also{font-size:20px;margin-top:24px;padding-top:16px;border-top:1px solid var(--rule)}
-.rcard .alsolist{list-style:none;margin:6px 0 0;padding:0}
-.rcard .alsolist li{padding:12px 0;border-bottom:1px solid var(--rule)}
-.rcard .alsolist .c{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--red-ink)}
-.rcard .alsolist .h{font-family:var(--display);font-weight:600;font-size:19px;line-height:1.25;margin-top:2px}
-.rcard .alsolist p{color:var(--ink-2);font-size:15px;margin-top:4px}
-.rcard .go{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;justify-content:space-between;background:var(--soft);border-radius:8px;padding:14px 16px}
-.rcard .go p{font-weight:600;font-size:15px}
-.closex{position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:50%;border:1px solid var(--rule);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+/* faq */
+.faq{max-width:1000px;margin-inline:auto}
+.faq h3.grp{font-size:clamp(26px,3vw,34px);text-align:center;margin:56px 0 28px}
+.faq h3.grp:first-of-type{margin-top:40px}
+details.q{background:#efefef;margin-bottom:26px}
+details.q summary{cursor:pointer;list-style:none;padding:20px 22px;font-size:18px;font-weight:400;display:flex;gap:14px;align-items:baseline}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::before{content:"+";font-weight:400;font-size:20px;width:16px;flex:none}
+details.q[open] summary::before{content:"−"}
+details.q .a{padding:0 24px 24px 52px;color:var(--ink-2);font-size:17px}
+details.q .a b{color:#000;font-weight:500}
+details.q .a a{color:var(--blue)}
 
-/* last week */
-section.blk{padding-block:72px;border-top:1px solid var(--rule)}
-.blk-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 32px;margin-bottom:28px}
-.blk-head h2{font-size:clamp(30px,3.8vw,44px);line-height:1.08}
-.blk-head p{color:var(--ink-2);max-width:46ch}
-.prev-eds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-@media (max-width:760px){.prev-eds{grid-template-columns:minmax(0,1fr)}}
-.pe{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;border:1px solid var(--rule);border-radius:14px;padding:16px;text-decoration:none;transition:border-color .2s,box-shadow .2s}
-.pe:hover{border-color:var(--ink);box-shadow:0 14px 30px -20px rgba(21,25,43,.35)}
-@media (max-width:420px){.pe{grid-template-columns:minmax(0,1fr)}.pe .ph{aspect-ratio:16/7!important;height:auto!important}}
-.pe .ph{border-radius:8px}
-.pe .ph .credit{display:none}
-.pe .wk{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
-.pe h3{font-size:22px;margin-top:4px}
-.pe ul{margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px}
-.pe li{font-size:14px;color:var(--ink-2);line-height:1.35;padding-left:12px;position:relative}
-.pe li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--red)}
-.pe .go2{margin-top:10px;font-weight:600;font-size:14px;color:var(--red-ink)}
-.all-prev{margin-top:20px}
-
-/* sections */
-.secs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1.5px solid var(--ink)}
-@media (max-width:900px){.secs{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:440px){.secs{grid-template-columns:minmax(0,1fr)}}
-.sec{padding:20px 18px 22px 0;border-bottom:1px solid var(--rule)}
-.sec h3{font-size:22px}
-.sec p{color:var(--ink-2);font-size:15px;margin-top:4px}
-
-/* catch up */
-.catch{background:var(--soft);border-radius:16px;padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;align-items:center}
-@media (max-width:860px){.catch{grid-template-columns:minmax(0,1fr)}}
-.catch h2{font-size:clamp(34px,4.6vw,58px);line-height:1.04}
-.catch h2 em{color:var(--red);font-style:italic}
-.catch .sub{color:var(--ink-2);margin-top:12px;font-size:17px}
-.catch .ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-form.sub-form{display:flex;flex-direction:column;gap:8px}
-form.sub-form label{font-weight:600;font-size:14.5px}
-.row{display:flex;flex-wrap:wrap;gap:10px}
-.row input{flex:1 1 220px;min-width:0;min-height:48px;border:1.5px solid var(--ink);border-radius:999px;background:#fff;color:var(--ink);padding:0 18px;font:inherit}
-.msg{font-size:14.5px;font-weight:600;min-height:1.5em;color:#18794E}
-.msg.err{color:var(--red-ink)}
-
-/* standards, about */
-.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:48px;align-items:start}
-@media (max-width:860px){.two{grid-template-columns:minmax(0,1fr);gap:24px}}
-.two h2{font-size:clamp(30px,3.8vw,44px);line-height:1.08}
-.std{display:grid;grid-template-columns:140px minmax(0,1fr);gap:18px;padding:18px 0;border-top:1px solid var(--rule)}
-.std:last-child{border-bottom:1px solid var(--rule)}
-@media (max-width:520px){.std{grid-template-columns:minmax(0,1fr);gap:4px}}
-.std dt{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--red-ink);padding-top:4px}
-.std dd{margin:0;color:var(--ink-2)}
-.std dd b{color:var(--ink)}
-.about p{font-family:var(--display);font-size:20px;line-height:1.55;max-width:60ch}
-.about p + p{margin-top:14px}
-.contact{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin-top:28px;max-width:560px}
-.ct .v{font-size:18px}
-.made{color:var(--ink)!important;font-weight:600}
-.ct{border:1px solid var(--rule);border-radius:12px;padding:18px}
-.ct .l{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
-.ct .v{font-weight:600;margin-top:6px;word-break:break-all;user-select:all}
-.ct button{margin-top:10px;min-height:36px;padding:0 14px;font-size:13.5px}
-
-footer{border-top:1px solid var(--rule);padding-block:36px 48px;display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:28px;font-size:15px;margin-top:72px;position:relative;z-index:1}
-@media (max-width:760px){footer{grid-template-columns:repeat(2,minmax(0,1fr));padding-block:28px 36px;gap:20px}}
-@media (max-width:520px){footer{grid-template-columns:minmax(0,1fr);padding-block:24px 30px}}
-footer h4{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:0 0 10px;font-weight:500}
-footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-footer a{text-decoration:none}
-footer a:hover{text-decoration:underline}
-footer .fa p{color:var(--ink-2);margin-top:8px;max-width:34ch}
-.legal{grid-column:1/-1;border-top:1px solid var(--rule);padding-top:18px;font-size:13px;color:var(--ink-2);display:flex;flex-direction:column;gap:8px;margin-top:8px}
-.legal span{display:block}
-.legal .made{font-weight:600;color:var(--ink);margin-top:4px}
-@media (min-width:761px){.legal{flex-direction:row;justify-content:space-between;gap:8px 20px}.legal span{display:inline}.legal .made{margin-top:0}}
-
-/* dialogs */
-dialog{border:0;border-radius:16px;padding:0;max-width:420px;width:calc(100% - 32px);box-shadow:0 40px 80px -30px rgba(0,0,0,.45);color:var(--ink);background:#fff}
-dialog::backdrop{background:rgba(21,25,43,.45);backdrop-filter:blur(3px)}
-.dlg{padding:30px 28px 26px;display:flex;flex-direction:column;gap:14px;position:relative}
-.dlg h2{font-size:30px;line-height:1.1;padding-right:44px}
-.dlg .lede{color:var(--ink-2);font-size:15.5px}
-.gbtn{display:flex;align-items:center;justify-content:center;gap:12px;min-height:50px;border:1.5px solid #DADCE0;border-radius:999px;background:#fff;font-weight:600;font-size:15.5px;cursor:pointer;width:100%}
-.gbtn:hover{background:#F8F9FA}
-.or{display:flex;align-items:center;gap:12px;color:var(--ink-2);font-size:13px}
-.or::before,.or::after{content:"";flex:1;height:1px;background:var(--rule)}
-.dlg input{width:100%;min-height:48px;border:1.5px solid var(--ink);border-radius:12px;padding:0 14px;font:inherit}
-.dlg .fine{font-size:13px;color:var(--ink-2)}
-.dlg .closex{top:20px;right:20px}
-.note{background:var(--soft);border-radius:10px;padding:12px 14px;font-size:14px;color:var(--ink)}
+/* about */
+.about2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(28px,5vw,80px);align-items:center}
+@media (max-width:960px){.about2{grid-template-columns:minmax(0,1fr)}}
+.about2 h2{font-size:clamp(40px,5.6vw,76px)}
+.about2 p{font-size:clamp(17px,1.6vw,20px);margin-top:22px;color:#e3e9f8}
+.about2 svg.wave{width:100%;height:auto;display:block}
+.contactbox{margin-top:34px;display:inline-block;background:#fff;color:#000;border:2px solid #000;box-shadow:6px 6px 0 #000;padding:18px 22px;max-width:100%}
+.contactbox .l{font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--ink-3)}
+.contactbox .v{font:400 clamp(18px,2vw,22px) var(--ui);margin-top:6px;word-break:break-all;user-select:all}
+.contactbox .btn{margin-top:12px;min-height:40px;font-size:15px;padding:0 16px}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 2.5h8.5L19.5 7.5V21.5H6zM14 3v5h5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 13h7M9 17h7" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="3"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z" fill="currentColor"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M2.5 5.5c3-1.4 6.5-1.4 9.5 1 3-2.4 6.5-2.4 9.5-1V19c-3-1.4-6.5-1.4-9.5 1-3-2.4-6.5-2.4-9.5-1zM12 6.5V20" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.2 9.3c.2-1.7 1.4-2.5 2.9-2.5 1.6 0 2.8.9 2.8 2.4 0 2.3-2.9 2.1-2.9 4.4M12 16.6v1.2" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v15M5.5 12.5L12 19l6.5-6.5" fill="none" stroke="currentColor" stroke-width="2.4"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M10 5H5v14h14v-5M14 3h7v7M21 3l-9 9" fill="none" stroke="currentColor" stroke-width="2.2"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 5.5h18v13H3zM3.5 6l8.5 7 8.5-7" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+</svg>
 
-<div class="wrap">
-  <header class="top">
+<header class="top">
+  <div class="in">
     <a class="logo" href="#top" aria-label="Weekfold">
-      <svg viewBox="0 0 40 28" aria-hidden="true"><path d="M3 4 L11 24" stroke="#15192B" stroke-width="5.5"/><path d="M11 24 L20 6" stroke="#8B93A7" stroke-width="5.5"/><path d="M20 6 L29 24" stroke="#15192B" stroke-width="5.5"/><path d="M29 24 L37 4" stroke="#D92D20" stroke-width="5.5"/></svg>
+      <svg viewBox="0 0 80 80" aria-hidden="true" fill="none" stroke="#000"><rect x="12" y="10" width="54" height="54" stroke-width="1.6" transform="rotate(-6 39 37)"/><rect x="15" y="14" width="54" height="54" stroke-width="1.6" transform="rotate(4 42 41)"/><path d="M20 28L28 54L40 26L52 54L60 28" stroke-width="3.4" stroke-linejoin="round"/><path d="M20 58h40" stroke-width="1.6" stroke-dasharray="3 3"/></svg>
       Weekfold
     </a>
-    <nav aria-label="Main">
-      <a class="plain" href="#book">This week</a>
-      <a class="plain" href="#lastweek">Previous news</a>
-      <a class="plain" href="#sections">Sections</a>
-      <a class="plain" href="#standards">Standards</a>
-      <a class="plain" href="#about">About</a>
+    <span class="notch" aria-hidden="true"></span>
+    <nav class="nav" aria-label="Main">
+      <a href="#thisweek"><svg aria-hidden="true"><use href="#i-doc"/></svg>This week</a>
+      <a href="#days"><svg aria-hidden="true"><use href="#i-list"/></svg>Seven days</a>
+      <a href="#sections"><svg aria-hidden="true"><use href="#i-star"/></svg>Sections</a>
+      <a href="#lastweek"><svg aria-hidden="true"><use href="#i-book"/></svg>Previous news</a>
+      <a href="#faq"><svg aria-hidden="true"><use href="#i-help"/></svg>FAQ</a>
+      <a href="#about"><svg aria-hidden="true"><use href="#i-down"/></svg>About</a>
     </nav>
-    <div class="acts">
-      <button class="btn" type="button" data-open="signin">Sign in</button>
-      <button class="btn btn-red" type="button" data-open="subscribe">Subscribe</button>
-    </div>
-  </header>
-</div>
+    <button class="btn btn-red" type="button" data-open="subscribe">Subscribe</button>
+  </div>
+</header>
 
 <main id="top">
-  <div class="wrap hero">
-    <p class="eyebrow" id="hero-ed">Edition</p>
-    <h1>Trusted news, <em>folded</em> into one week.</h1>
-    <p class="lede">The world's most important stories, one page for every day. Free, independent and published every Sunday.</p>
-    <div class="trust">
-      <span><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg>Every story sourced</span>
-      <span><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg>Global coverage</span>
-      <span><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2"/></svg>Free to read</span>
+  <section class="wrap hero" aria-label="Weekfold">
+    <div class="hero-grid">
+      <div>
+        <p class="kick">Weekfold · The Weekly Global News Edition</p>
+        <h1>The World's Week, Folded Into One Free Edition</h1>
+        <hr class="dots">
+        <p class="lede">The stories that mattered, one page for every day. Free, sourced and published every Sunday.</p>
+        <div class="linkrow" style="margin-top:14px">
+          <a href="home.html">This week<svg aria-hidden="true"><use href="#i-ext"/></svg></a>
+          <a href="home.html#days">Day by day<svg aria-hidden="true"><use href="#i-ext"/></svg></a>
+          <a href="home.html#previous">Previous news<svg aria-hidden="true"><use href="#i-ext"/></svg></a>
+          <a href="#sections">Sections<svg aria-hidden="true"><use href="#i-ext"/></svg></a>
+          <a href="#about">About<svg aria-hidden="true"><use href="#i-ext"/></svg></a>
+        </div>
+        <div class="ctas">
+          <a class="btn btn-red btn-lg" href="home.html"><svg aria-hidden="true"><use href="#i-doc"/></svg>Read this week</a>
+          <button class="btn btn-lg" type="button" data-open="subscribe"><svg aria-hidden="true"><use href="#i-mail"/></svg>Get it on Sundays</button>
+        </div>
+      </div>
+      <div id="herocard"></div>
+    </div>
+  </section>
+
+  <div class="band band-navy" id="thisweek">
+    <div class="wrap glance">
+      <div>
+        <h2>Join the Current Edition</h2>
+        <p id="glance-p">Read this week's edition.</p>
+        <a class="btn btn-red btn-lg" href="home.html" style="margin-top:30px"><svg aria-hidden="true"><use href="#i-doc"/></svg>Read the full edition</a>
+        <div class="count" id="count" role="timer" aria-live="off">
+          <p class="lbl" id="count-lbl">The next edition arrives:</p>
+          <div class="u"><b id="cd-d">0</b><small>Days</small></div><span class="sep">:</span>
+          <div class="u"><b id="cd-h">00</b><small>Hours</small></div><span class="sep">:</span>
+          <div class="u"><b id="cd-m">00</b><small>Min</small></div><span class="sep">:</span>
+          <div class="u"><b id="cd-s">00</b><small>Sec</small></div>
+        </div>
+      </div>
+      <div class="stats" id="stats" aria-label="This edition in numbers"></div>
+      </div>
+  </div>
+
+  <section class="wrap s" id="days" aria-labelledby="days-h">
+    <div class="tl">
+      <div class="fig" id="fig" aria-hidden="true"></div>
+      <div>
+        <h2 id="days-h">Seven Days</h2>
+        <p class="intro" id="days-intro">One page for every day of the week.</p>
+        <div id="steps"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band band-gold" id="sections">
+    <div class="wrap gold2">
+      <div>
+        <h2>Sections &amp; Coverage</h2>
+        <p class="sub">Eight sections, every week</p>
+        <p class="t">The same sections each week, so you always know where to look. Every story names its sources, and every photo is credited to the person who took it.</p>
+        <a class="btn btn-red btn-lg" href="home.html#sections"><svg aria-hidden="true"><use href="#i-star"/></svg>Read this week's sections</a>
+      </div>
+      <div class="seclist">
+        <div class="seccard"><h3><svg aria-hidden="true"><use href="#i-star"/></svg>World</h3><p>Diplomacy, disasters and the people in charge.</p></div>
+        <div class="seccard"><h3><svg aria-hidden="true"><use href="#i-star"/></svg>Politics</h3><p>Elections, governments and the decisions behind them.</p></div>
+        <div class="seccard"><h3><svg aria-hidden="true"><use href="#i-star"/></svg>Conflict</h3><p>Wars, ceasefires and what they mean for civilians.</p></div>
+        <div class="seccard"><h3><svg aria-hidden="true"><use href="#i-star"/></svg>Business</h3><p>Markets, trade, energy and the economy.</p></div>
+        <div class="seccard"><h3><svg aria-hidden="true"><use href="#i-star"/></svg>Tech &amp; Science</h3><p>AI, discoveries and breakthroughs, explained plainly.</p></div>
+        <div class="seccard"><h3><svg aria-hidden="true"><use href="#i-star"/></svg>Climate</h3><p>Weather, disasters and the energy transition.</p></div>
+        <div class="seccard"><h3><svg aria-hidden="true"><use href="#i-star"/></svg>Sport</h3><p>The results and moments people talked about.</p></div>
+        <div class="seccard"><h3><svg aria-hidden="true"><use href="#i-star"/></svg>Culture</h3><p>Books, film, music and big ideas.</p></div>
+      </div>
     </div>
   </div>
 
-  <div class="stage-wrap" id="book">
-    <div class="stage" id="stage">
-      <div class="scaler" id="scaler">
-        <div class="book" id="bk">
-          <div class="thick" style="transform:translateZ(-14px)"></div>
-          <div class="thick" style="transform:translateZ(-10px)"></div>
-          <div class="thick" style="transform:translateZ(-6px)"></div>
-          <div class="thick" style="transform:translateZ(-3px)"></div>
-          <div class="base-left"></div>
-          <div class="base-right face pg endpage" id="endpage"></div>
-          <div id="leaves" style="display:contents"></div>
-        </div>
-        <div class="shadow" aria-hidden="true"></div>
-      </div>
-      <p class="tap-hint" aria-hidden="true"><i></i>Tap the book to open this week</p>
+  <section class="wrap s" id="lastweek" aria-labelledby="lw-h">
+    <div class="center-head" style="text-align:center;margin-bottom:46px">
+      <h2 id="lw-h" class="h-center" style="margin-bottom:.2em">Journey Through the Weeks</h2>
+      <p style="font-size:19px;color:var(--ink-2)">Missed a Sunday? Every past edition stays on Weekfold. <a href="home.html#previous" style="color:var(--blue);border-bottom:1px solid">Browse all previous news</a></p>
     </div>
-    <div class="controls" id="controls">
-      <div class="days" id="days" role="group" aria-label="Pick a day"></div>
-      <div class="nav-row">
-        <button class="iconbtn" id="prev" type="button" aria-label="Previous page"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M11 3L5 9l6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
-        <span class="status" id="status" aria-live="polite"></span>
-        <button class="iconbtn" id="next" type="button" aria-label="Next page"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M7 3l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
-        <button class="btn" id="closebook" type="button">Close book</button>
-        <a class="btn btn-ink" href="home.html">Read the full edition</a>
+    <div class="journey" id="journey"></div>
+    <div class="centerbtn"><a class="btn btn-red btn-lg" href="home.html#previous"><svg aria-hidden="true"><use href="#i-book"/></svg>All previous news</a></div>
+  </section>
+
+  <div class="band band-navy flip" id="top-stories">
+    <div class="wrap toplist">
+      <div id="rank-list" role="list" aria-label="Top stories of the week"></div>
+      <div class="toptext"><h2>Also This Week</h2><p>The longer reads from behind the day-by-day headlines, chosen for the depth of reporting behind them. Pick one to read it in full.</p></div>
+    </div>
+  </div>
+
+  <section class="wrap s" id="faq" aria-labelledby="faq-h">
+    <div class="faq">
+      <h2 class="h-center" id="faq-h">FAQ</h2>
+      <p style="text-align:center;font-size:19px;color:var(--ink-2)">How Weekfold works, and how we decide what goes in.</p>
+
+      <h3 class="grp">Editorial Standards</h3>
+      <details class="q"><summary>How do you source stories?</summary><div class="a"><b>Every story names its sources</b>: wire services, official statements and established news organisations. Each story links to at least two of them so you can check for yourself.</div></details>
+      <details class="q"><summary>How are facts checked?</summary><div class="a"><b>Names, numbers and dates are checked</b> against the original source before an edition is published.</div></details>
+      <details class="q"><summary>What happens when you get something wrong?</summary><div class="a"><b>Mistakes are fixed in the open.</b> Each correction is noted on the story and listed in the next edition. Send corrections to <a id="faq-mail" href="mailto:">our email</a>.</div></details>
+      <details class="q"><summary>Is coverage independent?</summary><div class="a"><b>No sponsor sees a story before you do.</b> Coverage is decided by the editor alone. There are no ads on Weekfold.</div></details>
+      <details class="q"><summary>Do you publish opinion?</summary><div class="a"><b>Facts first.</b> Opinion, when we run it, is clearly labelled.</div></details>
+
+      <h3 class="grp">General Information</h3>
+      <details class="q"><summary>What is Weekfold?</summary><div class="a">Weekfold is a free weekly news edition. News never stops, and most of it is gone by the next morning, so Weekfold waits for the week to settle and then folds it into seven pages: one for each day, each holding the stories that still mattered by Sunday.</div></details>
+      <details class="q"><summary>When does the new edition come out?</summary><div class="a">Every Sunday. The whole site updates itself: a new edition replaces the current one, and last week's edition moves to Previous news.</div></details>
+      <details class="q"><summary>Is it really free?</summary><div class="a">Yes. Reading is free, there are no ads and there is no paywall. The Sunday email is free too and has a one-click unsubscribe.</div></details>
+      <details class="q"><summary>Where do the photos come from?</summary><div class="a">Only from Wikimedia Commons, and only public-domain or Creative Commons (CC0, CC BY, CC BY-SA) images. Each photo is saved on Weekfold and credited to its photographer beneath the picture. We never use photos from news agencies or other news outlets. When no suitable free photo exists we show an illustration instead.</div></details>
+      <details class="q"><summary>How do I get the Sunday email?</summary><div class="a">Press <b>Subscribe</b> at the top of any page and enter your email address. See our <a href="privacy.html">privacy page</a> for what we do with it.</div></details>
+    </div>
+  </section>
+
+  <div class="band band-navy" id="about">
+    <div class="wrap about2">
+      <div>
+        <h2>Why Weekfold Exists</h2>
+        <p>News never stops, and most of it is gone by the next morning. Weekfold waits for the week to settle, then folds it into seven pages: one for each day, each holding the story that still mattered by Sunday.</p>
+        <p>It is free, global and written to be finished. Read it in one sitting and you are up to date.</p>
+        <div class="contactbox" id="contact"><p class="l">Contact · tips, corrections and feedback</p><p class="v" id="c1">narayansharma2k11@gmail.com</p><button class="btn" type="button" data-copy="c1">Copy email</button></div>
       </div>
+      <div id="wave" aria-hidden="true"></div>
     </div>
   </div>
 
   <div class="wrap">
-    <section class="blk" id="lastweek" aria-labelledby="lw-h">
-      <div class="blk-head">
-        <div><p class="eyebrow">Previous news</p><h2 id="lw-h">Earlier editions</h2></div>
-        <p>Missed a Sunday? Every past edition stays on Weekfold. Browse them by month or jump to any date.</p>
-      </div>
-      <div class="prev-eds" id="prev-eds"></div>
-      <div class="all-prev"><a class="btn" href="home.html#previous">Browse all previous news</a></div>
-    </section>
-
-    <section class="blk" id="sections" aria-labelledby="sec-h">
-      <div class="blk-head">
-        <div><p class="eyebrow">Sections</p><h2 id="sec-h">What every edition covers</h2></div>
-        <p>The same sections each week, so you always know where to look.</p>
-      </div>
-      <div class="secs">
-        <div class="sec"><h3>World</h3><p>Diplomacy, conflict and the people in charge.</p></div>
-        <div class="sec"><h3>Business</h3><p>Markets, trade, energy and the economy.</p></div>
-        <div class="sec"><h3>Tech</h3><p>AI, platforms and the devices we use.</p></div>
-        <div class="sec"><h3>Science</h3><p>Discoveries and breakthroughs, explained plainly.</p></div>
-        <div class="sec"><h3>Health</h3><p>Medicine, public health and research.</p></div>
-        <div class="sec"><h3>Climate</h3><p>Weather, disasters and the energy transition.</p></div>
-        <div class="sec"><h3>Sport</h3><p>The results and moments people talked about.</p></div>
-        <div class="sec"><h3>Culture</h3><p>Books, film, music and big ideas.</p></div>
-      </div>
-    </section>
-
-    <section class="blk" aria-labelledby="catch-h" style="border-top:0;padding-top:24px">
-      <div class="catch">
+    <section class="s" aria-labelledby="catch-h">
+      <div class="catch hard" style="background:var(--blue);color:#fff;padding:clamp(28px,5vw,60px);box-shadow:10px 10px 0 #000">
         <div>
-          <p class="eyebrow">New edition every Sunday</p>
-          <h2 id="catch-h">Make Sunday the day you <em>catch up.</em></h2>
+          <h2 id="catch-h" style="color:#fff">Make Sunday the day you <em>catch up.</em></h2>
           <p class="sub">Read this week's edition now, or get the next one in your inbox.</p>
-          <div class="ctas"><a class="btn btn-ink" href="home.html">Read this week's edition</a><a class="btn" href="#book">Open the book</a></div>
         </div>
         <form class="sub-form" id="inline-sub" novalidate>
           <label for="inline-email">Your email</label>
-          <div class="row"><input id="inline-email" type="email" autocomplete="email" placeholder="you@example.com" required><button class="btn btn-red" type="submit">Subscribe free</button></div>
-          <p class="msg" id="inline-msg" role="status"></p>
+          <div class="row"><input id="inline-email" type="email" autocomplete="email" placeholder="you@example.com" required><button class="btn btn-ink" type="submit">Subscribe free</button></div>
+          <p class="msg" id="inline-msg" role="status" style="color:#c6f3da"></p>
         </form>
       </div>
     </section>
-
-    <section class="blk" id="standards" aria-labelledby="std-h">
-      <div class="two">
-        <div><p class="eyebrow">Editorial standards</p><h2 id="std-h">How we choose what goes in</h2></div>
-        <dl style="margin:0">
-          <div class="std"><dt>Sourcing</dt><dd><b>Every story names its sources</b>: wire services, official statements and established news organisations.</dd></div>
-          <div class="std"><dt>Fact-check</dt><dd><b>Names, numbers and dates are checked</b> against the original source before an edition is published.</dd></div>
-          <div class="std"><dt>Corrections</dt><dd><b>Mistakes are fixed in the open.</b> Each correction is noted on the story and listed in the next edition.</dd></div>
-          <div class="std"><dt>Independence</dt><dd><b>No sponsor sees a story before you do.</b> Coverage is decided by editors alone.</dd></div>
-          <div class="std"><dt>Balance</dt><dd><b>Facts first.</b> Opinion, when we run it, is clearly labelled.</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="blk" id="about" aria-labelledby="about-h">
-      <div class="two">
-        <div><p class="eyebrow">About us</p><h2 id="about-h">Why Weekfold exists</h2></div>
-        <div class="about">
-          <p>News never stops, and most of it is gone by the next morning. Weekfold waits for the week to settle, then folds it into seven pages: one for each day, each holding the story that still mattered by Sunday.</p>
-          <p>It is free, global and written to be finished. Read it in one sitting and you are up to date.</p>
-        </div>
-      </div>
-      <div class="contact" id="contact">
-        <div class="ct"><p class="l">Contact · tips, corrections and feedback</p><p class="v" id="c1">narayansharma2k11@gmail.com</p><button class="btn" type="button" data-copy="c1">Copy email</button></div>
-      </div>
-    </section>
-
-    <footer>
-      <div class="fa">
-        <a class="logo" href="#top" style="font-size:24px"><svg viewBox="0 0 40 28" aria-hidden="true" style="width:32px;height:23px"><path d="M3 4 L11 24" stroke="#15192B" stroke-width="5.5"/><path d="M11 24 L20 6" stroke="#8B93A7" stroke-width="5.5"/><path d="M20 6 L29 24" stroke="#15192B" stroke-width="5.5"/><path d="M29 24 L37 4" stroke="#D92D20" stroke-width="5.5"/></svg>Weekfold</a>
-        <p>The world's week, folded into one free Sunday edition.</p>
-      </div>
-      <div><h4>Read</h4><ul><li><a href="home.html">Current news</a></li><li><a href="home.html#previous">Previous news</a></li><li><a href="#sections">Sections</a></li></ul></div>
-      <div><h4>Weekfold</h4><ul><li><a href="#about">About us</a></li><li><a href="#standards">Editorial standards</a></li><li><a href="#contact">Contact</a></li></ul></div>
-      <div><h4>Account</h4><ul><li><button type="button" data-open="signin" style="background:none;border:0;padding:0;cursor:pointer">Sign in</button></li><li><button type="button" data-open="subscribe" style="background:none;border:0;padding:0;cursor:pointer">Subscribe</button></li><li><a href="privacy.html">Privacy</a></li></ul></div>
-      <div class="legal"><span>© 2026 Weekfold · New edition every Sunday · Photos: public-domain / Creative Commons images from Wikimedia Commons, credited on each image</span><span class="made">Made by Narayan Sharma · Highschool student at Oberoi JVLR</span></div>
-    </footer>
   </div>
 </main>
 
-<div class="reader" id="reader" hidden></div>
+<footer class="sitefoot">
+  <div class="wrap">
+    <div class="cols">
+      <div class="fa">
+        <a class="logo" href="#top" style="font-size:24px">Weekfold</a>
+        <p>The world's week, folded into one free Sunday edition.</p>
+      </div>
+      <div><h4>Read</h4><ul><li><a href="home.html">Current news</a></li><li><a href="home.html#days">Day by day</a></li><li><a href="home.html#previous">Previous news</a></li></ul></div>
+      <div><h4>Weekfold</h4><ul><li><a href="#about">About us</a></li><li><a href="#faq">Editorial standards &amp; FAQ</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Account</h4><ul><li><button type="button" data-open="signin" class="linkbtn">Sign in</button></li><li><button type="button" data-open="subscribe" class="linkbtn">Subscribe</button></li><li><a href="privacy.html">Privacy</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Weekfold · New edition every Sunday</span>
+      <span class="made">Made by Narayan Sharma · Highschool student at Oberoi JVLR</span>
+      <p class="credits">Photo credits: Weekfold shows only public-domain or Creative Commons (CC0, CC BY, CC BY-SA) images from Wikimedia Commons, saved on Weekfold and credited to the photographer beneath each picture. Weekfold does not use photos from news agencies or other news outlets. Where no suitable free photo exists, an illustration is shown instead.</p>
+    </div>
+  </div>
+</footer>
 
 <dialog id="dlg-signin" aria-labelledby="si-h">
   <div class="dlg">
@@ -433,7 +332,7 @@ dialog::backdrop{background:rgba(21,25,43,.45);backdrop-filter:blur(3px)}
     <button class="closex" type="button" data-close aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="2"/></svg></button>
     <h2 id="sb-h">Get Weekfold every Sunday</h2>
     <p class="lede">One email a week with the new edition. Free, and you can unsubscribe in one click.</p>
-    <label for="dlg-email" style="font-weight:600;font-size:14.5px">Email address</label>
+    <label for="dlg-email" style="font-weight:500;font-size:16px">Email address</label>
     <input id="dlg-email" type="email" autocomplete="email" placeholder="you@example.com" required>
     <button class="btn btn-red" type="submit" style="min-height:50px">Subscribe</button>
     <p class="msg" id="dlg-msg" role="status"></p>
@@ -443,219 +342,129 @@ dialog::backdrop{background:rgba(21,25,43,.45);backdrop-filter:blur(3px)}
 <!-- EDITIONS DATA (newest first). The Sunday update adds a new edition to the front of this list. -->
 <script type="application/json" id="editions">/*EDITIONS*/</script>
 <script>var WF_CONFIG = /*CONFIG*/;</script>
+<script>var WF_PHOTOS = /*PHOTOS*/;</script>
 <script>/*ART*/</script>
 <script>/*SITE*/</script>
 <script>
 (function(){
   var EDS, E;
   try { EDS = JSON.parse(document.getElementById('editions').textContent); E = EDS[0]; } catch (e) { return; }
-  function txt(s){ return s.dek || s.summary || ''; }
-  function photo(s, w, h, seed, o){ return WFPhoto.make(s, w, h, seed, o); }
-  var DAYS = E.days, N = DAYS.length + 1; /* cover + one leaf per day */
-  function fmt(iso, o){ var d = new Date(iso + 'T12:00:00Z'); return d.toLocaleDateString('en-GB', Object.assign({ timeZone:'UTC' }, o)); }
+  if (!E) return;
+  var DAYS = E.days, NS = 'http://www.w3.org/2000/svg';
+  function fmt(iso, o){ return new Date(iso + 'T12:00:00Z').toLocaleDateString('en-GB', Object.assign({ timeZone:'UTC' }, o)); }
   function el(tag, attrs, kids){ var n = document.createElement(tag); if (attrs) for (var k in attrs){ if (k === 'text') n.textContent = attrs[k]; else if (k === 'cls') n.className = attrs[k]; else n.setAttribute(k, attrs[k]); } (kids || []).forEach(function(c){ if (c) n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); }); return n; }
-  function art(cat, text, w, h, seed){ return el('canvas', { width: w || 640, height: h || 400, 'data-art': text, 'data-cat': cat || '', 'data-seed': seed || text, 'aria-hidden': 'true' }); }
-  var LOGO = '<svg viewBox="0 0 40 28" aria-hidden="true"><path d="M3 4 L11 24" stroke="#FFFFFF" stroke-width="5.5"/><path d="M11 24 L20 6" stroke="#8B93A7" stroke-width="5.5"/><path d="M20 6 L29 24" stroke="#FFFFFF" stroke-width="5.5"/><path d="M29 24 L37 4" stroke="#D92D20" stroke-width="5.5"/></svg>';
+  function sv(tag, attrs){ var n = document.createElementNS(NS, tag); for (var k in attrs) n.setAttribute(k, attrs[k]); return n; }
+  function ico(id){ var s = sv('svg', { 'aria-hidden':'true' }); s.appendChild(sv('use', { href:'#' + id })); return s; }
+  function txt(s){ return s.dek || s.summary || ''; }
+  function mins(s){ var w = (txt(s) + ' ' + (s.body || []).join(' ')).split(/\s+/).length; return Math.max(1, Math.round(w / 200)) + ' min'; }
+  function blen(s){ return (s.body || []).join('').length; }
+  function href(d, k){ return 'home.html#a-' + d.date + '-' + (k || 0); }
+  var nStories = 0; DAYS.forEach(function(d){ nStories += 1 + (d.more || []).length; });
 
-  document.getElementById('hero-ed').textContent = 'Edition ' + E.number + ' · ' + E.range;
+  /* hero card: the edition's featured story */
+  var fi = typeof E.featured === 'number' ? E.featured : DAYS.length - 1, FD = DAYS[fi], F = FD.lead;
+  var hc = el('a', { cls:'herocard', href: href(FD, 0) }, [ WFPhoto.make(F, 1000, 700, 'hero', { eager: true, noCredit: false }), el('div', { cls:'cap' }, [ el('b', { text: 'Edition ' + E.number + ' · ' + E.range }), el('h2', { text: F.headline }) ]) ]);
+  document.getElementById('herocard').appendChild(hc);
 
-  /* ---------- build leaves ---------- */
-  var leavesBox = document.getElementById('leaves'), leaves = [];
-  function dateBar(d, i){ return el('div', { cls:'date' }, [ el('b', { text: fmt(d.date, { weekday:'long', day:'numeric', month:'long', year:'numeric' }) }), el('span', { text: 'Day ' + (i + 1) + ' of ' + DAYS.length }) ]); }
-  function frontDay(d, i){
-    var f = el('div', { cls:'face front pg', 'data-day': i, role:'button', tabindex:'-1', 'aria-label': 'Read ' + fmt(d.date,{weekday:'long'}) + ': ' + d.lead.headline });
-    f.appendChild(dateBar(d, i));
-    f.appendChild(photo(d.lead, 640, 330, d.date, { eager: i < 2 }));
-    f.appendChild(el('p', { cls:'cat', text: d.lead.category }));
-    f.appendChild(el('h3', { text: d.lead.headline }));
-    f.appendChild(el('p', { cls:'sum', text: txt(d.lead) }));
-    f.appendChild(el('div', { cls:'foot' }, [ el('span', { text: 'p. ' + (i * 2 + 3) }), el('span', { cls:'read', text: 'Tap to read →' }) ]));
-    f.appendChild(el('button', { cls:'turn next', type:'button', 'aria-label':'Next page', 'data-turn':'next', tabindex:'-1' }));
-    return f;
+  /* this week at a glance */
+  document.getElementById('glance-p').textContent = 'Edition ' + E.number + ' covers ' + (E.rangeLong || E.range) + ': ' + nStories + ' sourced stories across seven days, with a photo on every page. Read it in one sitting and you are up to date.';
+  var srcSet = {}, photoN = 0;
+  DAYS.forEach(function(d){ [d.lead].concat(d.more || []).forEach(function(st){ (st.sources || []).forEach(function(x){ if (x.name) srcSet[x.name] = 1; }); var w = st.image && st.image.wiki; if (w && typeof WF_PHOTOS === 'object' && WF_PHOTOS[String(w).replace(/ /g, '_')]) photoN++; }); });
+  var stats = document.getElementById('stats');
+  [[String(DAYS.length), 'Days'], [String(nStories), 'Stories'], [String(Object.keys(srcSet).length), 'Named sources'], [String(photoN), 'Credited photos']].forEach(function(x){ stats.appendChild(el('div', { cls:'stat' }, [ el('b', { text: x[0] }), el('span', { text: x[1] }) ])); });
+
+  /* countdown to the next Sunday edition (published early Sunday morning, India time) */
+  var last = DAYS[DAYS.length - 1].date.split('-').map(Number);
+  var target = Date.UTC(last[0], last[1] - 1, last[2] + 6, 20, 0, 0);
+  function pad(n){ return n < 10 ? '0' + n : String(n); }
+  function tick(){
+    var ms = target - Date.now(), lbl = document.getElementById('count-lbl');
+    if (ms <= 0){ lbl.textContent = 'The next edition is being published right now. Refresh in a few minutes.'; ['d', 'h', 'm', 's'].forEach(function(k){ document.getElementById('cd-' + k).textContent = '0'; }); return; }
+    var s = Math.floor(ms / 1000);
+    lbl.textContent = 'The next edition arrives on ' + E.next + ':';
+    document.getElementById('cd-d').textContent = String(Math.floor(s / 86400));
+    document.getElementById('cd-h').textContent = pad(Math.floor(s % 86400 / 3600));
+    document.getElementById('cd-m').textContent = pad(Math.floor(s % 3600 / 60));
+    document.getElementById('cd-s').textContent = pad(s % 60);
   }
-  function backDay(d, i){
-    var b = el('div', { cls:'face back pg', 'data-day': i, role:'button', tabindex:'-1', 'aria-label': 'More from ' + fmt(d.date,{weekday:'long'}) });
-    b.appendChild(dateBar(d, i));
-    b.appendChild(el('h4', { text: 'Also on ' + fmt(d.date, { weekday:'long' }) }));
-    var ul = el('ul', { cls:'more' });
-    (d.more || []).slice(0, 4).forEach(function(m, k){
-      ul.appendChild(el('li', null, [ photo(m, 172, 120, d.date + k), el('div', null, [ el('p', { cls:'c', text: m.category }), el('p', { cls:'h', text: m.headline }) ]) ]));
-    });
-    b.appendChild(ul);
-    b.appendChild(el('div', { cls:'foot' }, [ el('span', { text: 'p. ' + (i * 2 + 4) }), el('span', { cls:'read', text: 'Tap to read →' }) ]));
-    b.appendChild(el('button', { cls:'turn prev', type:'button', 'aria-label':'Previous page', 'data-turn':'prev', tabindex:'-1' }));
-    return b;
-  }
-  /* cover leaf */
-  var cover = el('div', { cls:'leaf' });
-  var cf = el('div', { cls:'face front cover', role:'button', tabindex:'0', 'aria-label':'Open this week’s edition' });
-  var cl = el('div', { cls:'clogo' }); cl.innerHTML = LOGO; cl.appendChild(document.createTextNode('Weekfold'));
-  cf.appendChild(cl);
-  cf.appendChild(el('p', { cls:'ced', text: 'Edition ' + E.number + ' · The world this week' }));
-  var cvr = art('world', 'globe cover ' + E.range, 640, 520, 'cover' + E.number); cvr.style.cssText = 'width:100%;height:auto;display:block;margin-top:22px;border-radius:2px'; cf.appendChild(cvr);
-  cf.appendChild(el('div', { cls:'cdate' }, [ el('b', { text: E.rangeLong || E.range }), el('span', { cls:'chip', text: '7 DAYS · 7 PAGES' }) ]));
-  var cb = el('div', { cls:'face back pg contents' });
-  cb.appendChild(el('div', { cls:'date' }, [ el('b', { text: 'In this edition' }), el('span', { text: 'Edition ' + E.number }) ]));
-  cb.appendChild(el('h4', { text: 'Seven days, seven pages' }));
+  tick(); setInterval(tick, 1000);
+
+  /* seven days: a seven-sided diagram and a numbered timeline */
+  document.getElementById('days-intro').textContent = 'Edition ' + E.number + ' · ' + (E.rangeLong || E.range) + '. Each day has a lead story and the other stories that mattered.';
+  var steps = document.getElementById('steps');
   DAYS.forEach(function(d, i){
-    var r = el('button', { cls:'row', type:'button', 'data-goto': i, tabindex:'-1' }, [ el('span', { cls:'d', text: fmt(d.date, { weekday:'short' }) + ' ' + fmt(d.date, { day:'numeric' }) }), el('span', { cls:'h', text: d.lead.headline }) ]);
-    cb.appendChild(r);
+    var n = (d.more || []).length;
+    steps.appendChild(el('div', { cls:'step' }, [
+      el('span', { cls:'num', 'aria-hidden':'true', text: String(i + 1) }),
+      el('h3', { text: fmt(d.date, { weekday:'long', day:'numeric', month:'long' }) }),
+      el('div', { cls:'card7' }, [
+        el('p', { cls:'c', text: d.lead.category }),
+        el('h4', { text: d.lead.headline }),
+        el('p', { text: txt(d.lead) }),
+        el('div', { cls:'acts' }, [ el('a', { cls:'btn', href: href(d, 0) }, [ ico('i-doc'), 'Read the story' ]), n ? el('a', { cls:'btn', href: 'home.html#day-' + i }, [ ico('i-list'), 'All ' + (n + 1) + ' stories' ]) : null ])
+      ])
+    ]));
   });
-  cover.appendChild(cf); cover.appendChild(cb); leavesBox.appendChild(cover); leaves.push(cover);
-  DAYS.forEach(function(d, i){ var lf = el('div', { cls:'leaf' }); lf.appendChild(frontDay(d, i)); lf.appendChild(backDay(d, i)); leavesBox.appendChild(lf); leaves.push(lf); });
-  var endp = document.getElementById('endpage');
-  endp.appendChild(el('p', { cls:'eyebrow', text: 'End of edition ' + E.number }));
-  endp.appendChild(el('h3', { text: 'That was the week.' }));
-  endp.appendChild(el('p', { text: 'Every story in full, with sources, is on the edition page. The next book arrives ' + E.next + '.' }));
-  var ea = el('a', { cls:'btn btn-red', href:'home.html', text:'Read the full edition' }); endp.appendChild(ea);
-  var eb = el('button', { cls:'btn', type:'button', id:'endclose', text:'Close the book' }); endp.appendChild(eb);
-
-  /* ---------- day picker ---------- */
-  var daysBox = document.getElementById('days'), dayBtns = [];
-  DAYS.forEach(function(d, i){ var b = el('button', { type:'button', 'aria-pressed':'false', 'aria-label': fmt(d.date, { weekday:'long', day:'numeric', month:'long' }) }, [ el('b', { text: fmt(d.date, { weekday:'short' }) }), el('span', { text: fmt(d.date, { day:'numeric' }) }) ]); b.addEventListener('click', function(){ go(i + 1); }); daysBox.appendChild(b); dayBtns.push(b); });
-
-  /* ---------- book state ---------- */
-  var bk = document.getElementById('bk'), stage = document.getElementById('stage'), wrapS = document.getElementById('book');
-  var isOpen = false, k = 0;
-  function layout(){
-    leaves.forEach(function(lf, j){
-      var flipped = j < k;
-      lf.style.transform = flipped ? 'rotateY(-180deg) translateZ(' + (-(j + 1) * 0.6) + 'px)' : 'rotateY(0deg) translateZ(' + ((N - j) * 0.6) + 'px)';
-      lf.style.zIndex = flipped ? j : N - j;
-    });
-    var day = k - 1; /* day shown on the right page */
-    dayBtns.forEach(function(b, i){ b.setAttribute('aria-pressed', String(isOpen && (i === day || (k === N && i === DAYS.length - 1 && false)))); });
-    var st = document.getElementById('status');
-    if (!isOpen) st.textContent = 'Closed';
-    else if (k === 1) st.textContent = 'Contents · ' + fmt(DAYS[0].date, { weekday:'long' });
-    else if (k >= N) st.textContent = 'End of edition';
-    else st.textContent = fmt(DAYS[day].date, { weekday:'long', day:'numeric', month:'short' });
-    document.getElementById('prev').disabled = !isOpen || k <= 1;
-    document.getElementById('next').disabled = !isOpen || k >= N;
-    /* only pages that are showing can take focus */
-    leaves.forEach(function(lf, j){
-      var front = lf.querySelector('.front'), back = lf.querySelector('.back');
-      var frontVis = isOpen ? j === k : j === 0, backVis = isOpen && j === k - 1;
-      if (j > 0) front.tabIndex = frontVis ? 0 : -1;
-      if (back.getAttribute('data-day') != null) back.tabIndex = backVis ? 0 : -1;
-      back.querySelectorAll('button').forEach(function(b){ b.tabIndex = backVis ? 0 : -1; });
-      front.querySelectorAll('button').forEach(function(b){ b.tabIndex = frontVis ? 0 : -1; });
-    });
-  }
-  function go(n){
-    if (!isOpen){ openBook(n); return; }
-    n = Math.max(1, Math.min(N, n));
-    var from = k; k = n;
-    leaves.forEach(function(lf, j){
-      var changes = (j >= Math.min(from, n) && j < Math.max(from, n));
-      var order = n > from ? j - from : from - 1 - j;
-      lf.style.transitionDelay = changes ? (order * 90) + 'ms' : '0ms';
-    });
-    layout();
-  }
-  function openBook(target){
-    if (isOpen) return;
-    isOpen = true; bk.classList.add('open'); stage.classList.add('is-open'); wrapS.classList.add('is-open'); fit();
-    setTimeout(function(){ go(target || 1); }, 380);
-  }
-  function closeBook(){
-    if (!isOpen) return;
-    leaves.forEach(function(lf, j){ lf.style.transitionDelay = ((k - 1 - j) * 60) + 'ms'; });
-    k = 0; layout();
-    setTimeout(function(){ isOpen = false; bk.classList.remove('open'); stage.classList.remove('is-open'); wrapS.classList.remove('is-open'); fit(); layout(); }, 520);
-  }
-  function fit(){
-    var w = stage.clientWidth, pw = 360, need = isOpen ? pw * 2 + 24 : pw * 1.5;
-    var s = Math.min(1, w / need); document.documentElement.style.setProperty('--s', s.toFixed(3));
-  }
-  window.addEventListener('resize', fit); fit(); layout();
-
-  cf.addEventListener('click', function(){ openBook(1); });
-  cf.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openBook(1); } });
-  document.getElementById('prev').addEventListener('click', function(){ go(k - 1); });
-  document.getElementById('next').addEventListener('click', function(){ go(k + 1); });
-  document.getElementById('closebook').addEventListener('click', closeBook);
-  eb.addEventListener('click', closeBook);
-  document.addEventListener('keydown', function(e){
-    if (!isOpen || !document.getElementById('reader').hidden || document.querySelector('dialog[open]')) return;
-    if (e.key === 'ArrowRight') go(k + 1); else if (e.key === 'ArrowLeft') go(k - 1);
-  });
-
-  /* taps on pages: turn corners flip, contents rows jump, anything else opens the reader */
-  var moved = false, sx = 0;
-  bk.addEventListener('pointerdown', function(e){ sx = e.clientX; moved = false; });
-  bk.addEventListener('pointerup', function(e){
-    var dx = e.clientX - sx;
-    if (isOpen && Math.abs(dx) > 50){ moved = true; go(dx < 0 ? k + 1 : k - 1); }
-  });
-  bk.addEventListener('click', function(e){
-    if (moved || !isOpen) return;
-    var t = e.target.closest('[data-turn]'); if (t){ go(t.getAttribute('data-turn') === 'next' ? k + 1 : k - 1); return; }
-    var g = e.target.closest('[data-goto]'); if (g){ go(+g.getAttribute('data-goto') + 1); return; }
-    if (e.target.closest('a,#endclose')) return;
-    var p = e.target.closest('[data-day]'); if (p) openReader(DAYS[+p.getAttribute('data-day')], 'this', +p.getAttribute('data-day'));
-  });
-  bk.addEventListener('keydown', function(e){
-    if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[data-day]')){ e.preventDefault(); openReader(DAYS[+e.target.getAttribute('data-day')], 'this', +e.target.getAttribute('data-day')); }
-  });
-
-  /* ---------- reader: tap once to read, tap again to go to the site ---------- */
-  var reader = document.getElementById('reader'), lastFocus = null;
-  function openReader(d, which, idx){
-    lastFocus = document.activeElement;
-    reader.innerHTML = '';
-    var lead = d.lead || d;
-    var card = el('article', { cls:'rcard', role:'dialog', 'aria-modal':'true', 'aria-label': lead.headline, tabindex:'-1' });
-    var x = el('button', { cls:'closex', type:'button', 'aria-label':'Close' }); x.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="2"/></svg>';
-    card.appendChild(x);
-    card.appendChild(el('div', { cls:'date' }, [ el('b', { text: fmt(d.date, { weekday:'long', day:'numeric', month:'long', year:'numeric' }) }), el('span', { text: 'Edition ' + E.number }) ]));
-    card.appendChild(photo(lead, 1200, 600, d.date + 'r', { eager: true }));
-    card.appendChild(el('p', { cls:'cat', text: lead.category }));
-    card.appendChild(el('h2', { text: lead.headline }));
-    card.appendChild(el('p', { cls:'dek', text: txt(lead) }));
-    var body = el('div', { cls:'body' }); (lead.body || []).slice(0, 2).forEach(function(p){ body.appendChild(el('p', { text: p })); }); card.appendChild(body);
-    var srcs = lead.sources || (lead.source ? [{ name: lead.source, url: lead.url }] : []);
-    if (srcs.length){ var s = el('p', { cls:'src' }, [ 'Sources: ' ]); srcs.forEach(function(x, n){ if (n) s.appendChild(document.createTextNode(', ')); s.appendChild(x.url ? el('a', { href: x.url, target:'_blank', rel:'noopener', text: x.name }) : document.createTextNode(x.name)); }); card.appendChild(s); }
-    if (d.more && d.more.length){
-      card.appendChild(el('h3', { cls:'also', text: 'Also on ' + fmt(d.date, { weekday:'long' }) }));
-      var ul = el('ul', { cls:'alsolist' });
-      d.more.forEach(function(m){ ul.appendChild(el('li', null, [ el('p', { cls:'c', text: m.category }), el('p', { cls:'h', text: m.headline }), el('p', { text: txt(m) }) ])); });
-      card.appendChild(ul);
+  (function(){
+    var s = sv('svg', { viewBox:'-60 -30 760 700', role:'img', 'aria-label':'Seven-sided diagram, one corner for each day of the week' }), cx = 320, cy = 320, N = DAYS.length;
+    function pt(r, i){ var a = -Math.PI / 2 + i * 2 * Math.PI / N; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; }
+    function poly(r, w, dash){ var p = []; for (var i = 0; i < N; i++) p.push(pt(r, i).join(',')); return sv('polygon', { points: p.join(' '), fill:'none', stroke:'#000', 'stroke-width': w, 'stroke-linejoin':'round', 'stroke-dasharray': dash || '' }); }
+    s.appendChild(sv('circle', { cx: cx, cy: cy, r: 300, fill:'none', stroke:'#000', 'stroke-width':'1.2', 'stroke-dasharray':'7 6' }));
+    s.appendChild(poly(255, 5)); s.appendChild(poly(228, 1.6)); s.appendChild(poly(150, 1.6, '5 5')); s.appendChild(poly(70, 1.6));
+    for (var i = 0; i < N; i++){
+      var a = pt(0, i), b = pt(285, i), c = pt(255, i), t = pt(312, i);
+      s.appendChild(sv('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke:'#000', 'stroke-width': i % 2 ? '1.2' : '2' }));
+      s.appendChild(sv('circle', { cx: c[0], cy: c[1], r: 9, fill:'#fff', stroke:'#000', 'stroke-width':'3' }));
+      for (var j = i + 2; j < N; j += 2){ var q = pt(228, i), w = pt(228, j % N); s.appendChild(sv('line', { x1: q[0], y1: q[1], x2: w[0], y2: w[1], stroke:'#000', 'stroke-width':'.8', 'stroke-dasharray':'3 4' })); }
+      var lb = sv('text', { x: t[0], y: t[1] + 5, 'text-anchor':'middle', 'font-family':'Playfair Display, Georgia, serif', 'font-size':'22', 'font-style':'italic' }); lb.textContent = fmt(DAYS[i].date, { weekday:'short' }); s.appendChild(lb);
     }
-    var href = 'home.html#a-' + d.date + '-0';
-    card.appendChild(el('div', { cls:'go' }, [ el('p', { text: 'Tap the page again to read the full stories' }), el('a', { cls:'btn btn-red', href: href, text: 'Read in full' }) ]));
-    card.addEventListener('click', function(e){
-      if (e.target.closest('a')) return;
-      if (e.target.closest('.closex')){ closeReader(); return; }
-      if (window.getSelection && String(window.getSelection()).length) return;
-      location.href = href;
-    });
-    reader.appendChild(card); reader.hidden = false; document.body.style.overflow = 'hidden';
-    WFArt.paintAll(card); card.focus();
-  }
-  function closeReader(){ reader.hidden = true; reader.innerHTML = ''; document.body.style.overflow = ''; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
-  reader.addEventListener('click', function(e){ if (e.target === reader) closeReader(); });
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !reader.hidden) closeReader(); });
+    document.getElementById('fig').appendChild(s);
+  })();
 
-  /* ---------- previous editions ---------- */
-  var pe = document.getElementById('prev-eds');
-  EDS.slice(1, 5).forEach(function(ed){
-    var top = ed.days.slice().sort(function(a, b){ return ((b.lead.body || []).join(' ').length) - ((a.lead.body || []).join(' ').length); })[0];
-    var ul = el('ul'); ed.days.slice(0, 3).forEach(function(d){ ul.appendChild(el('li', { text: d.lead.headline })); });
-    pe.appendChild(el('a', { cls:'pe', href:'home.html#week-' + ed.number }, [ photo(top.lead, 300, 300, ed.number), el('div', null, [ el('p', { cls:'wk', text: 'Edition ' + ed.number }), el('h3', { text: ed.rangeLong || ed.range }), ul, el('p', { cls:'go2', text: 'Read this week →' }) ]) ]));
+  /* previous editions */
+  var jr = document.getElementById('journey'), prevs = EDS.slice(1, 7);
+  prevs.forEach(function(ed){
+    jr.appendChild(el('a', { cls:'jcard', href:'home.html#week-' + ed.number }, [ el('p', { cls:'n', text: 'Edition ' + ed.number }), el('h3', { text: ed.rangeLong || ed.range }), el('p', { text: ed.days[ed.featured != null ? ed.featured : 0].lead.headline }), el('span', { cls:'go' }, [ 'Read this week', ico('i-ext') ]) ]));
   });
-  if (EDS.length < 2) document.getElementById('lastweek').hidden = true;
+  if (!prevs.length) document.getElementById('lastweek').hidden = true;
 
-  /* ---------- sign in + subscribe ---------- */
+  /* top stories */
+  var rl = document.getElementById('rank-list'), all = [];
+  DAYS.forEach(function(d){ (d.more || []).forEach(function(s, k){ all.push({ s: s, d: d, k: k + 1 }); }); });
+  all.sort(function(a, b){ return blen(b.s) - blen(a.s); });
+  all.slice(0, 7).forEach(function(x, i){ rl.appendChild(el('a', { cls:'rank', href: href(x.d, x.k), role:'listitem' }, [ el('span', { cls:'n', text: String(i + 1) }), el('span', { cls:'t' }, [ el('span', { cls:'c', text: x.s.category + ' · ' + fmt(x.d.date, { weekday:'short' }) }), x.s.headline ]), el('span', { cls:'m', text: mins(x.s) }) ])); });
+  if (all.length < 1) document.getElementById('top-stories').hidden = true;
+
+  /* wave diagram for the about section */
+  (function(){
+    var s = sv('svg', { viewBox:'0 0 760 420', 'class':'wave' }), W = 700, X0 = 50, Y0 = 210, A = 140, step = 14, g = sv('g', { stroke:'#fff', fill:'none' });
+    var pts = []; for (var x = 0; x <= W; x += 4) pts.push((X0 + x).toFixed(1) + ',' + (Y0 - A * Math.sin(x / W * 4 * Math.PI)).toFixed(1));
+    for (var x2 = step; x2 < W; x2 += step){
+      var y = Y0 - A * Math.sin(x2 / W * 4 * Math.PI);
+      if (Math.abs(y - Y0) < 6) continue;
+      g.appendChild(sv('line', { x1: X0 + x2, y1: Y0, x2: X0 + x2, y2: y, 'stroke-width':'1.6' }));
+      var dir = y < Y0 ? 1 : -1; g.appendChild(sv('path', { d: 'M' + (X0 + x2 - 4) + ',' + (y + 8 * dir) + ' L' + (X0 + x2) + ',' + y + ' L' + (X0 + x2 + 4) + ',' + (y + 8 * dir), 'stroke-width':'1.6' }));
+    }
+    g.appendChild(sv('polyline', { points: pts.join(' '), 'stroke-width':'3.2' }));
+    g.appendChild(sv('line', { x1: X0, y1: Y0, x2: X0 + W + 20, y2: Y0, 'stroke-width':'2.4' }));
+    g.appendChild(sv('line', { x1: X0, y1: 30, x2: X0, y2: 390, 'stroke-width':'2.4' }));
+    g.appendChild(sv('line', { x1: X0, y1: 392, x2: X0 + W, y2: 392, 'stroke-width':'1.4', 'stroke-dasharray':'3 4' }));
+    s.appendChild(g);
+    var lab = [['E(t)', X0 + 8, 34], ['time', X0 + W + 6, Y0 - 12], ['one week', X0 + W / 2, 414]];
+    lab.forEach(function(l){ var t = sv('text', { x: l[1], y: l[2], fill:'#fff', 'font-family':'Playfair Display, Georgia, serif', 'font-style':'italic', 'font-size':'22', 'text-anchor': l[0] === 'one week' ? 'middle' : 'start' }); t.textContent = l[0]; s.appendChild(t); });
+    document.getElementById('wave').appendChild(s);
+  })();
+
+  /* contact + subscribe */
+  var mail = document.getElementById('c1').textContent.trim(), fm = document.getElementById('faq-mail'); fm.href = 'mailto:' + mail; fm.textContent = mail;
   WFSite.init({ next: E.next });
   document.querySelectorAll('[data-copy]').forEach(function(b){
     b.addEventListener('click', function(){
       var t = document.getElementById(b.getAttribute('data-copy')).textContent;
-      var done = function(){ b.textContent = 'Copied'; setTimeout(function(){ b.textContent = 'Copy'; }, 1500); };
+      var done = function(){ b.textContent = 'Copied'; setTimeout(function(){ b.textContent = 'Copy email'; }, 1500); };
       try { navigator.clipboard.writeText(t).then(done, function(){ var r = document.createRange(); r.selectNodeContents(document.getElementById(b.getAttribute('data-copy'))); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }); } catch (e) {}
     });
   });
-
   WFArt.paintAll(document);
 })();
 </script>
