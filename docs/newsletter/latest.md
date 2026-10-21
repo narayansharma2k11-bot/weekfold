@@ -1,4 +1,4 @@
-**Edition 41 · 5 – 11 October 2026**
+**Edition 42 · 12 – 18 October 2026**
 
 This week's world news, one page for every day. Read it in one sitting and you're up to date.
 
@@ -6,83 +6,78 @@ This week's world news, one page for every day. Read it in one sitting and you'r
 
 ---
 
-## Monday 5 October
+## Monday 12 October
 
-### [Optogenetics pioneers win Nobel medicine prize for light-controlled neurons](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-05-0)
+### [Houthis strike Saudi airport for third time in as many days](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-12-0)
 
-Karl Deisseroth, Peter Hegemann and Georg Nagel share the 2026 Nobel Prize in Physiology or Medicine for discovering a light-activated molecular switch that lets scientists turn individual nerve cells on and off.
-
-Also that day:
-- [Flávio Bolsonaro edges Lula as Brazil heads to 25 October runoff](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-05-1)
-- [Spain's Sánchez calls snap election for 29 November over housing](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-05-2)
-- [Separatist Parti Québécois wins Quebec election, falls short of majority](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-05-3)
-
-## Tuesday 6 October
-
-### [IceCube founder Francis Halzen wins Nobel Prize in Physics](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-06-0)
-
-The Belgian-born physicist is honoured for leading the IceCube Neutrino Observatory at the South Pole and for detecting high-energy neutrinos from deep space.
+A Houthi missile hit the passenger terminal at Riyadh's King Khalid International Airport on Monday, killing one person and forcing operations to suspend after a strike a day earlier left at least 12 dead.
 
 Also that day:
-- [AfD lawmaker elected Saxony-Anhalt speaker, a first since 1945](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-06-1)
-- [Trump approves firing-squad execution for Fort Hood gunman Nidal Hasan](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-06-2)
-- [Djokovic wins seventh China Open as injured de Minaur retires](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-06-3)
+- [India detains thousands during anti-Modi youth protests](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-12-1)
+- [Migrant boat capsizes en route to Yemen, 139 dead and missing](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-12-2)
 
-## Wednesday 7 October
+## Tuesday 13 October
 
-### [Russian missile barrage kills dozens in Ukraine, flattening Pryluky apartments](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-07-0)
+### [Iran's navy strikes tanker in Strait of Hormuz amid shipping chaos](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-13-0)
 
-Seventy missiles and dozens of drones hit Ukraine overnight, and a strike on a five-storey building in Pryluky killed 22 people, five of them children.
-
-Also that day:
-- [Kagan and Soai share chemistry Nobel for mirror-image molecule breakthrough](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-07-1)
-- [RBI raises repo rate to 5.50% in first hike since 2023](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-07-2)
-- [Houthi strikes on Riyadh and Abha airports kill three](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-07-3)
-
-## Thursday 8 October
-
-### [US freezes green-card sponsorship for eight tech and IT giants](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-08-0)
-
-The Labor Department has stopped accepting or processing permanent labour certifications from Microsoft, Adobe and six major IT outsourcing firms, citing alleged abuse of immigration rules.
+Iran's Revolutionary Guard claimed responsibility for striking a third tanker in two days in the Strait of Hormuz, as cargo ships face mounting attacks threatening global trade.
 
 Also that day:
-- [Canadian poet Anne Carson wins the Nobel Prize in Literature](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-08-1)
-- [Oil jumps toward $106 as Hormuz tanker attacks hit record](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-08-2)
-- [Samsung forecasts record 107 trillion won quarterly profit on AI chips](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-08-3)
+- [Houthis strike Aden presidential palace, kill five](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-13-1)
+- [Israeli spyware targets Al Jazeera journalists via targeted ads](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-13-2)
 
-## Friday 9 October
+## Wednesday 14 October
 
-### [Navi Pillay, champion of international justice, wins Nobel Peace Prize](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-09-0)
+### [China's Pinglu Canal opens to reshape Asian trade routes](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-14-0)
 
-The 85-year-old South African jurist was honoured for decades of work making sure war crimes and genocide are prosecuted.
-
-Also that day:
-- [Trump strikes deal with Putin to import Russian diesel](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-09-1)
-- [US sanctions the International Criminal Court as an institution](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-09-2)
-- [Magnitude 7.7 earthquake shakes Panama, damaging homes and a church](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-09-3)
-
-## Saturday 10 October
-
-### [Missile strike on Riyadh airport kills 12 and wounds over 300](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-10-0)
-
-A projectile hit a passenger terminal at King Khalid International Airport, the deadliest attack on Saudi soil in more than a decade, as Yemen's war spreads.
+China inaugurated the $11 billion Pinglu Canal, a 134-kilometer waterway linking southwestern China to the Beibu Gulf and Southeast Asia, shortening shipping times and reducing costs for the region's largest trade partner.
 
 Also that day:
-- [Hurricane Isaias slams Florida Panhandle, leaving four dead](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-10-1)
-- [Vinícius sent off for hair pull as Real Madrid edge Villarreal](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-10-2)
+- [U.S. investigating network TV news outlets for possible antitrust violations](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-14-1)
+- [Sally Rooney's publisher halts UK distribution over Palestine activism](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-14-2)
 
-## Sunday 11 October
+## Thursday 15 October
 
-### [Pakistan imposes emergency rule on Imran Khan's last stronghold](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-11-0)
+### [Russia intensifies Ukraine attacks as Trump claim of ceasefire falls apart](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-15-0)
 
-Islamabad suspended the PTI-run government of Khyber Pakhtunkhwa and put the province under its governor, citing failures against militancy.
+Russian drone strikes killed at least nine civilians in Ukraine on Wednesday, leaving hundreds of thousands without power. President Zelensky said he felt betrayed by Trump's announcement of an energy ceasefire neither side supports.
 
 Also that day:
-- [Amos Kipruto storms to Chicago Marathon win in 2:01:09](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-11-1)
-- [At least 139 migrants die as boat capsizes off Djibouti](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-11-2)
+- [Two cargo ships sink in Strait of Hormuz as Iranian attacks escalate](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-15-1)
+- [U.S. to halt funding Israeli bonds as political divisions deepen](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-15-2)
+
+## Friday 16 October
+
+### [School shooting in Oregon kills four; teen suspect shot by community member](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-16-0)
+
+A 16-year-old opened fire at Silver Rail Elementary School in Bend, Oregon on Friday, killing three children and a teacher before an armed community member shot and killed the suspect.
+
+Also that day:
+- [Illinois police arrest neo-Nazi suspect for alleged temple attack plot](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-16-1)
+- [Turkey silences independent broadcaster in fresh media crackdown](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-16-2)
+
+## Saturday 17 October
+
+### [Student protests over education and governance spread across three continents](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-17-0)
+
+Student-led demonstrations that began in France over education policy have spread to Albania and Argentina, where protesters demand the resignation of leaders and oppose cuts to public services.
+
+Also that day:
+- [U.S. balloon aircraft records breakthrough in stratospheric research](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-17-1)
+- [U.S. inflation rises to 3.7% as energy prices surge](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-17-2)
+
+## Sunday 18 October
+
+### [Xenophobic violence in South Africa prompts African artists to withdraw from performances](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-18-0)
+
+Escalating attacks on migrants in South Africa prompted prominent African musicians to cancel or reschedule performances, including Malian artist Salif Keita and South African singer Tyla.
+
+Also that day:
+- [Dendroseris neriifolia tree clones preserved as species faces extinction](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-18-1)
+- [Costa Rica opens high-security prison modeled on El Salvador facility](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-18-2)
 
 ---
 
 Every story on Weekfold names its sources. Past weeks: [Previous news](https://narayansharma2k11-bot.github.io/weekfold/home.html#previous).
 
-Next edition: Sunday 18 October. Made by Narayan Sharma.
+Next edition: Sunday 25 October. Made by Narayan Sharma.
