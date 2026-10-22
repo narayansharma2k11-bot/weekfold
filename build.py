@@ -168,6 +168,10 @@ def main():
     # Story photos: scripts/fetch_photos.py (run by GitHub) saves them in data/photos/; the site serves its own copies from docs/img/.
     pdir = ROOT / 'data' / 'photos'
     man = json.loads((pdir / 'manifest.json').read_text(encoding='utf-8')) if (pdir / 'manifest.json').exists() else {}
+    # Photos dropped in by hand: data/photos/<Wikipedia_title>.jpg|jpeg|png|webp (e.g. Riyadh.jpg)
+    for f in sorted(pdir.glob('*')) if pdir.exists() else []:
+        if f.suffix.lower() in ('.jpg', '.jpeg', '.png', '.webp') and f.stem not in man:
+            man[f.stem] = {'file': f.name, 'credit': 'Wikimedia Commons', 'license': 'Free licence', 'page': 'https://en.wikipedia.org/wiki/' + f.stem}
     man = {t: m for t, m in man.items() if (pdir / m['file']).exists()}
     if man:
         (OUT / 'img').mkdir()
