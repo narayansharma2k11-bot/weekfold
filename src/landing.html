@@ -200,11 +200,37 @@ section.s{padding-block:clamp(48px,6vw,84px)}
 .secc:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 #000}
 .secc h3{font-size:24px;margin-top:6px}
 .secc p{font-size:14.5px;color:var(--ink-2);margin-top:4px;margin-bottom:6px}
-.secc .spark{margin-top:auto;padding-top:18px;box-sizing:content-box;display:flex;align-items:flex-end;gap:6px;height:56px}
-.secc .spark i{flex:1;background:var(--tone);border:1px solid #000;height:0;transition:height .9s cubic-bezier(.2,.8,.2,1);position:relative}
-.secc .spark i span{position:absolute;bottom:100%;left:0;right:0;text-align:center;font:500 11px var(--ui);color:var(--ink-3);margin-bottom:2px;font-style:normal}
-.secc .wks{display:flex;gap:6px;font-size:10.5px;color:var(--ink-3);margin-top:4px}
-.secc .wks span{flex:1;text-align:center}
+.secc .art{margin:-16px -16px 14px;height:150px;background:var(--tone);border-bottom:2px solid #000;position:relative;overflow:hidden}
+.secc .art::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.06) 0 2px,transparent 2px 14px)}
+.secc .art svg{position:absolute;inset:0;width:100%;height:100%}
+.secc .art .ln{fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.secc .art .th{fill:none;stroke:rgba(255,255,255,.45);stroke-width:1.4}
+.secc .art .gd{fill:#f0dc7a;stroke:#000;stroke-width:2}
+.secc .art .wt{fill:#fff;stroke:#000;stroke-width:2}
+.secc .art .bk{fill:rgba(0,0,0,.28)}
+.secc .count{position:absolute;right:10px;top:10px;background:#fff;color:#000;border:2px solid #000;font:700 12px var(--ui);padding:2px 8px;box-shadow:3px 3px 0 #000;z-index:1}
+.secc::before{display:none}
+.secc .lab{margin-top:2px}
+.secc .go{margin-top:auto;padding-top:12px}
+.secc p{margin-bottom:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes sway{50%{transform:translateX(-14px)}}
+@keyframes bob2{50%{transform:translateY(-8px)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-46px)}}
+@keyframes draw{from{stroke-dashoffset:var(--len)}to{stroke-dashoffset:0}}
+@keyframes flip{0%,30%{transform:scaleX(1)}60%,100%{transform:scaleX(-1)}}
+@keyframes flag{50%{transform:skewY(-8deg) scaleX(.9)}}
+@keyframes pulse2{0%{opacity:1}100%{opacity:0;transform:scale(2.2)}}
+.secc .rot{transform-box:fill-box;transform-origin:center;animation:spin 6s linear infinite}
+.secc .rot.slow{animation-duration:14s}
+.secc .rot.rev{animation-direction:reverse;animation-duration:9s}
+.secc .sway{animation:sway 4s ease-in-out infinite}
+.secc .bob{animation:bob2 3s ease-in-out infinite}
+.secc .bnc{animation:bounce 1.4s cubic-bezier(.5,0,.5,1) infinite}
+.secc .drw{stroke-dasharray:var(--len);animation:draw 3s linear infinite}
+.secc .flp{transform-box:fill-box;transform-origin:left center;animation:flip 3.5s ease-in-out infinite alternate}
+.secc .flg{transform-box:fill-box;transform-origin:left center;animation:flag 1.6s ease-in-out infinite}
+.secc .pls{transform-box:fill-box;transform-origin:center;animation:pulse2 2.4s ease-out infinite}
 .secc .go{margin-top:12px;font-size:14px;color:var(--blue);font-weight:500}
 
 /* archive: past editions as folded front pages */
@@ -385,7 +411,7 @@ details.q .a a{color:var(--blue)}
   </section>
 
   <section class="wrap s" id="sections" aria-labelledby="sec-h" style="padding-top:0">
-    <h2 class="rule" id="sec-h"><span>Sections</span><em>stories per week, last four editions</em></h2>
+    <h2 class="rule" id="sec-h"><span>Sections</span><em>pick one to read every story in it</em></h2>
     <div class="secs" id="secs"></div>
   </section>
 
@@ -764,18 +790,30 @@ details.q .a a{color:var(--blue)}
     rest.slice(2, 9).forEach(function(x){ list.appendChild(el('li', null, [ el('a', { href: href(x) }, [ el('div', null, [ el('p', { cls:'c', text: x.s.category + ' · ' + fmt(x.d.date, { weekday:'short' }) }), el('h4', { text: x.s.headline }) ]), photo(x.s, 200, 200) ]) ])); });
   } else document.getElementById('lastweek').hidden = true;
 
-  /* ================= SECTIONS: stories per week, as small bar charts ================= */
+  /* ================= SECTIONS ================= */
   var SEC = [['World','Diplomacy, disasters and the people in charge.'],['Politics','Elections, governments and the decisions behind them.'],['Conflict','Wars, ceasefires and what they mean for civilians.'],['Business','Markets, trade, energy and the economy.'],['Tech','AI, platforms and the devices we use.'],['Science','Discoveries and breakthroughs, explained plainly.'],['Climate','Weather, disasters and the energy transition.'],['Sport','The results and moments people talked about.'],['Culture','Books, film, music and big ideas.'],['Health','Medicine, public health and research.']];
   var WEEKS = EDS.slice(0, 4).filter(function(ed){ return !ed.partial; }).reverse();
-  var secs = document.getElementById('secs'), sparks = [];
+  /* a small animated drawing for each section */
+  var ART = {
+    World: '<circle cx="120" cy="75" r="46" class="wt" style="fill:rgba(255,255,255,.12);stroke:#fff;stroke-width:2.6"/><g class="rot slow"><ellipse cx="120" cy="75" rx="22" ry="46" class="ln"/><ellipse cx="120" cy="75" rx="40" ry="46" class="th"/></g><path class="th" d="M76 58h88M74 75h92M76 92h88"/><circle cx="96" cy="60" r="5" class="gd"/><circle cx="148" cy="88" r="5" class="gd"/><circle cx="96" cy="60" r="5" class="pls" style="fill:none;stroke:#f0dc7a;stroke-width:2"/><circle cx="148" cy="88" r="5" class="pls" style="fill:none;stroke:#f0dc7a;stroke-width:2;animation-delay:1.2s"/>',
+    Politics: '<path class="wt" d="M70 60l50-26 50 26z"/><rect x="72" y="60" width="96" height="8" class="wt"/><g class="ln"><path d="M82 72v42M100 72v42M120 72v42M140 72v42M158 72v42"/></g><rect x="66" y="114" width="108" height="8" class="wt"/><path class="ln" d="M120 34V14"/><path class="gd flg" d="M120 14h22l-5 6 5 6h-22z"/>',
+    Conflict: '<circle cx="120" cy="75" r="50" class="th"/><circle cx="120" cy="75" r="32" class="th"/><circle cx="120" cy="75" r="14" class="th"/><path class="th" d="M70 75h100M120 25v100"/><g class="rot" style="transform-origin:120px 75px;transform-box:view-box"><path d="M120 75L120 25A50 50 0 0 1 163 50z" fill="rgba(255,255,255,.22)"/><path class="ln" d="M120 75V25"/></g><circle cx="146" cy="52" r="4" class="gd"/><circle cx="96" cy="98" r="4" class="gd"/>',
+    Business: '<g class="bob"><ellipse cx="96" cy="110" rx="26" ry="8" class="gd"/><path class="gd" d="M70 110v-10h52v10"/><ellipse cx="96" cy="100" rx="26" ry="8" class="gd"/><path class="gd" d="M70 100v-10h52v10"/><ellipse cx="96" cy="90" rx="26" ry="8" class="gd"/></g><g class="bob" style="animation-delay:.6s"><ellipse cx="150" cy="110" rx="26" ry="8" class="gd"/><path class="gd" d="M124 110v-10h52v10"/><ellipse cx="150" cy="100" rx="26" ry="8" class="gd"/><path class="gd" d="M124 100v-10h52v10"/><ellipse cx="150" cy="90" rx="26" ry="8" class="gd"/><path class="gd" d="M124 90v-10h52v10"/><ellipse cx="150" cy="80" rx="26" ry="8" class="gd"/><path class="gd" d="M124 80v-10h52v10"/><ellipse cx="150" cy="70" rx="26" ry="8" class="gd"/></g><path class="ln drw" style="--len:140" d="M60 50l30-14 22 10 40-26 22 8"/>',
+    Tech: '<rect x="96" y="51" width="48" height="48" class="wt"/><rect x="108" y="63" width="24" height="24" class="gd"/><g class="ln"><path d="M104 51V31M120 51V21M136 51V31M104 99v20M120 99v30M136 99v20M96 63H60M96 87H50M144 63h36M144 87h46"/></g><g class="ln drw" style="--len:60;stroke:#f0dc7a"><path d="M96 87H50M144 63h36M120 51V21"/></g><circle cx="50" cy="87" r="4" class="gd"/><circle cx="190" cy="87" r="4" class="gd"/><circle cx="120" cy="21" r="4" class="gd"/>',
+    Science: '<circle cx="120" cy="75" r="9" class="gd"/><g class="rot"><ellipse cx="120" cy="75" rx="56" ry="18" class="ln"/><circle cx="176" cy="75" r="5" class="wt"/></g><g class="rot rev" style="transform:rotate(60deg)"><ellipse cx="120" cy="75" rx="56" ry="18" class="ln"/></g><g class="rot slow"><ellipse cx="120" cy="75" rx="18" ry="56" class="th"/><circle cx="120" cy="19" r="4" class="gd"/></g>',
+    Climate: '<circle cx="160" cy="46" r="18" class="gd"/><g class="rot slow" style="transform-origin:160px 46px;transform-box:view-box"><path class="ln" style="stroke:#f0dc7a" d="M160 18v-8M160 82v-8M132 46h-8M196 46h-8M140 26l-6-6M186 72l-6-6M140 66l-6 6M186 20l-6 6"/></g><g class="sway"><path class="ln" d="M20 100q20-14 40 0t40 0 40 0 40 0 40 0 40 0"/><path class="th" d="M20 118q20-14 40 0t40 0 40 0 40 0 40 0 40 0"/></g><path class="wt" d="M60 70l14-26 14 26z"/><path class="ln" d="M74 70v14"/>',
+    Sport: '<path class="th" d="M20 128h200M20 120h200"/><path class="ln" d="M40 128V96M200 128V96M40 96h160" style="stroke-dasharray:6 6"/><g class="bnc"><circle cx="120" cy="92" r="20" class="wt"/><path d="M120 72v40M100 92h40M106 78q14 14 28 0M106 106q14-14 28 0" fill="none" stroke="#000" stroke-width="2"/></g><ellipse cx="120" cy="124" rx="18" ry="4" class="bk"/>',
+    Culture: '<path class="wt" d="M120 40c-18-10-40-10-56-4v74c16-6 38-6 56 4z"/><path class="wt" d="M120 40c18-10 40-10 56-4v74c-16-6-38-6-56 4z"/><path class="wt flp" d="M120 40c14-8 32-9 44-6v72c-12-3-30-2-44 6z" style="fill:#fffdf7"/><g class="th" style="stroke:#000;opacity:.35"><path d="M74 54h34M74 64h34M74 74h30M74 84h34"/></g><path class="gd" d="M150 34v24l6-6 6 6V34"/>',
+    Health: '<path class="th" d="M20 75h200"/><path class="ln drw" style="--len:330;stroke:#fff;stroke-width:3" d="M20 75h50l10-24 14 52 14-70 12 54 8-12h92"/><path class="gd" d="M176 34h10v10h10v10h-10v10h-10v-10h-10v-10h10z"/>'
+  };
+  var secs = document.getElementById('secs');
   SEC.forEach(function(sx){
     var c = sx[0], per = WEEKS.map(function(ed){ return stories(ed).filter(function(x){ return x.s.category === c; }).length; });
     var tot = per.reduce(function(a, b){ return a + b; }, 0); if (!tot) return;
-    var mx = Math.max.apply(null, per) || 1;
-    var sp = el('div', { cls:'spark', 'aria-hidden':'true' }), wk = el('div', { cls:'wks', 'aria-hidden':'true' });
-    per.forEach(function(n, i){ var bar = el('i', null, [ el('span', { text: String(n) }) ]); bar._h = Math.max(4, n / mx * 100); sp.appendChild(bar); sparks.push(bar); wk.appendChild(el('span', { text: '#' + WEEKS[i].number })); });
     var now = per[per.length - 1];
-    secs.appendChild(el('a', { cls:'secc reveal', href:'home.html#section-' + encodeURIComponent(c), style:'--tone:' + tone(c), 'aria-label': c + ': ' + now + ' stories this week, ' + tot + ' in the last ' + WEEKS.length + ' weeks' }, [ el('p', { cls:'lab', style:'color:var(--ink-3)', text: now + ' this week · ' + tot + ' total' }), el('h3', { text: c }), el('p', { text: sx[1] }), sp, wk, el('span', { cls:'go', text: 'Open ' + c + ' →' }) ]));
+    var art = el('div', { cls:'art', 'aria-hidden':'true' }); art.innerHTML = '<svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">' + (ART[c] || ART.World) + '</svg>';
+    art.appendChild(el('span', { cls:'count', text: now ? now + ' this week' : 'none this week' }));
+    secs.appendChild(el('a', { cls:'secc reveal', href:'home.html#section-' + encodeURIComponent(c), style:'--tone:' + tone(c), 'aria-label': c + ': ' + now + ' stories this week' }, [ art, el('p', { cls:'lab', style:'color:var(--ink-3)', text: tot + (tot === 1 ? ' story' : ' stories') + ' in ' + WEEKS.length + ' weeks' }), el('h3', { text: c }), el('p', { text: sx[1] }), el('span', { cls:'go', text: 'Open ' + c + ' →' }) ]));
   });
 
   /* ================= ARCHIVE: editions before last week ================= */
@@ -808,7 +846,7 @@ details.q .a a{color:var(--blue)}
   /* reveal on scroll */
   /* anything that has scrolled into (or past) view is shown, even after a fast jump */
   var pending = Array.prototype.slice.call(document.querySelectorAll('.reveal')), rq = 0;
-  function reveal(){ rq = 0; var lim = window.innerHeight * 0.92; pending = pending.filter(function(n){ if (n.getBoundingClientRect().top < lim){ n.classList.add('in'); n.querySelectorAll('.spark i').forEach(function(b){ b.style.height = b._h + '%'; }); return false; } return true; }); }
+  function reveal(){ rq = 0; var lim = window.innerHeight * 0.92; pending = pending.filter(function(n){ if (n.getBoundingClientRect().top < lim){ n.classList.add('in'); return false; } return true; }); }
   window.addEventListener('scroll', function(){ if (!rq) rq = requestAnimationFrame(reveal); }, { passive: true });
   window.addEventListener('resize', reveal); reveal();
 

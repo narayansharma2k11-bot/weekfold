@@ -1,0 +1,5 @@
+# Hostinger (and any Apache/LiteSpeed host): the built site lives in /docs, so serve it as the site root.
+DirectoryIndex index.html
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/docs/
+RewriteRule ^(.*)$ /docs/$1 [L]
