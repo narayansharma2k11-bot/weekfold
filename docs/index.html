@@ -185,6 +185,14 @@ form.sub-form label{font-weight:500;font-size:16px}
 .book:not(.open){animation:bob 5s ease-in-out infinite}
 @keyframes bob{50%{transform:translateX(calc(var(--pw) * -0.5)) rotateX(52deg) rotateZ(-20deg) translateZ(48px)}}
 .book:not(.open) .thick{border-color:#8a8370}
+.thick{top:5px;height:calc(var(--ph) - 10px);width:calc(var(--pw) - 6px)}
+/* hard cover: back board, spine and an overhanging front board wrap the pages */
+.backcover{position:absolute;left:var(--pw);top:-6px;width:calc(var(--pw) + 8px);height:calc(var(--ph) + 12px);background:var(--navy);border:2px solid #000;transform:translateZ(-40px);transition:opacity .4s}
+.spine{position:absolute;left:var(--pw);top:-6px;width:40px;height:calc(var(--ph) + 12px);transform-origin:0 50%;transform:rotateY(90deg);background:linear-gradient(90deg,#0b1835,var(--navy) 30%,#1b2f60 70%,#0b1835);border:2px solid #000;transition:opacity .4s}
+.spine::before,.spine::after{content:"";position:absolute;left:0;right:0;height:3px;background:var(--gold)}
+.spine::before{top:30px}.spine::after{bottom:30px}
+.book.open .backcover,.book.open .spine{opacity:0}
+.face.cover{inset:-6px -8px -6px 0}
 .shadow{position:absolute;left:50%;top:50%;width:calc(var(--pw)*1.1);height:calc(var(--ph)*.7);transform:translate(-40%,-30%) rotateX(70deg);background:radial-gradient(closest-side,rgba(0,0,0,.35),transparent);filter:blur(10px);transition:opacity .8s;pointer-events:none}
 .book.open ~ .shadow{opacity:0}
 .thick{position:absolute;left:var(--pw);top:0;width:var(--pw);height:var(--ph);background:#e9e4d6;border:1px solid #000;background-image:repeating-linear-gradient(90deg,transparent 0 2px,rgba(0,0,0,.06) 2px 3px)}
@@ -491,6 +499,8 @@ details.q .a a{color:var(--blue)}
     <div class="stage" id="stage">
       <div class="scaler" id="scaler">
         <div class="book" id="bk">
+          <div class="backcover" aria-hidden="true"></div>
+          <div class="spine" aria-hidden="true"></div>
           <div class="thick" style="transform:translateZ(-36px)"></div>
           <div class="thick" style="transform:translateZ(-33px)"></div>
           <div class="thick" style="transform:translateZ(-30px)"></div>
