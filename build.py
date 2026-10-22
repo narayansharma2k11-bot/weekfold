@@ -219,6 +219,15 @@ def main():
         (OUT / 'robots.txt').write_text('User-agent: *\nAllow: /\n')
         print('Note: config.json has no site_url yet, so feed.xml and sitemap.xml were skipped and email links are relative.')
 
+    # A ready-to-upload copy of the whole site for Hostinger: download it from <site>/weekfold-site.zip
+    # and upload it into public_html with Hostinger's File Manager (Extract, replace existing files).
+    import zipfile
+    zpath = OUT / 'weekfold-site.zip'
+    with zipfile.ZipFile(zpath, 'w', zipfile.ZIP_DEFLATED) as z:
+        for f in sorted(OUT.rglob('*')):
+            if f.is_file() and f != zpath and f.name != '.nojekyll':
+                z.write(f, f.relative_to(OUT).as_posix())
+    print(f'Hostinger upload: docs/weekfold-site.zip ({zpath.stat().st_size // 1024} KB)')
     print(f'Photos: {len(man)} local copies served from docs/img/')
     for name in ('index.html', 'home.html'):
         print(f'{name}: {(OUT / name).stat().st_size // 1024} KB')
