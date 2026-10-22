@@ -51,6 +51,7 @@
 .book.open{transform:translateX(0) rotateX(0) rotateZ(0) translateZ(0)}
 .book:not(.open){animation:bob 5s ease-in-out infinite}
 @keyframes bob{50%{transform:translateX(calc(var(--pw) * -0.5)) rotateX(52deg) rotateZ(-20deg) translateZ(48px)}}
+.book:not(.open) .thick{border-color:#8a8370}
 .shadow{position:absolute;left:50%;top:50%;width:calc(var(--pw)*1.1);height:calc(var(--ph)*.7);transform:translate(-40%,-30%) rotateX(70deg);background:radial-gradient(closest-side,rgba(0,0,0,.35),transparent);filter:blur(10px);transition:opacity .8s;pointer-events:none}
 .book.open ~ .shadow{opacity:0}
 .thick{position:absolute;left:var(--pw);top:0;width:var(--pw);height:var(--ph);background:#e9e4d6;border:1px solid #000;background-image:repeating-linear-gradient(90deg,transparent 0 2px,rgba(0,0,0,.06) 2px 3px)}
@@ -65,11 +66,16 @@
 .cover::before{content:"";position:absolute;left:0;top:0;bottom:0;width:16px;background:var(--gold);border-right:2px solid #000}
 .cover .clogo{font:900 46px/1 var(--display);letter-spacing:-.01em}
 .cover .ced{font:500 12px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:#c9d3ee;margin-top:10px;border-top:1px solid rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.5);padding:6px 0}
-.cover .ph{margin-top:18px;border:2px solid #fff;box-shadow:none;aspect-ratio:16/11}
-.cover .ph .credit{display:none}
-.cover .chead{font:700 19px/1.25 var(--display);margin-top:14px}
+.cover .wheel{position:relative;margin:14px auto 0;width:236px;height:236px}
+.cover .wheel svg{position:absolute;inset:0;width:100%;height:100%}
+.cover .wheel .spin{transform-origin:118px 118px;animation:wspin 60s linear infinite}
+@keyframes wspin{to{transform:rotate(360deg)}}
+.cover .wheel .mid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.cover .wheel .mid small{font:700 11px var(--ui);letter-spacing:.2em;color:#c9d3ee}
+.cover .wheel .mid b{font:900 64px/1 var(--display);color:#fff}
+.cover .wheel .mid i{font:400 12px var(--ui);font-style:normal;color:#f0dc7a;margin-top:2px}
 .cover .cdate{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
-.cover .cdate b{font:700 24px/1.05 var(--display)}
+.cover .cdate b{font:700 18px/1.15 var(--display)}
 .cover .chip{background:var(--gold);color:#000;font:700 11px var(--ui);letter-spacing:.1em;padding:6px 10px;border:2px solid #000;white-space:nowrap}
 .tap-hint{position:absolute;left:50%;bottom:4px;transform:translateX(-50%);font:500 13px var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);display:flex;align-items:center;gap:10px;transition:opacity .4s;white-space:nowrap}
 .tap-hint i{width:9px;height:9px;border-radius:50%;background:var(--red);animation:pulse 1.6s infinite}
@@ -352,9 +358,18 @@ details.q .a a{color:var(--blue)}
     <div class="stage" id="stage">
       <div class="scaler" id="scaler">
         <div class="book" id="bk">
-          <div class="thick" style="transform:translateZ(-14px)"></div>
+          <div class="thick" style="transform:translateZ(-36px)"></div>
+          <div class="thick" style="transform:translateZ(-33px)"></div>
+          <div class="thick" style="transform:translateZ(-30px)"></div>
+          <div class="thick" style="transform:translateZ(-27px)"></div>
+          <div class="thick" style="transform:translateZ(-24px)"></div>
+          <div class="thick" style="transform:translateZ(-21px)"></div>
+          <div class="thick" style="transform:translateZ(-18px)"></div>
+          <div class="thick" style="transform:translateZ(-15px)"></div>
+          <div class="thick" style="transform:translateZ(-12px)"></div>
           <div class="thick" style="transform:translateZ(-9px)"></div>
-          <div class="thick" style="transform:translateZ(-4px)"></div>
+          <div class="thick" style="transform:translateZ(-6px)"></div>
+          <div class="thick" style="transform:translateZ(-3px)"></div>
           <div class="base-left"></div>
           <div class="base-right face pg endpage" id="endpage"></div>
           <div id="leaves" style="display:contents"></div>
@@ -594,10 +609,27 @@ details.q .a a{color:var(--blue)}
   var cover = el('div', { cls:'leaf' });
   var cf = el('div', { cls:'face front cover', role:'button', tabindex:'0', 'aria-label':'Open this week’s edition' });
   cf.appendChild(el('div', { cls:'clogo', text:'Weekfold' }));
-  cf.appendChild(el('p', { cls:'ced', text: 'Edition ' + E.number + ' · The world this week' }));
-  cf.appendChild(photo(DAYS[fi].lead, 640, 440, 'cover', { eager: true }));
-  cf.appendChild(el('p', { cls:'chead', text: 'Inside: ' + DAYS[fi].lead.headline }));
-  cf.appendChild(el('div', { cls:'cdate' }, [ el('b', { text: E.rangeLong || E.range }), el('span', { cls:'chip', text: DAYS.length + ' DAYS · ' + DAYS.length + ' PAGES' }) ]));
+  cf.appendChild(el('p', { cls:'ced', text: 'The world this week' }));
+  /* cover graphic: a wheel of the week, one ring segment per day, one coloured tick per story */
+  (function(){
+    var W = el('div', { cls:'wheel', 'aria-hidden':'true' }), C = 118, R1 = 84, R2 = 112, n = DAYS.length, gap = 0.05, svg = '';
+    var COL = { World:'#7fb2ff', Politics:'#ff6f61', Conflict:'#ff3d3d', Business:'#f2d04b', Tech:'#a8d8ff', Science:'#3fd6cc', Climate:'#63d98f', Sport:'#ffa24c', Culture:'#c99cff', Health:'#8ff0dc' };
+    function pt(r, a){ return (C + r * Math.cos(a)).toFixed(1) + ',' + (C + r * Math.sin(a)).toFixed(1); }
+    function arc(r1, r2, a0, a1, fill){ var big = a1 - a0 > Math.PI ? 1 : 0; return '<path d="M' + pt(r2, a0) + 'A' + r2 + ',' + r2 + ' 0 ' + big + ' 1 ' + pt(r2, a1) + 'L' + pt(r1, a1) + 'A' + r1 + ',' + r1 + ' 0 ' + big + ' 0 ' + pt(r1, a0) + 'Z" fill="' + fill + '" stroke="#10224a" stroke-width="1.5"/>'; }
+    DAYS.forEach(function(d, i){
+      var a0 = -Math.PI / 2 + i * 2 * Math.PI / n + gap, a1 = -Math.PI / 2 + (i + 1) * 2 * Math.PI / n - gap;
+      var st = [d.lead].concat(d.more || []), step = (a1 - a0) / st.length;
+      st.forEach(function(x, k){ svg += arc(R1, R2, a0 + k * step, a0 + (k + 1) * step, COL[x.category] || '#fff'); });
+      var mid = (a0 + a1) / 2, tp = pt(R1 - 12, mid).split(',');
+      svg += '<text x="' + tp[0] + '" y="' + (+tp[1] + 4) + '" text-anchor="middle" font-family="Roboto,sans-serif" font-size="10" font-weight="700" fill="#c9d3ee">' + fmt(d.date, { weekday:'short' }).charAt(0) + '</text>';
+    });
+    svg = '<svg viewBox="0 0 236 236"><circle cx="118" cy="118" r="117" fill="none" stroke="rgba(255,255,255,.35)" stroke-dasharray="2 5"/><g class="spin">' + svg + '</g><circle cx="118" cy="118" r="62" fill="none" stroke="#f0dc7a" stroke-width="1.5"/></svg>';
+    W.innerHTML = svg;
+    var total = DAYS.reduce(function(a, d){ return a + 1 + (d.more || []).length; }, 0);
+    W.appendChild(el('div', { cls:'mid' }, [ el('small', { text:'EDITION' }), el('b', { text: String(E.number) }), el('i', { text: total + ' stories' }) ]));
+    cf.appendChild(W);
+  })();
+  cf.appendChild(el('div', { cls:'cdate' }, [ el('b', { text: E.rangeLong || E.range }), el('span', { cls:'chip', text: DAYS.length + ' DAYS' }) ]));
   var cb = el('div', { cls:'face back pg contents' });
   cb.appendChild(el('div', { cls:'date' }, [ el('b', { text: 'In this edition' }), el('span', { text: 'Edition ' + E.number }) ]));
   cb.appendChild(el('h4', { text: 'One page for every day' }));
