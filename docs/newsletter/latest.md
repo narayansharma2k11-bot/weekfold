@@ -1,4 +1,4 @@
-**Edition 42 · 12 – 18 October 2026**
+**Edition 43 · 19 – 25 October 2026**
 
 This week's world news, one page for every day. Read it in one sitting and you're up to date.
 
@@ -6,78 +6,75 @@ This week's world news, one page for every day. Read it in one sitting and you'r
 
 ---
 
-## Monday 12 October
+## Monday 19 October
 
-### [Houthis strike Saudi airport for third time in as many days](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-12-0)
+### [Kenyan cult leader convicted over starvation deaths of 190 children](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-19-0)
 
-A Houthi missile hit the passenger terminal at Riyadh's King Khalid International Airport on Monday, killing one person and forcing operations to suspend after a strike a day earlier left at least 12 dead.
-
-Also that day:
-- [India detains thousands during anti-Modi youth protests](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-12-1)
-- [Migrant boat capsizes en route to Yemen, 139 dead and missing](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-12-2)
-
-## Tuesday 13 October
-
-### [Iran's navy strikes tanker in Strait of Hormuz amid shipping chaos](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-13-0)
-
-Iran's Revolutionary Guard claimed responsibility for striking a third tanker in two days in the Strait of Hormuz, as cargo ships face mounting attacks threatening global trade.
+A Mombasa court found preacher Paul Mackenzie and 28 others guilty of murder over the Shakahola Forest deaths, with sentencing set for 6 November.
 
 Also that day:
-- [Houthis strike Aden presidential palace, kill five](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-13-1)
-- [Israeli spyware targets Al Jazeera journalists via targeted ads](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-13-2)
+- [Saudi Arabia postpones 'Davos in the Desert' to 2027 amid Houthi attacks](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-19-1)
 
-## Wednesday 14 October
+## Tuesday 20 October
 
-### [China's Pinglu Canal opens to reshape Asian trade routes](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-14-0)
+### [Drone strike on Abyei market kills at least 153 people](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-20-0)
 
-China inaugurated the $11 billion Pinglu Canal, a 134-kilometer waterway linking southwestern China to the Beibu Gulf and Southeast Asia, shortening shipping times and reducing costs for the region's largest trade partner.
-
-Also that day:
-- [U.S. investigating network TV news outlets for possible antitrust violations](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-14-1)
-- [Sally Rooney's publisher halts UK distribution over Palestine activism](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-14-2)
-
-## Thursday 15 October
-
-### [Russia intensifies Ukraine attacks as Trump claim of ceasefire falls apart](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-15-0)
-
-Russian drone strikes killed at least nine civilians in Ukraine on Wednesday, leaving hundreds of thousands without power. President Zelensky said he felt betrayed by Trump's announcement of an energy ceasefire neither side supports.
+The toll from Monday's attack in the disputed Sudan-South Sudan border zone more than doubled as fires slowed recovery of bodies.
 
 Also that day:
-- [Two cargo ships sink in Strait of Hormuz as Iranian attacks escalate](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-15-1)
-- [U.S. to halt funding Israeli bonds as political divisions deepen](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-15-2)
+- [Alberta voters reject a path toward independence from Canada](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-20-1)
+- [Japan launches probe to bring back samples from Mars's moon Phobos](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-20-2)
 
-## Friday 16 October
+## Wednesday 21 October
 
-### [School shooting in Oregon kills four; teen suspect shot by community member](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-16-0)
+### [Oslo talks on Ukraine end without a deal as Witkoff heads to Putin](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-21-0)
 
-A 16-year-old opened fire at Silver Rail Elementary School in Bend, Oregon on Friday, killing three children and a teacher before an armed community member shot and killed the suspect.
-
-Also that day:
-- [Illinois police arrest neo-Nazi suspect for alleged temple attack plot](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-16-1)
-- [Turkey silences independent broadcaster in fresh media crackdown](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-16-2)
-
-## Saturday 17 October
-
-### [Student protests over education and governance spread across three continents](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-17-0)
-
-Student-led demonstrations that began in France over education policy have spread to Albania and Argentina, where protesters demand the resignation of leaders and oppose cuts to public services.
+Zelenskyy met US envoy Steve Witkoff and European leaders in Norway, with Washington calling the talks constructive but no agreement reached.
 
 Also that day:
-- [U.S. balloon aircraft records breakthrough in stratospheric research](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-17-1)
-- [U.S. inflation rises to 3.7% as energy prices surge](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-17-2)
+- [Meta posts record revenue, but a legal charge and AI spending cut profit](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-21-1)
+- [Tesla beats profit forecast as deliveries top estimates but margins stay thin](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-21-2)
 
-## Sunday 18 October
+## Thursday 22 October
 
-### [Xenophobic violence in South Africa prompts African artists to withdraw from performances](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-18-0)
+### [Iran says seven ships hit in Hormuz as US and Europe weigh next move](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-22-0)
 
-Escalating attacks on migrants in South Africa prompted prominent African musicians to cancel or reschedule performances, including Malian artist Salif Keita and South African singer Tyla.
+The Revolutionary Guard's claim of its highest single-day toll in the strait is disputed by the US, while ministers urge diplomacy and Washington hints at strikes.
 
 Also that day:
-- [Dendroseris neriifolia tree clones preserved as species faces extinction](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-18-1)
-- [Costa Rica opens high-security prison modeled on El Salvador facility](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-18-2)
+- [US measles cases pass 4,500 as the country's 2026 total doubles last year's](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-22-1)
+
+## Friday 23 October
+
+### [Israel locks down Hebron after attack kills two soldiers days before election](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-23-0)
+
+Netanyahu ordered the West Bank city sealed and prepared wider closures as the army launched a multi-day operation and arrests mounted.
+
+Also that day:
+- [Louvre, Orsay and Grand Palais shut as Paris braces for protests](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-23-1)
+- [Climate plans from 132 countries fall short on protecting health, new scorecard finds](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-23-2)
+
+## Saturday 24 October
+
+### [Hundreds of thousands march across France as nearly 1,000 are arrested](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-24-0)
+
+A week after rioting and looting, Saturday's protests over living costs passed with clashes in several cities under a 70,000-strong police deployment.
+
+Also that day:
+- [Brewers edge Rays 3-2 in World Series opener after overturned double play](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-24-1)
+- [World may have only a month or two of usable oil reserves, analysts warn](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-24-2)
+
+## Sunday 25 October
+
+### [Brazil votes in knife-edge runoff between Lula and Flávio Bolsonaro](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-25-0)
+
+Final polls show a near dead heat as nearly 160 million eligible voters choose between the veteran president and the son of the jailed ex-president.
+
+Also that day:
+- [Serbia votes in snap election as Vučić faces a student-led challenge](https://narayansharma2k11-bot.github.io/weekfold/home.html#a-2026-10-25-1)
 
 ---
 
 Every story on Weekfold names its sources. Past weeks: [Previous news](https://narayansharma2k11-bot.github.io/weekfold/home.html#previous).
 
-Next edition: Sunday 25 October. Made by Narayan Sharma.
+Next edition: Sunday 1 November. Made by Narayan Sharma.
