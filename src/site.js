@@ -112,3 +112,19 @@ var WFSite = (function () {
   }
   return { init: init, config: C };
 })();
+
+/* dark theme toggle */
+(function(){
+  var root = document.documentElement;
+  function get(){ try { return localStorage.getItem('wf-theme'); } catch (e) { return null; } }
+  function set(v){ try { localStorage.setItem('wf-theme', v); } catch (e) {} }
+  function apply(v){ if (v === 'dark') root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme'); }
+  apply(get());
+  document.addEventListener('DOMContentLoaded', function(){
+    var host = document.querySelector('.hd-right'); if (!host) return;
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'themebtn'; b.setAttribute('aria-label', 'Switch between light and dark theme');
+    function paint(){ b.textContent = root.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+    b.addEventListener('click', function(){ var n = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; apply(n); set(n); paint(); });
+    paint(); host.insertBefore(b, host.firstChild);
+  });
+})();

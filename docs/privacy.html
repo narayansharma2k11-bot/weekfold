@@ -168,6 +168,59 @@ header.top .nav a:hover{border-bottom-color:#000}
 @media (min-width:2200px){body{zoom:1.5}}
 .wrap{max-width:1360px}
 
+/* ---- map desk (shared by landing + home) ---- */
+.desk{background:#f6f1e7;color:#000;border-top:1px solid #000;border-bottom:1px solid #000;padding-block:clamp(40px,5vw,70px);margin-top:clamp(30px,4vw,56px)}
+.desk .rule{border-top-color:#000;color:#000}
+.desk .rule em{color:#666}
+.desk h2{font-size:clamp(32px,4.4vw,56px);color:#000}
+.desk .intro{color:#444;font-size:18px;max-width:60ch;margin-top:10px}
+.mapgrid{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);margin-top:28px;align-items:start}
+@media (max-width:980px){.mapgrid{grid-template-columns:minmax(0,1fr)}}
+.mapbox{position:relative;background:#dfeaf2;border:2px solid #000;box-shadow:8px 8px 0 #000}
+.mapbox svg{display:block;width:100%;height:auto}
+.mapbox .land{fill:#f7f3e8;stroke:#9a9484;stroke-width:.6}
+.grat{fill:none;stroke:rgba(30,58,106,.14);stroke-width:1}
+.pin{cursor:pointer;outline:none}
+.pin .dot{stroke:#fff;stroke-width:2.2;transition:r .2s;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
+.pin .ring{fill:none;stroke-width:2;opacity:.8;transform-box:fill-box;transform-origin:center;animation:ring 2.4s ease-out infinite}
+.pin:hover .dot,.pin:focus .dot,.pin.on .dot{r:12}
+.pin.off{opacity:.1;pointer-events:none}
+@keyframes ring{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.6);opacity:0}}
+.tip{position:absolute;z-index:3;width:min(300px,80%);background:#fff;color:#000;border:2px solid #000;box-shadow:5px 5px 0 #000;padding:12px 14px;pointer-events:none;opacity:0;transform:translateY(6px);transition:opacity .15s,transform .15s}
+.tip.on{opacity:1;transform:none}
+.tip .c{font:700 11px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:#a8231b}
+.tip b{display:block;font:700 17px/1.25 var(--display);margin-top:3px}
+.tip span{display:block;font-size:13px;color:#666;margin-top:5px}
+.filt{display:flex;flex-direction:column;gap:10px}
+.filt .scope{display:flex;border:2px solid #000;margin-bottom:8px;background:#fff}
+.filt .scope button{flex:1;min-height:42px;background:none;border:0;color:#000;cursor:pointer;font-size:15px}
+.filt .scope button[aria-pressed="true"]{background:#000;color:#fff;font-weight:600}
+.fbar{width:100%;display:grid;grid-template-columns:96px minmax(0,1fr) 30px;gap:10px;align-items:center;background:none;border:0;color:#000;cursor:pointer;padding:4px 0;text-align:left;font-size:15px}
+.fbar .track{display:block;height:16px;background:#fff;border:1px solid #bbb;position:relative}
+.fbar .fill{position:absolute;left:0;top:0;bottom:0;width:0;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.fbar .n{font:700 16px var(--display);text-align:right}
+.fbar[aria-pressed="false"]{opacity:.4}
+.fbar:hover .track{border-color:#000}
+.mapnote{font-size:13.5px;color:#666;margin-top:6px}
+.picked{margin-top:14px;background:#fff;color:#000;border:2px solid #000;box-shadow:5px 5px 0 #000;padding:14px 16px;min-height:110px}
+.picked .c{font:700 11px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:#a8231b}
+.picked b{display:block;font:700 19px/1.25 var(--display);margin-top:4px}
+.picked p{font-size:14.5px;color:#444;margin-top:6px}
+.picked a{display:inline-block;margin-top:8px;font-weight:600;color:#000;border-bottom:2px solid #000;font-size:15px}
+
+/* ---- bold buttons: black border + hard shadow, used for every main action ---- */
+.btn-red,.top .btn-red,.hd-right .btn-red{background:#1d3a6b;border:2px solid #000;color:#fff;font:700 14px/1 var(--ui);letter-spacing:.06em;text-transform:uppercase;min-height:42px;padding:0 20px;box-shadow:4px 4px 0 #000}
+.btn-red:hover{background:#27498a;box-shadow:6px 6px 0 #000;transform:translate(-1px,-1px)}
+.cta .btn,.cta .btn-lg{border:2px solid #000;box-shadow:5px 5px 0 #000;font-weight:700;min-height:52px;font-size:16px}
+.cta .btn-red{font-size:15px}
+.cta .btn:hover{box-shadow:7px 7px 0 #000;transform:translate(-1px,-1px)}
+
+/* ---- dark theme: whole page inverted, pictures flipped back ---- */
+html[data-theme="dark"]{background:#fff;filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] img,html[data-theme="dark"] .mapbox,html[data-theme="dark"] video{filter:invert(1) hue-rotate(180deg)}
+.themebtn{background:none;border:1px solid #000;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;line-height:1;color:#000;margin-right:10px}
+.themebtn:hover{background:#000;color:#fff}
+
 main.legalpage{max-width:760px;margin:0 auto;padding:clamp(36px,6vw,72px) 20px 90px}
 main.legalpage h1{font-size:clamp(40px,6vw,64px);font-weight:700}
 main.legalpage h2{font-size:26px;margin:44px 0 8px}

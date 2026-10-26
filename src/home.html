@@ -383,6 +383,42 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
 .readmore{color:#000;border-bottom-color:#000}
 .dnum{border-width:2px}
 .dayrow::before{border-left:1px solid #bbb}
+
+/* map on home */
+.desk .mapin{max-width:1360px;margin:0 auto;padding-inline:clamp(16px,3vw,32px)}
+#view-current .desk{margin-block:clamp(28px,4vw,52px);margin-inline:calc(50% - 50vw);width:100vw}
+/* keep reading feed */
+.feed{display:block}
+.fhead{font:700 13px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:#a8231b;margin:34px 0 4px;padding-top:14px;border-top:3px solid #000}
+.frow{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:24px;padding:20px 0;border-bottom:1px solid #d9d9d9;color:#000;text-decoration:none}
+.frow:hover h3{text-decoration:underline}
+.frow .cat{font:700 11px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:#a8231b}
+.frow h3{font:700 clamp(20px,2.2vw,26px)/1.18 var(--display);margin:5px 0 7px}
+.frow p{font:400 16px/1.5 var(--display);color:#555}
+.frow .fm{display:block;font:400 13px var(--ui);color:#777;margin-top:8px}
+.frow .fp .ph,.frow .fp img{width:100%;aspect-ratio:3/2;height:auto;display:block;object-fit:cover}
+.frow .ph,.frow .fp>*{box-shadow:none!important;border:0!important}
+.feedend{text-align:center;color:#777;font:400 14px var(--ui);padding:28px 0 60px}
+@media (max-width:640px){.frow{grid-template-columns:minmax(0,1fr) 112px;gap:14px}.frow p{display:none}}
+/* games */
+.gamenav{display:flex;gap:0;margin-bottom:26px;border-bottom:1px solid #000}
+.gamenav a{padding:12px 22px;font:700 14px var(--ui);letter-spacing:.06em;text-transform:uppercase;color:#555;text-decoration:none;border-bottom:3px solid transparent;margin-bottom:-1px}
+.gamenav a[aria-current="page"]{color:#000;border-bottom-color:#000}
+.wordgame{max-width:420px;margin:10px auto 40px;text-align:center}
+.wboard{display:grid;gap:6px;justify-content:center;margin-bottom:14px}
+.wrow{display:grid;grid-template-columns:repeat(5,clamp(48px,14vw,62px));gap:6px}
+.wt{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border:2px solid #d3d6da;font:700 clamp(24px,7vw,32px) var(--ui);text-transform:uppercase;color:#000}
+.wt.f{border-color:#878a8c}
+.wt.c,.wt.p,.wt.a{color:#fff;border-color:transparent;animation:wflip .5s both}
+.wt.c{background:#6aaa64}.wt.p{background:#c9b458}.wt.a{background:#787c7e}
+@keyframes wflip{0%{transform:rotateX(0)}50%{transform:rotateX(90deg)}100%{transform:rotateX(0)}}
+.wmsg{min-height:44px;font:400 15px var(--ui);color:#333;margin-bottom:8px}
+.wshare{background:#000;color:#fff;border:0;padding:8px 14px;font:700 13px var(--ui);cursor:pointer;letter-spacing:.05em;text-transform:uppercase}
+.wkb{display:grid;gap:6px}
+.wkr{display:flex;gap:5px;justify-content:center}
+.wk{flex:1;max-width:42px;height:52px;border:0;background:#d3d6da;color:#000;font:700 14px var(--ui);border-radius:4px;cursor:pointer;padding:0}
+.wk.wide{max-width:66px;font-size:12px}
+.wk.c{background:#6aaa64;color:#fff}.wk.p{background:#c9b458;color:#fff}.wk.a{background:#787c7e;color:#fff}
 </style>
 </head>
 <body>
@@ -410,7 +446,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
     <a href="#current">This week</a>
     <a href="#days">Day by day</a>
     <a href="#sections">Sections</a>
-    <a href="#crossword">Crossword</a>
+    <a href="#crossword">Games</a>
     <a href="#previous">Previous news</a>
     <a href="index.html#faq">FAQ</a>
     <a href="index.html#about">About</a>
@@ -423,7 +459,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
       <a href="#current" id="tab-current"><i></i>Current news</a>
       <a href="#days" id="tab-days"><i></i>Day by day</a>
       <a href="#sections" id="tab-sections"><i></i>Sections</a>
-      <a href="#crossword" id="tab-crossword"><i></i>Crossword</a>
+      <a href="#crossword" id="tab-crossword"><i></i>Games</a>
       <a href="#previous" id="tab-previous"><i></i>Previous news</a>
     </nav>
     <p class="lab" id="modelab"></p>
@@ -452,12 +488,36 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
 
       <div class="secgrid" id="cat-sections"></div>
 
+      <section class="desk" id="map" aria-labelledby="map-h">
+        <div class="mapin">
+          <p class="rule"><span>The week on the map</span><em id="map-count"></em></p>
+          <h2 id="map-h">Where the news happened</h2>
+          <p class="intro">Every pin is a story. Hover or tap one to see what happened there, and use the section bars to filter the map.</p>
+          <div class="mapgrid">
+            <div class="mapbox" id="mapbox">
+              <svg viewBox="0 0 1000 450" role="img" aria-label="World map with a pin for each story" id="mapsvg"><g id="grat"></g><path class="land" d="/*WORLD*/"/><g id="pins"></g></svg>
+              <div class="tip" id="tip" role="status"></div>
+            </div>
+            <div class="filt">
+              <div class="scope" role="group" aria-label="Which weeks"><button type="button" id="sc-week" aria-pressed="true">This week</button><button type="button" id="sc-month" aria-pressed="false">Past month</button></div>
+              <div id="fbars"></div><p class="mapnote" id="mapnote"></p>
+              <div class="picked" id="picked"><span class="c">Pick a pin</span><b>Choose any pin on the map to read the story behind it.</b></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="blk" id="pick-box" aria-labelledby="pick-h"><h2 class="rule" id="pick-h"><span>Editor's pick</span><em>the one to read if you read one</em></h2><div id="pick"></div></section>
       <span id="must"></span><div id="must-band" hidden></div><div id="must-grid" hidden></div>
 
       <section class="blk" id="top-stories" aria-labelledby="rank-h">
         <h2 class="rule" id="rank-h"><span>More from the week</span><em id="rank-p"></em></h2>
         <div id="rank-list" role="list"></div>
+      </section>
+
+      <section class="blk" id="keep" aria-labelledby="keep-h">
+        <h2 class="rule" id="keep-h"><span>Keep reading</span><em>earlier editions, newest first</em></h2>
+        <div class="feed" id="feed-cur"></div><p class="feedend" id="feed-cur-end"></p>
       </section>
     </div>
   </div>
@@ -474,8 +534,10 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
   <!-- CROSSWORD -->
   <div id="view-crossword" hidden>
     <section class="wrap s cwsec" aria-labelledby="cw-h">
-      <div class="sechead"><h2 id="cw-h">The Weekfold Mini</h2><span id="cw-sub"></span></div>
-      <div id="cw-body"></div>
+      <nav class="gamenav" aria-label="Games"><a href="#crossword" id="g-cw">Mini crossword</a><a href="#word" id="g-word">Weekfold Word</a></nav>
+      <div id="cw-wrap"><div class="sechead"><h2 id="cw-h">The Weekfold Mini</h2><span id="cw-sub"></span></div>
+      <div id="cw-body"></div></div>
+      <div id="word-wrap" hidden><div class="sechead"><h2>Weekfold Word</h2><span>guess the 5-letter word in six tries · new word every day</span></div><div id="word-body"></div></div>
     </section>
   </div>
 
@@ -485,6 +547,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
       <div class="sechead"><h2 id="days-h">The week, day by day</h2><span id="days-range"></span></div>
       <div id="dayrows"></div>
     </section>
+    <section class="wrap s" style="padding-top:0"><h2 class="rule"><span>Keep reading</span><em>earlier weeks, newest first</em></h2><div class="feed" id="feed-days"></div><p class="feedend" id="feed-days-end"></p></section>
   </div>
 
   <!-- PREVIOUS -->
@@ -534,7 +597,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
       </div>
       <div><h4>Read</h4><ul><li><a href="#current">Current news</a></li><li><a href="#days">Day by day</a></li><li><a href="#sections">Sections</a></li><li><a href="#previous">Previous news</a></li></ul></div>
       <div><h4>Weekfold</h4><ul><li><a href="index.html#about">About us</a></li><li><a href="index.html#faq">Editorial standards &amp; FAQ</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
-      <div><h4>Account</h4><ul><li><a href="#crossword">Crossword</a></li><li><button type="button" data-open="signin" class="linkbtn">Sign in</button></li><li><button type="button" data-open="subscribe" class="linkbtn">Subscribe</button></li><li><a href="privacy.html">Privacy</a></li></ul></div>
+      <div><h4>Account</h4><ul><li><a href="#crossword">Games</a></li><li><button type="button" data-open="signin" class="linkbtn">Sign in</button></li><li><button type="button" data-open="subscribe" class="linkbtn">Subscribe</button></li><li><a href="privacy.html">Privacy</a></li></ul></div>
     </div>
     <div class="legal">
       <span>© 2026 Weekfold · New edition every Sunday · <a href="mailto:weekfoldsupport@gmail.com">weekfoldsupport@gmail.com</a></span>
@@ -577,6 +640,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
 <script>var WF_PHOTOS = /*PHOTOS*/;</script>
 <script>/*ART*/</script>
 <script>/*SITE*/</script>
+<script>/*MAP*/</script>
 <script>
 (function(){
   var EDS;
@@ -730,7 +794,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
     document.getElementById('sx-sub').textContent = cat ? counts[cat] + ' stories in the last ' + weeks + ' weeks' : cats.length + ' sections · last ' + weeks + ' weeks';
     if (!cat){
       cats.forEach(function(c){
-        var list = catStories(c).slice(0, 4);
+        var list = catStories(c).slice(0, 8);
         var g = el('div', { cls:'grid4' }); list.forEach(function(s){ g.appendChild(card(s, 520, 340)); });
         body.appendChild(el('section', { cls:'sxrow', 'aria-label': c }, [ el('div', { cls:'sechead', style:'margin-bottom:18px' }, [ el('h2', { style:'font-size:clamp(26px,3vw,36px)', text: c }), el('a', { href:'#section-' + encodeURIComponent(c), text: 'All ' + counts[c] + ' ' + c + ' stories →' }) ]), g ]));
       });
@@ -932,6 +996,105 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
     paint();
   }
 
+  /* ---------- KEEP READING (endless feed of earlier editions) ---------- */
+  function feedRow(s){
+    var a = el('a', { cls:'frow', href:'#a-' + s.id });
+    var tx = el('div', { cls:'ft' }, [ el('span', { cls:'cat', text: s.category }), el('h3', { text: s.headline }), dek(s) ? el('p', { text: dek(s) }) : null, el('span', { cls:'fm', text: (srcs(s)[0] || {}).name ? (srcs(s)[0].name + ' · ' + fmt(s.date, { day:'numeric', month:'short' })) : fmt(s.date, { day:'numeric', month:'short' }) }) ]);
+    a.appendChild(tx); a.appendChild(el('div', { cls:'fp' }, [ photo(s, 360, 240) ]));
+    return a;
+  }
+  function startFeed(boxId, from){
+    var box = document.getElementById(boxId), end = document.getElementById(boxId + '-end'); if (!box) return;
+    var qi = from, busy = false, finished = false, shown = 0;
+    function addWeek(ed){
+      box.appendChild(el('h3', { cls:'fhead', text:'Edition ' + ed.number + ' · ' + (ed.rangeLong || ed.range) }));
+      stories(ed).sort(function(a, b){ return blen(b) - blen(a); }).forEach(function(s){ box.appendChild(feedRow(s)); shown++; });
+      WFArt.paintAll(box);
+    }
+    function more(){
+      if (busy || finished) return;
+      if (qi >= EDS.length){ finished = true; end.textContent = 'You have reached the first edition. That is everything so far.'; return; }
+      busy = true; end.textContent = 'Loading…';
+      var ed = EDS[qi];
+      ensureFull(ed, function(ok){
+        busy = false; end.textContent = '';
+        if (!ok){ end.textContent = 'Could not load more. Scroll again to retry.'; return; }
+        qi++; addWeek(ed); check();
+      });
+    }
+    function check(){ if (finished || busy) return; var r = end.getBoundingClientRect(); if (r.top < window.innerHeight + 700) more(); }
+    window.addEventListener('scroll', check, { passive:true }); window.addEventListener('resize', check);
+    box._check = check; setTimeout(check, 300);
+  }
+  startFeed('feed-cur', 1); startFeed('feed-days', 1);
+
+  /* ---------- WEEKFOLD WORD (a five-letter guessing game, a new word every day) ---------- */
+  var WORDS = ["about", "above", "actor", "acute", "admit", "adopt", "adult", "after", "again", "agent", "agree", "ahead", "alarm", "album", "alert", "alike", "alive", "allow", "alone", "along", "alter", "among", "angel", "anger", "angle", "angry", "apart", "apple", "apply", "arena", "argue", "arise", "armor", "aroma", "array", "arrow", "aside", "asset", "atlas", "audio", "avoid", "awake", "award", "aware", "badly", "baker", "basic", "basin", "basis", "beach", "beard", "beast", "begin", "being", "belly", "below", "bench", "berry", "birth", "black", "blade", "blame", "blank", "blast", "blaze", "bleed", "blend", "bless", "blind", "block", "blood", "bloom", "board", "boost", "booth", "bound", "brain", "brake", "brand", "brave", "bread", "break", "breed", "brick", "bride", "brief", "bring", "broad", "broke", "brown", "brush", "build", "built", "bunch", "burst", "buyer", "cabin", "cable", "candy", "carry", "catch", "cause", "chain", "chair", "chalk", "charm", "chart", "chase", "cheap", "check", "cheek", "cheer", "chess", "chest", "chief", "child", "chill", "choir", "chose", "civic", "claim", "class", "clean", "clear", "clerk", "click", "cliff", "climb", "clock", "close", "cloth", "cloud", "coach", "coast", "color", "couch", "could", "count", "court", "cover", "crack", "craft", "crane", "crash", "crazy", "cream", "crime", "crisp", "cross", "crowd", "crown", "cruel", "crush", "curve", "cycle", "daily", "dance", "dealt", "death", "debut", "delay", "depth", "diary", "dirty", "doubt", "dozen", "draft", "drain", "drama", "dream", "dress", "drift", "drink", "drive", "eager", "early", "earth", "eight", "elect", "elite", "empty", "enemy", "enjoy", "enter", "entry", "equal", "error", "essay", "event", "every", "exact", "exist", "extra", "faith", "false", "fancy", "fault", "feast", "fence", "fever", "fiber", "field", "fifth", "fifty", "fight", "final", "first", "flame", "flash", "fleet", "flesh", "float", "flood", "floor", "flour", "focus", "force", "forge", "forth", "forum", "frame", "frank", "fraud", "fresh", "front", "fruit", "funny", "giant", "given", "glass", "globe", "glory", "grace", "grade", "grain", "grand", "grant", "grape", "graph", "grass", "great", "green", "greet", "grief", "gross", "group", "grown", "guard", "guess", "guest", "guide", "habit", "happy", "harsh", "heart", "heavy", "hello", "hence", "honey", "honor", "horse", "hotel", "house", "human", "humor", "hurry", "ideal", "image", "imply", "index", "inner", "input", "issue", "ivory", "jewel", "joint", "judge", "juice", "knife", "knock", "label", "labor", "large", "laser", "later", "laugh", "layer", "learn", "lease", "least", "leave", "legal", "lemon", "level", "light", "limit", "linen", "liver", "lobby", "local", "logic", "loose", "lover", "lower", "loyal", "lucky", "lunch", "magic", "major", "maker", "march", "match", "maybe", "mayor", "medal", "media", "merge", "merit", "metal", "meter", "might", "minor", "minus", "mixed", "model", "money", "month", "moral", "motor", "mount", "mouse", "mouth", "movie", "music", "naive", "nerve", "never", "newly", "night", "noble", "noise", "north", "novel", "nurse", "occur", "ocean", "offer", "often", "olive", "onion", "opera", "orbit", "order", "organ", "other", "ought", "outer", "owner", "paint", "panel", "paper", "party", "pasta", "patch", "pause", "peace", "pearl", "phase", "phone", "photo", "piano", "piece", "pilot", "pitch", "pizza", "place", "plain", "plane", "plant", "plate", "plaza", "point", "polar", "porch", "pound", "power", "press", "price", "pride", "prime", "print", "prior", "prize", "proof", "proud", "prove", "pulse", "punch", "pupil", "queen", "quest", "quick", "quiet", "quite", "quote", "radar", "radio", "raise", "rally", "ranch", "range", "rapid", "ratio", "reach", "react", "ready", "realm", "rebel", "refer", "relax", "reply", "rider", "ridge", "rifle", "right", "rigid", "risky", "rival", "river", "robot", "rocky", "rough", "round", "route", "royal", "rural", "salad", "sauce", "scale", "scene", "scope", "score", "scout", "sense", "serve", "seven", "shade", "shake", "shall", "shape", "share", "sharp", "sheep", "sheet", "shelf", "shell", "shift", "shine", "shirt", "shock", "shoot", "shore", "short", "shout", "sight", "silly", "since", "sixth", "skill", "sleep", "slice", "slide", "small", "smart", "smile", "smoke", "snake", "solar", "solid", "solve", "sound", "south", "space", "spare", "speak", "speed", "spell", "spend", "spice", "spine", "split", "spoke", "sport", "staff", "stage", "stair", "stake", "stand", "start", "state", "steak", "steam", "steel", "steep", "stick", "still", "stock", "stone", "store", "storm", "story", "stove", "strip", "study", "stuff", "style", "sugar", "suite", "sunny", "super", "surge", "swamp", "sweet", "swift", "swing", "sword", "table", "taste", "teach", "thank", "theme", "there", "thick", "thing", "think", "third", "those", "three", "throw", "thumb", "tiger", "tight", "title", "toast", "today", "token", "tooth", "topic", "total", "touch", "tough", "tower", "trace", "track", "trade", "trail", "train", "trash", "treat", "trend", "trial", "tribe", "trick", "tried", "troop", "truck", "truly", "trust", "truth", "twice", "uncle", "under", "union", "unity", "until", "upper", "upset", "urban", "usage", "usual", "valid", "value", "vapor", "venue", "verse", "video", "virus", "visit", "vital", "vivid", "vocal", "voice", "voter", "wagon", "waste", "watch", "water", "weary", "weigh", "weird", "whale", "wheat", "wheel", "where", "which", "while", "white", "whole", "whose", "widen", "widow", "width", "woman", "world", "worry", "worse", "worst", "worth", "would", "wound", "wrist", "write", "wrong", "yield", "young", "youth", "zebra"];
+  function renderWord(){
+    var body = document.getElementById('word-body'); body.innerHTML = '';
+    var day = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 86400000), key = 'wf-word-' + day;
+    var ans = WORDS[(day * 7919) % WORDS.length].toUpperCase();
+    var S; try { S = JSON.parse(localStorage.getItem(key) || 'null'); } catch (x) { S = null; }
+    S = S || { g: [], over: false, won: false };
+    var cur = '', msg = el('div', { cls:'wmsg', 'aria-live':'polite' }), board = el('div', { cls:'wboard' }), kb = el('div', { cls:'wkb' }), keys = {};
+    function save(){ try { localStorage.setItem(key, JSON.stringify(S)); } catch (x) {} }
+    function score(g){
+      var r = ['a','a','a','a','a'], left = {}, i;
+      for (i = 0; i < 5; i++){ if (g[i] === ans[i]) r[i] = 'c'; else left[ans[i]] = (left[ans[i]] || 0) + 1; }
+      for (i = 0; i < 5; i++){ if (r[i] === 'c') continue; if (left[g[i]] > 0){ r[i] = 'p'; left[g[i]]--; } }
+      return r;
+    }
+    function paint(){
+      board.innerHTML = '';
+      for (var r = 0; r < 6; r++){
+        var row = el('div', { cls:'wrow' }), g = S.g[r], sc = g ? score(g) : null;
+        for (var c = 0; c < 5; c++){
+          var t = el('span', { cls:'wt' + (sc ? ' ' + sc[c] : '') + (!g && r === S.g.length && cur[c] ? ' f' : ''), text: g ? g[c] : (r === S.g.length ? (cur[c] || '') : '') });
+          if (sc) t.style.animationDelay = (c * 90) + 'ms';
+          row.appendChild(t);
+        }
+        board.appendChild(row);
+      }
+      var best = {}; S.g.forEach(function(g){ var sc = score(g); for (var i = 0; i < 5; i++){ var o = best[g[i]], n = sc[i]; if (o === 'c' || (o === 'p' && n !== 'c')) continue; best[g[i]] = n; } });
+      Object.keys(keys).forEach(function(k){ keys[k].className = 'wk' + (best[k] ? ' ' + best[k] : '') + (k.length > 1 ? ' wide' : ''); });
+    }
+    function share(){
+      var rows = S.g.map(function(g){ return score(g).map(function(x){ return x === 'c' ? '\ud83d\udfe9' : x === 'p' ? '\ud83d\udfe8' : '\u2b1b'; }).join(''); }).join('\n');
+      var t = 'Weekfold Word ' + (S.won ? S.g.length : 'X') + '/6\n' + rows;
+      try { navigator.clipboard.writeText(t); msg.textContent = 'Result copied. Paste it to a friend.'; } catch (x) { msg.textContent = t; }
+    }
+    function finish(){
+      if (!S.over) return;
+      var b = el('button', { type:'button', cls:'wshare', text:'Share result' }); b.addEventListener('click', share);
+      msg.textContent = S.won ? 'You got it in ' + S.g.length + '. Come back tomorrow for a new word.' : 'The word was ' + ans + '. Come back tomorrow.';
+      msg.appendChild(document.createTextNode(' ')); msg.appendChild(b);
+    }
+    function submit(){
+      if (S.over) return;
+      if (cur.length < 5){ msg.textContent = 'Not enough letters.'; return; }
+      S.g.push(cur); cur = '';
+      if (S.g[S.g.length - 1] === ans){ S.over = true; S.won = true; } else if (S.g.length >= 6){ S.over = true; }
+      save(); msg.textContent = ''; paint(); finish();
+    }
+    function press(k){
+      if (S.over) return;
+      if (k === 'ENTER') submit();
+      else if (k === 'DEL'){ cur = cur.slice(0, -1); paint(); }
+      else if (/^[A-Z]$/.test(k) && cur.length < 5){ cur += k; msg.textContent = ''; paint(); }
+    }
+    ['QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM'].forEach(function(rw, i){
+      var row = el('div', { cls:'wkr' }); if (i === 2){ var e = el('button', { type:'button', text:'Enter', cls:'wk wide' }); keys['ENTER'] = e; e.addEventListener('click', function(){ press('ENTER'); }); row.appendChild(e); }
+      rw.split('').forEach(function(ch){ var b = el('button', { type:'button', text:ch, cls:'wk' }); keys[ch] = b; b.addEventListener('click', function(){ press(ch); }); row.appendChild(b); });
+      if (i === 2){ var d = el('button', { type:'button', text:'\u232b', cls:'wk wide', 'aria-label':'Delete' }); keys['DEL'] = d; d.addEventListener('click', function(){ press('DEL'); }); row.appendChild(d); }
+      kb.appendChild(row);
+    });
+    var wrap = el('div', { cls:'wordgame' }, [ board, msg, kb ]);
+    body.appendChild(wrap);
+    if (!window._wfWordKeys){ window._wfWordKeys = true; document.addEventListener('keydown', function(e){ if (location.hash !== '#word' || e.ctrlKey || e.metaKey || e.altKey) return; var k = e.key; if (k === 'Enter') window._wfPress('ENTER'); else if (k === 'Backspace') window._wfPress('DEL'); else if (/^[a-zA-Z]$/.test(k)) window._wfPress(k.toUpperCase()); }); }
+    window._wfPress = press;
+    paint(); finish();
+  }
+
   /* ---------- ROUTER ---------- */
   function setMode(mode){
     document.getElementById('view-current').hidden = mode !== 'current';
@@ -948,7 +1111,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
     document.getElementById('modelab').innerHTML = '';
     var lab = document.getElementById('modelab');
     if (mode === 'current' || mode === 'days'){ lab.appendChild(el('b', { text: 'Edition ' + CUR.number })); lab.appendChild(document.createTextNode(' · ' + (CUR.rangeLong || CUR.range) + ' · Next edition ' + CUR.next)); }
-    else if (mode === 'crossword'){ lab.appendChild(el('b', { text: 'Crossword' })); lab.appendChild(document.createTextNode(' \u00b7 a new mini every Sunday')); }
+    else if (mode === 'crossword'){ lab.appendChild(el('b', { text: 'Games' })); lab.appendChild(document.createTextNode(' \u00b7 a new crossword every Sunday, a new word every day')); }
     else if (mode === 'sections'){ lab.appendChild(el('b', { text: 'Every section' })); lab.appendChild(document.createTextNode(' · this week and the ' + Math.max(0, FULL().length - 1) + ' weeks before')); }
     else { lab.appendChild(el('b', { text: PREV.length + ' past ' + (PREV.length === 1 ? 'edition' : 'editions') })); }
   }
@@ -992,7 +1155,13 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
       }
       if (m[1] === CUR.number){ setMode('current'); if (!quiet) window.scrollTo(0, 0); return; }
     }
-    if (h === 'crossword'){ setMode('crossword'); if (!document.getElementById('cw-body').firstChild) renderCrossword(); if (!quiet) window.scrollTo(0, 0); return; }
+    if (h === 'crossword' || h === 'word'){
+      setMode('crossword'); var isW = h === 'word';
+      document.getElementById('cw-wrap').hidden = isW; document.getElementById('word-wrap').hidden = !isW;
+      document.getElementById('g-cw').setAttribute('aria-current', isW ? 'false' : 'page'); document.getElementById('g-word').setAttribute('aria-current', isW ? 'page' : 'false');
+      if (isW){ if (!document.getElementById('word-body').firstChild) renderWord(); } else if (!document.getElementById('cw-body').firstChild) renderCrossword();
+      if (!quiet) window.scrollTo(0, 0); return;
+    }
     if (h === 'sections' || /^section-/.test(h)){
       var c = h === 'sections' ? '' : decodeURIComponent(h.slice(8));
       setMode('sections'); var sb = document.getElementById('sx-body');
@@ -1008,6 +1177,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
     setMode('current');
     if (!quiet){ if (h === 'current' || !h) window.scrollTo(0, 0); else { var t = document.getElementById(h); if (t) t.scrollIntoView({ block:'start' }); } }
   }
+  WFMap(CUR, EDS, function(x){ return '#a-' + x.d.date + '-' + x.k; });
   window.addEventListener('hashchange', route);
   route();
   WFArt.paintAll(document);
