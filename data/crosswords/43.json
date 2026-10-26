@@ -1,0 +1,18 @@
+{
+  "title": "The Weekfold Mini",
+  "grid": ["HEART", "EMBER", "ABUSE", "RESIN", "TREND"],
+  "across": {
+    "1": "Pumper at the centre of a World Series nail-biter",
+    "6": "Glowing bit left in a dying fire",
+    "7": "Mistreat",
+    "8": "Sticky tree sap used in varnish",
+    "9": "Where a line on a chart is heading"
+  },
+  "down": {
+    "1": "Core, as of a city or a matter",
+    "2": "Ending of three calendar months",
+    "3": "Misuse",
+    "4": "Pine product",
+    "5": "Briefly viral 'it' thing"
+  }
+}

@@ -62,6 +62,9 @@ def load():
         ed = json.loads(p.read_text(encoding='utf-8'))
         check(ed, p)
         ed['number'] = str(ed['number'])
+        cw = DATA.parent / 'crosswords' / (str(ed['number']) + '.json')
+        if cw.exists():
+            ed['crossword'] = json.loads(cw.read_text(encoding='utf-8'))
         ed['days'] = sorted(ed.get('days') or [], key=lambda d: d['date'])
         for d in ed['days']:
             d['lead'] = caption(d['lead'])

@@ -322,6 +322,75 @@ section.s{padding-block:clamp(44px,6vw,80px)}
 .nextup span{display:block;font-size:13px;color:var(--ink-3);font-weight:500}
 .nextup b{display:block;font:700 18px/1.3 var(--display);margin-top:5px}
 
+
+/* ---------- newspaper front page (NYT-style): centred masthead, hairline rules, serif ledes ---------- */
+:root{--serif:Georgia,'Times New Roman',serif;--hair:#dfdfdf}
+body{background:#fff}
+header.top{background:#fff;border-bottom:0;position:static}
+header.top .in{max-width:1240px;margin-inline:auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:16px clamp(16px,3vw,32px) 10px;min-height:0}
+.hd-date{font:400 13px/1.4 var(--ui);color:#000}
+.hd-right{justify-self:end}
+header.top .logo{font-size:clamp(34px,5vw,58px);gap:14px;letter-spacing:-.02em;justify-self:center}
+header.top .logo svg{width:clamp(44px,5vw,64px);height:clamp(44px,5vw,64px)}
+header.top .nav{max-width:1240px;margin:0 auto;width:calc(100% - 2*clamp(16px,3vw,32px));display:flex;justify-content:center;align-items:center;gap:clamp(14px,2.4vw,34px);padding:10px 0;border-top:1px solid #000;border-bottom:3px double #000;overflow-x:auto;order:0}
+header.top .nav a{border:0;font:400 15px/1.3 var(--ui);color:#121212;padding:2px 0;border-bottom:2px solid transparent;white-space:nowrap}
+header.top .nav a:hover{border-bottom-color:#000}
+.btn{box-shadow:none;border-width:1px}
+.btn:hover,.btn:active{transform:none;box-shadow:none}
+.btn-red{background:#567b95;border:1px solid #567b95;color:#fff;font:700 13px/1 var(--ui);letter-spacing:.05em;text-transform:uppercase;min-height:34px;padding:0 16px;box-shadow:none}
+.btn-red:hover{background:#456a83;box-shadow:none}
+@media (max-width:760px){header.top .in{grid-template-columns:1fr auto}.hd-date{display:none}header.top .logo{justify-self:start}header.top .nav{justify-content:flex-start}}
+
+.modebar{position:sticky;top:0;background:rgba(255,255,255,.97);border-bottom:1px solid var(--hair)}
+.seg a{border:0;margin:0;min-height:38px;padding:0 14px;font:400 14px var(--ui);background:none;border-bottom:3px solid transparent}
+.seg a[aria-current="page"]{background:none;color:#000;font-weight:700;border-bottom-color:#000}
+.modebar .lab{font-size:13px}
+.datebar{border-bottom:1px solid #000;font-size:13px;color:#333}
+.ticker{border-bottom:1px solid #000}
+.ticker>b{background:#000;font-size:11px}
+.front>*{border-left:1px solid var(--hair)}
+.f-lead h1{font-weight:700;letter-spacing:-.01em}
+.f-lead .ex,.card .ex,.mini .card .ex{font-family:var(--serif);color:#555}
+.f-lead .kick,.tagline .cat{color:#a8231b}
+.f-mid .card,.f-side li,.mini .card{border-bottom:1px solid var(--hair)}
+.big,.hard{border:0;box-shadow:none}
+.card h3{font-weight:700}
+.f-side li>b{color:#000;font-weight:400}
+.sechead{border-top:1px solid #000;padding-top:10px}
+.sechead h2{font-size:clamp(22px,2.6vw,30px)}
+hr.dots,.dots{border-top:1px solid var(--hair)}
+
+/* crossword */
+.cwsec{max-width:980px}
+.cw{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px 40px;align-items:start}
+@media (max-width:760px){.cw{grid-template-columns:minmax(0,1fr)}}
+.cwgrid{--cs:clamp(46px,9vw,70px);display:grid;gap:0;border:2px solid #000;width:max-content;max-width:100%;background:#000;touch-action:manipulation}
+.cwc{position:relative;width:var(--cs);height:var(--cs);background:#fff;border:1px solid #000;margin:-.5px;padding:0;cursor:pointer;font:700 calc(var(--cs)*.5)/1 var(--ui);color:#000;text-align:center;display:flex;align-items:center;justify-content:center;text-transform:uppercase}
+.cwc.blk{background:#121212;cursor:default}
+.cwc .n{position:absolute;left:3px;top:1px;font:400 11px/1 var(--ui);color:#333}
+.cwc.word{background:#a7d8ff}
+.cwc.cur{background:#ffda00}
+.cwc.bad{color:#c4291c}
+.cwc.ok{color:#1d6b35}
+.cwbar{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.cwbar button{min-height:36px;padding:0 14px;border:1px solid #000;background:#fff;font:400 14px var(--ui);cursor:pointer}
+.cwbar button:hover{background:#f1f1f1}
+.cwmsg{margin-top:12px;font:700 17px var(--display);min-height:1.4em}
+.cwclues{display:grid;grid-template-columns:1fr 1fr;gap:6px 28px}
+@media (max-width:520px){.cwclues{grid-template-columns:1fr}}
+.cwclues h3{font:700 13px var(--ui);letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid #000;padding-bottom:6px;margin-bottom:6px}
+.cwclues ol{list-style:none;margin:0;padding:0}
+.cwclues li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:4px;padding:6px 8px;font:400 15px/1.35 var(--serif);cursor:pointer;border-left:3px solid transparent}
+.cwclues li b{font:700 14px var(--ui)}
+.cwclues li.on{background:#e8f3ff;border-left-color:#1a73e8}
+.cwcur{margin-bottom:12px;padding:10px 12px;background:#f4f4f4;border-left:4px solid #ffda00;font:400 16px/1.4 var(--serif)}
+.cwcur b{font:700 13px var(--ui);margin-right:8px}
+.cwpick{margin-bottom:16px;font:400 14px var(--ui)}
+.cwpick select{margin-left:6px;padding:4px 8px;border:1px solid #000;background:#fff}
+.modebar .seg{display:none}
+.modebar .in{justify-content:flex-end;padding-block:6px}
+.modebar{border-top:0}
+header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
 </style>
 </head>
 <body>
@@ -338,21 +407,22 @@ section.s{padding-block:clamp(44px,6vw,80px)}
 
 <header class="top">
   <div class="in">
+    <span class="hd-date" id="hd-date"></span>
     <a class="logo" href="index.html" aria-label="Weekfold, home">
       <svg viewBox="0 0 80 80" aria-hidden="true" fill="none" stroke="#000"><rect x="12" y="10" width="54" height="54" stroke-width="1.6" transform="rotate(-6 39 37)"/><rect x="15" y="14" width="54" height="54" stroke-width="1.6" transform="rotate(4 42 41)"/><path d="M20 28L28 54L40 26L52 54L60 28" stroke-width="3.4" stroke-linejoin="round"/><path d="M20 58h40" stroke-width="1.6" stroke-dasharray="3 3"/></svg>
       Weekfold
     </a>
-    <span class="notch" aria-hidden="true"></span>
-    <nav class="nav" aria-label="Main">
-      <a href="#current"><svg aria-hidden="true"><use href="#i-doc"/></svg>This week</a>
-      <a href="#days"><svg aria-hidden="true"><use href="#i-list"/></svg>Day by day</a>
-      <a href="#sections"><svg aria-hidden="true"><use href="#i-star"/></svg>Sections</a>
-      <a href="#previous"><svg aria-hidden="true"><use href="#i-book"/></svg>Previous news</a>
-      <a href="index.html#faq"><svg aria-hidden="true"><use href="#i-help"/></svg>FAQ</a>
-      <a href="index.html#about"><svg aria-hidden="true"><use href="#i-down"/></svg>About</a>
-    </nav>
-    <button class="btn btn-red" type="button" data-open="subscribe">Subscribe</button>
+    <span class="hd-right"><button class="btn btn-red" type="button" data-open="subscribe">Subscribe</button></span>
   </div>
+  <nav class="nav" aria-label="Main">
+    <a href="#current">This week</a>
+    <a href="#days">Day by day</a>
+    <a href="#sections">Sections</a>
+    <a href="#crossword">Crossword</a>
+    <a href="#previous">Previous news</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="index.html#about">About</a>
+  </nav>
 </header>
 
 <div class="modebar">
@@ -361,6 +431,7 @@ section.s{padding-block:clamp(44px,6vw,80px)}
       <a href="#current" id="tab-current"><i></i>Current news</a>
       <a href="#days" id="tab-days"><i></i>Day by day</a>
       <a href="#sections" id="tab-sections"><i></i>Sections</a>
+      <a href="#crossword" id="tab-crossword"><i></i>Crossword</a>
       <a href="#previous" id="tab-previous"><i></i>Previous news</a>
     </nav>
     <p class="lab" id="modelab"></p>
@@ -405,6 +476,14 @@ section.s{padding-block:clamp(44px,6vw,80px)}
       <div class="sechead"><h2 id="sx-h">Sections</h2><span id="sx-sub"></span></div>
       <nav class="sxchips" id="sx-chips" aria-label="Choose a section"></nav>
       <div id="sx-body"></div>
+    </section>
+  </div>
+
+  <!-- CROSSWORD -->
+  <div id="view-crossword" hidden>
+    <section class="wrap s cwsec" aria-labelledby="cw-h">
+      <div class="sechead"><h2 id="cw-h">The Weekfold Mini</h2><span id="cw-sub"></span></div>
+      <div id="cw-body"></div>
     </section>
   </div>
 
@@ -463,7 +542,7 @@ section.s{padding-block:clamp(44px,6vw,80px)}
       </div>
       <div><h4>Read</h4><ul><li><a href="#current">Current news</a></li><li><a href="#days">Day by day</a></li><li><a href="#sections">Sections</a></li><li><a href="#previous">Previous news</a></li></ul></div>
       <div><h4>Weekfold</h4><ul><li><a href="index.html#about">About us</a></li><li><a href="index.html#faq">Editorial standards &amp; FAQ</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
-      <div><h4>Account</h4><ul><li><button type="button" data-open="signin" class="linkbtn">Sign in</button></li><li><button type="button" data-open="subscribe" class="linkbtn">Subscribe</button></li><li><a href="privacy.html">Privacy</a></li></ul></div>
+      <div><h4>Account</h4><ul><li><a href="#crossword">Crossword</a></li><li><button type="button" data-open="signin" class="linkbtn">Sign in</button></li><li><button type="button" data-open="subscribe" class="linkbtn">Subscribe</button></li><li><a href="privacy.html">Privacy</a></li></ul></div>
     </div>
     <div class="legal">
       <span>© 2026 Weekfold · New edition every Sunday · <a href="mailto:weekfoldsupport@gmail.com">weekfoldsupport@gmail.com</a></span>
@@ -766,19 +845,118 @@ section.s{padding-block:clamp(44px,6vw,80px)}
   function hideArticle(){ if (artBox.hidden) return; artBox.hidden = true; artBox.innerHTML = ''; document.body.style.overflow = ''; if (lastFocus && lastFocus.focus && document.contains(lastFocus)) lastFocus.focus(); lastFocus = null; }
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !artBox.hidden) closeArticle(); });
 
+  /* ---------- CROSSWORD ---------- */
+  var cwCur = null;
+  function cwList(){ return EDS.filter(function(e){ return e.crossword; }); }
+  function renderCrossword(no){
+    var list = cwList(), body = document.getElementById('cw-body'), sub = document.getElementById('cw-sub');
+    body.innerHTML = '';
+    if (!list.length){ body.appendChild(el('p', { cls:'empty', text:'This week’s crossword is not ready yet. A new one arrives with every Sunday edition.' })); sub.textContent = ''; return; }
+    var ed = list.filter(function(e){ return e.number === no; })[0] || list[0];
+    var cw = ed.crossword, g = cw.grid, n = g.length, key = 'wf-cw-' + ed.number;
+    sub.textContent = 'Edition ' + ed.number + ' · a new mini every Sunday';
+    if (list.length > 1){
+      var sel = el('select', { id:'cw-pick' }); list.forEach(function(e){ var o = el('option', { text:'Edition ' + e.number + ' · ' + e.range }); o.value = e.number; if (e === ed) o.selected = true; sel.appendChild(o); });
+      sel.addEventListener('change', function(){ renderCrossword(sel.value); });
+      var lab = el('label', { cls:'cwpick' }, [ document.createTextNode('Crossword from'), sel ]); body.appendChild(lab);
+    }
+    function cell(r, c){ return r >= 0 && c >= 0 && r < n && c < n && g[r][c] !== '#'; }
+    var nums = {}, ent = { across:[], down:[] }, at = { across:{}, down:{} }, k = 0, r, c;
+    for (r = 0; r < n; r++) for (c = 0; c < n; c++){
+      if (!cell(r, c)) continue;
+      var sa = !cell(r, c - 1) && cell(r, c + 1), sd = !cell(r - 1, c) && cell(r + 1, c);
+      if (sa || sd){ k++; nums[r + ',' + c] = k; }
+      [['across', sa, 0, 1], ['down', sd, 1, 0]].forEach(function(d){
+        if (!d[1]) return;
+        var cells = [], rr = r, cc = c;
+        while (cell(rr, cc)){ cells.push([rr, cc]); rr += d[2]; cc += d[3]; }
+        var e = { num:k, dir:d[0], cells:cells, clue:(cw[d[0]] || {})[String(k)] || '' };
+        ent[d[0]].push(e); cells.forEach(function(x){ at[d[0]][x[0] + ',' + x[1]] = e; });
+      });
+    }
+    var L = {}, st = { r:0, c:0, dir:'across' }, flags = {}, done = false;
+    try { L = JSON.parse(localStorage.getItem(key) || '{}') || {}; } catch (x) { L = {}; }
+    outer: for (r = 0; r < n; r++) for (c = 0; c < n; c++) if (cell(r, c)){ st.r = r; st.c = c; if (!at.across[r + ',' + c]) st.dir = 'down'; break outer; }
+    var grid = el('div', { cls:'cwgrid', role:'grid', 'aria-label':'Crossword grid' }), cells = {};
+    grid.style.gridTemplateColumns = 'repeat(' + n + ', var(--cs))';
+    for (r = 0; r < n; r++) for (c = 0; c < n; c++){
+      var b = el('button', { type:'button', cls:'cwc' + (cell(r, c) ? '' : ' blk') });
+      b.tabIndex = -1;
+      if (cell(r, c)){
+        if (nums[r + ',' + c]) b.appendChild(el('span', { cls:'n', text:String(nums[r + ',' + c]) }));
+        b.appendChild(el('span', { cls:'t' }));
+        b.setAttribute('aria-label', 'Row ' + (r + 1) + ' column ' + (c + 1));
+        (function(rr, cc){ b.addEventListener('click', function(){ if (st.r === rr && st.c === cc){ var o = st.dir === 'across' ? 'down' : 'across'; if (at[o][rr + ',' + cc]) st.dir = o; } else { st.r = rr; st.c = cc; if (!at[st.dir][rr + ',' + cc]) st.dir = st.dir === 'across' ? 'down' : 'across'; } focus(); paint(); }); })(r, c);
+      } else b.disabled = true;
+      cells[r + ',' + c] = b; grid.appendChild(b);
+    }
+    var input = el('input', { type:'text', id:'cw-in', autocomplete:'off', autocapitalize:'characters', spellcheck:'false', 'aria-label':'Type your answer' });
+    input.style.cssText = 'position:absolute;opacity:0;width:1px;height:1px;pointer-events:none';
+    var curBox = el('div', { cls:'cwcur', 'aria-live':'polite' }), msg = el('div', { cls:'cwmsg', 'aria-live':'polite' });
+    var lists = { across:el('ol'), down:el('ol') }, lis = { across:{}, down:{} };
+    ['across', 'down'].forEach(function(d){ ent[d].forEach(function(e){
+      var li = el('li', {}, [ el('b', { text:String(e.num) }), el('span', { text:e.clue }) ]);
+      li.addEventListener('click', function(){ st.r = e.cells[0][0]; st.c = e.cells[0][1]; st.dir = d; focus(); paint(); });
+      lis[d][e.num] = li; lists[d].appendChild(li);
+    }); });
+    function save(){ try { localStorage.setItem(key, JSON.stringify(L)); } catch (x) {} }
+    function focus(){ try { input.focus({ preventScroll:true }); } catch (x) { input.focus(); } }
+    function paint(){
+      var ce = at[st.dir][st.r + ',' + st.c] || at[st.dir === 'across' ? 'down' : 'across'][st.r + ',' + st.c];
+      var inWord = {}; if (ce) ce.cells.forEach(function(x){ inWord[x[0] + ',' + x[1]] = 1; });
+      Object.keys(cells).forEach(function(q){
+        var b = cells[q]; if (b.disabled) return;
+        var t = b.querySelector('.t'); t.textContent = L[q] || '';
+        b.className = 'cwc' + (inWord[q] ? ' word' : '') + (q === st.r + ',' + st.c ? ' cur' : '') + (flags[q] === 'bad' ? ' bad' : '') + (flags[q] === 'ok' ? ' ok' : '');
+      });
+      ['across', 'down'].forEach(function(d){ Object.keys(lis[d]).forEach(function(q){ lis[d][q].classList.remove('on'); }); });
+      if (ce){ lis[ce.dir][ce.num].classList.add('on'); curBox.innerHTML = ''; curBox.appendChild(el('b', { text:ce.num + (ce.dir === 'across' ? ' Across' : ' Down') })); curBox.appendChild(document.createTextNode(ce.clue)); }
+    }
+    function solved(){ for (var q in cells){ if (!cells[q].disabled && L[q] !== g[+q.split(',')[0]][+q.split(',')[1]]) return false; } return true; }
+    function step(dr, dc){ var rr = st.r + dr, cc = st.c + dc; if (cell(rr, cc)){ st.r = rr; st.c = cc; return true; } return false; }
+    function after(){ flags = {}; save(); if (!done && solved()){ done = true; msg.textContent = 'Solved! Nicely done.'; } else if (done && !solved()){ done = false; msg.textContent = ''; } paint(); }
+    function typeLetter(ch){
+      L[st.r + ',' + st.c] = ch; var d = st.dir === 'across' ? [0, 1] : [1, 0]; step(d[0], d[1]); after();
+    }
+    input.addEventListener('input', function(){ var v = input.value.replace(/[^a-zA-Z]/g, '').toUpperCase(); input.value = ''; if (v) typeLetter(v.slice(-1)); });
+    input.addEventListener('keydown', function(e){
+      var kk = e.key;
+      if (kk === 'Backspace'){ e.preventDefault(); var q = st.r + ',' + st.c; if (L[q]){ delete L[q]; } else { var d = st.dir === 'across' ? [0, -1] : [-1, 0]; if (step(d[0], d[1])) delete L[st.r + ',' + st.c]; } after(); }
+      else if (kk === 'ArrowRight' || kk === 'ArrowLeft' || kk === 'ArrowDown' || kk === 'ArrowUp'){ e.preventDefault(); var h = kk === 'ArrowRight' || kk === 'ArrowLeft'; var nd = h ? 'across' : 'down'; if (st.dir !== nd && at[nd][st.r + ',' + st.c]) st.dir = nd; else step(kk === 'ArrowDown' ? 1 : kk === 'ArrowUp' ? -1 : 0, kk === 'ArrowRight' ? 1 : kk === 'ArrowLeft' ? -1 : 0); paint(); }
+      else if (kk === ' ' || kk === 'Enter'){ e.preventDefault(); var o = st.dir === 'across' ? 'down' : 'across'; if (at[o][st.r + ',' + st.c]) st.dir = o; paint(); }
+      else if (kk === 'Tab'){ e.preventDefault(); var all = ent.across.concat(ent.down), cur = at[st.dir][st.r + ',' + st.c], ix = all.indexOf(cur), nx = all[(ix + (e.shiftKey ? all.length - 1 : 1)) % all.length]; if (nx){ st.r = nx.cells[0][0]; st.c = nx.cells[0][1]; st.dir = nx.dir; } paint(); }
+    });
+    function btn(label, fn){ var b = el('button', { type:'button', text:label }); b.addEventListener('click', function(){ fn(); focus(); }); return b; }
+    var bar = el('div', { cls:'cwbar' }, [
+      btn('Check', function(){ flags = {}; var wrong = 0, empty = 0; for (var q in cells){ if (cells[q].disabled) continue; var p = q.split(','); if (!L[q]) empty++; else if (L[q] !== g[+p[0]][+p[1]]){ flags[q] = 'bad'; wrong++; } else flags[q] = 'ok'; } msg.textContent = wrong ? wrong + (wrong === 1 ? ' letter is' : ' letters are') + ' wrong.' : (empty ? 'So far so good.' : 'Everything is correct.'); paint(); }),
+      btn('Reveal word', function(){ var ce = at[st.dir][st.r + ',' + st.c]; if (ce){ ce.cells.forEach(function(x){ L[x[0] + ',' + x[1]] = g[x[0]][x[1]]; }); } msg.textContent = ''; after(); }),
+      btn('Reveal all', function(){ for (var q in cells){ if (!cells[q].disabled){ var p = q.split(','); L[q] = g[+p[0]][+p[1]]; } } msg.textContent = ''; after(); }),
+      btn('Clear', function(){ L = {}; flags = {}; done = false; msg.textContent = ''; save(); paint(); })
+    ]);
+    var left = el('div', {}, [ grid, input, bar, msg ]);
+    var right = el('div', {}, [ curBox, el('div', { cls:'cwclues' }, [ el('div', {}, [ el('h3', { text:'Across' }), lists.across ]), el('div', {}, [ el('h3', { text:'Down' }), lists.down ]) ]) ]);
+    body.appendChild(el('div', { cls:'cw' }, [ left, right ]));
+    done = solved(); if (done) msg.textContent = 'Solved! Nicely done.';
+    paint();
+  }
+
   /* ---------- ROUTER ---------- */
   function setMode(mode){
     document.getElementById('view-current').hidden = mode !== 'current';
     document.getElementById('view-days').hidden = mode !== 'days';
     document.getElementById('view-previous').hidden = mode !== 'previous';
     document.getElementById('view-sections').hidden = mode !== 'sections';
+    document.getElementById('view-crossword').hidden = mode !== 'crossword';
+    document.getElementById('tab-crossword').setAttribute('aria-current', mode === 'crossword' ? 'page' : 'false');
     document.getElementById('tab-sections').setAttribute('aria-current', mode === 'sections' ? 'page' : 'false');
     document.getElementById('tab-days').setAttribute('aria-current', mode === 'days' ? 'page' : 'false');
     document.getElementById('tab-current').setAttribute('aria-current', mode === 'current' ? 'page' : 'false');
     document.getElementById('tab-previous').setAttribute('aria-current', mode === 'previous' ? 'page' : 'false');
+    Array.prototype.forEach.call(document.querySelectorAll('header.top .nav a'), function(a){ a.setAttribute('aria-current', a.getAttribute('href') === '#' + mode ? 'page' : 'false'); });
     document.getElementById('modelab').innerHTML = '';
     var lab = document.getElementById('modelab');
     if (mode === 'current' || mode === 'days'){ lab.appendChild(el('b', { text: 'Edition ' + CUR.number })); lab.appendChild(document.createTextNode(' · ' + (CUR.rangeLong || CUR.range) + ' · Next edition ' + CUR.next)); }
+    else if (mode === 'crossword'){ lab.appendChild(el('b', { text: 'Crossword' })); lab.appendChild(document.createTextNode(' \u00b7 a new mini every Sunday')); }
     else if (mode === 'sections'){ lab.appendChild(el('b', { text: 'Every section' })); lab.appendChild(document.createTextNode(' · this week and the ' + Math.max(0, FULL().length - 1) + ' weeks before')); }
     else { lab.appendChild(el('b', { text: PREV.length + ' past ' + (PREV.length === 1 ? 'edition' : 'editions') })); }
   }
@@ -822,6 +1000,7 @@ section.s{padding-block:clamp(44px,6vw,80px)}
       }
       if (m[1] === CUR.number){ setMode('current'); if (!quiet) window.scrollTo(0, 0); return; }
     }
+    if (h === 'crossword'){ setMode('crossword'); if (!document.getElementById('cw-body').firstChild) renderCrossword(); if (!quiet) window.scrollTo(0, 0); return; }
     if (h === 'sections' || /^section-/.test(h)){
       var c = h === 'sections' ? '' : decodeURIComponent(h.slice(8));
       setMode('sections'); var sb = document.getElementById('sx-body');
@@ -842,6 +1021,7 @@ section.s{padding-block:clamp(44px,6vw,80px)}
   WFArt.paintAll(document);
 
   /* ---------- dialogs + subscribe ---------- */
+  (function(){ var d = document.getElementById('hd-date'); if (d) d.textContent = new Date().toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' }); })();
   WFSite.init({ next: CUR.next });
 })();
 </script>
