@@ -119,7 +119,7 @@ var WFSite = (function () {
   function get(){ try { return localStorage.getItem('wf-theme'); } catch (e) { return null; } }
   function set(v){ try { localStorage.setItem('wf-theme', v); } catch (e) {} }
   function apply(v){ if (v === 'dark') root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme'); }
-  apply(get());
+  apply(get() || (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
   document.addEventListener('DOMContentLoaded', function(){
     var host = document.querySelector('.hd-right'); if (!host) return;
     var b = document.createElement('button'); b.type = 'button'; b.className = 'themebtn'; b.setAttribute('aria-label', 'Switch between light and dark theme');

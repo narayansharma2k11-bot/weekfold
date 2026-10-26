@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script>try{var t=localStorage.getItem('wf-theme');if(t==='dark'||(!t&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Weekfold</title>
@@ -414,11 +415,15 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
 @keyframes wflip{0%{transform:rotateX(0)}50%{transform:rotateX(90deg)}100%{transform:rotateX(0)}}
 .wmsg{min-height:44px;font:400 15px var(--ui);color:#333;margin-bottom:8px}
 .wshare{background:#000;color:#fff;border:0;padding:8px 14px;font:700 13px var(--ui);cursor:pointer;letter-spacing:.05em;text-transform:uppercase}
-.wkb{display:grid;gap:6px}
-.wkr{display:flex;gap:5px;justify-content:center}
-.wk{flex:1;max-width:42px;height:52px;border:0;background:#d3d6da;color:#000;font:700 14px var(--ui);border-radius:4px;cursor:pointer;padding:0}
-.wk.wide{max-width:66px;font-size:12px}
-.wk.c{background:#6aaa64;color:#fff}.wk.p{background:#c9b458;color:#fff}.wk.a{background:#787c7e;color:#fff}
+.gkb{display:grid;gap:6px}
+.gkr{display:flex;gap:5px;justify-content:center}
+.gk{flex:1;max-width:42px;height:52px;border:0;background:#d3d6da;color:#000;font:700 14px var(--ui);border-radius:4px;cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:none}
+.gk.wide{max-width:66px;font-size:12px}
+.gk.c{background:#6aaa64;color:#fff}.gk.p{background:#c9b458;color:#fff}.gk.a{background:#787c7e;color:#fff}
+
+.cwdays{display:flex;gap:6px;margin:0 0 18px;flex-wrap:wrap}
+.cwd{border:1px solid #000;background:#fff;color:#000;padding:8px 14px;font:700 12px var(--ui);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;box-shadow:none}
+.cwd.on{background:#000;color:#fff}.cwd.today:not(.on){border-width:2px;border-color:#a8231b;color:#a8231b}
 </style>
 </head>
 <body>
@@ -715,7 +720,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
   function source(s){ return (srcs(s)[0] || {}).name || 'Weekfold'; }
   function open(node, s){ return openBtn(node, s); }
 
-  document.getElementById('db-date').textContent = fmt(CUR.days[CUR.days.length - 1].date, { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  (function(){ var d = document.getElementById('db-date'); function t(){ d.textContent = new Date().toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric' }); } t(); setInterval(t, 60000); })();
   document.getElementById('db-ed').textContent = 'Edition ' + CUR.number + ' · ' + (CUR.rangeLong || CUR.range);
 
   /* lead story */
@@ -830,7 +835,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
   function weekCard(ed){
     var top = ed.days.slice().sort(function(a, b){ return blen(b.lead) - blen(a.lead); })[0];
     var ul = el('ul'); ed.days.slice(0, 3).forEach(function(d){ ul.appendChild(el('li', { text: d.lead.headline })); });
-    return el('a', { cls:'wk', href:'#week-' + ed.number }, [ photo(top.lead, 340, 340), el('div', null, [ el('p', { cls:'n', text: 'Edition ' + ed.number + ' · ' + ed.days.length + ' days' }), el('h3', { text: ed.rangeLong || ed.range }), ul, el('p', { cls:'go', text: 'Read this week →' }) ]) ]);
+    return el('a', { cls:'gk', href:'#week-' + ed.number }, [ photo(top.lead, 340, 340), el('div', null, [ el('p', { cls:'n', text: 'Edition ' + ed.number + ' · ' + ed.days.length + ' days' }), el('h3', { text: ed.rangeLong || ed.range }), ul, el('p', { cls:'go', text: 'Read this week →' }) ]) ]);
   }
   function renderMonth(m){
     var list = document.getElementById('week-list'); list.innerHTML = '';
@@ -904,16 +909,25 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
   /* ---------- CROSSWORD ---------- */
   var cwCur = null;
   function cwList(){ return EDS.filter(function(e){ return e.crossword; }); }
-  function renderCrossword(no){
+  function renderCrossword(no, day){
     var list = cwList(), body = document.getElementById('cw-body'), sub = document.getElementById('cw-sub');
     body.innerHTML = '';
     if (!list.length){ body.appendChild(el('p', { cls:'empty', text:'This week’s crossword is not ready yet. A new one arrives with every Sunday edition.' })); sub.textContent = ''; return; }
     var ed = list.filter(function(e){ return e.number === no; })[0] || list[0];
-    var cw = ed.crossword, g = cw.grid, n = g.length, key = 'wf-cw-' + ed.number;
-    sub.textContent = 'Edition ' + ed.number + ' · a new mini every Sunday';
+    var puz = ed.crossword.puzzles || [ed.crossword], DN = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    var todayIx = (new Date().getDay() + 6) % 7;
+    var di = (day == null ? Math.min(todayIx, puz.length - 1) : Math.min(+day, puz.length - 1));
+    var cw = puz[di], g = cw.grid, n = g.length, key = 'wf-cw-' + ed.number + '-' + di;
+    sub.textContent = 'Edition ' + ed.number + ' · a new mini every day';
+    document.getElementById('cw-h').textContent = 'The Weekfold Mini';
+    if (puz.length > 1){
+      var dt = el('div', { cls:'cwdays', role:'tablist' });
+      puz.forEach(function(p, i){ var b = el('button', { type:'button', cls:'cwd' + (i === di ? ' on' : '') + (i === todayIx && ed === list[0] ? ' today' : ''), text: DN[i].slice(0, 3) }); b.title = DN[i]; b.addEventListener('click', function(){ renderCrossword(ed.number, i); }); dt.appendChild(b); });
+      body.appendChild(dt);
+    }
     if (list.length > 1){
       var sel = el('select', { id:'cw-pick' }); list.forEach(function(e){ var o = el('option', { text:'Edition ' + e.number + ' · ' + e.range }); o.value = e.number; if (e === ed) o.selected = true; sel.appendChild(o); });
-      sel.addEventListener('change', function(){ renderCrossword(sel.value); });
+      sel.addEventListener('change', function(){ renderCrossword(sel.value, day); });
       var lab = el('label', { cls:'cwpick' }, [ document.createTextNode('Crossword from'), sel ]); body.appendChild(lab);
     }
     function cell(r, c){ return r >= 0 && c >= 0 && r < n && c < n && g[r][c] !== '#'; }
@@ -994,6 +1008,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
     body.appendChild(el('div', { cls:'cw' }, [ left, right ]));
     done = solved(); if (done) msg.textContent = 'Solved! Nicely done.';
     paint();
+    focus();
   }
 
   /* ---------- KEEP READING (endless feed of earlier editions) ---------- */
@@ -1036,7 +1051,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
     var ans = WORDS[(day * 7919) % WORDS.length].toUpperCase();
     var S; try { S = JSON.parse(localStorage.getItem(key) || 'null'); } catch (x) { S = null; }
     S = S || { g: [], over: false, won: false };
-    var cur = '', msg = el('div', { cls:'wmsg', 'aria-live':'polite' }), board = el('div', { cls:'wboard' }), kb = el('div', { cls:'wkb' }), keys = {};
+    var cur = '', msg = el('div', { cls:'wmsg', 'aria-live':'polite' }), board = el('div', { cls:'wboard' }), kb = el('div', { cls:'gkb' }), keys = {};
     function save(){ try { localStorage.setItem(key, JSON.stringify(S)); } catch (x) {} }
     function score(g){
       var r = ['a','a','a','a','a'], left = {}, i;
@@ -1056,7 +1071,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
         board.appendChild(row);
       }
       var best = {}; S.g.forEach(function(g){ var sc = score(g); for (var i = 0; i < 5; i++){ var o = best[g[i]], n = sc[i]; if (o === 'c' || (o === 'p' && n !== 'c')) continue; best[g[i]] = n; } });
-      Object.keys(keys).forEach(function(k){ keys[k].className = 'wk' + (best[k] ? ' ' + best[k] : '') + (k.length > 1 ? ' wide' : ''); });
+      Object.keys(keys).forEach(function(k){ keys[k].className = 'gk' + (best[k] ? ' ' + best[k] : '') + (k.length > 1 ? ' wide' : ''); });
     }
     function share(){
       var rows = S.g.map(function(g){ return score(g).map(function(x){ return x === 'c' ? '\ud83d\udfe9' : x === 'p' ? '\ud83d\udfe8' : '\u2b1b'; }).join(''); }).join('\n');
@@ -1083,9 +1098,9 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
       else if (/^[A-Z]$/.test(k) && cur.length < 5){ cur += k; msg.textContent = ''; paint(); }
     }
     ['QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM'].forEach(function(rw, i){
-      var row = el('div', { cls:'wkr' }); if (i === 2){ var e = el('button', { type:'button', text:'Enter', cls:'wk wide' }); keys['ENTER'] = e; e.addEventListener('click', function(){ press('ENTER'); }); row.appendChild(e); }
-      rw.split('').forEach(function(ch){ var b = el('button', { type:'button', text:ch, cls:'wk' }); keys[ch] = b; b.addEventListener('click', function(){ press(ch); }); row.appendChild(b); });
-      if (i === 2){ var d = el('button', { type:'button', text:'\u232b', cls:'wk wide', 'aria-label':'Delete' }); keys['DEL'] = d; d.addEventListener('click', function(){ press('DEL'); }); row.appendChild(d); }
+      var row = el('div', { cls:'gkr' }); if (i === 2){ var e = el('button', { type:'button', text:'Enter', cls:'gk wide' }); keys['ENTER'] = e; e.addEventListener('click', function(){ e.blur(); press('ENTER'); }); row.appendChild(e); }
+      rw.split('').forEach(function(ch){ var b = el('button', { type:'button', text:ch, cls:'gk' }); keys[ch] = b; b.addEventListener('click', function(){ b.blur(); press(ch); }); row.appendChild(b); });
+      if (i === 2){ var d = el('button', { type:'button', text:'\u232b', cls:'gk wide', 'aria-label':'Delete' }); keys['DEL'] = d; d.addEventListener('click', function(){ d.blur(); press('DEL'); }); row.appendChild(d); }
       kb.appendChild(row);
     });
     var wrap = el('div', { cls:'wordgame' }, [ board, msg, kb ]);
@@ -1111,7 +1126,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
     document.getElementById('modelab').innerHTML = '';
     var lab = document.getElementById('modelab');
     if (mode === 'current' || mode === 'days'){ lab.appendChild(el('b', { text: 'Edition ' + CUR.number })); lab.appendChild(document.createTextNode(' · ' + (CUR.rangeLong || CUR.range) + ' · Next edition ' + CUR.next)); }
-    else if (mode === 'crossword'){ lab.appendChild(el('b', { text: 'Games' })); lab.appendChild(document.createTextNode(' \u00b7 a new crossword every Sunday, a new word every day')); }
+    else if (mode === 'crossword'){ lab.appendChild(el('b', { text: 'Games' })); lab.appendChild(document.createTextNode(' \u00b7 a new crossword and a new word every day')); }
     else if (mode === 'sections'){ lab.appendChild(el('b', { text: 'Every section' })); lab.appendChild(document.createTextNode(' · this week and the ' + Math.max(0, FULL().length - 1) + ' weeks before')); }
     else { lab.appendChild(el('b', { text: PREV.length + ' past ' + (PREV.length === 1 ? 'edition' : 'editions') })); }
   }
@@ -1183,7 +1198,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
   WFArt.paintAll(document);
 
   /* ---------- dialogs + subscribe ---------- */
-  (function(){ var d = document.getElementById('hd-date'); if (d) d.textContent = new Date().toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' }); })();
+  (function(){ var d = document.getElementById('hd-date'); function t(){ if (d) d.textContent = new Date().toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' }); } t(); setInterval(t, 60000); })();
   WFSite.init({ next: CUR.next });
 })();
 </script>

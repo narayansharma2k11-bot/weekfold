@@ -1,18 +1,148 @@
 {
-  "title": "The Weekfold Mini",
-  "grid": ["HEART", "EMBER", "ABUSE", "RESIN", "TREND"],
-  "across": {
+ "puzzles": [
+  {
+   "title": "The Weekfold Mini · Monday",
+   "grid": [
+    "WHEAT",
+    "A#L#O",
+    "SPEED",
+    "T#C#A",
+    "ENTRY"
+   ],
+   "across": {
+    "1": "Grain that becomes bread flour",
+    "4": "Velocity",
+    "5": "Way in, or a contest submission"
+   },
+   "down": {
+    "1": "Rubbish",
+    "2": "Choose by ballot",
+    "3": "This very day"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Tuesday",
+   "grid": [
+    "TREAT",
+    "A#X#I",
+    "BEING",
+    "L#S#E",
+    "ENTER"
+   ],
+   "across": {
+    "1": "Halloween candy, as opposed to a trick",
+    "4": "Existence",
+    "5": "Go in"
+   },
+   "down": {
+    "1": "Dinner furniture",
+    "2": "Be real",
+    "3": "Striped big cat"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Wednesday",
+   "grid": [
+    "PLAZA",
+    "A#L#G",
+    "NOBLE",
+    "E#U#N",
+    "LIMIT"
+   ],
+   "across": {
+    "1": "Public square",
+    "4": "Of high birth",
+    "5": "Speed cap, say"
+   },
+   "down": {
+    "1": "Discussion group on a stage",
+    "2": "Collection of songs or photos",
+    "3": "Spy, or a rep for a star"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Thursday",
+   "grid": [
+    "RIGHT",
+    "A#R#E",
+    "DRAMA",
+    "A#I#C",
+    "RANCH"
+   ],
+   "across": {
+    "1": "Opposite of left",
+    "4": "Stage play",
+    "5": "Cattle spread"
+   },
+   "down": {
+    "1": "Detects planes",
+    "2": "Wheat or rice kernel",
+    "3": "Instruct"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Friday",
+   "grid": [
+    "SIGHT",
+    "A#I#H",
+    "LIVER",
+    "A#E#E",
+    "DANCE"
+   ],
+   "across": {
+    "1": "Vision",
+    "4": "Organ that filters blood",
+    "5": "Waltz or tango"
+   },
+   "down": {
+    "1": "Lettuce dish",
+    "2": "Presented as a gift",
+    "3": "Number after two"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Saturday",
+   "grid": [
+    "COUCH",
+    "H#N#U",
+    "ACTOR",
+    "I#I#R",
+    "RALLY"
+   ],
+   "across": {
+    "1": "Sofa",
+    "4": "Oscar nominee, perhaps",
+    "5": "Big protest gathering, or a tennis exchange"
+   },
+   "down": {
+    "1": "Seat with four legs",
+    "2": "Up to the time that",
+    "3": "Rush"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Sunday",
+   "grid": [
+    "HEART",
+    "EMBER",
+    "ABUSE",
+    "RESIN",
+    "TREND"
+   ],
+   "across": {
     "1": "Pumper at the centre of a World Series nail-biter",
     "6": "Glowing bit left in a dying fire",
     "7": "Mistreat",
     "8": "Sticky tree sap used in varnish",
     "9": "Where a line on a chart is heading"
-  },
-  "down": {
+   },
+   "down": {
     "1": "Core, as of a city or a matter",
     "2": "Ending of three calendar months",
     "3": "Misuse",
     "4": "Pine product",
     "5": "Briefly viral 'it' thing"
+   }
   }
+ ]
 }
