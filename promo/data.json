@@ -1,0 +1,201 @@
+{
+ "range": "19 \u2013 25 October 2026",
+ "number": "43",
+ "days": [
+  {
+   "date": "2026-10-19",
+   "stories": [
+    {
+     "cat": "World",
+     "h": "Kenyan cult leader convicted over starvation deaths of 190 children",
+     "dek": "A Mombasa court found preacher Paul Mackenzie and 28 others guilty of murder over the Shakahola Forest deaths, with sentencing set for 6 November.",
+     "img": "img/Shakahola_Forest_incident.jpg",
+     "src": "CP24 (Associated Press)",
+     "lat": -1.29,
+     "lon": 36.82
+    },
+    {
+     "cat": "Business",
+     "h": "Saudi Arabia postpones 'Davos in the Desert' to 2027 amid Houthi attacks",
+     "dek": "The Future Investment Initiative, due in Riyadh from 26 to 29 October, has been pushed back with no new date set.",
+     "img": "img/Kingdom_Centre.jpg",
+     "src": "Al Jazeera",
+     "lat": 24.71,
+     "lon": 46.68
+    }
+   ]
+  },
+  {
+   "date": "2026-10-20",
+   "stories": [
+    {
+     "cat": "Conflict",
+     "h": "Drone strike on Abyei market kills at least 153 people",
+     "dek": "The toll from Monday's attack in the disputed Sudan-South Sudan border zone more than doubled as fires slowed recovery of bodies.",
+     "img": "img/Abyei.jpg",
+     "src": "Reuters (via TimesLIVE)",
+     "lat": 9.6,
+     "lon": 28.4
+    },
+    {
+     "cat": "Politics",
+     "h": "Alberta voters reject a path toward independence from Canada",
+     "dek": "Roughly three in four voters backed staying in Canada, a boost for Prime Minister Mark Carney, though separatists say the movement will continue.",
+     "img": "img/Danielle_Smith.jpg",
+     "src": "Al Jazeera",
+     "lat": 53.5,
+     "lon": -113.5
+    },
+    {
+     "cat": "Science",
+     "h": "Japan launches probe to bring back samples from Mars's moon Phobos",
+     "dek": "The MMX spacecraft lifted off on an H3 rocket and reached its planned orbit, starting a mission meant to return samples in 2031.",
+     "img": "img/Phobos_(moon).jpg",
+     "src": "Nippon.com",
+     "lat": 30.4,
+     "lon": 131.0
+    }
+   ]
+  },
+  {
+   "date": "2026-10-21",
+   "stories": [
+    {
+     "cat": "World",
+     "h": "Oslo talks on Ukraine end without a deal as Witkoff heads to Putin",
+     "dek": "Zelenskyy met US envoy Steve Witkoff and European leaders in Norway, with Washington calling the talks constructive but no agreement reached.",
+     "img": "img/Oslo_City_Hall.jpg",
+     "src": "Al Jazeera",
+     "lat": 59.91,
+     "lon": 10.75
+    },
+    {
+     "cat": "Tech",
+     "h": "Meta posts record revenue, but a legal charge and AI spending cut profit",
+     "dek": "Third-quarter revenue rose 26 percent to $64.6 billion while free cash flow turned negative and the company announced a new class of non-voting shares.",
+     "img": "img/Meta_Platforms.jpg",
+     "src": "SiliconANGLE",
+     "lat": 37.48,
+     "lon": -122.15
+    },
+    {
+     "cat": "Business",
+     "h": "Tesla beats profit forecast as deliveries top estimates but margins stay thin",
+     "dek": "Revenue was flat at $28.05 billion, and AI and robotics spending pushed operating income down 56 percent.",
+     "img": "img/Gigafactory_Texas.jpg",
+     "src": "Electrek",
+     "lat": 30.22,
+     "lon": -97.62
+    }
+   ]
+  },
+  {
+   "date": "2026-10-22",
+   "stories": [
+    {
+     "cat": "Conflict",
+     "h": "Iran says seven ships hit in Hormuz as US and Europe weigh next move",
+     "dek": "The Revolutionary Guard's claim of its highest single-day toll in the strait is disputed by the US, while ministers urge diplomacy and Washington hints at strikes.",
+     "img": "img/Strait_of_Hormuz.jpg",
+     "src": "Al Jazeera, 22 Oct",
+     "lat": 26.6,
+     "lon": 56.3
+    },
+    {
+     "cat": "Health",
+     "h": "US measles cases pass 4,500 as the country's 2026 total doubles last year's",
+     "dek": "CDC data show 4,588 confirmed cases, though growth slowed to 4 percent for the week.",
+     "img": "img/Measles.jpg",
+     "src": "Contagion Live",
+     "lat": 38.9,
+     "lon": -77.0
+    }
+   ]
+  },
+  {
+   "date": "2026-10-23",
+   "stories": [
+    {
+     "cat": "Conflict",
+     "h": "Israel locks down Hebron after attack kills two soldiers days before election",
+     "dek": "Netanyahu ordered the West Bank city sealed and prepared wider closures as the army launched a multi-day operation and arrests mounted.",
+     "img": "img/Hebron.jpg",
+     "src": "Al Jazeera",
+     "lat": 31.53,
+     "lon": 35.1
+    },
+    {
+     "cat": "Culture",
+     "h": "Louvre, Orsay and Grand Palais shut as Paris braces for protests",
+     "dek": "France's culture ministry closed leading museums on Saturday, and Art Basel Paris cancelled its weekend programme after opening to the public on Friday.",
+     "img": "img/Louvre.jpg",
+     "src": "ABC News (Associated Press)",
+     "lat": 48.86,
+     "lon": 2.35
+    },
+    {
+     "cat": "Climate",
+     "h": "Climate plans from 132 countries fall short on protecting health, new scorecard finds",
+     "dek": "The Global Climate and Health Alliance ranks Colombia first and finds India, Japan and New Zealand at the bottom.",
+     "img": "img/Air_pollution.jpg",
+     "src": "Euronews"
+    }
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "stories": [
+    {
+     "cat": "World",
+     "h": "Hundreds of thousands march across France as nearly 1,000 are arrested",
+     "dek": "A week after rioting and looting, Saturday's protests over living costs passed with clashes in several cities under a 70,000-strong police deployment.",
+     "img": "img/Place_de_la_Concorde.jpg",
+     "src": "Al Jazeera, 24 Oct",
+     "lat": 48.86,
+     "lon": 2.35
+    },
+    {
+     "cat": "Sport",
+     "h": "Brewers edge Rays 3-2 in World Series opener after overturned double play",
+     "dek": "Milwaukee led from the first inning, and a replay reversal let Tampa Bay score in the ninth before the Brewers closed it out.",
+     "img": "img/American_Family_Field.jpg",
+     "src": "CBS Sports",
+     "lat": 43.03,
+     "lon": -87.97
+    },
+    {
+     "cat": "Business",
+     "h": "World may have only a month or two of usable oil reserves, analysts warn",
+     "dek": "With Brent near $111 and the US reserve at its lowest since 1982, a renewed Hormuz closure would hit stockpiles already drawn down.",
+     "img": "img/International_Energy_Agency.jpg",
+     "src": "Al Jazeera, 23 Oct (oil reserves)",
+     "lat": 26.6,
+     "lon": 56.3
+    }
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "stories": [
+    {
+     "cat": "Politics",
+     "h": "Brazil votes in knife-edge runoff between Lula and Fl\u00e1vio Bolsonaro",
+     "dek": "Final polls show a near dead heat as nearly 160 million eligible voters choose between the veteran president and the son of the jailed ex-president.",
+     "img": "img/Fl_vio_Bolsonaro.jpg",
+     "src": "Al Jazeera, explainer",
+     "lat": -15.79,
+     "lon": -47.88
+    },
+    {
+     "cat": "Politics",
+     "h": "Serbia votes in snap election as Vu\u010di\u0107 faces a student-led challenge",
+     "dek": "The president turned prime-ministerial candidate leads some polls, but others put the student list ahead after two years of protests.",
+     "img": "img/Aleksandar_Vu_i.jpg",
+     "src": "Al Jazeera",
+     "lat": 44.79,
+     "lon": 20.45
+    }
+   ]
+  }
+ ]
+}

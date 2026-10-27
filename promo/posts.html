@@ -1,0 +1,60 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="scene.css">
+<style>
+html,body{width:1080px;height:1350px}
+.post{position:absolute;inset:0;background:#fff;padding:90px 80px;display:flex;flex-direction:column}
+.mast{display:flex;align-items:center;gap:18px;border-bottom:3px double #000;padding-bottom:22px}
+.mast .wm{font:900 64px 'Playfair Display','Liberation Serif',Georgia,serif;letter-spacing:-.02em}
+.mast .dt{margin-left:auto;font:400 24px Inter;color:#555}
+.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #000;padding-top:22px;font:600 26px Inter}
+.foot span{color:#666;font-weight:400}
+.big{font:700 112px/1.02 Inter;letter-spacing:-.04em;margin-top:70px}
+.big em{font:italic 700 112px 'Playfair Display','Liberation Serif',Georgia,serif;color:#1d3a6b;letter-spacing:-.01em}
+.sub{font:400 34px/1.4 Inter;color:#444;margin-top:34px;max-width:820px}
+</style></head><body><div id="stage"></div>
+<script src="lib.js"></script>
+<script>
+const POSTS={};
+const mast=(p,dt)=>el('div','mast',`${logoSVG(70)}<span class="wm">Weekfold</span><span class="dt">${dt||''}</span>`,p);
+const foot=(p,l,r)=>el('div','foot',`<div>${l}</div><span>${r||'weekfold.in'}</span>`,p);
+POSTS.edition=({D})=>{const p=el('div','post','',stage);mast(p,`Edition ${D.number}`);
+  const s=D.days[3].stories[0];
+  el('div','big',`This week, <em>folded.</em>`,p);
+  const ph=photo(p,s.img,920,520);ph.style.marginTop='50px';
+  el('div','kick',s.cat,p).style.margin='28px 0 10px';el('div','hl',s.h,p).style.fontSize='52px';
+  foot(p,D.range,'Read free · weekfold.in');};
+POSTS.crossword=({D})=>{const p=el('div','post','',stage);mast(p,'Games');
+  el('div','big',`This week's <em>Mini.</em>`,p);
+  el('div','sub','A fresh 5×5 crossword every day, a new word to guess every morning. Both free, no sign-up.',p);
+  const grid=['WHEAT','A#L#O','SPEED','T#C#A','ENTRY'],nums={'0,0':1,'0,2':2,'0,4':3,'2,0':4,'4,0':5};
+  const g=el('div','','',p);g.style.cssText='display:grid;grid-template-columns:repeat(5,118px);gap:3px;background:#000;border:4px solid #000;width:606px;margin:60px auto 0';
+  for(let r=0;r<5;r++)for(let c=0;c<5;c++){const d=el('div','','',g);const b=grid[r][c]=='#';d.style.cssText=`height:118px;background:${b?'#000':(r==0?'#a7d8ff':'#fff')};position:relative;font:700 66px/118px Inter;text-align:center`;if(nums[r+','+c])el('span','',nums[r+','+c],d).style.cssText='position:absolute;left:7px;top:5px;font:600 20px/1 Inter';if(!b&&r==0)d.appendChild(document.createTextNode(grid[r][c]));}
+  el('div','','<b>1 Across</b> · Grain that becomes bread flour',p).style.cssText='margin:40px auto 0;font:400 30px Inter;color:#333';
+  foot(p,'Play today\'s puzzle','weekfold.in/home.html#crossword');};
+POSTS.word=({D})=>{const p=el('div','post','',stage);mast(p,'Games');
+  el('div','big',`Can you get it <em>in three?</em>`,p);
+  el('div','sub','Weekfold Word: five letters, six tries, a new word every day.',p);
+  const rows=[['CRANE',['a','a','a','a','a']],['SOLID',['p','c','c','a','p']],['FOLDS',['c','c','c','c','c']]];const COL={c:'#6aaa64',p:'#c9b458',a:'#787c7e'};
+  const w=el('div','','',p);w.style.cssText='display:flex;flex-direction:column;gap:12px;align-items:center;margin-top:70px';
+  rows.forEach(([g,s])=>{const r=el('div','','',w);r.style.cssText='display:flex;gap:12px';g.split('').forEach((ch,i)=>{el('div','',ch,r).style.cssText=`width:150px;height:150px;background:${COL[s[i]]};color:#fff;font:700 78px/150px Inter;text-align:center`;});});
+  foot(p,'Guess today\'s word','weekfold.in/home.html#word');};
+POSTS.map=({D,W})=>{const p=el('div','post','',stage);mast(p,`Edition ${D.number}`);
+  el('div','big',`Where the news <em>happened.</em>`,p);
+  const pins=D.days.flatMap(d=>d.stories).filter(s=>s.lat!=null);
+  const box=el('div','','',p);box.style.cssText='margin-top:60px;border:2px solid #000;background:#dfeaf2';
+  box.innerHTML=`<svg viewBox="0 0 1000 450" width="916" height="412"><path d="${W}" fill="#f7f3e8" stroke="#9a9484" stroke-width=".6"/>${pins.map(s=>{const q=proj(s.lat,s.lon);return `<circle cx="${q[0]}" cy="${q[1]}" r="9" fill="${CAT[s.cat]}" stroke="#fff" stroke-width="2.5"/>`}).join('')}</svg>`;
+  el('div','sub',`${pins.length} stories pinned this week, from Oslo to Abyei to Milwaukee. Tap any pin on the site to read it.`,p);
+  foot(p,D.range);};
+POSTS.sunday=({D})=>{const p=el('div','post','',stage);p.style.background='#f6f1e7';mast(p,'');
+  el('div','big',`Make Sunday the day you <em>catch up.</em>`,p);
+  el('div','sub','One free edition every Sunday. Seven days, one page each, every story sourced. No ads, no paywall.',p);
+  const d=el('div','','',p);d.style.cssText='display:flex;gap:14px;margin-top:70px';
+  DAYN.forEach((n,i)=>{const c=el('div','',n.slice(0,3),d);c.style.cssText=`flex:1;height:200px;border:2px solid #000;background:${i==6?'#1d3a6b':'#fff'};color:${i==6?'#fff':'#000'};font:700 28px Inter;padding:14px 0 0;text-align:center`;});
+  el('div','','<span class="btn">Subscribe free</span>',p).style.marginTop='70px';
+  foot(p,'Next edition Sunday 1 November');};
+POSTS.story=({D})=>{const p=el('div','post','',stage);const s=D.days[1].stories[0];mast(p,DAYN[1]+' · '+(+D.days[1].date.slice(8))+' Oct');
+  const ph=photo(p,s.img,920,700);ph.style.marginTop='50px';
+  el('div','kick',s.cat,p).style.margin='34px 0 12px';el('div','hl',s.h,p).style.fontSize='64px';
+  el('div','sub',s.dek,p).style.marginTop='22px';
+  foot(p,'Source: '+s.src,'Full story · weekfold.in');};
+window.ready=(async()=>{const data=await loadAll();const n=new URLSearchParams(location.search).get('p');POSTS[n](data);return true;})();
+</script></body></html>

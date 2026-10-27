@@ -29,6 +29,9 @@ window.WFPhoto = (function () {
       if (!opts.eager) img.loading = 'lazy';
       img.onload = function () {
         box.classList.remove('is-art');
+        var r = img.naturalWidth / (img.naturalHeight || 1), key = String(im.wiki || '');
+        if (r < 0.85) img.style.objectPosition = '50% 14%';
+        if (/(^|_)(map|flag|logo|seal|locator)(_|$)|^Abyei$/i.test(key) || r > 2.8) { img.style.objectFit = 'contain'; box.style.background = '#f1efe9'; }
         if (fb.parentNode) fb.parentNode.removeChild(fb);
         if (!opts.noCredit) { var cr = document.createElement('span'); cr.className = 'credit'; cr.textContent = 'Photo: ' + (p.credit || 'Wikimedia Commons') + (p.license ? ' · ' + p.license : ''); box.appendChild(cr); }
         box.dispatchEvent(new CustomEvent('wf-photo', { detail: { credit: p.credit, license: p.license, page: p.page } }));

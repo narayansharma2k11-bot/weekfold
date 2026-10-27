@@ -236,6 +236,28 @@ html[data-theme="dark"] img,html[data-theme="dark"] .mapbox,html[data-theme="dar
 .themebtn:hover{background:#000;color:#fff}
 .ph .credit{display:none!important}
 
+/* ---- polish pass ---- */
+.ph{border:0;box-shadow:none}
+.ph img{object-position:50% 30%}
+.hd-right{display:flex;align-items:center;gap:10px;justify-self:end}
+.themebtn{margin:0;flex:none}
+@media (max-width:760px){
+  header.top .in{grid-template-columns:minmax(0,1fr) auto;padding-top:12px}
+  header.top .logo{font-size:30px;gap:10px}header.top .logo svg{width:38px;height:38px}
+  .btn-red,.top .btn-red,.hd-right .btn-red{min-height:38px;padding:0 14px;font-size:12.5px;box-shadow:3px 3px 0 #000}
+}
+/* clean section chips everywhere */
+.sxchips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
+.sxchips a{display:inline-flex;gap:6px;align-items:baseline;border:1px solid #bbb!important;border-radius:20px;padding:6px 14px!important;font:400 14px var(--ui)!important;background:none!important;color:#000;text-decoration:none;box-shadow:none!important;min-height:0!important}
+.sxchips a span{color:#777;font-size:12px}
+.sxchips a:hover{background:#000!important;color:#fff;border-color:#000!important}.sxchips a:hover span{color:#ccc}
+.sxchips a[aria-current="page"]{background:#000!important;color:#fff;border-color:#000!important}
+.band::before,.band.flip::before{clip-path:none}
+.mapbox{box-shadow:none;border:1px solid #000}
+.picked,.tip{box-shadow:none;border:1px solid #000;border-top:3px solid #000}
+dialog{box-shadow:0 20px 60px rgba(0,0,0,.35)!important;border:1px solid #000}
+.hard{box-shadow:none}
+
 /* ---------- landing page: a newspaper front with the week as a book ---------- */
 .lab{font:700 12.5px var(--ui);letter-spacing:.14em;text-transform:uppercase}
 .lab.red{color:var(--red)}
@@ -447,6 +469,31 @@ details.q .a a{color:var(--blue)}
 .contactbox .v{color:#fff;font:700 clamp(19px,2.2vw,26px) var(--display);margin-top:8px;word-break:break-all;user-select:all}
 .contactbox .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
 .contactbox .btn{min-height:42px;font-size:15px;padding:0 16px}
+
+/* polish: flat, newspaper-like blocks instead of boxed cards */
+.facts span{border:0;box-shadow:none;background:none;padding:2px 4px;font-weight:400}
+.secs{grid-template-columns:repeat(5,minmax(0,1fr));gap:30px 28px}
+@media (max-width:1100px){.secs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:680px){.secs{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}}
+.secc{display:flex;flex-direction:column;background:none;border:0;box-shadow:none;border-top:4px solid var(--tone);padding:12px 0 0;text-decoration:none;color:#000;position:relative}
+.secc:hover{transform:none;box-shadow:none}.secc:hover h3{text-decoration:underline}
+.secc .cnt{font:700 11px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:#777;margin:0}
+.secc h3{font-size:26px;margin-top:6px}
+.secc .dsc{font-size:14.5px;color:#555;margin:6px 0 0}
+.secc .lt{display:block;font:700 16px/1.3 var(--display);margin-top:12px;padding-top:12px;border-top:1px solid #ddd}
+.secc .go{margin-top:12px;font-size:14px;color:#000;font-weight:500;border-bottom:1px solid #000;align-self:flex-start;padding-top:0}
+.paper{box-shadow:none;border:1px solid #cfcfcf;border-top:3px solid #000;background:#fff}
+.paper:hover{transform:none;box-shadow:none}
+.paper::after{display:none}
+.press{background:#f6f1e7;border-top:1px solid #000;border-bottom:1px solid #000;color:#000}
+.sheets span,.sheets>*{box-shadow:none}
+.subbox{box-shadow:none;border:1px solid #000;border-top:4px solid #000}
+.pills span{background:none;border:1px solid #bbb;border-radius:20px;padding:4px 12px;font-weight:400}
+details.q{box-shadow:none!important;border:0!important;border-top:1px solid #ccc!important;background:none!important}
+details.q:last-of-type{border-bottom:1px solid #ccc!important}
+details.q summary{padding:15px 2px}
+.contactbox{background:#f6f1e7;color:#000;border:1px solid #000;border-top:4px solid #000;box-shadow:none}
+.contactbox .l{color:#666}.contactbox .v{color:#000}
 </style>
 </head>
 <body>
@@ -479,7 +526,7 @@ details.q .a a{color:var(--blue)}
     <a href="#about">About</a>
   </nav>
 </header>
-<div class="dateline"><div class="wrap"><b id="dl-today"></b><span id="dl-ed"></span><span id="dl-next"></span></div></div>
+<div class="dateline"><div class="wrap"><span id="dl-ed"></span><span id="dl-next"></span></div></div>
 
 <main id="top">
   <div class="wrap hero2">
@@ -695,6 +742,9 @@ window.WFPhoto = (function () {
       if (!opts.eager) img.loading = 'lazy';
       img.onload = function () {
         box.classList.remove('is-art');
+        var r = img.naturalWidth / (img.naturalHeight || 1), key = String(im.wiki || '');
+        if (r < 0.85) img.style.objectPosition = '50% 14%';
+        if (/(^|_)(map|flag|logo|seal|locator)(_|$)|^Abyei$/i.test(key) || r > 2.8) { img.style.objectFit = 'contain'; box.style.background = '#f1efe9'; }
         if (fb.parentNode) fb.parentNode.removeChild(fb);
         if (!opts.noCredit) { var cr = document.createElement('span'); cr.className = 'credit'; cr.textContent = 'Photo: ' + (p.credit || 'Wikimedia Commons') + (p.license ? ' · ' + p.license : ''); box.appendChild(cr); }
         box.dispatchEvent(new CustomEvent('wf-photo', { detail: { credit: p.credit, license: p.license, page: p.page } }));
@@ -972,7 +1022,7 @@ function WFMap(E, EDS, href){
   function bright(c){ return BRIGHT[c] || '#ffffff'; }
 
   /* dateline */
-  (function(){ var d = document.getElementById('hd-date'), e = document.getElementById('dl-today'); function t(){ var n = new Date(); if (d) d.textContent = n.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' }); e.textContent = n.toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric' }); } t(); setInterval(t, 60000); })();
+  (function(){ var d = document.getElementById('hd-date'); function t(){ var n = new Date(); if (d) d.textContent = n.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' }); } t(); setInterval(t, 60000); })();
   document.getElementById('dl-ed').textContent = 'Edition ' + E.number + ' · ' + (E.rangeLong || E.range);
   document.getElementById('dl-next').textContent = 'Next edition ' + E.next;
   document.getElementById('mast-kick').textContent = 'Edition ' + E.number + ' · ' + (E.rangeLong || E.range);
@@ -1054,9 +1104,11 @@ function WFMap(E, EDS, href){
     var c = sx[0], per = WEEKS.map(function(ed){ return stories(ed).filter(function(x){ return x.s.category === c; }).length; });
     var tot = per.reduce(function(a, b){ return a + b; }, 0); if (!tot) return;
     var now = per[per.length - 1];
-    var art = el('div', { cls:'art', 'aria-hidden':'true' }); art.innerHTML = '<svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet">' + (ART[c] || ART.World) + '</svg>';
-    art.appendChild(el('span', { cls:'count', text: now ? now + ' this week' : 'none this week' }));
-    secs.appendChild(el('a', { cls:'secc reveal', href:'home.html#section-' + encodeURIComponent(c), style:'--tone:' + tone(c), 'aria-label': c + ': ' + now + ' stories this week' }, [ art, el('p', { cls:'lab', style:'color:var(--ink-3)', text: tot + (tot === 1 ? ' story' : ' stories') + ' in ' + WEEKS.length + ' weeks' }), el('h3', { text: c }), el('p', { text: sx[1] }), el('span', { cls:'go', text: 'Open ' + c + ' →' }) ]));
+    var latest = stories(WEEKS[WEEKS.length - 1]).filter(function(x){ return x.s.category === c; })[0];
+    var kids = [ el('p', { cls:'cnt', text: (now ? now + ' this week' : 'none this week') + ' · ' + tot + ' in ' + WEEKS.length + ' weeks' }), el('h3', { text: c }), el('p', { cls:'dsc', text: sx[1] }) ];
+    if (latest) kids.push(el('span', { cls:'lt', text: latest.s.headline }));
+    kids.push(el('span', { cls:'go', text: 'More in ' + c + ' →' }));
+    secs.appendChild(el('a', { cls:'secc reveal', href:'home.html#section-' + encodeURIComponent(c), style:'--tone:' + tone(c), 'aria-label': c + ': ' + now + ' stories this week' }, kids));
   });
 
   /* ================= ARCHIVE: editions before last week ================= */

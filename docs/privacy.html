@@ -222,6 +222,28 @@ html[data-theme="dark"] img,html[data-theme="dark"] .mapbox,html[data-theme="dar
 .themebtn:hover{background:#000;color:#fff}
 .ph .credit{display:none!important}
 
+/* ---- polish pass ---- */
+.ph{border:0;box-shadow:none}
+.ph img{object-position:50% 30%}
+.hd-right{display:flex;align-items:center;gap:10px;justify-self:end}
+.themebtn{margin:0;flex:none}
+@media (max-width:760px){
+  header.top .in{grid-template-columns:minmax(0,1fr) auto;padding-top:12px}
+  header.top .logo{font-size:30px;gap:10px}header.top .logo svg{width:38px;height:38px}
+  .btn-red,.top .btn-red,.hd-right .btn-red{min-height:38px;padding:0 14px;font-size:12.5px;box-shadow:3px 3px 0 #000}
+}
+/* clean section chips everywhere */
+.sxchips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
+.sxchips a{display:inline-flex;gap:6px;align-items:baseline;border:1px solid #bbb!important;border-radius:20px;padding:6px 14px!important;font:400 14px var(--ui)!important;background:none!important;color:#000;text-decoration:none;box-shadow:none!important;min-height:0!important}
+.sxchips a span{color:#777;font-size:12px}
+.sxchips a:hover{background:#000!important;color:#fff;border-color:#000!important}.sxchips a:hover span{color:#ccc}
+.sxchips a[aria-current="page"]{background:#000!important;color:#fff;border-color:#000!important}
+.band::before,.band.flip::before{clip-path:none}
+.mapbox{box-shadow:none;border:1px solid #000}
+.picked,.tip{box-shadow:none;border:1px solid #000;border-top:3px solid #000}
+dialog{box-shadow:0 20px 60px rgba(0,0,0,.35)!important;border:1px solid #000}
+.hard{box-shadow:none}
+
 main.legalpage{max-width:760px;margin:0 auto;padding:clamp(36px,6vw,72px) 20px 90px}
 main.legalpage h1{font-size:clamp(40px,6vw,64px);font-weight:700}
 main.legalpage h2{font-size:26px;margin:44px 0 8px}
@@ -244,7 +266,7 @@ main.legalpage a{color:var(--blue)}
 </header>
 <main class="legalpage">
   <h1>Privacy</h1>
-  <p class="upd">Last updated: 26 October 2026</p>
+  <p class="upd">Last updated: 27 October 2026</p>
 
   <h2>The short version</h2>
   <p>Weekfold is free to read. There are no ads, no tracking cookies and no accounts stored on our side. We only hold your email address if you subscribe.</p>

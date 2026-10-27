@@ -236,6 +236,28 @@ html[data-theme="dark"] img,html[data-theme="dark"] .mapbox,html[data-theme="dar
 .themebtn:hover{background:#000;color:#fff}
 .ph .credit{display:none!important}
 
+/* ---- polish pass ---- */
+.ph{border:0;box-shadow:none}
+.ph img{object-position:50% 30%}
+.hd-right{display:flex;align-items:center;gap:10px;justify-self:end}
+.themebtn{margin:0;flex:none}
+@media (max-width:760px){
+  header.top .in{grid-template-columns:minmax(0,1fr) auto;padding-top:12px}
+  header.top .logo{font-size:30px;gap:10px}header.top .logo svg{width:38px;height:38px}
+  .btn-red,.top .btn-red,.hd-right .btn-red{min-height:38px;padding:0 14px;font-size:12.5px;box-shadow:3px 3px 0 #000}
+}
+/* clean section chips everywhere */
+.sxchips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}
+.sxchips a{display:inline-flex;gap:6px;align-items:baseline;border:1px solid #bbb!important;border-radius:20px;padding:6px 14px!important;font:400 14px var(--ui)!important;background:none!important;color:#000;text-decoration:none;box-shadow:none!important;min-height:0!important}
+.sxchips a span{color:#777;font-size:12px}
+.sxchips a:hover{background:#000!important;color:#fff;border-color:#000!important}.sxchips a:hover span{color:#ccc}
+.sxchips a[aria-current="page"]{background:#000!important;color:#fff;border-color:#000!important}
+.band::before,.band.flip::before{clip-path:none}
+.mapbox{box-shadow:none;border:1px solid #000}
+.picked,.tip{box-shadow:none;border:1px solid #000;border-top:3px solid #000}
+dialog{box-shadow:0 20px 60px rgba(0,0,0,.35)!important;border:1px solid #000}
+.hard{box-shadow:none}
+
 /* ---------- edition page ---------- */
 :root{padding-top:env(safe-area-inset-top,0px)}
 section.s{padding-block:clamp(44px,6vw,80px)}
@@ -643,6 +665,20 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
 .cwd{border:1px solid #000;background:#fff;color:#000;padding:8px 14px;font:700 12px var(--ui);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;box-shadow:none}
 .cwd.on{background:#000;color:#fff}.cwd.today:not(.on){border-width:2px;border-color:#a8231b;color:#a8231b}
 .feedchips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px;border:0;padding:0}.feedchips a{box-shadow:none!important;border:1px solid #bbb!important;border-radius:20px;padding:6px 14px!important;font:400 14px var(--ui)!important;background:none!important;color:#000;text-decoration:none;min-height:0!important}.feedchips a:hover{background:#000!important;color:#fff;border-color:#000!important}
+
+/* polish */
+.secgrid .sec:only-child{grid-column:1/-1}
+.nextup button,.dbox,.card{box-shadow:none}
+#modelab{display:none}
+.band.band-navy,.catch{clip-path:none!important}
+
+/* flatter, newspaper-like: no offset shadows on content blocks */
+.grid4 .card,.band-gold .card,.circ,.wk,.nextup button,.why,.art figure .ph,.hero-photo .ph,.pickrow,.big,.dbox,.hard{box-shadow:none!important}
+.grid4 .card:hover,.circ:hover,.wk:hover,.nextup button:hover{transform:none!important;box-shadow:none!important}
+.grid4 .card,.wk,.nextup button,.circ{border-width:1px!important;border-color:#cfcfcf!important}
+.grid4 .card:hover,.wk:hover,.nextup button:hover{border-color:#000!important}
+.why{background:#f6f1e7;color:#000;border-left:4px solid #000}.why b{color:#a8231b}
+.art figure img,.art figure .ph{border:0}
 </style>
 </head>
 <body>
@@ -694,7 +730,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
   <!-- CURRENT -->
   <div id="view-current">
     <div class="wrap">
-      <div class="datebar"><b id="db-date"></b><span id="db-ed"></span><span>Free · Sourced · Updated every Sunday</span></div>
+      <div class="datebar"><span id="db-ed"></span><span>Free · Sourced · Updated every Sunday</span></div>
       <div class="ticker"><b>This week</b><div id="ticker"></div></div>
 
       <section class="front" id="featured" aria-label="Top stories">
@@ -894,6 +930,9 @@ window.WFPhoto = (function () {
       if (!opts.eager) img.loading = 'lazy';
       img.onload = function () {
         box.classList.remove('is-art');
+        var r = img.naturalWidth / (img.naturalHeight || 1), key = String(im.wiki || '');
+        if (r < 0.85) img.style.objectPosition = '50% 14%';
+        if (/(^|_)(map|flag|logo|seal|locator)(_|$)|^Abyei$/i.test(key) || r > 2.8) { img.style.objectFit = 'contain'; box.style.background = '#f1efe9'; }
         if (fb.parentNode) fb.parentNode.removeChild(fb);
         if (!opts.noCredit) { var cr = document.createElement('span'); cr.className = 'credit'; cr.textContent = 'Photo: ' + (p.credit || 'Wikimedia Commons') + (p.license ? ' · ' + p.license : ''); box.appendChild(cr); }
         box.dispatchEvent(new CustomEvent('wf-photo', { detail: { credit: p.credit, license: p.license, page: p.page } }));
@@ -1223,7 +1262,7 @@ function WFMap(E, EDS, href){
   function source(s){ return (srcs(s)[0] || {}).name || 'Weekfold'; }
   function open(node, s){ return openBtn(node, s); }
 
-  (function(){ var d = document.getElementById('db-date'); function t(){ d.textContent = new Date().toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric' }); } t(); setInterval(t, 60000); })();
+  (function(){ var d = document.getElementById('db-date'); function t(){ if (d) d.textContent = new Date().toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric' }); } t(); setInterval(t, 60000); })();
   document.getElementById('db-ed').textContent = 'Edition ' + CUR.number + ' · ' + (CUR.rangeLong || CUR.range);
 
   /* lead story */
@@ -1628,7 +1667,7 @@ function WFMap(E, EDS, href){
     document.getElementById('tab-previous').setAttribute('aria-current', mode === 'previous' ? 'page' : 'false');
     Array.prototype.forEach.call(document.querySelectorAll('header.top .nav a'), function(a){ a.setAttribute('aria-current', a.getAttribute('href') === '#' + mode ? 'page' : 'false'); });
     document.getElementById('modelab').innerHTML = '';
-    var lab = document.getElementById('modelab');
+    var lab = document.getElementById('modelab'); lab.style.display = (mode === 'current' || mode === 'days') ? 'none' : '';
     if (mode === 'current' || mode === 'days'){ lab.appendChild(el('b', { text: 'Edition ' + CUR.number })); lab.appendChild(document.createTextNode(' · ' + (CUR.rangeLong || CUR.range) + ' · Next edition ' + CUR.next)); }
     else if (mode === 'crossword'){ lab.appendChild(el('b', { text: 'Games' })); lab.appendChild(document.createTextNode(' \u00b7 a new crossword and a new word every day')); }
     else if (mode === 'sections'){ lab.appendChild(el('b', { text: 'Every section' })); lab.appendChild(document.createTextNode(' · this week and the ' + Math.max(0, FULL().length - 1) + ' weeks before')); }
