@@ -439,6 +439,16 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
 .grid4 .card:hover,.wk:hover,.nextup button:hover{border-color:#000!important}
 .why{background:#f6f1e7;color:#000;border-left:4px solid #000}.why b{color:#a8231b}
 .art figure img,.art figure .ph{border:0}
+
+.pager{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:30px;flex-wrap:wrap}
+.pager .pg{background:none;border:1px solid #000;padding:10px 18px;font:600 14px var(--ui);cursor:pointer;color:#000}
+.pager .pg:disabled{opacity:.3;cursor:default}
+.pager .pg:not(:disabled):hover{background:#000;color:#fff}
+.pgn{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.pgn button{min-width:38px;height:38px;border:1px solid #bbb;background:none;font:400 14px var(--ui);cursor:pointer;border-radius:50%;color:#000}
+.pgn button[aria-current="page"]{background:#000;color:#fff;border-color:#000}
+.pgi{text-align:center;color:#777;font:400 13px var(--ui);margin-top:12px}
+.feedend{padding-bottom:50px}
 </style>
 </head>
 <body>
@@ -851,7 +861,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
   function weekCard(ed){
     var top = ed.days.slice().sort(function(a, b){ return blen(b.lead) - blen(a.lead); })[0];
     var ul = el('ul'); ed.days.slice(0, 3).forEach(function(d){ ul.appendChild(el('li', { text: d.lead.headline })); });
-    return el('a', { cls:'gk', href:'#week-' + ed.number }, [ photo(top.lead, 340, 340), el('div', null, [ el('p', { cls:'n', text: 'Edition ' + ed.number + ' · ' + ed.days.length + ' days' }), el('h3', { text: ed.rangeLong || ed.range }), ul, el('p', { cls:'go', text: 'Read this week →' }) ]) ]);
+    return el('a', { cls:'wk', href:'#week-' + ed.number }, [ photo(top.lead, 340, 340), el('div', null, [ el('p', { cls:'n', text: 'Edition ' + ed.number + ' · ' + ed.days.length + ' days' }), el('h3', { text: ed.rangeLong || ed.range }), ul, el('p', { cls:'go', text: 'Read this week →' }) ]) ]);
   }
   function renderMonth(m){
     var list = document.getElementById('week-list'); list.innerHTML = '';
@@ -1036,25 +1046,29 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
   }
   function startFeed(boxId, from){
     var box = document.getElementById(boxId), end = document.getElementById(boxId + '-end'); if (!box) return;
-    var qi = from, busy = false, finished = false, shown = 0;
-    function addWeek(ed){
-      stories(ed).sort(function(a, b){ return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; }).forEach(function(s){ box.appendChild(feedRow(s)); shown++; });
+    var PER = 12, page = 0, ALL = null;
+    function collect(done){
+      var eds = EDS.slice(from), need = eds.filter(function(e){ return e.partial; });
+      if (!need.length){ ALL = []; eds.forEach(function(ed){ stories(ed).sort(function(a, b){ return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; }).forEach(function(s){ ALL.push(s); }); }); return done(); }
+      var left = need.length; need.forEach(function(ed){ ensureFull(ed, function(){ if (--left === 0) collect(done); }); });
+    }
+    function show(p, scroll){
+      page = p; box.innerHTML = '';
+      var pages = Math.max(1, Math.ceil(ALL.length / PER));
+      ALL.slice(p * PER, p * PER + PER).forEach(function(s){ box.appendChild(feedRow(s)); });
       WFArt.paintAll(box);
+      end.innerHTML = '';
+      var nav = el('nav', { cls:'pager', 'aria-label':'More news pages' });
+      var prev = el('button', { type:'button', cls:'pg', text:'← Newer' }); prev.disabled = p === 0; prev.addEventListener('click', function(){ show(p - 1, true); });
+      var next = el('button', { type:'button', cls:'pg', text:'Older →' }); next.disabled = p >= pages - 1; next.addEventListener('click', function(){ show(p + 1, true); });
+      var nums = el('div', { cls:'pgn' });
+      for (var i = 0; i < pages; i++){ (function(i){ var b = el('button', { type:'button', text: String(i + 1), 'aria-current': i === p ? 'page' : 'false' }); b.addEventListener('click', function(){ show(i, true); }); nums.appendChild(b); })(i); }
+      nav.appendChild(prev); nav.appendChild(nums); nav.appendChild(next); end.appendChild(nav);
+      end.appendChild(el('p', { cls:'pgi', text: 'Page ' + (p + 1) + ' of ' + pages + ' · ' + ALL.length + ' stories' }));
+      if (scroll) box.scrollIntoView({ block:'start', behavior:'smooth' });
     }
-    function more(){
-      if (busy || finished) return;
-      if (qi >= EDS.length){ finished = true; end.textContent = 'You have reached the first edition. That is everything so far.'; return; }
-      busy = true; end.textContent = 'Loading…';
-      var ed = EDS[qi];
-      ensureFull(ed, function(ok){
-        busy = false; end.textContent = '';
-        if (!ok){ end.textContent = 'Could not load more. Scroll again to retry.'; return; }
-        qi++; addWeek(ed); check();
-      });
-    }
-    function check(){ if (finished || busy) return; var r = end.getBoundingClientRect(); if (r.top < window.innerHeight + 700) more(); }
-    window.addEventListener('scroll', check, { passive:true }); window.addEventListener('resize', check);
-    box._check = check; setTimeout(check, 300);
+    end.textContent = 'Loading…';
+    collect(function(){ show(0, false); });
   }
   startFeed('feed-cur', 1); startFeed('feed-days', 1);
   (function(){ var cs = {}; FULL().forEach(function(ed){ stories(ed).forEach(function(s){ cs[s.category] = (cs[s.category] || 0) + 1; }); });
