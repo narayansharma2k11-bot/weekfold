@@ -708,12 +708,13 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
   var loading = {};
   function ensureFull(ed, done){
     if (!ed.partial) return done(true);
-    if (loading[ed.number]) return;
-    loading[ed.number] = true;
+    if (loading[ed.number]){ loading[ed.number].push(done); return; }
+    loading[ed.number] = [done];
+    function fin(ok){ var w = loading[ed.number]; delete loading[ed.number]; w.forEach(function(f){ f(ok); }); }
     fetch('editions/' + ed.number + '.json').then(function(r){ if (!r.ok) throw 0; return r.json(); }).then(function(full){
       ['range', 'rangeLong', 'next', 'featured', 'days'].forEach(function(k){ if (full[k] != null) ed[k] = full[k]; });
-      delete ed.partial; loading[ed.number] = false; index(); done(true);
-    }).catch(function(){ loading[ed.number] = false; done(false); });
+      delete ed.partial; index(); fin(true);
+    }).catch(function(){ fin(false); });
   }
   function stories(ed){ var a = []; ed.days.forEach(function(d){ a.push(d.lead); (d.more || []).forEach(function(m){ a.push(m); }); }); return a; }
 
@@ -1048,9 +1049,14 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
     var box = document.getElementById(boxId), end = document.getElementById(boxId + '-end'); if (!box) return;
     var PER = 12, page = 0, ALL = null;
     function collect(done){
-      var eds = EDS.slice(from), need = eds.filter(function(e){ return e.partial; });
-      if (!need.length){ ALL = []; eds.forEach(function(ed){ stories(ed).sort(function(a, b){ return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; }).forEach(function(s){ ALL.push(s); }); }); return done(); }
-      var left = need.length; need.forEach(function(ed){ ensureFull(ed, function(){ if (--left === 0) collect(done); }); });
+      var eds = EDS.slice(from), need = eds.filter(function(e){ return e.partial; }), left = need.length;
+      function build(){
+        ALL = [];
+        eds.forEach(function(ed){ stories(ed).sort(function(a, b){ return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; }).forEach(function(s){ ALL.push(s); }); });
+        done();
+      }
+      if (!left) return build();
+      need.forEach(function(ed){ ensureFull(ed, function(){ if (--left === 0) build(); }); });
     }
     function show(p, scroll){
       page = p; box.innerHTML = '';
