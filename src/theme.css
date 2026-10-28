@@ -233,3 +233,5 @@ html[data-theme="dark"] img,html[data-theme="dark"] .mapbox,html[data-theme="dar
 .picked,.tip{box-shadow:none;border:1px solid #000;border-top:3px solid #000}
 dialog{box-shadow:0 20px 60px rgba(0,0,0,.35)!important;border:1px solid #000}
 .hard{box-shadow:none}
+
+.mapbox{overflow:hidden}

@@ -72,11 +72,14 @@ function WFMap(E, EDS, href){
     applyFilter(); bars();
   }
   function showTip(g){
-    var x = g._x, r = mapbox.getBoundingClientRect(), k2 = r.width / 1000;
+    var x = g._x, r = { width: mapbox.offsetWidth, height: mapbox.offsetHeight }, k2 = r.width / 1000;
     tip.innerHTML = ''; tip.appendChild(el('p', { cls:'c', text: x.s.category + ' · ' + fmt(x.d.date, { weekday:'short', day:'numeric', month:'short' }) })); tip.appendChild(el('b', { text: x.s.headline })); tip.appendChild(el('span', { text: 'Click the pin to read it' }));
-    var left = g._p[0] * k2 + 14, top = g._p[1] * k2 - 10;
-    if (left + 300 > r.width) left = Math.max(6, g._p[0] * k2 - 314);
-    tip.style.left = left + 'px'; tip.style.top = Math.max(6, Math.min(top, r.height - 120)) + 'px'; tip.classList.add('on');
+    tip.classList.add('on'); tip.style.left = '0px';
+    var tw = tip.offsetWidth, th = tip.offsetHeight, left = g._p[0] * k2 + 14, top = g._p[1] * k2 - 10;
+    if (left + tw > r.width - 6) left = g._p[0] * k2 - tw - 14;
+    left = Math.max(6, Math.min(left, r.width - tw - 6));
+    top = Math.max(6, Math.min(top, r.height - th - 6));
+    tip.style.left = left + 'px'; tip.style.top = top + 'px';
   }
   function hideTip(){ tip.classList.remove('on'); }
   function pick(g){
