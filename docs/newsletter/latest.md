@@ -1,4 +1,4 @@
-**Edition 43 · 19 – 25 October 2026**
+**Edition 44 · 26 October – 1 November 2026**
 
 This week's world news, one page for every day. Read it in one sitting and you're up to date.
 
@@ -6,75 +6,73 @@ This week's world news, one page for every day. Read it in one sitting and you'r
 
 ---
 
-## Monday 19 October
+## Monday 26 October
 
-### [Kenyan cult leader convicted over starvation deaths of 190 children](https://weekfold.in/home.html#a-2026-10-19-0)
+### [UN inquiry says Israel kept committing genocide in Gaza after ceasefire](https://weekfold.in/home.html#a-2026-10-26-0)
 
-A Mombasa court found preacher Paul Mackenzie and 28 others guilty of murder over the Shakahola Forest deaths, with sentencing set for 6 November.
-
-Also that day:
-- [Saudi Arabia postpones 'Davos in the Desert' to 2027 amid Houthi attacks](https://weekfold.in/home.html#a-2026-10-19-1)
-
-## Tuesday 20 October
-
-### [Drone strike on Abyei market kills at least 153 people](https://weekfold.in/home.html#a-2026-10-20-0)
-
-The toll from Monday's attack in the disputed Sudan-South Sudan border zone more than doubled as fires slowed recovery of bodies.
+A UN-mandated commission says Israeli forces continued genocidal acts after the October 2025 truce; Israel calls the report a misinformation campaign.
 
 Also that day:
-- [Alberta voters reject a path toward independence from Canada](https://weekfold.in/home.html#a-2026-10-20-1)
-- [Japan launches probe to bring back samples from Mars's moon Phobos](https://weekfold.in/home.html#a-2026-10-20-2)
+- [UN inquiry: Russia's strikes on Ukraine's energy grid are crimes against humanity](https://weekfold.in/home.html#a-2026-10-26-1)
+- [Anthropic files for Nasdaq listing, reporting $16.3 billion in half-year revenue](https://weekfold.in/home.html#a-2026-10-26-2)
 
-## Wednesday 21 October
+## Tuesday 27 October
 
-### [Oslo talks on Ukraine end without a deal as Witkoff heads to Putin](https://weekfold.in/home.html#a-2026-10-21-0)
+### [Israel's election ends with no clear winner as Arab parties surge](https://weekfold.in/home.html#a-2026-10-27-0)
 
-Zelenskyy met US envoy Steve Witkoff and European leaders in Norway, with Washington calling the talks constructive but no agreement reached.
-
-Also that day:
-- [Meta posts record revenue, but a legal charge and AI spending cut profit](https://weekfold.in/home.html#a-2026-10-21-1)
-- [Tesla beats profit forecast as deliveries top estimates but margins stay thin](https://weekfold.in/home.html#a-2026-10-21-2)
-
-## Thursday 22 October
-
-### [Iran says seven ships hit in Hormuz as US and Europe weigh next move](https://weekfold.in/home.html#a-2026-10-22-0)
-
-The Revolutionary Guard's claim of its highest single-day toll in the strait is disputed by the US, while ministers urge diplomacy and Washington hints at strikes.
+Netanyahu's bloc led but fell short of a majority, with record turnout and an unprecedented showing for Arab parties.
 
 Also that day:
-- [US measles cases pass 4,500 as the country's 2026 total doubles last year's](https://weekfold.in/home.html#a-2026-10-22-1)
+- [Congo's Ebola outbreak passes 10,000 confirmed cases](https://weekfold.in/home.html#a-2026-10-27-1)
+- [Rays beat Brewers 4-3 in 12 innings, force Game 5](https://weekfold.in/home.html#a-2026-10-27-2)
 
-## Friday 23 October
+## Wednesday 28 October
 
-### [Israel locks down Hebron after attack kills two soldiers days before election](https://weekfold.in/home.html#a-2026-10-23-0)
+### [High-speed train rams stopped train in Spain, killing at least 68](https://weekfold.in/home.html#a-2026-10-28-0)
 
-Netanyahu ordered the West Bank city sealed and prepared wider closures as the army launched a multi-day operation and arrests mounted.
-
-Also that day:
-- [Louvre, Orsay and Grand Palais shut as Paris braces for protests](https://weekfold.in/home.html#a-2026-10-23-1)
-- [Climate plans from 132 countries fall short on protecting health, new scorecard finds](https://weekfold.in/home.html#a-2026-10-23-2)
-
-## Saturday 24 October
-
-### [Hundreds of thousands march across France as nearly 1,000 are arrested](https://weekfold.in/home.html#a-2026-10-24-0)
-
-A week after rioting and looting, Saturday's protests over living costs passed with clashes in several cities under a 70,000-strong police deployment.
+A state-run Renfe train struck the rear of a stopped Iryo train south of Madrid; the transport minister called the order to restart it inexplicable.
 
 Also that day:
-- [Brewers edge Rays 3-2 in World Series opener after overturned double play](https://weekfold.in/home.html#a-2026-10-24-1)
-- [World may have only a month or two of usable oil reserves, analysts warn](https://weekfold.in/home.html#a-2026-10-24-2)
+- [Labor leader Dolores Huerta dies at 96](https://weekfold.in/home.html#a-2026-10-28-1)
+- [UN condemns US Cuba embargo as Washington expels Cuban diplomat](https://weekfold.in/home.html#a-2026-10-28-2)
 
-## Sunday 25 October
+## Thursday 29 October
 
-### [Brazil votes in knife-edge runoff between Lula and Flávio Bolsonaro](https://weekfold.in/home.html#a-2026-10-25-0)
+### [Pentagon says Iran war has cost $47 billion as talks edge forward](https://weekfold.in/home.html#a-2026-10-29-0)
 
-Final polls show a near dead heat as nearly 160 million eligible voters choose between the veteran president and the son of the jailed ex-president.
+The tally is up more than $3 billion in a month, while Vance and Gulf mediators try to revive negotiations before an expected US escalation after the midterms.
 
 Also that day:
-- [Serbia votes in snap election as Vučić faces a student-led challenge](https://weekfold.in/home.html#a-2026-10-25-1)
+- [Lagarde to leave the ECB in February, nine months early](https://weekfold.in/home.html#a-2026-10-29-1)
+- [Russian drone kills 13 at Dnipro station as Oleshky truce holds](https://weekfold.in/home.html#a-2026-10-29-2)
+
+## Friday 30 October
+
+### [Nasdaq has worst day since June on AI spending fears](https://weekfold.in/home.html#a-2026-10-30-0)
+
+Intel plunged nearly 29 percent and chip stocks tumbled, leaving the Nasdaq down 5.3 percent for October.
+
+Also that day:
+- [Binance says $6.3 billion stolen in the biggest crypto heist on record](https://weekfold.in/home.html#a-2026-10-30-1)
+- [NASA asks industry how to boost, service or retire the Hubble telescope](https://weekfold.in/home.html#a-2026-10-30-2)
+
+## Saturday 31 October
+
+### [Studies find global warming is accelerating, with seven climate records broken](https://weekfold.in/home.html#a-2026-10-31-0)
+
+Researchers say the warming rate has almost doubled over the past decade, and a separate annual report finds seven of 16 vital signs at record extremes.
+
+Also that day:
+- [Israeli attacks kill at least four in Gaza as truce frays](https://weekfold.in/home.html#a-2026-10-31-1)
+
+## Sunday 1 November
+
+### [Trump closes midterm campaign as record early voting tops 52 million](https://weekfold.in/home.html#a-2026-11-01-0)
+
+With Election Day on Tuesday, Republicans are defending a Senate majority, and courts are ruling on fights over ballots and voter checks.
 
 ---
 
 Every story on Weekfold names its sources. Past weeks: [Previous news](https://weekfold.in/home.html#previous).
 
-Next edition: Sunday 1 November. Made by Narayan Sharma.
+Next edition: Sunday 8 November. Made by Narayan Sharma.

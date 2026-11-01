@@ -1,0 +1,144 @@
+{
+ "puzzles": [
+  {
+   "title": "The Weekfold Mini · Monday",
+   "grid": [
+    "ABOVE",
+    "L#N#N",
+    "ALIVE",
+    "R#O#M",
+    "MONEY"
+   ],
+   "across": {
+    "1": "Higher than, overhead",
+    "4": "Not dead",
+    "5": "Cash or currency"
+   },
+   "down": {
+    "1": "Fire bell's job, or sudden fear",
+    "2": "Layered bulb that makes you cry",
+    "3": "Foe"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Tuesday",
+   "grid": [
+    "ADULT",
+    "R#P#U",
+    "INPUT",
+    "S#E#O",
+    "ERROR"
+   ],
+   "across": {
+    "1": "Grown-up",
+    "4": "What you feed into a computer",
+    "5": "Mistake"
+   },
+   "down": {
+    "1": "Get out of bed, or come up",
+    "2": "Higher, as a floor",
+    "3": "Private teacher"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Wednesday",
+   "grid": [
+    "ALERT",
+    "B#L#O",
+    "ORBIT",
+    "U#O#A",
+    "TOWEL"
+   ],
+   "across": {
+    "1": "Watchful, or a warning",
+    "4": "Path around a planet",
+    "5": "Bath cloth"
+   },
+   "down": {
+    "1": "Approximately",
+    "2": "Arm joint",
+    "3": "Sum"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Thursday",
+   "grid": [
+    "AFTER",
+    "M#R#I",
+    "BEARD",
+    "E#I#G",
+    "RANGE"
+   ],
+   "across": {
+    "1": "Following",
+    "4": "Facial hair",
+    "5": "Spread between low and high, or a stove"
+   },
+   "down": {
+    "1": "Fossilized resin, or a traffic-light color",
+    "2": "Locomotive and its carriages",
+    "3": "Narrow crest of a hill"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Friday",
+   "grid": [
+    "AGAIN",
+    "S#W#U",
+    "STAIR",
+    "E#R#S",
+    "THEME"
+   ],
+   "across": {
+    "1": "Once more",
+    "4": "One step on the way up",
+    "5": "Central topic of a work"
+   },
+   "down": {
+    "1": "Valuable resource",
+    "2": "Conscious of",
+    "3": "Hospital caregiver"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Saturday",
+   "grid": [
+    "AGREE",
+    "L#A#A",
+    "ORDER",
+    "N#I#L",
+    "GLORY"
+   ],
+   "across": {
+    "1": "Share the same opinion",
+    "4": "Command, or the opposite of chaos",
+    "5": "Great honor"
+   },
+   "down": {
+    "1": "Beside, or onward",
+    "2": "Car dial for music and news",
+    "3": "Ahead of schedule"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Sunday",
+   "grid": [
+    "ADMIT",
+    "L#A#I",
+    "LAYER",
+    "O#O#E",
+    "WORLD"
+   ],
+   "across": {
+    "1": "Confess, or let in",
+    "4": "One level of a cake",
+    "5": "___ Series, baseball's October finale"
+   },
+   "down": {
+    "1": "Permit",
+    "2": "City's chief executive",
+    "3": "Needing sleep"
+   }
+  }
+ ]
+}
