@@ -113,6 +113,45 @@ def newsletter(ed):
     return subject, '\n'.join(lines)
 
 
+def email_html(ed):
+    """Email-ready HTML for the edition (inline styles, table layout, works in Gmail/Outlook/Apple Mail).
+    {{UNSUBSCRIBE_URL}} and {{INTRO}} are filled in per recipient by the Supabase edge functions."""
+    e = html.escape
+    serif = "'Playfair Display',Georgia,'Times New Roman',serif"; sans = "Roboto,'Segoe UI',Helvetica,Arial,sans-serif"
+    f = ed['days'][ed.get('featured', 0)]['lead']
+    rows = []
+    for d in ed['days']:
+        lead = d['lead']
+        rows.append(f'<tr><td style="padding:26px 0 0"><div style="font:700 12px/1 {sans};letter-spacing:.14em;text-transform:uppercase;color:#a8231b">{e(day_name(d["date"]))} &middot; {e(lead["category"])}</div>'
+                    f'<a href="{art_url(d, 0)}" style="display:block;margin-top:10px;font:700 23px/1.25 {serif};color:#0b0b0b;text-decoration:none">{e(lead["headline"])}</a>'
+                    f'<div style="margin-top:8px;font:400 15px/1.55 {sans};color:#3d3b38">{e(lead["dek"])}</div>')
+        if d['more']:
+            rows.append(f'<div style="margin-top:12px;border-top:1px solid #e6e2d8;padding-top:10px">')
+            for k, m in enumerate(d['more'], 1):
+                rows.append(f'<div style="padding:5px 0;font:400 15px/1.45 {sans}"><span style="font:700 11px {sans};letter-spacing:.1em;text-transform:uppercase;color:#7a766d">{e(m["category"])}</span>&nbsp; '
+                            f'<a href="{art_url(d, k)}" style="color:#0b0b0b;text-decoration:underline;text-decoration-color:#c9c3b5">{e(m["headline"])}</a></div>')
+            rows.append('</div>')
+        rows.append('</td></tr>')
+    btn = lambda href, label, bg, fg: f'<a href="{href}" style="display:inline-block;background:{bg};color:{fg};font:700 14px/1 {sans};letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:14px 22px;border:2px solid #0b0b0b">{label}</a>'
+    return f"""<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{e('Weekfold ' + str(ed['number']))}</title></head>
+<body style="margin:0;padding:0;background:#f4efe4">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0">{e(f['headline'])} and the rest of the week, on one page.</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4efe4"><tr><td align="center" style="padding:24px 12px">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff;border:1px solid #e3ddd0">
+<tr><td style="padding:28px 32px 18px;border-bottom:3px double #0b0b0b">
+ <a href="{link('index.html')}" style="font:900 34px/1 {serif};color:#0b0b0b;text-decoration:none">Weekfold</a>
+ <div style="margin-top:10px;font:400 13px/1.4 {sans};color:#6b675f">Edition {e(str(ed['number']))} &middot; {e(ed['rangeLong'])}</div></td></tr>
+<tr><td style="padding:22px 32px 4px;font:400 16px/1.6 {sans};color:#2b2a28">{{{{INTRO}}}}</td></tr>
+<tr><td style="padding:14px 32px 0">{btn(link('home.html#current'), "Read this week's edition", '#1f3a6e', '#ffffff')}</td></tr>
+<tr><td style="padding:0 32px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0">{''.join(rows)}</table></td></tr>
+<tr><td style="padding:30px 32px 6px"><div style="background:#f4efe4;padding:20px 22px"><div style="font:700 19px/1.3 {serif};color:#0b0b0b">Today's mini crossword and Weekfold Word</div>
+ <div style="margin:6px 0 14px;font:400 14px/1.5 {sans};color:#3d3b38">A new puzzle every day. Two minutes each.</div>{btn(link('home.html#crossword'), 'Play', '#ffffff', '#0b0b0b')}</div></td></tr>
+<tr><td style="padding:22px 32px 30px;font:400 12px/1.6 {sans};color:#7a766d;border-top:1px solid #e6e2d8">
+ Every story on Weekfold names its sources. Next edition: {e(ed['next'])}.<br>
+ You're getting this because this address was entered at weekfold.in. <a href="{{{{UNSUBSCRIBE_URL}}}}" style="color:#7a766d">Unsubscribe</a> in one click.</td></tr>
+</table></td></tr></table></body></html>"""
+
+
 def md_to_html(md):
     """Tiny Markdown → HTML for the email preview file (headings, links, lists, bold, rules)."""
     import re
@@ -197,7 +236,8 @@ def main():
             t = t.replace('<meta property="og:type"', f'<link rel="canonical" href="{canon[target]}">\n<meta property="og:url" content="{canon[target]}">\n{og_image}<link rel="alternate" type="application/rss+xml" title="Weekfold" href="{SITE}/feed.xml">\n<meta property="og:type"', 1)
         (OUT / target).write_text(t, encoding='utf-8')
 
-    provider = PROVIDERS.get((CFG.get('newsletter') or {}).get('provider'), 'our email provider')
+    nl = CFG.get('newsletter') or {}
+    provider = 'Supabase (emails are sent through Resend)' if nl.get('supabase_url') else PROVIDERS.get(nl.get('provider'), 'our email provider')
     priv = (SRC / 'privacy.html').read_text(encoding='utf-8')
     priv = priv.replace('/*THEME*/', theme).replace('/*TODAY*/', datetime.date.today().strftime('%-d %B %Y')).replace('/*PROVIDER*/', provider).replace('/*CONTACT*/', CFG.get('contact_email', ''))
     (OUT / 'privacy.html').write_text(priv, encoding='utf-8')
@@ -216,7 +256,11 @@ def main():
     for stem in (eds[0]['number'], 'latest'):
         (OUT / 'newsletter' / f'{stem}.md').write_text(md, encoding='utf-8')
         (OUT / 'newsletter' / f'{stem}.html').write_text(md_to_html(md), encoding='utf-8')
-    (OUT / 'newsletter' / 'latest.json').write_text(json.dumps({'number': eds[0]['number'], 'subject': subject}, ensure_ascii=False), encoding='utf-8')
+    em = email_html(eds[0])
+    for stem in (eds[0]['number'], 'latest'):
+        (OUT / 'newsletter' / f'{stem}-email.html').write_text(em, encoding='utf-8')
+    (OUT / 'newsletter' / 'latest.json').write_text(json.dumps({'number': int(eds[0]['number']), 'subject': subject, 'email': 'newsletter/latest-email.html',
+                                                                 'range': eds[0]['rangeLong'], 'next': eds[0]['next']}, ensure_ascii=False), encoding='utf-8')
 
     if SITE:
         (OUT / 'feed.xml').write_text(rss(eds), encoding='utf-8')

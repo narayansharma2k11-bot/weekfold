@@ -4,7 +4,8 @@
   "contact_email": "weekfoldsupport@gmail.com",
   "newsletter": {
     "provider": "buttondown",
-    "username": "narayan"
+    "username": "narayan",
+    "supabase_url": ""
   },
   "google_client_id": "",
   "inline_full_editions": 4

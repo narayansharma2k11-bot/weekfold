@@ -20,13 +20,34 @@ var WFSite = (function () {
     document.body.appendChild(f); f.submit(); f.remove();
   }
 
-  function subscribe(email, msg, after) {
+  function supa() {
+    var u = (N.supabase_url || '').replace(/\/$/, '');
+    return u ? u + '/functions/v1/subscribe' : '';
+  }
+
+  function subscribe(email, msg, after, source, hp) {
+    var su = supa();
+    if (su) {
+      msg.className = 'msg'; msg.textContent = 'Subscribing…';
+      fetch(su, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email, source: source || 'site', website: hp || '' }) })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, code: r.status, j: j }; }); })
+        .then(function (res) {
+          if (res.ok && res.j.status === 'already') { msg.className = 'msg'; msg.textContent = 'You’re already on the list, so the next edition will reach you on Sunday.'; return; }
+          if (res.ok) { msg.className = 'msg'; msg.textContent = 'You’re in! This week’s edition is on its way to your inbox (check Promotions if you don’t see it). ' + (after || ''); return; }
+          msg.className = 'msg err';
+          msg.textContent = res.code === 429 ? 'Too many sign-ups from this connection. Please try again in an hour.'
+            : res.j && res.j.error === 'invalid_email' ? 'That email address doesn’t look right. Check it and try again.'
+            : 'Something went wrong. Please try again in a minute.';
+        })
+        .catch(function () { msg.className = 'msg err'; msg.textContent = 'Couldn’t reach the server. Check your connection and try again.'; });
+      return;
+    }
     var ep = endpoint();
     if (!ep) {
       msg.className = 'msg';
       msg.textContent = '';
       msg.appendChild(document.createTextNode('Email sign-ups open very soon. '));
-      if (CONTACT) { var a = document.createElement('a'); a.href = 'mailto:' + CONTACT + '?subject=' + encodeURIComponent('Add me to Weekfold') + '&body=' + encodeURIComponent('Please add ' + email + ' to the Sunday email.'); a.textContent = 'Email us to be added'; a.style.textDecoration = 'underline'; msg.appendChild(a); msg.appendChild(document.createTextNode('.')); }
+      if (CONTACT) { var a = document.createElement('a'); a.href = 'mailto:' + CONTACT + '?subject=' + encodeURIComponent('Add me to Weekfold') + '&body=' + encodeURIComponent('Please add ' + email + ' to the Sunday email.'); a.textContent = 'Email us to be added'; msg.appendChild(a); }
       return;
     }
     msg.className = 'msg'; msg.textContent = 'Subscribing…';
@@ -43,10 +64,12 @@ var WFSite = (function () {
     var f = document.getElementById(formId), i = document.getElementById(inputId), m = document.getElementById(msgId);
     if (!f || !i || !m) return;
     var u = user(); if (u && u.email && !i.value) i.value = u.email;
+    if (!f.querySelector('input[name="website"]')) { var hp = document.createElement('input'); hp.type = 'text'; hp.name = 'website'; hp.tabIndex = -1; hp.autocomplete = 'off'; hp.setAttribute('aria-hidden', 'true'); hp.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px;opacity:0'; f.appendChild(hp); }
     f.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!i.value || !i.checkValidity()) { m.className = 'msg err'; m.textContent = 'Enter an email address like name@example.com.'; i.focus(); return; }
-      subscribe(i.value.trim(), m, after);
+      var hp = f.querySelector('input[name="website"]');
+      subscribe(i.value.trim(), m, after, formId, hp ? hp.value : '');
     });
   }
 
