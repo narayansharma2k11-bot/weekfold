@@ -250,6 +250,21 @@ dialog{box-shadow:0 20px 60px rgba(0,0,0,.35)!important;border:1px solid #000}
 
 .mapbox{overflow:hidden}
 
+/* Photo-pending tiles: a folded-paper card in the section's colour instead of a blank grey box (Nov 2026) */
+.ph{box-shadow:none!important}
+.ph.is-art{border:0!important;background:transparent}
+.fb{background:
+  linear-gradient(to bottom right,transparent calc(50% - .6px),color-mix(in srgb,var(--fb,#10224a) 22%,transparent) 50%,transparent calc(50% + .6px)),
+  linear-gradient(to bottom right,transparent 50%,color-mix(in srgb,var(--fb,#10224a) 5%,transparent) 50%),
+  color-mix(in srgb,var(--fb,#10224a) 8%,#fbfaf7)!important;
+  border:1px solid color-mix(in srgb,var(--fb,#10224a) 16%,#fff)!important;padding:6%}
+.fb span{font:900 clamp(15px,2.4vw,34px)/1 var(--display)!important;letter-spacing:-.005em!important;text-transform:none!important;color:var(--fb,#10224a)!important}
+.fb::after{content:"";position:absolute;top:7%;right:6%;width:clamp(18px,2.6vw,38px);aspect-ratio:1;opacity:.28;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23000'%3E%3Crect x='12' y='10' width='54' height='54' stroke-width='3.2' transform='rotate(-6 39 37)'/%3E%3Crect x='15' y='14' width='54' height='54' stroke-width='3.2' transform='rotate(4 42 41)'/%3E%3Cpath d='M20 28L28 54L40 26L52 54L60 28' stroke-width='6' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E")}
+.big .fb{background:linear-gradient(to bottom right,transparent calc(50% - .6px),rgba(255,255,255,.14) 50%,transparent calc(50% + .6px)),color-mix(in srgb,var(--fb,#10224a) 82%,#000)!important;border:0!important}
+.big .fb span{color:#fff!important}.big .fb::after{filter:invert(1);opacity:.35}
+.mini .fb::after,.wk .fb::after{top:50%;right:50%;transform:translate(50%,-50%);width:40%}
+.mini .fb span{display:none}
+
 main.legalpage{max-width:760px;margin:0 auto;padding:clamp(36px,6vw,72px) 20px 90px}
 main.legalpage h1{font-size:clamp(40px,6vw,64px);font-weight:700}
 main.legalpage h2{font-size:26px;margin:44px 0 8px}
@@ -272,7 +287,7 @@ main.legalpage a{color:var(--blue)}
 </header>
 <main class="legalpage">
   <h1>Privacy</h1>
-  <p class="upd">Last updated: 1 November 2026</p>
+  <p class="upd">Last updated: 3 November 2026</p>
 
   <h2>The short version</h2>
   <p>Weekfold is free to read. There are no ads, no tracking cookies and no accounts stored on our side. We only hold your email address if you subscribe.</p>
