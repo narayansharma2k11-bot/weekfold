@@ -1,0 +1,144 @@
+{
+ "puzzles": [
+  {
+   "title": "The Weekfold Mini · Monday",
+   "grid": [
+    "CROSS",
+    "H#U#H",
+    "EXTRA",
+    "S#E#K",
+    "SERVE"
+   ],
+   "across": {
+    "1": "Angry, or a symbol on a church",
+    "4": "More than needed",
+    "5": "Start a tennis point"
+   },
+   "down": {
+    "1": "A board game of kings and pawns",
+    "2": "Farther out",
+    "3": "Move a bit, as a cocktail"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Tuesday",
+   "grid": [
+    "VIDEO",
+    "O#R#F",
+    "CHEST",
+    "A#A#E",
+    "LEMON"
+   ],
+   "across": {
+    "1": "Moving pictures on a screen",
+    "4": "Treasure box, or the torso",
+    "5": "Sour yellow citrus fruit"
+   },
+   "down": {
+    "1": "Relating to the voice",
+    "2": "Something you imagine while asleep",
+    "3": "Frequently"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Wednesday",
+   "grid": [
+    "SILLY",
+    "T#E#I",
+    "USAGE",
+    "F#S#L",
+    "FIELD"
+   ],
+   "across": {
+    "1": "Goofy",
+    "4": "How a word is typically used",
+    "5": "Open area of grass or crops"
+   },
+   "down": {
+    "1": "Material for filling, or things in general",
+    "2": "Rent out for a period",
+    "3": "Produce, as a farm does"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Thursday",
+   "grid": [
+    "MORAL",
+    "U#A#A",
+    "SHIRT",
+    "I#S#E",
+    "CHEER"
+   ],
+   "across": {
+    "1": "Lesson of a fable",
+    "4": "Top with buttons and a collar",
+    "5": "Shout of encouragement"
+   },
+   "down": {
+    "1": "Songs and melodies",
+    "2": "Lift up",
+    "3": "Not earlier"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Friday",
+   "grid": [
+    "FRUIT",
+    "O#R#H",
+    "CABLE",
+    "U#A#R",
+    "SINCE"
+   ],
+   "across": {
+    "1": "Apple or pear",
+    "4": "Thick wire, or a TV service",
+    "5": "From then until now"
+   },
+   "down": {
+    "1": "Central point of attention",
+    "2": "City-related",
+    "3": "In that place"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Saturday",
+   "grid": [
+    "LEAST",
+    "O#R#O",
+    "OPERA",
+    "S#N#S",
+    "EXACT"
+   ],
+   "across": {
+    "1": "Smallest amount",
+    "4": "Sung drama, such as Carmen",
+    "5": "Precisely correct"
+   },
+   "down": {
+    "1": "Not tight",
+    "2": "Stadium or sports ground",
+    "3": "Browned bread slice"
+   }
+  },
+  {
+   "title": "The Weekfold Mini · Sunday",
+   "grid": [
+    "SCENE",
+    "T#I#A",
+    "EAGER",
+    "A#H#T",
+    "MATCH"
+   ],
+   "across": {
+    "1": "Part of a play, or a view",
+    "4": "Keen and excited",
+    "5": "Game of tennis, or a lit stick"
+   },
+   "down": {
+    "1": "Vapor from hot water",
+    "2": "The number after seven",
+    "3": "The planet we live on"
+   }
+  }
+ ]
+}

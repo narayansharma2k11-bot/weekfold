@@ -1,4 +1,4 @@
-**Edition 44 · 26 October – 1 November 2026**
+**Edition 45 · 2 – 8 November 2026**
 
 This week's world news, one page for every day. Read it in one sitting and you're up to date.
 
@@ -6,73 +6,75 @@ This week's world news, one page for every day. Read it in one sitting and you'r
 
 ---
 
-## Monday 26 October
+## Monday 2 November
 
-### [UN inquiry says Israel kept committing genocide in Gaza after ceasefire](https://weekfold.in/home.html#a-2026-10-26-0)
+### [Ukraine and Russia emergency alert apps hacked as local truce ends](https://weekfold.in/home.html#a-2026-11-02-0)
 
-A UN-mandated commission says Israeli forces continued genocidal acts after the October 2025 truce; Israel calls the report a misinformation campaign.
-
-Also that day:
-- [UN inquiry: Russia's strikes on Ukraine's energy grid are crimes against humanity](https://weekfold.in/home.html#a-2026-10-26-1)
-- [Anthropic files for Nasdaq listing, reporting $16.3 billion in half-year revenue](https://weekfold.in/home.html#a-2026-10-26-2)
-
-## Tuesday 27 October
-
-### [Israel's election ends with no clear winner as Arab parties surge](https://weekfold.in/home.html#a-2026-10-27-0)
-
-Netanyahu's bloc led but fell short of a majority, with record turnout and an unprecedented showing for Arab parties.
+False nuclear, chemical and missile warnings reached phones on both sides of the front within hours of each other.
 
 Also that day:
-- [Congo's Ebola outbreak passes 10,000 confirmed cases](https://weekfold.in/home.html#a-2026-10-27-1)
-- [Rays beat Brewers 4-3 in 12 innings, force Game 5](https://weekfold.in/home.html#a-2026-10-27-2)
+- [Marvell agrees $115 billion all-stock deal for Lumentum](https://weekfold.in/home.html#a-2026-11-02-1)
+- [Elizabeth Holmes documentary tops a sleepy Halloween box office](https://weekfold.in/home.html#a-2026-11-02-2)
 
-## Wednesday 28 October
+## Tuesday 3 November
 
-### [High-speed train rams stopped train in Spain, killing at least 68](https://weekfold.in/home.html#a-2026-10-28-0)
+### [Democrats seize House and Senate in midterm rebuke of Trump](https://weekfold.in/home.html#a-2026-11-03-0)
 
-A state-run Renfe train struck the rear of a stopped Iryo train south of Madrid; the transport minister called the order to restart it inexplicable.
-
-Also that day:
-- [Labor leader Dolores Huerta dies at 96](https://weekfold.in/home.html#a-2026-10-28-1)
-- [UN condemns US Cuba embargo as Washington expels Cuban diplomat](https://weekfold.in/home.html#a-2026-10-28-2)
-
-## Thursday 29 October
-
-### [Pentagon says Iran war has cost $47 billion as talks edge forward](https://weekfold.in/home.html#a-2026-10-29-0)
-
-The tally is up more than $3 billion in a month, while Vance and Gulf mediators try to revive negotiations before an expected US escalation after the midterms.
+Voters ended Republican control of Congress on election night, flipping at least seven Senate seats and the House, according to Al Jazeera and other outlets.
 
 Also that day:
-- [Lagarde to leave the ECB in February, nine months early](https://weekfold.in/home.html#a-2026-10-29-1)
-- [Russian drone kills 13 at Dnipro station as Oleshky truce holds](https://weekfold.in/home.html#a-2026-10-29-2)
+- [Fridge-hacking wave reaches UK meat suppliers](https://weekfold.in/home.html#a-2026-11-03-1)
+- [Manchester United storm back from two down to beat Roma](https://weekfold.in/home.html#a-2026-11-03-2)
 
-## Friday 30 October
+## Wednesday 4 November
 
-### [Nasdaq has worst day since June on AI spending fears](https://weekfold.in/home.html#a-2026-10-30-0)
+### [Dozens dead as Russian bombs hit Zaporizhzhia aid point](https://weekfold.in/home.html#a-2026-11-04-0)
 
-Intel plunged nearly 29 percent and chip stocks tumbled, leaving the Nasdaq down 5.3 percent for October.
-
-Also that day:
-- [Binance says $6.3 billion stolen in the biggest crypto heist on record](https://weekfold.in/home.html#a-2026-10-30-1)
-- [NASA asks industry how to boost, service or retire the Hubble telescope](https://weekfold.in/home.html#a-2026-10-30-2)
-
-## Saturday 31 October
-
-### [Studies find global warming is accelerating, with seven climate records broken](https://weekfold.in/home.html#a-2026-10-31-0)
-
-Researchers say the warming rate has almost doubled over the past decade, and a separate annual report finds seven of 16 vital signs at record extremes.
+Ukrainian officials say at least 40 people died and dozens are missing after glide bombs struck a school-turned-shelter in Komyshuvakha.
 
 Also that day:
-- [Israeli attacks kill at least four in Gaza as truce frays](https://weekfold.in/home.html#a-2026-10-31-1)
+- [WHO backs trials of two Bundibugyo Ebola vaccines](https://weekfold.in/home.html#a-2026-11-04-1)
 
-## Sunday 1 November
+## Thursday 5 November
 
-### [Trump closes midterm campaign as record early voting tops 52 million](https://weekfold.in/home.html#a-2026-11-01-0)
+### [Tankers burn in Hormuz as Iran presses on after US midterms](https://weekfold.in/home.html#a-2026-11-05-0)
 
-With Election Day on Tuesday, Republicans are defending a Senate majority, and courts are ruling on fights over ballots and voter checks.
+Iran says mines and fires hit at least five oil tankers and a tugboat on Thursday, even as Qatar and Oman try to keep talks alive.
+
+Also that day:
+- [Bank of England raises interest rates to 4%, first rise since 2023](https://weekfold.in/home.html#a-2026-11-05-1)
+- [Astronauts finish ISS solar upgrade in nearly seven-hour spacewalk](https://weekfold.in/home.html#a-2026-11-05-2)
+
+## Friday 6 November
+
+### [Paraguay's Senate removes president over bank collapse; Alliana sworn in](https://weekfold.in/home.html#a-2026-11-06-0)
+
+Santiago Peña was ousted and placed under house arrest days after the Ueno Bank failure locked millions out of their savings.
+
+Also that day:
+- [October 2026 was the warmest October on record, EU monitor says](https://weekfold.in/home.html#a-2026-11-06-1)
+- [Russell Brand convicted of rape and three sexual assaults in London](https://weekfold.in/home.html#a-2026-11-06-2)
+
+## Saturday 7 November
+
+### [Gunman kills six in Kraków's Main Square; Poland calls it terrorism](https://weekfold.in/home.html#a-2026-11-07-0)
+
+A 24-year-old Polish man opened fire from a car in the city's historic centre, and police later found three relatives dead at his home.
+
+Also that day:
+- [All Blacks beat Scotland 43-21 despite Ashman's historic hat-trick](https://weekfold.in/home.html#a-2026-11-07-1)
+
+## Sunday 8 November
+
+### [US opens land and Caspian front against Iran with Task Force Iron Gate](https://weekfold.in/home.html#a-2026-11-08-0)
+
+CENTCOM extends its months-long naval blockade to Iran's borders as strikes, mine claims and Qatari-mediated talks continue side by side.
+
+Also that day:
+- [UN-backed reports warn overshooting 1.5C would damage Earth's ice irreversibly](https://weekfold.in/home.html#a-2026-11-08-1)
 
 ---
 
 Every story on Weekfold names its sources. Past weeks: [Previous news](https://weekfold.in/home.html#previous).
 
-Next edition: Sunday 8 November. Made by Narayan Sharma.
+Next edition: Sunday 15 November. Made by Narayan Sharma.
