@@ -742,5 +742,17 @@
   "credit": "Wikimedia Commons",
   "license": "Free licence",
   "page": "https://en.wikipedia.org/wiki/American_Family_Field"
+ },
+ "Pentagon": {
+  "file": "Pentagon.jpg",
+  "credit": "Wikimedia Commons",
+  "license": "Free licence",
+  "page": "https://en.wikipedia.org/wiki/Pentagon"
+ },
+ "Shakahola_Forest_incident": {
+  "file": "Shakahola_Forest_incident.jpg",
+  "credit": "Wikimedia Commons",
+  "license": "Free licence",
+  "page": "https://en.wikipedia.org/wiki/Shakahola_Forest_incident"
  }
 }
