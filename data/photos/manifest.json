@@ -574,5 +574,23 @@
   "credit": "Wikimedia Commons",
   "license": "Free licence",
   "page": "https://en.wikipedia.org/wiki/Bank_of_England"
+ },
+ "United_Nations_Human_Rights_Council": {
+  "file": "United_Nations_Human_Rights_Council.jpg",
+  "credit": "Wikimedia Commons",
+  "license": "Free licence",
+  "page": "https://en.wikipedia.org/wiki/United_Nations_Human_Rights_Council"
+ },
+ "Palais_des_Nations": {
+  "file": "Palais_des_Nations.jpg",
+  "credit": "Wikimedia Commons",
+  "license": "Free licence",
+  "page": "https://en.wikipedia.org/wiki/Palais_des_Nations"
+ },
+ "Dario_Amodei": {
+  "file": "Dario_Amodei.jpg",
+  "credit": "Wikimedia Commons",
+  "license": "Free licence",
+  "page": "https://en.wikipedia.org/wiki/Dario_Amodei"
  }
 }
