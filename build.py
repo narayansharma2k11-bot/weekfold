@@ -14,7 +14,7 @@ SRC, DATA, OUT = ROOT / 'src', ROOT / 'data' / 'editions', ROOT / 'docs'
 CFG = json.loads((ROOT / 'config.json').read_text(encoding='utf-8'))
 SITE = (CFG.get('site_url') or '').rstrip('/')
 INLINE_FULL = int(CFG.get('inline_full_editions', 4))
-PROVIDERS = {'buttondown': 'Buttondown', 'kit': 'Kit'}
+PROVIDERS = {'buttondown': 'Buttondown', 'kit': 'Kit', 'hostinger': 'Hostinger (emails are sent from our own mailbox)'}
 
 errors = []
 
@@ -272,6 +272,7 @@ def main():
     for _f in ['favicon.ico','icon-48.png','icon-96.png','icon-180.png','icon-192.png','icon-512.png']:
         shutil.copy(SRC / _f, OUT / _f)
     shutil.copytree(SRC / 'koala', OUT / 'koala', dirs_exist_ok=True)
+    shutil.copytree(SRC / 'api', OUT / 'api', dirs_exist_ok=True, ignore=shutil.ignore_patterns('config.php', 'data'))
     for gf in SRC.glob('google*.html'):  # Search Console verification file(s) must survive every rebuild
         shutil.copy(gf, OUT / gf.name)
     (OUT / '.nojekyll').write_text('')

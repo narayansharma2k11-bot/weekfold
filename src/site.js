@@ -21,6 +21,7 @@ var WFSite = (function () {
   }
 
   function supa() {
+    if (N.provider === 'hostinger') return '/api/subscribe.php';
     var u = (N.supabase_url || '').replace(/\/$/, '');
     return u ? u + '/functions/v1/subscribe' : '';
   }
@@ -33,7 +34,7 @@ var WFSite = (function () {
         .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, code: r.status, j: j }; }); })
         .then(function (res) {
           if (res.ok && res.j.status === 'already') { msg.className = 'msg'; msg.textContent = 'You’re already on the list, so the next edition will reach you on Sunday.'; return; }
-          if (res.ok) { msg.className = 'msg'; msg.textContent = 'You’re in! This week’s edition is on its way to your inbox (check Promotions if you don’t see it). ' + (after || ''); return; }
+          if (res.ok) { msg.className = 'msg'; msg.textContent = (res.j.status === 'queued' ? 'You’re in! Your first edition will reach you within a day (check Promotions if you don’t see it). ' : 'You’re in! This week’s edition is on its way to your inbox (check Promotions if you don’t see it). ') + (after || ''); return; }
           msg.className = 'msg err';
           msg.textContent = res.code === 429 ? 'Too many sign-ups from this connection. Please try again in an hour.'
             : res.j && res.j.error === 'invalid_email' ? 'That email address doesn’t look right. Check it and try again.'

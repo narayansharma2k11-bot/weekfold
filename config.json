@@ -3,7 +3,7 @@
   "custom_domain": "weekfold.in",
   "contact_email": "weekfoldsupport@gmail.com",
   "newsletter": {
-    "provider": "buttondown",
+    "provider": "hostinger",
     "username": "narayan",
     "supabase_url": ""
   },
