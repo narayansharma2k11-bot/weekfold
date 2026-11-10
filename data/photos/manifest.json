@@ -562,5 +562,17 @@
   "credit": "Wikimedia Commons",
   "license": "Free licence",
   "page": "https://en.wikipedia.org/wiki/Russell_Brand"
+ },
+ "Old_Trafford": {
+  "file": "Old_Trafford.jpg",
+  "credit": "Wikimedia Commons",
+  "license": "Free licence",
+  "page": "https://en.wikipedia.org/wiki/Old_Trafford"
+ },
+ "Bank_of_England": {
+  "file": "Bank_of_England.jpg",
+  "credit": "Wikimedia Commons",
+  "license": "Free licence",
+  "page": "https://en.wikipedia.org/wiki/Bank_of_England"
  }
 }
