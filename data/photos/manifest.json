@@ -550,5 +550,17 @@
   "credit": "Wikimedia Commons",
   "license": "Free licence",
   "page": "https://en.wikipedia.org/wiki/Greenland_ice_sheet"
+ },
+ "Zaporizhzhia": {
+  "file": "Zaporizhzhia.jpg",
+  "credit": "Wikimedia Commons",
+  "license": "Free licence",
+  "page": "https://en.wikipedia.org/wiki/Zaporizhzhia"
+ },
+ "Russell_Brand": {
+  "file": "Russell_Brand.jpg",
+  "credit": "Wikimedia Commons",
+  "license": "Free licence",
+  "page": "https://en.wikipedia.org/wiki/Russell_Brand"
  }
 }
