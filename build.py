@@ -100,7 +100,7 @@ def newsletter(ed):
     f = ed['days'][ed.get('featured', 0)]['lead']
     lines = [f"**Edition {ed['number']} · {ed['rangeLong']}**", '',
              "This week's world news, one page for every day. Read it in one sitting and you're up to date.", '',
-             f"[Open this week's book →]({link('index.html')})", '', '---', '']
+             f"[Open this week's book →]({link('')})", '', '---', '']
     for d in ed['days']:
         lead = d['lead']
         lines += [f"## {day_name(d['date'])}", '', f"### [{lead['headline']}]({art_url(d, 0)})", '', lead['dek'], '']
@@ -141,7 +141,7 @@ def email_html(ed):
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4efe4"><tr><td align="center" style="padding:24px 12px">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff;border:1px solid #e3ddd0">
 <tr><td style="padding:28px 32px 18px;border-bottom:3px double #0b0b0b">
- <a href="{link('index.html')}" style="font:900 34px/1 {serif};color:#0b0b0b;text-decoration:none">Weekfold</a>
+ <a href="{link('')}" style="font:900 34px/1 {serif};color:#0b0b0b;text-decoration:none">Weekfold</a>
  <div style="margin-top:10px;font:400 13px/1.4 {sans};color:#6b675f">Edition {e(str(ed['number']))} &middot; {e(ed['rangeLong'])}</div></td></tr>
 <tr><td style="padding:22px 32px 4px;font:400 16px/1.6 {sans};color:#2b2a28">{{{{INTRO}}}}</td></tr>
 <tr><td style="padding:14px 32px 0">{btn(link('home.html#current'), "Read this week's edition", '#1f3a6e', '#ffffff')}</td></tr>
@@ -277,6 +277,7 @@ def main():
     for gf in SRC.glob('google*.html'):  # Search Console verification file(s) must survive every rebuild
         shutil.copy(gf, OUT / gf.name)
     (OUT / '.nojekyll').write_text('')
+    (OUT / '.htaccess').write_text('RewriteEngine On\nRewriteCond %{THE_REQUEST} \\s/index\\.html[\\s?]\nRewriteRule ^index\\.html$ / [R=301,L]\n')
     if CFG.get('custom_domain'):
         (OUT / 'CNAME').write_text(CFG['custom_domain'].strip() + '\n')
 

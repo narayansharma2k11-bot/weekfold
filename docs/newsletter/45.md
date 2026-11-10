@@ -2,7 +2,7 @@
 
 This week's world news, one page for every day. Read it in one sitting and you're up to date.
 
-[Open this week's book →](https://weekfold.in/index.html)
+[Open this week's book →](https://weekfold.in/)
 
 ---
 
