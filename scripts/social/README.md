@@ -1,0 +1,1 @@
+Instagram story templates (1080x1920). Copy d2.html as a starting point (phone(), quiz(), facts() helpers in pastel.js, styles in pastel.css), put each story in a `<div class="story" id="sNN">`, then `python3 scripts/social/render.py <html file relative to this folder> out/` renders one PNG per .story. Koala art: src/koala/*.webp. Story photos: data/photos/ (or docs/img/).

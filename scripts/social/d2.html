@@ -1,0 +1,64 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="pastel.css"></head><body>
+<script src="pastel.js"></script><script>
+const S=[];
+// 1 cover
+S.push(story('p01','lav',
+ head(380,'Edition 44<br>is out','18 stories. 7 days. <b>one free page</b> <span class="arrows">&gt;&gt;&gt;&gt;&gt;</span>')+
+ spark(120,780,'#f7c948',56)+spark(900,860,'#ff8fa3',40)+spark(820,560,'#b9a7ff',36)+dot(170,1500,'#b9a7ff',22)+
+ phone(340,860,440,'shots/current.png',3)+
+ note(110,1060,'fresh off<br>the press',-8)+arrow(200,1180,330,1290,-.3)));
+// 2 congrats
+S.push(story('p02','sky',
+ head(370,'Congrats, you survived another week of news','unfortunately the group chat is still gonna ask what actually happened',104)+
+ spark(110,1080,'#f7c948',50)+spark(930,1180,'#ff8fa3',38)+
+ quiz(110,1010,860,'Who is leaving the ECB nine months early?',['Christine Lagarde','Jerome Powell','Andrew Bailey','Mario Draghi'],0,-1.5)+
+ note(90,1660,'it’s A. you’re welcome',-3)));
+// 3 dinner
+const tips=[['the ECB’s boss is leaving early','Christine Lagarde steps down on 7 Feb 2027, nine months early'],['hubble might get a lifeline','NASA asked firms how to boost, service or retire it'],['warming is speeding up','studies say the rate almost doubled in a decade']];
+S.push(story('p03','butter',
+ head(350,'How to sound informed at dinner this week','',92)+
+ `<div style="position:absolute;left:70px;right:70px;top:690px;display:flex;flex-direction:column;gap:20px">${tips.map((t,i)=>`<div class="card" style="padding:30px 36px 32px 120px;position:relative"><span style="position:absolute;left:34px;top:28px;width:62px;height:62px;border-radius:50%;background:#121212;color:#fff;display:grid;place-items:center;font:900 34px 'Inter Display'">${i+1}</span><div style="font:800 40px/1.15 'Inter Display';text-transform:none">${t[0]}</div><div style="font:400 30px/1.35 Inter;color:#4a4752;margin-top:8px">${t[1]}</div></div>`).join('')}</div>`+
+ phone(110,1330,400,'shots/days.png',-3)+note(580,1420,'the whole week,<br>one page',-5)+spark(900,1330,'#ff8fa3',40)));
+// 4 nasdaq
+S.push(story('p04','peach',
+ head(380,'The stock market had a rough Friday','the nasdaq’s worst day since june. <b>intel fell nearly 29%.</b>',108)+
+ spark(130,980,'#f7c948',46)+spark(880,900,'#b9a7ff',36)+
+ facts(130,1040,820,[['−29%','Intel, in one day','#e5484d'],['worst','day for the Nasdaq since June','#e5484d']],-1.5)+
+ note(470,1580,'ai spending fears,<br>apparently',-5)+arrow(600,1570,650,1470,.3)));
+// 5 heist
+S.push(story('p05','lav',
+ head(380,'$6.3 billion.<br>gone.','binance says it’s <b>the biggest crypto heist on record</b>',128)+
+ facts(110,1000,860,[['$6.3bn','stolen, a record','#d0613a'],['~$3bn','frozen so far','#2f6fb5'],['1','north korean unit blamed by analysts','#6d4fd8']],-1)+
+ note(90,1620,'sources linked<br>in every story',-4)+spark(130,920,'#f7c948',44)));
+// 6 hubble
+S.push(story('p06','sky',
+ head(380,'NASA is asking how to save Hubble','it wants ideas from companies to <b>boost, service or retire</b> the telescope before its orbit decays',104)+
+ spark(150,1020,'#f7c948',52)+spark(860,980,'#f7c948',34)+spark(940,1130,'#fff',26)+dot(220,1240,'#fff',14)+dot(820,1300,'#fff',12)+
+ facts(130,1140,820,[['36','years still doing science'],['3','options: boost, service or retire']],1.5)));
+// 7 warming
+S.push(story('p07','peach',
+ head(380,'The planet is warming faster','studies say the warming rate has <b>almost doubled</b> over the past decade',116)+
+ quiz(110,940,860,'The warming rate over the past decade has…',['slowed down','stayed the same','almost doubled','tripled'],2,1.2)+
+ note(90,1590,'7 of 16 vital signs<br>hit record extremes',-4)+spark(880,980,'#ff8fa3',40)));
+// 8 crossword
+S.push(story('p08','mint',
+ head(380,'Today’s mini crossword takes 2 minutes','5x5. a new one every day. <span class="arrows">&gt;&gt;&gt;&gt;&gt;</span>',104)+
+ `<div style="position:absolute;left:96px;top:1010px;transform:rotate(-4deg)" id="cwg" class="cw"></div>`+
+ `<div class="card" style="position:absolute;left:600px;top:1090px;width:380px;padding:24px 28px;transform:rotate(2deg);font:600 30px/1.3 Inter"><b style="font:800 26px Inter;letter-spacing:.1em">ACROSS</b><br>1. Grown-up<br>4. What you feed a computer<br>5. Mistake<br><b style="font:800 26px Inter;letter-spacing:.1em;display:block;margin-top:14px">DOWN</b>1. Get out of bed<br>2. Higher, as a floor<br>3. Private teacher</div>`+note(660,1010,'no spoilers',5)+spark(560,900,'#f7c948',40)));
+// 9 word
+S.push(story('p09','lav',
+ head(380,'Weekfold Word','one word. six tries. <b>a new one every day.</b>',124)+
+ `<div style="position:absolute;left:256px;top:760px;transform:scale(.92);transform-origin:top left" class="tiles">
+ <div class="x"></div><div class="y"></div><div class="x"></div><div class="x"></div><div class="x"></div>
+ <div class="g"></div><div class="x"></div><div class="y"></div><div class="x"></div><div class="g"></div>
+ <div class="g"></div><div class="g"></div><div class="g"></div><div class="g"></div><div class="g"></div></div>`+
+ kb(95,1150,{R:'x',A:'y',I:'x',S:'x',E:'x',L:'g',O:'y',U:'x',N:'g',T:'g'})+note(100,1560,'got it in three?',-4)+spark(860,1100,'#f7c948',48)));
+// 10 read before monday
+S.push(story('p10','butter',
+ head(380,'Read this before Monday','the whole week on one page. <b>free.</b> <span class="arrows">&gt;&gt;&gt;&gt;&gt;</span>',120)+
+ phone(140,950,480,'shots/landing.png',-3)+
+ note(700,1000,'tap the<br>link!',6)+arrow(780,1130,660,1230,-.3)+spark(820,1250,'#ff8fa3',46)+spark(130,860,'#b9a7ff',40)));
+document.body.innerHTML=S.join('');
+fetch('cw44.json').then(r=>r.json()).then(j=>{const p=j.puzzles[1];const g=document.getElementById('cwg');const num={'0,0':1,'0,2':2,'0,4':3,'2,0':4,'4,0':5};
+ if(g)p.grid.forEach((row,r)=>[...row].forEach((ch,c)=>{const d=document.createElement('div');if(ch==='#')d.className='b';if(num[r+','+c])d.innerHTML='<sup>'+num[r+','+c]+'</sup>';g.appendChild(d)}));});
+</script></body></html>
