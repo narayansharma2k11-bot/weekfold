@@ -279,6 +279,17 @@ dialog{box-shadow:0 20px 60px rgba(0,0,0,.35)!important;border:1px solid #000}
 .mini .fb::after,.wk .fb::after{top:50%;right:50%;transform:translate(50%,-50%);width:40%}
 .mini .fb span{display:none}
 
+/* koala mascot */
+.kl-hang{height:clamp(54px,6.2vw,84px);width:auto;align-self:flex-start;margin:-6px 0 -30px 2px;pointer-events:none}
+header.top .in{overflow:visible}
+.kl-read{display:block;height:clamp(70px,9vw,110px);width:auto;margin:0 0 10px}
+.kl-mail{height:84px;width:auto;float:right;margin:-6px 0 6px 12px}
+.kl-mail2{height:78px}
+.kl-sec{height:64px;width:auto;margin-left:auto;margin-right:14px}
+.feedend:not(:empty)::before{content:"";display:block;height:96px;margin:0 auto 10px;background:url(koala/sleep.webp) center/contain no-repeat}
+@media (max-width:760px){.kl-hang{height:48px;margin-bottom:-22px}.kl-mail{height:64px}}
+@media (max-width:760px){.kl-read{margin-left:auto;margin-right:auto}}
+
 /* ---------- landing page: a newspaper front with the week as a book ---------- */
 .lab{font:700 12.5px var(--ui);letter-spacing:.14em;text-transform:uppercase}
 .lab.red{color:var(--red)}
@@ -534,7 +545,7 @@ details.q summary{padding:15px 2px}
     <span class="hd-date" id="hd-date"></span>
     <a class="logo" href="index.html" aria-label="Weekfold, home">
       <svg viewBox="0 0 80 80" aria-hidden="true" fill="none" stroke="#000"><rect x="12" y="10" width="54" height="54" stroke-width="1.6" transform="rotate(-6 39 37)"/><rect x="15" y="14" width="54" height="54" stroke-width="1.6" transform="rotate(4 42 41)"/><path d="M20 28L28 54L40 26L52 54L60 28" stroke-width="3.4" stroke-linejoin="round"/><path d="M20 58h40" stroke-width="1.6" stroke-dasharray="3 3"/></svg>
-      Weekfold
+      Weekfold<img class="kl-hang" src="koala/hang.webp" alt="" width="308" height="301" aria-hidden="true">
     </a>
     <span class="hd-right"><button class="btn btn-red" type="button" data-open="subscribe">Subscribe</button></span>
   </div>
@@ -554,6 +565,7 @@ details.q summary{padding:15px 2px}
   <div class="wrap hero2">
     <section class="mast" aria-labelledby="mast-h">
       <p class="lab" id="mast-kick">This week's edition</p>
+      <img class="kl-read" src="koala/read.webp" alt="" width="344" height="252">
       <h1 id="mast-h">The world's week, <em>folded</em> into one free edition.</h1>
       <p class="dek">Every Sunday, the stories that still mattered by the end of the week: one page for every day, every story sourced, every photo credited.</p>
       <div class="facts" id="facts">
@@ -632,6 +644,7 @@ details.q summary{padding:15px 2px}
         <div class="presscap" id="presscap"></div>
       </div>
       <div class="subbox">
+        <img class="kl-mail kl-mail2" src="koala/mail.webp" alt="" width="234" height="238" loading="lazy">
         <h3>Get it every <em>Sunday.</em></h3>
         <p>One email a week with the new edition. Free, and you can unsubscribe in one click.</p>
         <form class="sub-form" id="inline-sub" novalidate>

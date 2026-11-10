@@ -244,6 +244,7 @@ def main():
     shutil.copy(SRC / 'favicon.svg', OUT / 'favicon.svg')
     for _f in ['favicon.ico','icon-48.png','icon-96.png','icon-180.png','icon-192.png','icon-512.png']:
         shutil.copy(SRC / _f, OUT / _f)
+    shutil.copytree(SRC / 'koala', OUT / 'koala', dirs_exist_ok=True)
     for gf in SRC.glob('google*.html'):  # Search Console verification file(s) must survive every rebuild
         shutil.copy(gf, OUT / gf.name)
     (OUT / '.nojekyll').write_text('')
