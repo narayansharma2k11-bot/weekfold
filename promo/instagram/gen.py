@@ -86,25 +86,33 @@ A.append(ad(9, 'cream', '', 'No spin. <em>Just the facts.</em>', 'Plain-English 
 A.append(ad(10, 'navy', '', 'Get Weekfold <em>every Sunday.</em>', 'Free forever. Link in bio.', phone('landing', right=70, w=300, h=420).replace('bottom:86px','bottom:170px') + note('join free', right=130, bottom=600) + big('mega')))
 
 N = [  # THE WEEKLY TASK EDITS THIS LIST: (day index 0-6, story index within day, theme cream/navy/gold, koala pose or None). Pick the 5 biggest stories; no koala on deaths/violence.
- (1, 0, 'cream', None), (3, 0, 'navy', None), (3, 1, 'gold', None), (5, 0, 'navy', None), (4, 1, 'cream', None)]
-def news(i, spec):
+ (1, 0, 'cream', 'point'), (3, 0, 'navy', None), (3, 1, 'gold', 'magnify'), (5, 0, 'navy', None), (4, 1, 'cream', 'worry')]
+NCSS = '''.np{display:flex;flex-direction:column;padding:60px 70px 0}.np .top{margin-bottom:0}.np .r{font:700 26px Roboto;letter-spacing:.14em;text-transform:uppercase;margin-left:auto}
+.np .meta{margin-top:46px;display:flex;align-items:center;gap:16px}.np .meta span{font:500 28px Roboto;opacity:.75}
+.np h2{font:900 92px/1.02 'Playfair Display',serif;letter-spacing:-.03em;margin-top:22px}.np p.d{font:400 38px/1.35 Roboto;margin-top:24px;opacity:.92;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.np .zone{position:relative;flex:1;margin:34px -70px 0}.np .foot2{position:absolute;left:70px;right:70px;bottom:46px;z-index:6;display:flex;justify-content:space-between;font:700 30px Roboto}
+.np .pic{position:absolute;border:7px solid #000;box-shadow:12px 12px 0 #000;overflow:hidden;background:#fff}.np .pic img{width:100%;height:100%;object-fit:cover;display:block}'''
+def news(i, spec, H=1350):
     di, k, th, ko = spec; s = story(di, k); bg, fg, acc = TH[th]; d = ed['days'][di]['date']
     import datetime; day = datetime.date.fromisoformat(d).strftime('%A %-d %B')
-    kl = f'<img class="kl" src="{K}/{ko}.png" style="right:34px;top:470px;height:250px">' if ko else ''
-    return f'''<div class="post" id="n{i:02d}" style="background:{bg};color:{fg}"><div class="top">{LOGO}<span>Weekfold</span><span class="r" style="color:{acc}">The week · {i}/5</span></div>
-<div class="ph1" style="top:160px;height:500px"><img src="{photo(s['image']['wiki'])}"></div>
-<div class="nh" style="top:700px"><span class="pill" style="background:{acc if th!='navy' else '#f2c94c'};color:{'#fff' if th!='navy' else '#10224a'};border-color:#000">{s['category']}</span><span style="font:500 25px Roboto;margin-left:16px;opacity:.75">{day}</span>
-<h2 style="font-size:{72 if len(s['headline'])>62 else 80}px">{html.escape(s['headline'])}</h2>
-<p style="font-size:31px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">{html.escape(s['dek'])}</p></div>
-{kl}<div class="foot"><span>Source: {html.escape(s['sources'][0]['name'].split(' (')[0])}</span><span style="color:{acc}">FULL STORY · WEEKFOLD.IN</span></div></div>'''
-posts = A + [news(i + 1, s) for i, s in enumerate(N)]
-page = '<html><head><meta charset="utf-8"><style>' + CSS + '</style></head><body>' + ''.join(posts) + '</body></html>'
+    pill_bg, pill_fg = (acc, '#fff') if th != 'navy' else ('#f2c94c', '#10224a')
+    hl = s['headline']; fs = 92 if len(hl) < 60 else 80
+    if ko: pic = '<div class="pic" style="right:70px;%s;width:%dpx;height:%dpx;transform:rotate(2.5deg)"><img src="%s"></div>' % ('bottom:185px' if H < 1500 else 'top:30px', 470 if H < 1500 else 470, 300 if H < 1500 else 700, photo(s['image']['wiki'])); kl = f'<img class="kl" src="{K}/{ko}.png" style="left:-50px;bottom:-30px;height:{540 if H<1500 else 820}px;z-index:3">'
+    else: pic = '<div class="pic" style="left:70px;right:82px;top:0;bottom:130px"><img src="%s"></div>' % photo(s['image']['wiki']); kl = ''
+    return f'''<div class="post np" id="n{i:02d}{'s' if H>1400 else ''}" style="height:{H}px;background:{bg};color:{fg}"><div class="top">{LOGO}<span>Weekfold</span><span class="r" style="color:{acc}">The week · {i}/5</span></div>
+<div class="meta"><span class="pill" style="background:{pill_bg};color:{pill_fg};border-color:#000">{s['category']}</span><span>{day}</span></div>
+<h2 style="font-size:{fs}px">{html.escape(hl)}</h2><p class="d">{html.escape(s['dek'])}</p>
+<div class="zone">{pic}{kl}<div class="foot2" style="{'flex-direction:column;align-items:flex-end;gap:6px' if ko else ''}"><span>Source: {html.escape(s['sources'][0]['name'].split(' (')[0])}</span><span>weekfold.in</span></div></div></div>'''
+posts = A + [news(i + 1, s) for i, s in enumerate(N)] + [news(i + 1, s, 1920) for i, s in enumerate(N)]
+page = '<html><head><meta charset="utf-8"><style>' + CSS + NCSS + '</style></head><body>' + ''.join(posts) + '</body></html>'
 (HERE / 'posts.html').write_text(page, encoding='utf-8')
 out = HERE / 'out'; out.mkdir(exist_ok=True)
 for f in out.glob('*.png'): f.unlink()
 with sync_playwright() as pw:
-    b = pw.chromium.launch(); pg = b.new_page(viewport={'width': 1080, 'height': 1350})
+    b = pw.chromium.launch(); pg = b.new_page(viewport={'width': 1080, 'height': 1920}, device_scale_factor=2)
     pg.goto((HERE / 'posts.html').as_uri()); pg.wait_for_timeout(2000)
     for i in range(10): pg.locator(f'#a{i+1:02d}').screenshot(path=str(out / f'weekfold-ad-{i+1:02d}.png'))
-    for i in range(5): pg.locator(f'#n{i+1:02d}').screenshot(path=str(out / f'weekfold-news-{i+1:02d}.png'))
+    for i in range(5):
+        pg.locator(f'#n{i+1:02d}').screenshot(path=str(out / f'weekfold-news-{i+1:02d}.png'))
+        pg.locator(f'#n{i+1:02d}s').screenshot(path=str(out / f'weekfold-story-{i+1:02d}.png'))
 print(len(posts), 'posts ->', out)
