@@ -3,7 +3,11 @@ Ads use screenshots in promo/instagram/shots/ (re-take them with the site runnin
 import json, pathlib, html
 from playwright.sync_api import sync_playwright
 HERE = pathlib.Path(__file__).resolve().parent; ROOT = HERE.parent.parent
-K = (ROOT / 'src' / 'koala').as_uri(); SH = (HERE / 'shots').as_uri()
+from PIL import Image, ImageFilter
+_hi = HERE / 'koala_hi'; _hi.mkdir(exist_ok=True)
+for _p in (ROOT / 'src' / 'koala').glob('*.webp'):   # 2x Lanczos + light sharpen so posts look crisp
+    _im = Image.open(_p).convert('RGBA'); _im = _im.resize((_im.width * 2, _im.height * 2), Image.LANCZOS).filter(ImageFilter.UnsharpMask(2, 90, 2)); _im.save(_hi / (_p.stem + '.png'))
+K = _hi.as_uri(); SH = (HERE / 'shots').as_uri()
 IMG = (ROOT / 'docs' / 'img').as_uri()
 man = json.loads((ROOT / 'data' / 'photos' / 'manifest.json').read_text())
 _n = max(int(f.stem) for f in (ROOT / 'data' / 'editions').glob('*.json'))   # newest edition
@@ -38,31 +42,31 @@ def ad(i, th, kick, h, sub, body):
 def phone(f, right=70, w=400, h=520): return f'<div class="ph" style="right:{right}px;width:{w}px;height:{h}px"><img src="{SH}/{f}.png"></div>'
 def koala(n, h, left=None, right=None, bottom=96, rot=0):
     pos = f'left:{left}px;' if left is not None else f'right:{right}px;'
-    return f'<img class="kl" src="{K}/{n}.webp" style="{pos}bottom:{bottom}px;height:{h}px;transform:rotate({rot}deg)">'
+    return f'<img class="kl" src="{K}/{n}.png" style="{pos}bottom:{bottom}px;height:{h}px;transform:rotate({rot}deg)">'
 def collage(items):
     return ''.join(f'<div class="pol" style="left:{x}px;top:{y}px;width:{w}px;height:{h}px;transform:rotate({r}deg)"><img src="{photo(t)}"></div>' for t, x, y, w, h, r in items)
 
 A = []
-A.append(ad(1, 'cream', 'Hello, world', 'The world’s week, <em>folded</em> into one free edition.', 'A free news edition that lands every Sunday. One page for every day.', phone('landing', right=80) + koala('wave', 420, left=40)))
+A.append(ad(1, 'cream', 'Hello, world', 'The world’s week, <em>folded</em> into one free edition.', 'A free news edition that lands every Sunday. One page for every day.', phone('landing', right=80) + koala('cheer', 400, left=30)))
 A.append(ad(2, 'navy', 'Sound familiar?', 'Too much news. <em>Too little time.</em>', 'We read the week so you don’t have to scroll it.',
-    collage([('United_States_Capitol', 400, 640, 300, 220, 5), ('Oil_tanker', 690, 700, 300, 220, -6), ('Bank_of_England', 520, 840, 300, 220, -3), ('Heat_wave', 790, 880, 240, 190, 7), ('Kyiv', 380, 880, 230, 180, -8)]) + koala('worry', 400, left=50)))
+    collage([('United_States_Capitol', 520, 640, 280, 210, 5), ('Oil_tanker', 770, 700, 240, 190, -6), ('Bank_of_England', 600, 850, 280, 210, -3), ('Heat_wave', 850, 900, 190, 150, 7), ('Kyiv', 440, 900, 190, 150, -8)]) + koala('worry', 360, left=50)))
 A.append(ad(3, 'cream', 'How it works', 'One page for <em>every day</em> of the week.', 'Monday to Sunday, the stories that still mattered by the end of the week.', phone('days', right=80) + koala('point', 420, left=40)))
 A.append(ad(4, 'gold', 'Our rule', 'Every story <em>names its sources.</em>', 'At least two independent outlets behind every story. Always linked.', phone('story_src', right=80) + koala('magnify', 410, left=40)))
 A.append(ad(5, 'navy', 'The best part', 'Free. No ads. <em>No paywall.</em>', 'Just the week’s news, written in plain English.', phone('home', right=80) + koala('thumb', 420, left=40)))
 wk = ''.join(f'<div class="wd"><b>{d["date"][8:]} Nov</b><div style="background-image:url({photo(d["lead"]["image"]["wiki"])})"></div><i>{html.escape(d["lead"]["headline"][:58])}</i></div>' for d in ed['days'])
 A.append(ad(6, 'cream', 'Mark your calendar', 'A new edition <em>every Sunday.</em>', 'Seven days, seven leads, one read. Straight to your inbox.', f'<div class="week">{wk}</div>' + koala('sun', 360, right=60, bottom=420, rot=0)))
-A.append(ad(7, 'gold', 'Games', 'Two games. <em>Every day.</em>', 'A fresh mini crossword and Weekfold Word, right inside the site.', phone('crossword', right=60, w=380, h=500) + phone('word', right=480, w=380, h=500) + koala('mug', 380, left=20, bottom=96)))
+A.append(ad(7, 'gold', 'Games', 'Two games. <em>Every day.</em>', 'A fresh mini crossword and Weekfold Word, right inside the site.', phone('crossword', right=50, w=340, h=480) + phone('word', right=420, w=340, h=480) + koala('mug', 300, left=30, bottom=96)))
 A.append(ad(8, 'navy', 'World news', 'Five minutes to <em>catch up</em> on the planet.', 'Politics, science, climate, sport, culture and more, all in one place.',
     collage([('Greenland_ice_sheet', 430, 700, 280, 210, -5), ('Pedro_Alliana', 700, 730, 300, 220, 5), ('Beauden_Barrett', 560, 890, 270, 200, -3), ('Joshua_Kutryk', 840, 930, 190, 160, 8)]) + koala('globe', 420, left=40)))
 A.append(ad(9, 'cream', 'Our promise', 'No spin. <em>Just the facts.</em>', 'Plain-English summaries of what actually happened, with the sources one tap away.', phone('story', right=80) + koala('shock', 400, left=50)))
 A.append(ad(10, 'navy', 'Ready?', 'Get Weekfold <em>every Sunday.</em>', 'Free forever. Join at weekfold.in (link in bio).', phone('landing', right=80) + koala('mega', 420, left=40)))
 
 N = [  # THE WEEKLY TASK EDITS THIS LIST: (day index 0-6, story index within day, theme cream/navy/gold, koala pose or None). Pick the 5 biggest stories; no koala on deaths/violence.
- (1, 0, 'cream', 'point'), (3, 0, 'navy', None), (3, 1, 'gold', 'magnify'), (5, 0, 'navy', None), (4, 1, 'cream', 'worry')]
+ (1, 0, 'cream', None), (3, 0, 'navy', None), (3, 1, 'gold', None), (5, 0, 'navy', None), (4, 1, 'cream', None)]
 def news(i, spec):
     di, k, th, ko = spec; s = story(di, k); bg, fg, acc = TH[th]; d = ed['days'][di]['date']
     import datetime; day = datetime.date.fromisoformat(d).strftime('%A %-d %B')
-    kl = f'<img class="kl" src="{K}/{ko}.webp" style="right:34px;top:470px;height:250px">' if ko else ''
+    kl = f'<img class="kl" src="{K}/{ko}.png" style="right:34px;top:470px;height:250px">' if ko else ''
     return f'''<div class="post" id="n{i:02d}" style="background:{bg};color:{fg}"><div class="top">{LOGO}<span>Weekfold</span><span class="r" style="color:{acc}">The week · {i}/5</span></div>
 <div class="ph1" style="top:160px;height:500px"><img src="{photo(s['image']['wiki'])}"></div>
 <div class="nh" style="top:700px"><span class="pill" style="background:{acc if th!='navy' else '#f2c94c'};color:{'#fff' if th!='navy' else '#10224a'};border-color:#000">{s['category']}</span><span style="font:500 25px Roboto;margin-left:16px;opacity:.75">{day}</span>
