@@ -254,13 +254,13 @@ dialog{box-shadow:0 20px 60px rgba(0,0,0,.35)!important;border:1px solid #000}
 /* koala mascot */
 .kl-hang{height:clamp(54px,6.2vw,84px);width:auto;align-self:flex-start;margin:-6px 0 -30px 2px;pointer-events:none}
 header.top .in{overflow:visible}
-.mast{position:relative}.kl-read{position:absolute;right:0;bottom:-6px;height:clamp(84px,8vw,118px);width:auto;pointer-events:none}
+.mast .cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px}.kl-read{height:100px;width:auto;margin-left:auto;pointer-events:none}
 .kl-mail{height:84px;width:auto;float:right;margin:-6px 0 6px 12px}
 .kl-mail2{height:78px}
 .kl-sec{height:64px;width:auto;margin-left:auto;margin-right:14px}
 .feedend:not(:empty)::before{content:"";display:block;height:96px;margin:0 auto 10px;background:url(koala/sleep.webp) center/contain no-repeat}
 @media (max-width:760px){.kl-hang{height:48px;margin-bottom:-22px}.kl-mail{height:64px}}
-@media (max-width:760px){.kl-read{position:static;display:block;margin:18px auto 0;height:88px}}
+@media (max-width:760px){.kl-read{flex-basis:100%;margin:6px auto 0;height:88px;object-fit:contain}}
 
 /* crawlable story index */
 .sn{padding-block:40px 20px;border-top:2px solid #000;margin-top:30px}
