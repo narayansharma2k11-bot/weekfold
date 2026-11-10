@@ -222,6 +222,7 @@ def main():
     man = {t: dict(m) for t, m in man.items() if (pdir / m['file']).exists()}
     for t, m in man.items():
         L = lics.get(t) or {}
+        if L.get('verified') is False: L = {}   # photo was supplied by hand: don't print a licence we haven't matched to this exact file
         if L.get('license'): m['license'] = L['license']
         if L.get('artist'): m['artist'] = L['artist']
         if L.get('source_file'): m['file_page'] = 'https://commons.wikimedia.org/wiki/File:' + urllib.parse.quote(L['source_file'].replace(' ', '_'))
