@@ -570,9 +570,9 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
   <div id="view-crossword" hidden>
     <section class="wrap s cwsec" aria-labelledby="cw-h">
       <nav class="gamenav" aria-label="Games"><a href="#crossword" id="g-cw">Mini crossword</a><a href="#word" id="g-word">Weekfold Word</a></nav>
-      <div id="cw-wrap"><div class="sechead"><h2 id="cw-h">The Weekfold Mini</h2><span id="cw-sub"></span></div>
+      <div id="cw-wrap"><div class="sechead"><h2 id="cw-h">The Weekfold Mini</h2><span id="cw-sub"></span><img class="kl-game" src="koala/cross.webp" alt="" loading="lazy"></div>
       <div id="cw-body"></div></div>
-      <div id="word-wrap" hidden><div class="sechead"><h2>Weekfold Word</h2><span>guess the 5-letter word in six tries · new word every day</span></div><div id="word-body"></div></div>
+      <div id="word-wrap" hidden><div class="sechead"><h2>Weekfold Word</h2><span>guess the 5-letter word in six tries · new word every day</span><img class="kl-game" src="koala/magnify.webp" alt="" loading="lazy"></div><div id="word-body"></div></div>
     </section>
   </div>
 
@@ -1015,9 +1015,10 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
       ['across', 'down'].forEach(function(d){ Object.keys(lis[d]).forEach(function(q){ lis[d][q].classList.remove('on'); }); });
       if (ce){ lis[ce.dir][ce.num].classList.add('on'); curBox.innerHTML = ''; curBox.appendChild(el('b', { text:ce.num + (ce.dir === 'across' ? ' Across' : ' Down') })); curBox.appendChild(document.createTextNode(ce.clue)); }
     }
+    function winK(m, pose){ var p = m.parentNode, o = p.querySelector('.kl-win'); if (!pose){ if (o) o.remove(); return; } if (!o){ o = new Image(); o.className = 'kl-win'; o.alt = ''; p.insertBefore(o, m); } o.src = 'koala/' + pose + '.webp'; }
     function solved(){ for (var q in cells){ if (!cells[q].disabled && L[q] !== g[+q.split(',')[0]][+q.split(',')[1]]) return false; } return true; }
     function step(dr, dc){ var rr = st.r + dr, cc = st.c + dc; if (cell(rr, cc)){ st.r = rr; st.c = cc; return true; } return false; }
-    function after(){ flags = {}; save(); if (!done && solved()){ done = true; msg.textContent = 'Solved! Nicely done.'; } else if (done && !solved()){ done = false; msg.textContent = ''; } paint(); }
+    function after(){ flags = {}; save(); if (!done && solved()){ done = true; msg.textContent = 'Solved! Nicely done.'; winK(msg, 'cheer'); } else if (done && !solved()){ done = false; msg.textContent = ''; winK(msg, null); } paint(); }
     function typeLetter(ch){
       L[st.r + ',' + st.c] = ch; var d = st.dir === 'across' ? [0, 1] : [1, 0]; step(d[0], d[1]); after();
     }
@@ -1039,7 +1040,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
     var left = el('div', {}, [ grid, input, bar, msg ]);
     var right = el('div', {}, [ curBox, el('div', { cls:'cwclues' }, [ el('div', {}, [ el('h3', { text:'Across' }), lists.across ]), el('div', {}, [ el('h3', { text:'Down' }), lists.down ]) ]) ]);
     body.appendChild(el('div', { cls:'cw' }, [ left, right ]));
-    done = solved(); if (done) msg.textContent = 'Solved! Nicely done.';
+    done = solved(); if (done){ msg.textContent = 'Solved! Nicely done.'; winK(msg, 'cheer'); }
     paint();
     focus();
   }
@@ -1126,6 +1127,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
       var b = el('button', { type:'button', cls:'wshare', text:'Share result' }); b.addEventListener('click', share);
       msg.textContent = S.won ? 'You got it in ' + S.g.length + '. Come back tomorrow for a new word.' : 'The word was ' + ans + '. Come back tomorrow.';
       msg.appendChild(document.createTextNode(' ')); msg.appendChild(b);
+      if (typeof winK === 'function') winK(msg, S.won ? 'cheer' : 'worry');
     }
     function submit(){
       if (S.over) return;

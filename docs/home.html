@@ -282,13 +282,13 @@ dialog{box-shadow:0 20px 60px rgba(0,0,0,.35)!important;border:1px solid #000}
 /* koala mascot */
 .kl-hang{height:clamp(54px,6.2vw,84px);width:auto;align-self:flex-start;margin:-6px 0 -30px 2px;pointer-events:none}
 header.top .in{overflow:visible}
-.kl-read{display:block;height:clamp(70px,9vw,110px);width:auto;margin:0 0 10px}
+.mast{position:relative}.kl-read{position:absolute;right:0;bottom:-6px;height:clamp(84px,8vw,118px);width:auto;pointer-events:none}
 .kl-mail{height:84px;width:auto;float:right;margin:-6px 0 6px 12px}
 .kl-mail2{height:78px}
 .kl-sec{height:64px;width:auto;margin-left:auto;margin-right:14px}
 .feedend:not(:empty)::before{content:"";display:block;height:96px;margin:0 auto 10px;background:url(koala/sleep.webp) center/contain no-repeat}
 @media (max-width:760px){.kl-hang{height:48px;margin-bottom:-22px}.kl-mail{height:64px}}
-@media (max-width:760px){.kl-read{margin-left:auto;margin-right:auto}}
+@media (max-width:760px){.kl-read{position:static;display:block;margin:18px auto 0;height:88px}}
 
 /* crawlable story index */
 .sn{padding-block:40px 20px;border-top:2px solid #000;margin-top:30px}
@@ -296,6 +296,10 @@ header.top .in{overflow:visible}
 .sn-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px 28px}
 .sn-grid h3{font:700 12px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
 .sn-grid ul{list-style:none;margin:0;padding:0}.sn-grid li{padding:4px 0;font:400 15px/1.4 var(--ui)}.sn-grid a{text-decoration:none}.sn-grid a:hover{text-decoration:underline}
+
+.kl-game{height:64px;width:auto;margin-left:auto;align-self:flex-end}
+.kl-win{display:block;height:92px;width:auto;margin:10px auto 0}
+.sechead:has(.kl-game){align-items:flex-end}
 
 /* ---------- edition page ---------- */
 :root{padding-top:env(safe-area-inset-top,0px)}
@@ -847,9 +851,9 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
   <div id="view-crossword" hidden>
     <section class="wrap s cwsec" aria-labelledby="cw-h">
       <nav class="gamenav" aria-label="Games"><a href="#crossword" id="g-cw">Mini crossword</a><a href="#word" id="g-word">Weekfold Word</a></nav>
-      <div id="cw-wrap"><div class="sechead"><h2 id="cw-h">The Weekfold Mini</h2><span id="cw-sub"></span></div>
+      <div id="cw-wrap"><div class="sechead"><h2 id="cw-h">The Weekfold Mini</h2><span id="cw-sub"></span><img class="kl-game" src="koala/cross.webp" alt="" loading="lazy"></div>
       <div id="cw-body"></div></div>
-      <div id="word-wrap" hidden><div class="sechead"><h2>Weekfold Word</h2><span>guess the 5-letter word in six tries · new word every day</span></div><div id="word-body"></div></div>
+      <div id="word-wrap" hidden><div class="sechead"><h2>Weekfold Word</h2><span>guess the 5-letter word in six tries · new word every day</span><img class="kl-game" src="koala/magnify.webp" alt="" loading="lazy"></div><div id="word-body"></div></div>
     </section>
   </div>
 
@@ -1605,9 +1609,10 @@ function WFMap(E, EDS, href){
       ['across', 'down'].forEach(function(d){ Object.keys(lis[d]).forEach(function(q){ lis[d][q].classList.remove('on'); }); });
       if (ce){ lis[ce.dir][ce.num].classList.add('on'); curBox.innerHTML = ''; curBox.appendChild(el('b', { text:ce.num + (ce.dir === 'across' ? ' Across' : ' Down') })); curBox.appendChild(document.createTextNode(ce.clue)); }
     }
+    function winK(m, pose){ var p = m.parentNode, o = p.querySelector('.kl-win'); if (!pose){ if (o) o.remove(); return; } if (!o){ o = new Image(); o.className = 'kl-win'; o.alt = ''; p.insertBefore(o, m); } o.src = 'koala/' + pose + '.webp'; }
     function solved(){ for (var q in cells){ if (!cells[q].disabled && L[q] !== g[+q.split(',')[0]][+q.split(',')[1]]) return false; } return true; }
     function step(dr, dc){ var rr = st.r + dr, cc = st.c + dc; if (cell(rr, cc)){ st.r = rr; st.c = cc; return true; } return false; }
-    function after(){ flags = {}; save(); if (!done && solved()){ done = true; msg.textContent = 'Solved! Nicely done.'; } else if (done && !solved()){ done = false; msg.textContent = ''; } paint(); }
+    function after(){ flags = {}; save(); if (!done && solved()){ done = true; msg.textContent = 'Solved! Nicely done.'; winK(msg, 'cheer'); } else if (done && !solved()){ done = false; msg.textContent = ''; winK(msg, null); } paint(); }
     function typeLetter(ch){
       L[st.r + ',' + st.c] = ch; var d = st.dir === 'across' ? [0, 1] : [1, 0]; step(d[0], d[1]); after();
     }
@@ -1629,7 +1634,7 @@ function WFMap(E, EDS, href){
     var left = el('div', {}, [ grid, input, bar, msg ]);
     var right = el('div', {}, [ curBox, el('div', { cls:'cwclues' }, [ el('div', {}, [ el('h3', { text:'Across' }), lists.across ]), el('div', {}, [ el('h3', { text:'Down' }), lists.down ]) ]) ]);
     body.appendChild(el('div', { cls:'cw' }, [ left, right ]));
-    done = solved(); if (done) msg.textContent = 'Solved! Nicely done.';
+    done = solved(); if (done){ msg.textContent = 'Solved! Nicely done.'; winK(msg, 'cheer'); }
     paint();
     focus();
   }
@@ -1716,6 +1721,7 @@ function WFMap(E, EDS, href){
       var b = el('button', { type:'button', cls:'wshare', text:'Share result' }); b.addEventListener('click', share);
       msg.textContent = S.won ? 'You got it in ' + S.g.length + '. Come back tomorrow for a new word.' : 'The word was ' + ans + '. Come back tomorrow.';
       msg.appendChild(document.createTextNode(' ')); msg.appendChild(b);
+      if (typeof winK === 'function') winK(msg, S.won ? 'cheer' : 'worry');
     }
     function submit(){
       if (S.over) return;
