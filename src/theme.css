@@ -261,3 +261,10 @@ header.top .in{overflow:visible}
 .feedend:not(:empty)::before{content:"";display:block;height:96px;margin:0 auto 10px;background:url(koala/sleep.webp) center/contain no-repeat}
 @media (max-width:760px){.kl-hang{height:48px;margin-bottom:-22px}.kl-mail{height:64px}}
 @media (max-width:760px){.kl-read{margin-left:auto;margin-right:auto}}
+
+/* crawlable story index */
+.sn{padding-block:40px 20px;border-top:2px solid #000;margin-top:30px}
+.sn h2{font-size:clamp(24px,3vw,32px)}.sn-sub{font:400 14px var(--ui);color:var(--ink-3);margin:6px 0 18px}
+.sn-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px 28px}
+.sn-grid h3{font:700 12px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+.sn-grid ul{list-style:none;margin:0;padding:0}.sn-grid li{padding:4px 0;font:400 15px/1.4 var(--ui)}.sn-grid a{text-decoration:none}.sn-grid a:hover{text-decoration:underline}

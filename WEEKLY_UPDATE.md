@@ -58,3 +58,7 @@ Optional: `"corrections": ["What was corrected and when."]` on a story.
 - `python3 build.py` finishes with no errors.
 - Spot-check 3 stories against their sources.
 - Commit message: `Edition <number>: <dates>`.
+
+## SEO (automatic, nothing to do by hand)
+`python3 build.py` also writes a crawlable page for every story (`docs/<year>/<edition>/<headline-slug>/`), one page per edition, `docs/archive/`, `docs/story.css`, `docs/sitemap.xml`, unique `<title>`/description per page, NewsArticle/Organization JSON-LD, and converts every photo to WebP (max 1000px) in `docs/img/`.
+Photo credits: `data/photos/licences.json` ({title: {source_file, license, artist}}) is merged in at build time. After each photo run, merge the `license`, `artist` and `source_file` values from `~/Pictures/weekfold-photos/meta.json` into that file so every credit line names the author and licence.

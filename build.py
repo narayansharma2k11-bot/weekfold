@@ -7,6 +7,7 @@ Output: docs/  (the folder your host serves: GitHub Pages "main /docs" or Netlif
 Run:    python3 build.py          (exits with an error if any edition file is invalid)
 """
 import datetime, html, json, pathlib, shutil, sys, urllib.parse
+import seo
 
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC, DATA, OUT = ROOT / 'src', ROOT / 'data' / 'editions', ROOT / 'docs'
@@ -86,7 +87,8 @@ def link(path):
 
 
 def art_url(d, k):
-    return link('home.html#a-' + d['date'] + '-' + str(k))
+    s = ([d['lead']] + d['more'])[k]
+    return link(s['path']) if s.get('path') else link('home.html#a-' + d['date'] + '-' + str(k))
 
 
 def day_name(iso):
@@ -191,6 +193,7 @@ def rss(eds):
 
 def main():
     eds = load()
+    recs = seo.assign(eds)
     if errors:
         print('Build stopped. Fix these problems in data/editions/:', *errors, sep='\n  - ')
         sys.exit(1)
@@ -214,12 +217,24 @@ def main():
     for f in sorted(pdir.glob('*')) if pdir.exists() else []:
         if f.suffix.lower() in ('.jpg', '.jpeg', '.png', '.webp') and f.stem not in man and f.name not in {m['file'] for m in man.values()}:
             man[f.stem] = {'file': f.name, 'credit': 'Wikimedia Commons', 'license': 'Free licence', 'page': 'https://en.wikipedia.org/wiki/' + f.stem}
-    man = {t: m for t, m in man.items() if (pdir / m['file']).exists()}
+    lic_file = pdir / 'licences.json'   # filled by scripts/get_licences.py: {title: {source_file, license, artist}}
+    lics = json.loads(lic_file.read_text(encoding='utf-8')) if lic_file.exists() else {}
+    man = {t: dict(m) for t, m in man.items() if (pdir / m['file']).exists()}
+    for t, m in man.items():
+        L = lics.get(t) or {}
+        if L.get('license'): m['license'] = L['license']
+        if L.get('artist'): m['artist'] = L['artist']
+        if L.get('source_file'): m['file_page'] = 'https://commons.wikimedia.org/wiki/File:' + urllib.parse.quote(L['source_file'].replace(' ', '_'))
     if man:
+        from PIL import Image
         (OUT / 'img').mkdir()
         for m in man.values():
-            shutil.copy(pdir / m['file'], OUT / 'img' / m['file'])
-    photos_blob = json.dumps({t: {'src': 'img/' + m['file'], 'credit': m.get('credit', ''), 'license': m.get('license', ''), 'page': m.get('page', '')} for t, m in man.items()},
+            im = Image.open(pdir / m['file']); im = im.convert('RGB')
+            if im.width > 1000:
+                im = im.resize((1000, round(im.height * 1000 / im.width)), Image.LANCZOS)
+            m['file'] = pathlib.Path(m['file']).stem + '.webp'
+            im.save(OUT / 'img' / m['file'], 'WEBP', quality=68, method=6)
+    photos_blob = json.dumps({t: {'src': 'img/' + m['file'], 'credit': m.get('artist') or m.get('credit', ''), 'license': m.get('license', ''), 'page': m.get('file_page') or m.get('page', '')} for t, m in man.items()},
                              ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
     theme = (SRC / 'theme.css').read_text(encoding='utf-8')
     top = eds[0]['days'][eds[0].get('featured', 0)]['lead']
@@ -230,6 +245,18 @@ def main():
     world = (SRC / 'worldmap.txt').read_text(encoding='utf-8').strip() if (SRC / 'worldmap.txt').exists() else ''
     for name, target in (('landing.html', 'index.html'), ('home.html', 'home.html')):
         t = (SRC / name).read_text(encoding='utf-8')
+        ftop = eds[0]['days'][eds[0].get('featured', 0)]['lead']
+        if target == 'home.html':
+            ttl = f"Weekfold {eds[0]['number']}: {ftop['headline']} | Weekly world news"
+            dsc = f"This week's world news, {eds[0]['rangeLong']}: " + '; '.join(d['lead']['headline'] for d in eds[0]['days'][:3]) + '. Free, sourced, every Sunday.'
+        else:
+            ttl = 'Weekfold: free weekly world news, one page for every day'
+            dsc = "Weekfold folds the world's week into one free edition every Sunday: the stories that mattered, one page for every day, every story sourced."
+        t = t.replace('<title>Weekfold</title>', '<title>' + html.escape(ttl) + '</title>', 1).replace('<meta property="og:title" content="Weekfold">', '<meta property="og:title" content="' + html.escape(ttl) + '">', 1)
+        t = t.replace('/*DESC*/', html.escape(dsc))
+        t = t.replace('/*STATIC*/', seo.static_block(SITE, eds[0]) if SITE else '')
+        lds = ''.join('<script type="application/ld+json">' + json.dumps(j, ensure_ascii=False).replace('</', '<\\/') + '</script>\n' for j in (seo.website_ld(SITE) if SITE else []))
+        t = t.replace('</head>', lds + '</head>', 1)
         t = t.replace('/*THEME*/', theme).replace('/*PHOTOS*/', photos_blob).replace('/*EDITIONS*/', blob).replace('/*CONFIG*/', cfg_blob).replace('/*ART*/', art).replace('/*SITE*/', site_js).replace('/*WORLD*/', world).replace('/*MAP*/', (SRC / 'map.js').read_text(encoding='utf-8'))
         og_image = (f'<meta property="og:image" content="{SITE}/img/{top_photo["file"]}">\n<meta name="twitter:image" content="{SITE}/img/{top_photo["file"]}">\n') if (SITE and top_photo) else ''
         if SITE:
@@ -264,10 +291,26 @@ def main():
                                                                  'range': eds[0]['rangeLong'], 'next': eds[0]['next']}, ensure_ascii=False), encoding='utf-8')
 
     if SITE:
+        css = (SRC / 'story.css').read_text(encoding='utf-8').replace('/*THEME*/', theme)
+        (OUT / 'story.css').write_text(css, encoding='utf-8')
+        flat = {}
+        for ed, d, s, di, k in recs:
+            flat.setdefault(ed['number'], []).append(s)
+        for ed, d, s, di, k in recs:
+            lst = flat[ed['number']]; i = lst.index(s)
+            page = seo.story_page(SITE, ed, d, s, man, (lst[i - 1] if i > 0 else None, lst[i + 1] if i + 1 < len(lst) else None))
+            (OUT / s['path']).mkdir(parents=True, exist_ok=True)
+            (OUT / s['path'] / 'index.html').write_text(page, encoding='utf-8')
+        for ed in eds:
+            (OUT / ed['path']).mkdir(parents=True, exist_ok=True)
+            (OUT / ed['path'] / 'index.html').write_text(seo.edition_page(SITE, ed, man), encoding='utf-8')
+        (OUT / 'archive').mkdir(exist_ok=True)
+        (OUT / 'archive' / 'index.html').write_text(seo.archive_page(SITE, eds), encoding='utf-8')
+        print(f'SEO pages: {len(recs)} story pages, {len(eds)} edition pages')
+    if SITE:
         (OUT / 'feed.xml').write_text(rss(eds), encoding='utf-8')
         today = datetime.date.today().isoformat()
-        urls = ''.join(f'<url><loc>{SITE}/{p}</loc><lastmod>{today}</lastmod><changefreq>weekly</changefreq></url>' for p in ('', 'home.html', 'privacy.html'))
-        (OUT / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + urls + '</urlset>\n')
+        (OUT / 'sitemap.xml').write_text(seo.sitemap(SITE, eds, recs, today))
         (OUT / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n')
     else:
         (OUT / 'robots.txt').write_text('User-agent: *\nAllow: /\n')

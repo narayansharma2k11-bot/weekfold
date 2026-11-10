@@ -36,7 +36,7 @@ for t in TITLES:
         if not th: bad.append((t, 'no lead photo')); print('SKIP', t, '(no lead photo)'); continue
         lic, who = '', ''
         try:
-            info = api('commons.wikimedia.org', action='query', titles='File:' + fname, prop='imageinfo', iiprop='extmetadata')
+            info = api('en.wikipedia.org', action='query', titles='File:' + fname, prop='imageinfo', iiprop='extmetadata')
             md = next(iter(info['query']['pages'].values()))['imageinfo'][0]['extmetadata']
             lic = re.sub('<[^>]+>', '', md.get('LicenseShortName', {}).get('value', '')).strip()
             who = re.sub(r'\s+', ' ', re.sub('<[^>]+>', '', md.get('Artist', {}).get('value', ''))).strip()[:80]
