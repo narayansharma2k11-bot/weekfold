@@ -453,6 +453,27 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
 .pgn button[aria-current="page"]{background:#000;color:#fff;border-color:#000}
 .pgi{text-align:center;color:#777;font:400 13px var(--ui);margin-top:12px}
 .feedend{padding-bottom:50px}
+/* extras: listen, story boxes, words, share */
+.listen{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:18px 0 0;font-size:15px}
+.listen button{min-height:44px;padding:0 16px;border:2px solid #000;background:#fff;color:#000;font:500 15px var(--ui);cursor:pointer;box-shadow:3px 3px 0 #000}
+.listen select{min-height:40px;padding:0 6px;border:1px solid #000;background:#fff;max-width:220px}
+.listen .lmsg{font-size:13px;color:var(--ink-3)}
+.xbox{margin-top:28px;border:2px solid #000;padding:16px 20px;background:#fff}
+.xbox>b{display:block;font:700 13px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+.xbox p{font-size:17px;line-height:1.6;margin-top:8px}
+.xbox .xnote{display:block;font-size:13px;color:var(--ink-3);margin-top:4px}
+.glance dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:10px 0 0}
+.glance dt{font-weight:700}.glance dd{margin:0}
+.india{background:#fbf6ea}
+.words details{border-top:1px dotted #000;padding:8px 0}.words details:first-of-type{margin-top:8px}
+.words summary{cursor:pointer;font-weight:500}.words p{font-size:16px}
+.xmore,.tlx a{display:block;margin-top:10px;font-weight:500;text-underline-offset:3px}
+.share{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:28px}
+.share b{font:700 13px var(--ui);letter-spacing:.1em;text-transform:uppercase}
+.share a,.share button{border:1px solid #000;background:#fff;padding:6px 12px;text-decoration:none;font-size:15px;cursor:pointer;color:#000}
+.wk-listen{margin:6px 0 4px}
+[data-theme="dark"] .xbox,[data-theme="dark"] .listen button,[data-theme="dark"] .listen select,[data-theme="dark"] .share a,[data-theme="dark"] .share button{background:#111;color:#eee;border-color:#888}
+[data-theme="dark"] .india{background:#1d1a12}
 </style>
 </head>
 <body>
@@ -506,6 +527,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
     <div class="wrap">
       <div class="datebar"><span id="db-ed"></span><span>Free · Sourced · Updated every Sunday</span></div>
       <div class="ticker"><b>This week</b><div id="ticker"></div></div>
+      <div class="wk-listen" id="wk-listen"></div>
 
       <section class="front" id="featured" aria-label="Top stories">
         <article class="f-lead" id="f-lead"></article>
@@ -631,7 +653,8 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
         <p>The world's week, folded into one free Sunday edition.</p>
       </div>
       <div><h4>Read</h4><ul><li><a href="#current">Current news</a></li><li><a href="#days">Day by day</a></li><li><a href="#sections">Sections</a></li><li><a href="#previous">Previous news</a></li></ul></div>
-      <div><h4>Weekfold</h4><ul><li><a href="index.html#about">About us</a></li><li><a href="index.html#faq">Editorial standards &amp; FAQ</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
+      <div><h4>Explore</h4><ul><li><a href="timelines.html">How we got here: timelines</a></li><li><a href="glossary.html">Words in the news</a></li><li><a href="sections.html">Section pages</a></li><li><a href="corrections.html">Updates &amp; corrections</a></li></ul></div>
+      <div><h4>Weekfold</h4><ul><li><a href="about.html">About &amp; how we check</a></li><li><a href="index.html#faq">Editorial standards &amp; FAQ</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
       <div><h4>Account</h4><ul><li><a href="#crossword">Games</a></li><li><button type="button" data-open="signin" class="linkbtn">Sign in</button></li><li><button type="button" data-open="subscribe" class="linkbtn">Subscribe</button></li><li><a href="privacy.html">Privacy</a></li></ul></div>
     </div>
     <div class="legal">
@@ -676,12 +699,17 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
 <script>/*ART*/</script>
 <script>/*SITE*/</script>
 <script>/*MAP*/</script>
+<script>var WF_GLOSSARY = /*GLOSSARY*/; var WF_TIMELINES = /*TIMELINES*/;</script>
+<script>/*EXTRAS*/</script>
 <script>
 (function(){
   var EDS;
   try { EDS = JSON.parse(document.getElementById('editions').textContent); } catch (e) { return; }
   if (!EDS.length) return;
   var CUR = EDS[0], PREV = EDS.slice(1);
+  (function(){ var box = document.getElementById('wk-listen'); if (!box || !CUR) return; var say = ['This week’s headlines on Weekfold.'];
+    CUR.days.forEach(function(d){ say.push(fmt(d.date, { weekday:'long' }) + '. ' + d.lead.headline.replace(/[.!?]$/, '') + '.'); });
+    box.appendChild(WFExtras.listenBar(say.join(' '), '🔊 Listen to this week’s headlines')); })();
   var DOTS = ['#8c1d18', '#1e3a6a', '#1F6B4A', '#5b3fb0', '#0b6f78', '#b45a07'];
 
   /* ---------- helpers ---------- */
@@ -906,6 +934,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
   var artBox = document.getElementById('article'), lastFocus = null, openedByClick = false, behind = '#current', hadView = false;
   function openArticle(id, byClick){ openedByClick = !!byClick; location.hash = 'a-' + id; }
   function renderArticle(s){
+    WFExtras.stopAll();
     lastFocus = lastFocus || document.activeElement; artBox.innerHTML = '';
     var closeB = el('button', { cls:'btn', type:'button', text:'Close' }); closeB.addEventListener('click', closeArticle);
     artBox.appendChild(el('div', { cls:'bar' }, [ el('div', { cls:'in' }, [ el('span', { cls:'bc', text: 'Edition ' + s.ed.number + ' · ' + fmt(s.date, { weekday:'long', day:'numeric', month:'long' }) }), closeB ]) ]));
@@ -913,6 +942,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
     a.appendChild(el('div', { cls:'kick' }, [ el('span', { cls:'c', text: s.category }), el('span', { cls:'d', text: fmt(s.date, { weekday:'long', day:'numeric', month:'long', year:'numeric' }) }), el('span', { cls:'d', text: mins(s) }) ]));
     a.appendChild(el('h1', { id:'art-h', text: s.headline }));
     if (dek(s)) a.appendChild(el('p', { cls:'dek', text: dek(s) }));
+    a.appendChild(WFExtras.listenBar(WFExtras.storyText(s), '🔊 Listen to this story'));
     var fig = el('figure'), pbox = photo(s, 1200, 675, null, { noCredit: true, eager: true }); fig.appendChild(pbox);
     var cap = el('figcaption', { text: 'Illustration: Weekfold.' }); fig.appendChild(cap);
     pbox.addEventListener('wf-photo', function(e){
@@ -920,10 +950,16 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
       cap.appendChild(el('a', { href: d.page, target:'_blank', rel:'noopener', text:'Wikimedia Commons' })); cap.appendChild(document.createTextNode('.'));
     });
     a.appendChild(fig);
+    var gl = WFExtras.factsBox(s); if (gl) a.appendChild(gl);
     var body = el('div', { cls:'body' }); (s.body && s.body.length ? s.body : [dek(s)]).forEach(function(p){ body.appendChild(el('p', { text: p })); }); a.appendChild(body);
     if (s.why) a.appendChild(el('div', { cls:'why' }, [ el('b', { text:'Why it matters' }), el('p', { text: s.why }) ]));
+    [WFExtras.textBox('india', 'What it could mean for India', s.india, 'Analysis by Weekfold, not reporting'),
+     WFExtras.textBox('differ', 'Where the reports differ', s.differ),
+     WFExtras.textBox('watchx', 'What to watch next', s.watch),
+     WFExtras.words(s), WFExtras.tlBox(s)].forEach(function(b){ if (b) a.appendChild(b); });
     var sl = srcs(s);
     if (sl.length){ var ul = el('ul'); sl.forEach(function(x){ ul.appendChild(el('li', null, [ x.url ? el('a', { href: x.url, target:'_blank', rel:'noopener', text: x.name + ' ↗' }) : x.name ])); }); a.appendChild(el('div', { cls:'srcs' }, [ el('b', { text:'Sources' }), ul ])); }
+    a.appendChild(WFExtras.shareRow(s, location.href.split('#')[0].replace(/[^/]*$/, '') + 'home.html#a-' + s.id));
     var pos = ORDER.indexOf(s.id), nx = el('div', { cls:'nextup' });
     var prevS = BYID[ORDER[pos - 1]], nextS = BYID[ORDER[pos + 1]];
     if (prevS){ var pb = el('button', { type:'button' }, [ el('span', { text:'← Previous story' }), el('b', { text: prevS.headline }) ]); pb.addEventListener('click', function(){ openArticle(prevS.id, false); }); nx.appendChild(pb); }
@@ -934,7 +970,7 @@ header.top .nav a[aria-current="page"]{font-weight:700;border-bottom-color:#000}
     WFArt.paintAll(artBox); closeB.focus();
   }
   function closeArticle(){ location.hash = behind.slice(1) || 'current'; }
-  function hideArticle(){ if (artBox.hidden) return; artBox.hidden = true; artBox.innerHTML = ''; document.body.style.overflow = ''; if (lastFocus && lastFocus.focus && document.contains(lastFocus)) lastFocus.focus(); lastFocus = null; }
+  function hideArticle(){ WFExtras.stopAll(); if (artBox.hidden) return; artBox.hidden = true; artBox.innerHTML = ''; document.body.style.overflow = ''; if (lastFocus && lastFocus.focus && document.contains(lastFocus)) lastFocus.focus(); lastFocus = null; }
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !artBox.hidden) closeArticle(); });
 
   /* ---------- CROSSWORD ---------- */

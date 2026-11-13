@@ -1,0 +1,65 @@
+[
+ {
+  "slug": "iran-war-and-the-gulf",
+  "title": "The Iran war and the Gulf",
+  "intro": "Every Weekfold story about the US-Israel war on Iran, shipping in the Strait of Hormuz and the talks to end it, oldest first.",
+  "match": [
+   "iran",
+   "hormuz",
+   "houthi",
+   "tehran"
+  ]
+ },
+ {
+  "slug": "russia-ukraine-war",
+  "title": "Russia's war in Ukraine",
+  "intro": "Every Weekfold story about the war in Ukraine, the strikes on its cities and the talks to end it, oldest first.",
+  "match": [
+   "ukrain",
+   "kyiv",
+   "zelensk",
+   "dnipro",
+   "zaporizh",
+   "oleshky",
+   "kharkiv"
+  ],
+  "exclude": [
+   "duma"
+  ]
+ },
+ {
+  "slug": "gaza-and-israel",
+  "title": "Gaza, Israel and the West Bank",
+  "intro": "Every Weekfold story about Gaza, the ceasefire, Israel's politics and the West Bank, oldest first.",
+  "match": [
+   "gaza",
+   "israel",
+   "hebron",
+   "west bank",
+   "netanyahu",
+   "eisenkot"
+  ]
+ },
+ {
+  "slug": "ebola-in-congo",
+  "title": "Ebola in Congo",
+  "intro": "Every Weekfold story about the Ebola outbreak in the Democratic Republic of Congo, oldest first.",
+  "match": [
+   "ebola"
+  ]
+ },
+ {
+  "slug": "us-politics",
+  "title": "US politics and the 2026 midterms",
+  "intro": "Every Weekfold story about the 2026 US midterm elections, Congress and the White House, oldest first.",
+  "match": [
+   "midterm",
+   "us congress",
+   "white house",
+   "us senate",
+   "us supreme court",
+   "republicans",
+   "democrats"
+  ]
+ }
+]

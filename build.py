@@ -9,8 +9,13 @@ Run:    python3 build.py          (exits with an error if any edition file is in
 import datetime, html, json, pathlib, shutil, sys, urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent
-SRC, DATA, OUT = ROOT / 'src', ROOT / 'data' / 'editions', ROOT / 'docs'
+SRC, DATA = ROOT / 'src', ROOT / 'data' / 'editions'
 CFG = json.loads((ROOT / 'config.json').read_text(encoding='utf-8'))
+# Test version (branch test-features): build into its own folder and zip, so the live docs/ and weekfold-site.zip never change.
+TEST = CFG.get('test_build') or {}
+OUT = ROOT / (TEST.get('dir') or 'docs')
+ZIP_NAME = TEST.get('zip') or 'weekfold-site.zip'
+EXTRAS = ROOT / 'data' / 'extras'
 SITE = (CFG.get('site_url') or '').rstrip('/')
 INLINE_FULL = int(CFG.get('inline_full_editions', 4))
 PROVIDERS = {'buttondown': 'Buttondown', 'kit': 'Kit'}
@@ -189,6 +194,113 @@ def rss(eds):
             + ''.join(items) + '</channel></rss>\n')
 
 
+FONT_CSS = """@font-face{font-family:'Source Serif 4';src:url(fonts/SourceSerif4-Bold.woff) format('woff');font-weight:400 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Source Sans 3';src:url(fonts/SourceSans3-Regular.woff) format('woff');font-weight:100 499;font-display:swap}
+@font-face{font-family:'Source Sans 3';src:url(fonts/SourceSans3-Bold.woff) format('woff');font-weight:500 900;font-display:swap}
+:root{--display:'Source Serif 4',Georgia,'Times New Roman',serif;--ui:'Source Sans 3','Segoe UI',system-ui,sans-serif}
+"""
+
+
+def finish(t):
+    """Test-build touches on every page: no Google Fonts request when fonts are self-hosted, and noindex so search engines skip the test copy."""
+    import re
+    if TEST.get('self_host_fonts'):
+        t = re.sub(r'<link rel="preconnect" href="https://fonts\.(googleapis|gstatic)\.com"[^>]*>\n?', '', t)
+        t = re.sub(r'<link rel="stylesheet" href="https://fonts\.googleapis\.com/[^"]*">\n?', '', t)
+        t = t.replace('<li><strong>Google Fonts</strong> supplies the typefaces.</li>', '<li>The typefaces (Source Serif 4 and Source Sans 3, free under the SIL Open Font Licence) are served from Weekfold itself, so reading a page does not contact Google.</li>')
+    if TEST.get('noindex'):
+        t = t.replace('<meta name="viewport"', '<meta name="robots" content="noindex, nofollow">\n<meta name="viewport"', 1)
+    return t
+
+
+def slug(s):
+    import re
+    return re.sub(r'[^a-z0-9]+', '-', s.lower()).strip('-')
+
+
+def all_stories(eds):
+    """Every story in every edition, oldest first, with its date and link."""
+    out = []
+    for ed in sorted(eds, key=lambda e: int(e['number'])):
+        for d in ed['days']:
+            for k, s in enumerate([d['lead']] + d['more']):
+                out.append({**s, 'date': d['date'], 'ed': ed['number'], 'href': 'home.html#a-' + d['date'] + '-' + str(k)})
+    return out
+
+
+def items(stories):
+    e = html.escape
+    return '<ul class="items">' + ''.join(
+        f'<li><span class="d">{e(day_name(s["date"]))} {s["date"][:4]} · {e(s["category"])}</span><a class="h" href="{s["href"]}">{e(s["headline"])}</a><p>{e(s.get("dek", ""))}</p></li>'
+        for s in stories) + '</ul>'
+
+
+def extra_pages(eds, glossary, timelines, tpl):
+    """About, corrections, glossary, timelines and section pages. Plain HTML, built from the data; returns the file names."""
+    import re
+    e = html.escape
+    made = []
+    def page(name, title, desc, body):
+        (OUT / name).write_text(tpl.replace('/*TITLE*/', e(title)).replace('/*DESC*/', e(desc)).replace('/*BODY*/', body), encoding='utf-8')
+        made.append(name)
+    st = all_stories(eds)
+    # timelines
+    def tl_match(x, s):
+        if s.get('timeline'):
+            return x['slug'] in ([s['timeline']] if isinstance(s['timeline'], str) else s['timeline'])
+        t = (s['headline'] + ' ' + s.get('dek', '')).lower()
+        return any(m in t for m in x['match']) and not any(m in t for m in x.get('exclude', []))
+    rows = []
+    for x in timelines:
+        hits = [s for s in st if tl_match(x, s)]
+        page(f'timeline-{x["slug"]}.html', x['title'], x['intro'],
+             f'<p><a href="timelines.html">← All timelines</a></p><h1>{e(x["title"])}</h1><p class="lead">{e(x["intro"])}</p>'
+             f'<p class="upd">{len(hits)} stories from Weekfold editions. It grows by itself every Sunday.</p>' + items(hits))
+        if hits:
+            rows.append(f'<li><span class="d">{len(hits)} stories · latest {e(day_name(hits[-1]["date"]))}</span><a class="h" href="timeline-{x["slug"]}.html">{e(x["title"])}</a><p>{e(x["intro"])}</p></li>')
+    page('timelines.html', 'How we got here', 'Timelines of the big running stories, built from every Weekfold edition.',
+         '<h1>How we got here</h1><p class="lead">The big stories that run for weeks, in order. Each one collects every Weekfold story on the subject, so you can catch up from the start.</p><ul class="items">' + ''.join(rows) + '</ul>')
+    # glossary
+    gl = sorted(glossary, key=lambda g: g['term'].lower())
+    page('glossary.html', 'Words in the news, explained', 'Plain-English meanings of words that come up in the news.',
+         '<h1>Words in the news, explained</h1><p class="lead">Short, plain meanings of words that come up in this week’s stories. Stories link here under “Words in this story”.</p>'
+         '<dl class="gl">' + ''.join(f'<dt id="{slug(g["term"])}">{e(g["term"])}</dt><dd>{e(g["def"])}</dd>' for g in gl) + '</dl>')
+    # sections
+    cats = sorted({s['category'] for s in st})
+    for c in cats:
+        cs = [s for s in reversed(st) if s['category'] == c]
+        page(f'section-{slug(c)}.html', c, f'Every Weekfold {c} story, newest first.',
+             f'<p><a href="sections.html">← All sections</a></p><h1>{e(c)}</h1><p class="lead">Every {e(c)} story from Weekfold, newest first.</p>' + items(cs))
+    page('sections.html', 'Sections', 'Weekfold stories by section.',
+         '<h1>Sections</h1><p class="lead">Every Weekfold story, sorted by section.</p><ul class="chips">'
+         + ''.join(f'<li><a href="section-{slug(c)}.html">{e(c)} ({sum(1 for s in st if s["category"] == c)})</a></li>' for c in cats) + '</ul>')
+    # corrections
+    fixes = [(s, c) for s in reversed(st) for c in (s.get('corrections') or [])]
+    body = ''.join(f'<li><span class="d">{e(day_name(s["date"]))} {s["date"][:4]}</span><a class="h" href="{s["href"]}">{e(s["headline"])}</a><p>{e(c)}</p></li>' for s, c in fixes)
+    page('corrections.html', 'Updates and corrections', 'Every correction Weekfold has made, newest first.',
+         '<h1>Updates and corrections</h1><p class="lead">When we get something wrong, we fix it on the story and list it here, newest first. Spotted a mistake? Email '
+         f'<a href="mailto:{e(CFG.get("contact_email", ""))}">{e(CFG.get("contact_email", ""))}</a>.</p>'
+         + (f'<ul class="items">{body}</ul>' if body else '<p class="upd">No corrections so far.</p>'))
+    # about
+    outlets = {}
+    for s in st:
+        for src in s.get('sources') or []:
+            n = re.split(r' \(|,| via | - ', src.get('name', ''))[0].strip()
+            n = {'AP': 'Associated Press', 'AFP': 'Agence France-Presse'}.get(n, n)
+            if n: outlets[n] = outlets.get(n, 0) + 1
+    top = ', '.join(n for n, _ in sorted(outlets.items(), key=lambda kv: -kv[1])[:14])
+    page('about.html', 'About Weekfold and how we check', 'Who makes Weekfold, where the news comes from and how it is checked.', f"""<h1>About Weekfold</h1>
+<p class="lead">Weekfold folds the world's week into one free edition every Sunday: one page for each day, with the stories that still mattered by the end of the week.</p>
+<h2>Who makes it</h2><p>Weekfold is made by Narayan Sharma. Stories are researched and drafted with the help of an AI assistant (Claude, made by Anthropic), working only from the reports named under each story, and then checked before the edition goes out.</p>
+<h2>Where the news comes from</h2><p>Every story names at least two sources, linked so you can read them yourself: wire services, official statements and established news organisations. The outlets used most so far: {e(top)}.</p>
+<h2>How we check</h2><ul><li>Every name, number, date and quote must appear in a source we read. Anything we cannot confirm is left out.</li><li>When reports disagree, we say so under “Where the reports differ”.</li><li>Claims are attributed (“police said”, “according to the UN”) and casualty figures carry their source and date.</li><li>Quotes are short, and the writing is our own.</li><li>Lines marked “analysis”, such as “What it could mean for India”, are Weekfold’s reading of the news, not reporting.</li></ul>
+<h2>Mistakes</h2><p>We fix mistakes on the story and list them on the <a href="corrections.html">corrections page</a>. Email <a href="mailto:{e(CFG.get('contact_email', ''))}">{e(CFG.get('contact_email', ''))}</a>.</p>
+<h2>Photos</h2><p>Only public-domain or Creative Commons images from Wikimedia Commons, credited beneath each picture. We do not use photos from news agencies.</p>
+<h2>Listening</h2><p>The Listen buttons use your own device's built-in voice. It is free, nothing is sent anywhere, and voices differ from device to device.</p>
+<h2>Privacy</h2><p>No ads and no tracking cookies. See the <a href="privacy.html">privacy page</a>.</p>""")
+    return made
+
+
 def main():
     eds = load()
     if errors:
@@ -199,6 +311,8 @@ def main():
 
     if OUT.exists():
         shutil.rmtree(OUT)
+    if OUT.name != 'docs':
+        print(f'TEST BUILD: writing to {OUT.name}/ (docs/ is left untouched)')
     (OUT / 'editions').mkdir(parents=True)
     (OUT / 'newsletter').mkdir()
 
@@ -228,8 +342,18 @@ def main():
     site_js = (SRC / 'site.js').read_text(encoding='utf-8')
     canon = {'index.html': SITE + '/', 'home.html': SITE + '/home.html'}
     world = (SRC / 'worldmap.txt').read_text(encoding='utf-8').strip() if (SRC / 'worldmap.txt').exists() else ''
+    glossary = json.loads((EXTRAS / 'glossary.json').read_text(encoding='utf-8')) if (EXTRAS / 'glossary.json').exists() else []
+    timelines = json.loads((EXTRAS / 'timelines.json').read_text(encoding='utf-8')) if (EXTRAS / 'timelines.json').exists() else []
+    jsb = lambda o: json.dumps(o, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    extras_js = (SRC / 'extras.js').read_text(encoding='utf-8')
+    if TEST.get('self_host_fonts'):
+        theme = theme + FONT_CSS
+        (OUT / 'fonts').mkdir()
+        for f in (SRC / 'fonts').glob('*.woff'):
+            shutil.copy(f, OUT / 'fonts' / f.name)
     for name, target in (('landing.html', 'index.html'), ('home.html', 'home.html')):
-        t = (SRC / name).read_text(encoding='utf-8')
+        t = finish((SRC / name).read_text(encoding='utf-8'))
+        t = t.replace('/*GLOSSARY*/', jsb(glossary)).replace('/*TIMELINES*/', jsb([{k: x[k] for k in ('slug', 'title', 'match', 'exclude') if k in x} for x in timelines])).replace('/*EXTRAS*/', extras_js)
         t = t.replace('/*THEME*/', theme).replace('/*PHOTOS*/', photos_blob).replace('/*EDITIONS*/', blob).replace('/*CONFIG*/', cfg_blob).replace('/*ART*/', art).replace('/*SITE*/', site_js).replace('/*WORLD*/', world).replace('/*MAP*/', (SRC / 'map.js').read_text(encoding='utf-8'))
         og_image = (f'<meta property="og:image" content="{SITE}/img/{top_photo["file"]}">\n<meta name="twitter:image" content="{SITE}/img/{top_photo["file"]}">\n') if (SITE and top_photo) else ''
         if SITE:
@@ -238,9 +362,10 @@ def main():
 
     nl = CFG.get('newsletter') or {}
     provider = 'Supabase (emails are sent through Resend)' if nl.get('supabase_url') else PROVIDERS.get(nl.get('provider'), 'our email provider')
-    priv = (SRC / 'privacy.html').read_text(encoding='utf-8')
+    priv = finish((SRC / 'privacy.html').read_text(encoding='utf-8'))
     priv = priv.replace('/*THEME*/', theme).replace('/*TODAY*/', datetime.date.today().strftime('%-d %B %Y')).replace('/*PROVIDER*/', provider).replace('/*CONTACT*/', CFG.get('contact_email', ''))
     (OUT / 'privacy.html').write_text(priv, encoding='utf-8')
+    pages = extra_pages(eds, glossary, timelines, finish((SRC / 'page.html').read_text(encoding='utf-8')).replace('/*THEME*/', theme))
     shutil.copy(SRC / 'favicon.svg', OUT / 'favicon.svg')
     for _f in ['favicon.ico','icon-48.png','icon-96.png','icon-180.png','icon-192.png','icon-512.png']:
         shutil.copy(SRC / _f, OUT / _f)
@@ -265,7 +390,7 @@ def main():
     if SITE:
         (OUT / 'feed.xml').write_text(rss(eds), encoding='utf-8')
         today = datetime.date.today().isoformat()
-        urls = ''.join(f'<url><loc>{SITE}/{p}</loc><lastmod>{today}</lastmod><changefreq>weekly</changefreq></url>' for p in ('', 'home.html', 'privacy.html'))
+        urls = ''.join(f'<url><loc>{SITE}/{p}</loc><lastmod>{today}</lastmod><changefreq>weekly</changefreq></url>' for p in ['', 'home.html', 'privacy.html'] + pages)
         (OUT / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + urls + '</urlset>\n')
         (OUT / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n')
     else:
@@ -275,18 +400,22 @@ def main():
     # A ready-to-upload copy of the whole site for Hostinger: download it from <site>/weekfold-site.zip
     # and upload it into public_html with Hostinger's File Manager (Extract, replace existing files).
     import zipfile
-    zpath = OUT / 'weekfold-site.zip'
+    zpath = OUT / ZIP_NAME
     with zipfile.ZipFile(zpath, 'w', zipfile.ZIP_DEFLATED) as z:
         for f in sorted(OUT.rglob('*')):
             if f.is_file() and f != zpath and f.name != '.nojekyll':
                 z.write(f, f.relative_to(OUT).as_posix())
-    print(f'Hostinger upload: docs/weekfold-site.zip ({zpath.stat().st_size // 1024} KB)')
+    print(f'Hostinger upload: {OUT.name}/{ZIP_NAME} ({zpath.stat().st_size // 1024} KB)')
     print(f'Photos: {len(man)} local copies served from docs/img/')
     for name in ('index.html', 'home.html'):
         print(f'{name}: {(OUT / name).stat().st_size // 1024} KB')
+    print(f'Extra pages: {len(pages)}')
     for e in eds:
         print(f"Edition {e['number']}: {len(e['days'])} days, {sum(1 + len(d['more']) for d in e['days'])} stories")
 
 
 if __name__ == '__main__':
     main()
+    import subprocess
+    r = subprocess.run([sys.executable, str(ROOT / 'scripts' / 'check_site.py'), str(OUT)])
+    sys.exit(r.returncode)

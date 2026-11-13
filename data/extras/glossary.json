@@ -1,0 +1,264 @@
+[
+ {
+  "term": "Ceasefire",
+  "match": [
+   "ceasefire",
+   "truce"
+  ],
+  "def": "An agreement between the sides in a conflict to stop fighting, for a set time or while talks go on. It does not by itself end a war."
+ },
+ {
+  "term": "Genocide",
+  "match": [
+   "genocide",
+   "genocidal"
+  ],
+  "def": "Acts committed with intent to destroy, in whole or in part, a national, ethnic, racial or religious group. It is defined in the 1948 UN Genocide Convention, and courts decide whether it has happened."
+ },
+ {
+  "term": "Crime against humanity",
+  "match": [
+   "crimes against humanity",
+   "crime against humanity"
+  ],
+  "def": "A serious crime, such as murder, torture or forced displacement, committed as part of a widespread or systematic attack on civilians."
+ },
+ {
+  "term": "War crime",
+  "match": [
+   "war crime",
+   "war crimes"
+  ],
+  "def": "A serious breach of the laws of war, such as deliberately attacking civilians or mistreating prisoners."
+ },
+ {
+  "term": "Commission of inquiry",
+  "match": [
+   "commission of inquiry"
+  ],
+  "def": "A panel of independent experts set up, for example by the UN Human Rights Council, to investigate alleged abuses and report what it finds. It is not a court."
+ },
+ {
+  "term": "Glide bomb",
+  "match": [
+   "glide bomb",
+   "glide bombs",
+   "glide kit"
+  ],
+  "def": "An ordinary aerial bomb fitted with folding wings and guidance, so a plane can release it many kilometres from its target."
+ },
+ {
+  "term": "Blockade",
+  "match": [
+   "blockade",
+   "blockaded"
+  ],
+  "def": "Using military force to stop ships or goods from reaching or leaving a country's ports or borders."
+ },
+ {
+  "term": "Naval mine",
+  "match": [
+   "sea mine",
+   "sea mines",
+   "naval mine",
+   "naval mines",
+   "hit a mine",
+   "mines"
+  ],
+  "def": "An explosive placed in the water that goes off when a ship touches it or passes close to it."
+ },
+ {
+  "term": "Strait of Hormuz",
+  "match": [
+   "hormuz"
+  ],
+  "def": "The narrow sea passage between Iran and Oman that links the Persian Gulf to the open ocean. A large share of the world's oil and gas exports pass through it."
+ },
+ {
+  "term": "Revolutionary Guards (IRGC)",
+  "match": [
+   "revolutionary guard",
+   "irgc"
+  ],
+  "def": "Iran's Islamic Revolutionary Guard Corps, a powerful military force separate from the regular army that answers to the Supreme Leader."
+ },
+ {
+  "term": "CENTCOM",
+  "match": [
+   "centcom",
+   "central command"
+  ],
+  "def": "US Central Command, the part of the US military responsible for the Middle East and parts of Central and South Asia."
+ },
+ {
+  "term": "Midterm elections",
+  "match": [
+   "midterm",
+   "midterms"
+  ],
+  "def": "US elections held halfway through a president's four-year term, for all 435 seats in the House of Representatives and about a third of the Senate."
+ },
+ {
+  "term": "US Congress",
+  "match": [
+   "us congress",
+   "house of representatives",
+   "both chambers"
+  ],
+  "def": "The US national legislature. It has two chambers, the House of Representatives and the Senate, and both must pass a bill before the president can sign it into law."
+ },
+ {
+  "term": "Impeachment",
+  "match": [
+   "impeach",
+   "impeachment",
+   "impeached"
+  ],
+  "def": "A formal process in which a legislature charges a senior official, such as a president, with misconduct and can vote to remove them from office."
+ },
+ {
+  "term": "Veto",
+  "match": [
+   "veto"
+  ],
+  "def": "A leader's power to reject a law passed by the legislature. In the US, Congress can override a veto with a two-thirds vote in both chambers."
+ },
+ {
+  "term": "Interest rate (central bank)",
+  "match": [
+   "interest rate",
+   "interest rates",
+   "bank rate"
+  ],
+  "def": "The rate a central bank sets for lending to banks. Raising it makes borrowing more expensive, which usually slows spending and inflation."
+ },
+ {
+  "term": "Inflation",
+  "match": [
+   "inflation",
+   "cpi"
+  ],
+  "def": "The rate at which prices rise over time. It is often measured by the consumer price index (CPI), a basket of everyday goods and services."
+ },
+ {
+  "term": "All-stock deal",
+  "match": [
+   "all-stock"
+  ],
+  "def": "A takeover in which the buyer pays with its own shares instead of cash, so the target's shareholders become shareholders of the buyer."
+ },
+ {
+  "term": "Enterprise value",
+  "match": [
+   "enterprise value"
+  ],
+  "def": "A measure of what a whole company is worth: the value of its shares plus its debt, minus its cash."
+ },
+ {
+  "term": "Ebola",
+  "match": [
+   "ebola",
+   "bundibugyo"
+  ],
+  "def": "A severe, often deadly disease caused by a group of viruses and spread through contact with the body fluids of an infected person. Bundibugyo and Zaire are two different strains."
+ },
+ {
+  "term": "Clinical trial",
+  "match": [
+   "clinical trial",
+   "clinical trials",
+   "vaccine trial"
+  ],
+  "def": "A study in people that tests whether a medicine or vaccine is safe and whether it works."
+ },
+ {
+  "term": "El Niño",
+  "match": [
+   "el niño",
+   "el nino"
+  ],
+  "def": "A natural warming of the surface of the tropical Pacific Ocean every few years. It shifts weather around the world and tends to push global temperatures up."
+ },
+ {
+  "term": "Pre-industrial level",
+  "match": [
+   "pre-industrial"
+  ],
+  "def": "The average global temperature in 1850-1900, the baseline scientists use to measure how much the planet has warmed."
+ },
+ {
+  "term": "1.5C goal",
+  "match": [
+   "1.5c",
+   "paris agreement"
+  ],
+  "def": "The aim, set in the 2015 Paris Agreement, of limiting long-term global warming to 1.5C above pre-industrial levels. It refers to an average over many years, not a single year."
+ },
+ {
+  "term": "Cryosphere",
+  "match": [
+   "cryosphere",
+   "ice sheet",
+   "glacier",
+   "glaciers",
+   "permafrost",
+   "sea ice"
+  ],
+  "def": "All the frozen parts of Earth: glaciers, ice sheets, sea ice, snow and permanently frozen ground (permafrost)."
+ },
+ {
+  "term": "Spacewalk",
+  "match": [
+   "spacewalk"
+  ],
+  "def": "Time an astronaut spends working outside a spacecraft in a spacesuit. NASA calls it extravehicular activity (EVA)."
+ },
+ {
+  "term": "Cyberattack",
+  "match": [
+   "cyberattack",
+   "cyber attack",
+   "cyber-attack",
+   "hacked",
+   "hacking",
+   "hackers"
+  ],
+  "def": "An attempt to break into, damage or take control of computers, networks or connected devices."
+ },
+ {
+  "term": "Firmware",
+  "match": [
+   "firmware"
+  ],
+  "def": "The basic software built into a device, such as a fridge controller or router, that tells its hardware what to do. Fixes are installed as firmware updates."
+ },
+ {
+  "term": "Terrorism",
+  "match": [
+   "terrorism",
+   "terrorist"
+  ],
+  "def": "Violence or threats against people, used to frighten the public or push a political or ideological goal. Each country's law defines it a little differently."
+ },
+ {
+  "term": "Hat-trick",
+  "match": [
+   "hat-trick"
+  ],
+  "def": "Three goals, or in rugby three tries, scored by one player in a single match."
+ },
+ {
+  "term": "Champions League",
+  "match": [
+   "champions league"
+  ],
+  "def": "Europe's top club football competition, run each season by UEFA."
+ },
+ {
+  "term": "Box office",
+  "match": [
+   "box office"
+  ],
+  "def": "Money earned from cinema ticket sales. Weekend figures are first released as studio estimates and later updated."
+ }
+]

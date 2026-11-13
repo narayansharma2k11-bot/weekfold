@@ -36,7 +36,16 @@
     ],
     "image": {
      "wiki": "Kyiv"
-    }
+    },
+    "facts": {
+     "who": "Ukraine's air force and Russia's Emergencies Ministry",
+     "what": "False nuclear, chemical and missile alerts sent through both countries' emergency apps",
+     "where": "Ukraine and 33 of Russia's 89 regions",
+     "when": "Late on 1 November (Ukraine) and early on 2 November (Russia)",
+     "why": "Both apps were hacked; who did it has not been established"
+    },
+    "differ": "Ukraine's Centre for Strategic Communications blamed Russia for the Ukrainian hack, while AP said a Russian Telegram channel credited a group called Hitcore, a claim AP could not verify. AP said the Oleshky truce began on 27 October; Al Jazeera said it ended on Sunday.",
+    "watch": "Three-way talks with Russia and the United States that Ukraine expected this month, and whether either government names who was behind the hacks."
    },
    "more": [
     {
@@ -61,7 +70,16 @@
      ],
      "image": {
       "wiki": "Santa_Clara,_California"
-     }
+     },
+     "facts": {
+      "who": "Marvell Technology and Lumentum",
+      "what": "An all-stock takeover of Lumentum by Marvell",
+      "when": "Announced 2 November",
+      "how": "4.5 Marvell shares for each Lumentum share",
+      "howMuch": "About $115 billion enterprise value"
+     },
+     "watch": "Shareholder and regulatory approvals; the companies expect the deal to close in the first half of 2028.",
+     "india": "If AI data-centre spending keeps growing this fast, companies that build or run data centres in India could feel the effects on equipment costs and supply."
     },
     {
      "category": "Culture",
@@ -85,7 +103,14 @@
      ],
      "image": {
       "wiki": "Elizabeth_Holmes"
-     }
+     },
+     "facts": {
+      "what": "A documentary about Theranos founder Elizabeth Holmes topped the North American box office",
+      "when": "The Halloween weekend, 30 October to 1 November",
+      "howMuch": "An estimated $10.6 million"
+     },
+     "differ": "Industry sites reported slightly different weekend numbers from the studio estimates reported by AP; final figures were due on Monday.",
+     "watch": "Final weekend figures, and whether the film holds its audience."
     }
    ]
   },
@@ -119,7 +144,17 @@
     ],
     "image": {
      "wiki": "United_States_Capitol"
-    }
+    },
+    "facts": {
+     "who": "US voters, the Democratic and Republican parties",
+     "what": "Democrats won control of both the House and the Senate",
+     "where": "United States",
+     "when": "Election day, 3 November 2026",
+     "why": "Trump said the Iran war and higher petrol prices probably played a part"
+    },
+    "differ": "Seat counts differed between outlets on election night; the House figures used here were a partial count from early Wednesday.",
+    "watch": "The close Alaska and Mississippi Senate races, and the new Congress being sworn in on 3 January 2027.",
+    "india": "A divided Washington could slow or change US trade, tariff and visa decisions that matter to Indian businesses and students."
    },
    "more": [
     {
@@ -148,7 +183,14 @@
      ],
      "image": {
       "wiki": "Supermarket"
-     }
+     },
+     "facts": {
+      "what": "Hackers raised temperatures in internet-connected supermarket fridges and freezers",
+      "where": "Supermarkets across Europe, and a few UK meat suppliers",
+      "when": "2 November, with UK impact reported on 3 November",
+      "how": "Through Copeland XWEB refrigeration controllers"
+     },
+     "watch": "Whether anyone claims the attacks, and how fast shops install the firmware fix that has been available since August."
     },
     {
      "category": "Sport",
@@ -172,7 +214,14 @@
      ],
      "image": {
       "wiki": "Old_Trafford"
-     }
+     },
+     "facts": {
+      "who": "Manchester United and Roma",
+      "what": "United came from 2-0 down to win 3-2",
+      "where": "Old Trafford, Manchester",
+      "when": "3 November, Champions League"
+     },
+     "watch": "United's next match, at home to Aston Villa on Sunday."
     }
    ]
   },
@@ -210,7 +259,15 @@
     ],
     "image": {
      "wiki": "Zaporizhzhia"
-    }
+    },
+    "facts": {
+     "what": "Russian aerial bombs hit a school used as a shelter and aid distribution point",
+     "where": "Komyshuvakha, Zaporizhzhia region, Ukraine",
+     "when": "Monday 2 November; the toll reached 40 by Wednesday",
+     "howMuch": "At least 40 dead and dozens missing"
+    },
+    "differ": "Early Wednesday figures varied between outlets. Russia's Defence Ministry said it targeted Ukrainian military units; Ukrainian officials said civilians collecting aid were hit.",
+    "watch": "The rising death toll, and talks between Ukrainian and Russian delegations in Abu Dhabi on 10 and 11 November."
    },
    "more": [
     {
@@ -239,7 +296,14 @@
      ],
      "image": {
       "wiki": "Tedros_Adhanom_Ghebreyesus"
-     }
+     },
+     "facts": {
+      "who": "The World Health Organization and Congo's National Institute for Biomedical Research",
+      "what": "Trials of two vaccines made for the Bundibugyo strain of Ebola",
+      "when": "Announced 4 November"
+     },
+     "differ": "Death figures differ by source: Africa CDC puts deaths at more than 5,300, while Euronews reported a lower count for Congo alone.",
+     "watch": "Al Jazeera reported that trial results are expected in early 2027."
     }
    ]
   },
@@ -271,7 +335,16 @@
     ],
     "image": {
      "wiki": "Oil_tanker"
-    }
+    },
+    "facts": {
+     "who": "Iran's Revolutionary Guards and army, the United States, mediators in Qatar and Oman",
+     "what": "Iran said at least five tankers and a tugboat were damaged by mines and fires",
+     "where": "The Strait of Hormuz",
+     "when": "5 November"
+    },
+    "differ": "The tanker damage claims came from Iranian sources and were not confirmed by maritime authorities; the UK Maritime Trade Operations agency separately reported one tanker hit by projectiles.",
+    "watch": "Whether the mediators' proposals reviewed by both sides lead to talks, and whether US forces resume major strikes.",
+    "india": "India buys much of its oil from the Gulf, so trouble in Hormuz can push up fuel prices and shipping costs for Indian buyers."
    },
    "more": [
     {
@@ -296,7 +369,15 @@
      ],
      "image": {
       "wiki": "Bank_of_England"
-     }
+     },
+     "facts": {
+      "who": "The Bank of England's Monetary Policy Committee",
+      "what": "Raised its main interest rate from 3.75% to 4%",
+      "where": "United Kingdom",
+      "when": "Announced 5 November",
+      "howMuch": "An 8-1 vote"
+     },
+     "watch": "The next rate decision on 17 December."
     },
     {
      "category": "Science",
@@ -320,6 +401,12 @@
      ],
      "image": {
       "wiki": "Joshua_Kutryk"
+     },
+     "facts": {
+      "who": "Astronauts Anil Menon and Joshua Kutryk",
+      "what": "Installed the last roll-out solar array on the International Space Station",
+      "when": "5 November",
+      "howMuch": "6 hours 59 minutes outside the station"
      }
     }
    ]
@@ -355,7 +442,16 @@
     ],
     "image": {
      "wiki": "Pedro_Alliana"
-    }
+    },
+    "facts": {
+     "who": "Paraguay's Senate, Santiago Peña and Pedro Alliana",
+     "what": "Peña was removed from office and Alliana sworn in",
+     "where": "Asunción, Paraguay",
+     "when": "6 November",
+     "why": "The collapse of Ueno Bank, which locked millions of customers out of their savings"
+    },
+    "differ": "Al Jazeera reported 44 of 45 senators voted for removal with one abstention; AP said all 44 senators present voted in favour.",
+    "watch": "Peña's questioning by prosecutors, the criminal cases, and repayment of stranded depositors."
    },
    "more": [
     {
@@ -380,7 +476,15 @@
      ],
      "image": {
       "wiki": "Heat_wave"
-     }
+     },
+     "facts": {
+      "who": "The EU's Copernicus Climate Change Service",
+      "what": "October 2026 was the warmest October on record",
+      "when": "Reported 6 November",
+      "howMuch": "1.75C above the 1850-1900 average"
+     },
+     "watch": "The COP31 climate summit in Antalya, Türkiye, and whether 2026 ends as the warmest year on record.",
+     "india": "A strong El Niño has in past years been linked to weaker monsoon rains in India, so forecasters will watch next year's monsoon closely."
     },
     {
      "category": "Culture",
@@ -404,7 +508,14 @@
      ],
      "image": {
       "wiki": "Russell_Brand"
-     }
+     },
+     "facts": {
+      "who": "Russell Brand",
+      "what": "Convicted of one rape and three sexual assaults; cleared of three other charges",
+      "where": "Southwark Crown Court, London",
+      "when": "Verdicts on 5 November"
+     },
+     "watch": "Sentencing, set for Monday."
     }
    ]
   },
@@ -438,7 +549,16 @@
     ],
     "image": {
      "wiki": "Main_Square,_Kraków"
-    }
+    },
+    "facts": {
+     "who": "A 24-year-old Polish man",
+     "what": "A shooting in the city's Main Market Square",
+     "where": "Kraków, Poland",
+     "when": "About 3 p.m. on 7 November",
+     "howMuch": "Six people killed"
+    },
+    "differ": "AP counted six dead and 15 wounded; Euronews counted 16 injured, including the suspect and two police officers.",
+    "watch": "The suspect's questioning once doctors allow it, formal charges, and Poland's two days of national mourning."
    },
    "more": [
     {
@@ -467,7 +587,14 @@
      ],
      "image": {
       "wiki": "Beauden_Barrett"
-     }
+     },
+     "facts": {
+      "who": "New Zealand and Scotland",
+      "what": "New Zealand won 43-21 with seven tries",
+      "where": "Murrayfield, Edinburgh",
+      "when": "7 November, Nations Championship"
+     },
+     "differ": "Match reports differ on which New Zealand players scored the first-half tries."
     }
    ]
   },
@@ -506,7 +633,15 @@
     ],
     "image": {
      "wiki": "United_States_Central_Command"
-    }
+    },
+    "facts": {
+     "who": "US Central Command, Iran's Revolutionary Guards",
+     "what": "A new unit, Task Force Iron Gate, to cut Iran's land and Caspian supply routes",
+     "when": "Announced 7 November",
+     "howMuch": "About 20 staff, based in Tampa, Florida"
+    },
+    "differ": "Analysts disagreed: one former Pentagon official called it mainly a coordination body, while others said it may be largely symbolic because the US has no presence on the Caspian.",
+    "watch": "Whether Qatari-mediated talks continue, and whether Trump orders new attacks."
    },
    "more": [
     {
@@ -531,7 +666,13 @@
      ],
      "image": {
       "wiki": "Greenland_ice_sheet"
-     }
+     },
+     "facts": {
+      "who": "The International Cryosphere Climate Initiative and the UN Environment Programme",
+      "what": "Reports warning that overshooting 1.5C would do lasting damage to Earth's ice",
+      "when": "Released at the start of November"
+     },
+     "india": "Himalayan glaciers feed rivers that millions of Indians rely on, so lasting damage to mountain ice could matter for water supplies."
     }
    ]
   }

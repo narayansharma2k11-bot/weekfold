@@ -8,5 +8,11 @@
     "supabase_url": ""
   },
   "google_client_id": "",
-  "inline_full_editions": 4
+  "inline_full_editions": 4,
+  "test_build": {
+    "dir": "test-site",
+    "zip": "weekfold-test.zip",
+    "self_host_fonts": true,
+    "noindex": true
+  }
 }

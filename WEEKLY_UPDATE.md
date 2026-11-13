@@ -42,6 +42,17 @@ STORY:
 ```
 Optional: `"corrections": ["What was corrected and when."]` on a story.
 
+Optional extras (test version, branch `test-features`). Use only facts already in the story and its sources:
+```json
+"facts":  { "who": "...", "what": "...", "where": "...", "when": "...", "why": "...", "how": "...", "howMuch": "..." },
+"differ": "Where the sources disagree (numbers, dates, who is blamed). Leave out if they agree.",
+"watch":  "What happens next, with dates if the sources give them.",
+"india":  "For stories not mainly about India: one hedged sentence on why it could matter in India. Shown as analysis. No new numbers or names.",
+"timeline": "iran-war-and-the-gulf"
+```
+`timeline` is only needed to override the automatic match. Timelines live in `data/extras/timelines.json` (keywords decide which stories join each one) and the glossary in `data/extras/glossary.json`; both pages rebuild themselves. Section pages, corrections and the About page are also built from the editions.
+On this branch `python3 build.py` writes to `test-site/` and `test-site/weekfold-test.zip`, and never touches `docs/`.
+
 ## Research and writing rules
 1. Each day has one lead (the biggest **global** story) plus 2–3 more significant stories across different categories.
 2. **At least 2 independent sources per story**, from established outlets or official statements: Reuters, AP, AFP, BBC, Al Jazeera, The Guardian, NPR, CNBC, government and UN releases. Every number, name and quote must come from a page you actually read. Leave out anything you can't confirm. `build.py` refuses to build if a story has fewer than 2 sources.
